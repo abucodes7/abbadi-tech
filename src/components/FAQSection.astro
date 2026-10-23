@@ -1,0 +1,347 @@
+---
+import type { FAQItem } from '../data/faq';
+import Icon from './Icon.astro';
+
+interface Props {
+  items?: FAQItem[];
+  faqs?: FAQItem[];
+  title?: string;
+  subtitle?: string;
+  sectionId?: string;
+  badge?: string;
+}
+
+const { 
+  items: rawItems,
+  faqs: rawFaqs,
+  title = "Frequently Asked Questions", 
+  subtitle = "Direct, expert answers regarding technical execution, DEWA compliance, standards, and quotations in Dubai.",
+  sectionId = "faq-section",
+  badge = "SEO Technical FAQ"
+} = Astro.props;
+
+const items = rawItems || rawFaqs || [];
+
+// Generate Schema.org FAQPage JSON-LD
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<section id={sectionId} class="section section-faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-gold">{badge}</span>
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+
+      <!-- Interactive Search Filter -->
+      <div class="faq-search-wrapper">
+        <input 
+          type="search" 
+          class="faq-search-input" 
+          placeholder="Search questions (e.g. DEWA, MDB panel, PPR pipes, booster pump, quote)..." 
+          aria-label="Filter frequently asked questions"
+        />
+        <div class="faq-count" aria-live="polite">Showing {items.length} questions</div>
+      </div>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="faq-accordion-list">
+      {items.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
+          <summary class="faq-summary">
+            <span class="q-icon">Q</span>
+            <span class="q-text">{item.question}</span>
+            <span class="toggle-icon"></span>
+          </summary>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              <span class="a-icon">A</span>
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Direct Consultation CTA Box inside FAQ -->
+    <div class="faq-help-box">
+      <div class="help-text">
+        <h4>Have a specific engineering question about your site?</h4>
+        <p>Our senior MEP engineers and DEWA-licensed coordinators are ready to inspect your site drawings.</p>
+      </div>
+      <div class="help-actions">
+        <a href="https://wa.me/971551313403?text=Hi%20AbbadiTech,%20I%20have%20a%20technical%20question%20regarding%20my%20site" target="_blank" rel="noopener" class="btn btn-primary">
+          <Icon name="MessageSquare" size={16} /> Ask via WhatsApp
+        </a>
+        <a href="tel:+971551313403" class="btn btn-secondary">
+          <Icon name="Phone" size={16} /> +971 55 131 3403
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schema.org FAQPage structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>
+
+<style>
+  .section-faq {
+    background: #090e18;
+    position: relative;
+  }
+
+  .faq-search-wrapper {
+    margin-top: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-search-input {
+    width: 100%;
+    padding: 0.95rem 1.4rem;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(255, 148, 16, 0.25);
+  }
+
+  .faq-count {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-align: right;
+  }
+
+  .faq-accordion-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(255, 148, 16, 0.4);
+  }
+
+  .faq-item[open] {
+    border-color: var(--primary);
+    background: #131c2d;
+  }
+
+  .faq-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.3rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    user-select: none;
+  }
+
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .q-icon {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    background: rgba(255, 148, 16, 0.15);
+    color: var(--primary);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .q-text {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .toggle-icon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .toggle-icon::before, .toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: transform 0.25s ease;
+  }
+
+  .toggle-icon::before {
+    top: 8px;
+    left: 0;
+    width: 18px;
+    height: 2px;
+  }
+
+  .toggle-icon::after {
+    top: 0;
+    left: 8px;
+    width: 2px;
+    height: 18px;
+  }
+
+  .faq-item[open] .toggle-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .faq-body {
+    padding: 0 1.6rem 1.4rem;
+  }
+
+  .faq-body-inner {
+    display: flex;
+    gap: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .a-icon {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--plumbing-light);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .faq-body p {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .faq-help-box {
+    max-width: 900px;
+    margin: 3.5rem auto 0;
+    background: linear-gradient(135deg, #131c2d, #1a253a);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .help-text h4 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+
+  .help-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .help-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .faq-help-box {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.8rem;
+    }
+
+    .help-actions {
+      width: 100%;
+    }
+
+    .help-actions .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // FAQ dynamic real-time search filtering
+  document.querySelectorAll('.section-faq').forEach(section => {
+    const input = section.querySelector<HTMLInputElement>('.faq-search-input');
+    const items = section.querySelectorAll<HTMLDetailsElement>('.faq-item');
+    const countEl = section.querySelector('.faq-count');
+
+    if (input && items.length) {
+      input.addEventListener('input', () => {
+        const query = input.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const qText = item.querySelector('.q-text')?.textContent?.toLowerCase() || '';
+          const aText = item.querySelector('.faq-body p')?.textContent?.toLowerCase() || '';
+
+          if (!query || qText.includes(query) || aText.includes(query)) {
+            item.style.display = '';
+            visibleCount++;
+            if (query) item.open = true; // Auto expand when searching
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (countEl) {
+          countEl.textContent = `Showing ${visibleCount} of ${items.length} questions`;
+        }
+      });
+    }
+  });
+</script>

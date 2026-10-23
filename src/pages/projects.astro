@@ -1,0 +1,724 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Icon from '../components/Icon.astro';
+import { projectsFaqs } from '../data/faq';
+import { projectsList, sectorsList, areasList } from '../data/projects';
+
+const pageTitle = "Our Projects | MEP Work in Dubai & Abu Dhabi | Abbadi Tech";
+const pageDescription = "Explore 57+ completed electrical and plumbing projects: boutiques, restaurants, hotels, banks and villas across the UAE delivered by Abbadi Tech since 2005.";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Our Projects",
+      "item": "https://www.abbaditech.com/projects"
+    }
+  ]
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath="/projects"
+  jsonLd={breadcrumbSchema}
+>
+  <!-- PROJECTS HERO -->
+  <section class="projects-hero">
+    <div class="container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <span>Projects Directory</span>
+      </div>
+
+      <div class="projects-hero-text">
+        <span class="badge badge-gold">57+ Verified UAE Case Studies</span>
+        <h1>COMPLETED MEP CONTRACTING PROJECTS IN DUBAI &amp; ABU DHABI</h1>
+        <p class="lead">
+          Explore our complete delivery record spanning luxury boutiques in The Dubai Mall, high-volume dining on JBR Walk and DIFC, banking headquarters, 5-star beachfront resorts, and heavy industrial facilities across the UAE.
+        </p>
+
+        <div class="projects-hero-stats">
+          <div class="stat-box">
+            <span class="stat-val text-gradient">57+</span>
+            <span class="stat-name">Delivered Projects</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val" style="color:var(--primary)">20+</span>
+            <span class="stat-name">Years in UAE</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val" style="color:var(--plumbing-light)">6</span>
+            <span class="stat-name">Core Sectors</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val" style="color:#10b981">100%</span>
+            <span class="stat-name">DEWA Compliant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER CONTROLS & DIRECTORY -->
+  <section class="section" id="directory">
+    <div class="container">
+      <div class="filter-panel-card">
+        <!-- Search bar -->
+        <div class="filter-row search-row">
+          <label for="proj-search" class="filter-label">Search Case Studies:</label>
+          <div class="search-input-wrap">
+            <input 
+              type="search" 
+              id="proj-search" 
+              placeholder="Search by client (Rolex, Subway), area (Dubai Mall, Palm Jumeirah, DIFC), or scope..." 
+              class="search-input"
+            />
+          </div>
+        </div>
+
+        <!-- Sector Filters (6 Sectors) -->
+        <div class="filter-row">
+          <span class="filter-label">Filter by Sector:</span>
+          <div class="pill-group" id="sector-pills">
+            {sectorsList.map((sec) => (
+              <button 
+                type="button" 
+                class:list={['filter-pill', { active: sec.id === 'all' }]} 
+                data-sector={sec.id}
+              >
+                {sec.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Area & Scope Filter Row -->
+        <div class="filter-row dropdown-filters-row">
+          <div class="dropdown-group">
+            <label for="area-select" class="filter-label">Filter by Location / Area:</label>
+            <select id="area-select" class="filter-select">
+              {areasList.map((area) => (
+                <option value={area === 'All Areas' ? 'all' : area}>{area}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="dropdown-group">
+            <label for="scope-select" class="filter-label">Filter by Technical Scope:</label>
+            <select id="scope-select" class="filter-select">
+              <option value="all">All Technical Trades</option>
+              <option value="electrical">Electrical Technical Work</option>
+              <option value="plumbing">Plumbing Technical Work</option>
+              <option value="both">Combined Trades</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Counter -->
+      <div class="results-header">
+        <span id="results-count" class="results-count">Showing all 57 projects</span>
+        <button id="reset-filters" class="reset-btn" type="button" style="display:inline-flex; align-items:center; gap:0.35rem;">
+          <Icon name="RotateCcw" size={13} /> Reset Filters
+        </button>
+      </div>
+
+      <!-- Case Studies Grid -->
+      <div class="projects-case-grid" id="projects-grid">
+        {projectsList.map((p) => (
+          <div 
+            class="case-card"
+            data-id={p.id}
+            data-sector={p.sector}
+            data-area={p.area}
+            data-scope={p.scope}
+            data-search={`${p.name} ${p.clientType} ${p.location} ${p.delivered} ${p.sectorLabel}`.toLowerCase()}
+          >
+            <div class="card-top-tags">
+              <span class="badge badge-gold sec-badge">{p.sectorLabel}</span>
+              <span class="scope-tag" class:list={[{ 'scope-elec': p.scope === 'electrical', 'scope-plumb': p.scope === 'plumbing', 'scope-both': p.scope === 'both' }]}>
+                {p.scope === 'electrical' ? (
+                  <span style="display:inline-flex; align-items:center; gap:0.3rem;"><Icon name="Zap" size={12} /> Electrical</span>
+                ) : p.scope === 'plumbing' ? (
+                  <span style="display:inline-flex; align-items:center; gap:0.3rem;"><Icon name="Droplets" size={12} /> Plumbing</span>
+                ) : (
+                  <span style="display:inline-flex; align-items:center; gap:0.3rem;"><Icon name="Zap" size={12} /><Icon name="Droplets" size={12} /> Combined</span>
+                )}
+              </span>
+            </div>
+
+            <div class="card-main">
+              <span class="project-id-pill">Project #{p.id}</span>
+              <h3>{p.name}</h3>
+              <p class="client-type-line">{p.clientType}</p>
+              
+              <div class="location-badge" style="display:inline-flex; align-items:center; gap:0.35rem;">
+                <Icon name="MapPin" size={13} color="#FF9500" /> {p.location}
+              </div>
+
+              <div class="delivered-box">
+                <span class="deliv-label">What Was Delivered:</span>
+                <p class="deliv-text">{p.delivered}</p>
+              </div>
+
+              <div class="card-footer-meta">
+                <span class="compliance-tag" style="display:inline-flex; align-items:center; gap:0.3rem;">
+                  <Icon name="CheckCircle2" size={12} /> 100% DEWA Compliant
+                </span>
+                <span class="photo-placeholder" style="display:inline-flex; align-items:center; gap:0.3rem;">
+                  <Icon name="Camera" size={12} /> Real Photo on Request
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div id="no-results" class="no-results" style="display:none;">
+        <p>No completed projects match your specific filter criteria.</p>
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('reset-filters').click()">Clear Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions About Our Project Portfolio" 
+    subtitle="Learn more about our site approvals, client confidentiality, and handover standards."
+    faqs={projectsFaqs}
+  />
+
+  <!-- FINAL CTA -->
+  <section class="section section-cta">
+    <div class="container">
+      <div class="cta-inner-card">
+        <h2>Want Your Next Project Delivered with This Track Record?</h2>
+        <p>Connect directly with Abbadi Tech's engineering estimation department for technical appraisals and transparent tender pricing.</p>
+        <div class="cta-btns">
+          <a href="/contact" class="btn btn-primary">Schedule Project Review</a>
+          <a href="https://wa.me/971551313403?text=Hi%20Abbadi%20Tech,%20I%20have%20an%20upcoming%20project%20tender" target="_blank" rel="noopener" class="btn btn-secondary">
+            <Icon name="MessageSquare" size={16} /> Discuss on WhatsApp
+          </a>
+          <a href="tel:+971551313403" class="btn btn-outline-white">
+            <Icon name="Phone" size={16} /> Call: +971 55 131 3403
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .projects-hero {
+    padding: 3.5rem 0 3rem;
+    background: radial-gradient(circle at top right, rgba(255, 149, 0, 0.15) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb a {
+    color: var(--text-muted);
+  }
+
+  .crumb a:hover {
+    color: var(--primary);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .projects-hero-text h1 {
+    font-size: 2.4rem;
+    color: #fff;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    max-width: 920px;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 820px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .projects-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    max-width: 850px;
+  }
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-name {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .filter-panel-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .filter-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    background: #090d15;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .search-input:focus {
+    border-color: var(--primary);
+  }
+
+  .pill-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-pill {
+    background: #182030;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .filter-pill:hover, .filter-pill.active {
+    background: var(--primary);
+    color: #000;
+    border-color: var(--primary);
+  }
+
+  .dropdown-filters-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .filter-select {
+    padding: 0.75rem 1rem;
+    background: #090d15;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .filter-select:focus {
+    border-color: var(--primary);
+  }
+
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .results-count {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .reset-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .reset-btn:hover {
+    text-decoration: underline;
+  }
+
+  .projects-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .case-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+  }
+
+  .card-top-tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .sec-badge {
+    font-size: 0.72rem;
+  }
+
+  .scope-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .scope-elec {
+    background: rgba(255, 149, 0, 0.15);
+    color: var(--primary);
+  }
+
+  .scope-plumb {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--plumbing-light);
+  }
+
+  .scope-both {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .project-id-pill {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: monospace;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .case-card h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+
+  .client-type-line {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #090d15;
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .delivered-box {
+    background: #0d121d;
+    border-left: 2px solid var(--primary);
+    padding: 0.8rem 1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .deliv-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+  }
+
+  .deliv-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  .card-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.8rem;
+    margin-top: auto;
+  }
+
+  .compliance-tag {
+    color: #10b981;
+    font-weight: 600;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: #111724;
+    border-radius: var(--radius-md);
+  }
+
+  .no-results p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-inner-card {
+    background: linear-gradient(135deg, #161e2e 0%, #1e1b18 100%);
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem;
+    text-align: center;
+  }
+
+  .cta-inner-card h2 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-inner-card p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline-white {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+
+  .btn-outline-white:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .projects-case-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dropdown-filters-row {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 650px) {
+    .projects-case-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-hero-text h1 {
+      font-size: 1.85rem;
+    }
+
+    .filter-panel-card {
+      padding: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById('proj-search') as HTMLInputElement | null;
+  const sectorPills = document.querySelectorAll('#sector-pills .filter-pill');
+  const areaSelect = document.getElementById('area-select') as HTMLSelectElement | null;
+  const scopeSelect = document.getElementById('scope-select') as HTMLSelectElement | null;
+  const resultsCount = document.getElementById('results-count');
+  const resetBtn = document.getElementById('reset-filters');
+  const cards = document.querySelectorAll('.case-card');
+  const noResults = document.getElementById('no-results');
+
+  let activeSector = 'all';
+  let activeArea = 'all';
+  let activeScope = 'all';
+  let searchQuery = '';
+
+  function filterProjects() {
+    let visibleCount = 0;
+
+    cards.forEach((cardEl) => {
+      const card = cardEl as HTMLElement;
+      const cardSector = card.getAttribute('data-sector') || '';
+      const cardArea = card.getAttribute('data-area') || '';
+      const cardScope = card.getAttribute('data-scope') || '';
+      const cardSearch = card.getAttribute('data-search') || '';
+
+      const matchSector = (activeSector === 'all' || cardSector === activeSector);
+      const matchArea = (activeArea === 'all' || cardArea === activeArea);
+      const matchScope = (activeScope === 'all' || cardScope === activeScope);
+      const matchSearch = (!searchQuery || cardSearch.includes(searchQuery));
+
+      if (matchSector && matchArea && matchScope && matchSearch) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (resultsCount) {
+      resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} projects`;
+    }
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  // Sector button listener
+  sectorPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      sectorPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeSector = pill.getAttribute('data-sector') || 'all';
+      filterProjects();
+    });
+  });
+
+  // Area select listener
+  if (areaSelect) {
+    areaSelect.addEventListener('change', () => {
+      activeArea = areaSelect.value;
+      filterProjects();
+    });
+  }
+
+  // Scope select listener
+  if (scopeSelect) {
+    scopeSelect.addEventListener('change', () => {
+      activeScope = scopeSelect.value;
+      filterProjects();
+    });
+  }
+
+  // Search input listener
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value.toLowerCase().trim();
+      filterProjects();
+    });
+  }
+
+  // Reset filters
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      activeSector = 'all';
+      activeArea = 'all';
+      activeScope = 'all';
+      searchQuery = '';
+
+      if (searchInput) searchInput.value = '';
+      if (areaSelect) areaSelect.value = 'all';
+      if (scopeSelect) scopeSelect.value = 'all';
+
+      sectorPills.forEach((p, idx) => {
+        if (idx === 0) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+
+      filterProjects();
+    });
+  }
+</script>

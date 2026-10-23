@@ -1,0 +1,609 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Icon from '../components/Icon.astro';
+import { contactFaqs } from '../data/faq';
+
+const pageTitle = "Contact Abbadi Tech | Al Quoz, Dubai | +971 4 380 5683";
+const pageDescription = "Visit us in Al Quoz, behind Al Khail Mall, or call +971 4 380 5683 for a free quote on electrical, plumbing and HVAC works. Fast on-site engineering surveys.";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact Us",
+      "item": "https://www.abbaditech.com/contact"
+    }
+  ]
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath="/contact"
+  jsonLd={breadcrumbSchema}
+>
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <span>Contact Us</span>
+      </div>
+
+      <div class="contact-hero-text">
+        <span class="badge badge-gold">Direct Engineering Liaison</span>
+        <h1>CONTACT ABBADI TECH IN AL QUOZ, DUBAI</h1>
+        <p class="lead">
+          Connect directly with our senior MEP estimation engineers for certified electrical load reviews, plumbing designs, HVAC audits, and DEWA authority coordination across Dubai, Abu Dhabi, and Ajman.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-main-grid">
+        <!-- Contact Info & Headquarters Card -->
+        <div class="contact-info-panel">
+          <div class="info-card">
+            <span class="badge badge-gold">Dubai Headquarters</span>
+            <h2>Office &amp; Engineering Center</h2>
+            
+            <address class="office-address">
+              <p class="address-line"><strong>Oberoi Properties Building</strong></p>
+              <p class="address-line">Behind Al Khail Mall, Al Quoz Industrial Area,</p>
+              <p class="address-line">Dubai, United Arab Emirates</p>
+              <p class="address-pobox">P.O. Box: 121908, Dubai, UAE</p>
+            </address>
+
+            <div class="contact-direct-lines">
+              <div class="line-item">
+                <span class="line-icon"><Icon name="Phone" size={20} color="#FF9500" /></span>
+                <div>
+                  <span class="line-label">Landline (Office Hours):</span>
+                  <a href="tel:+97143805683" class="line-val">+971 4 380 5683</a>
+                </div>
+              </div>
+
+              <div class="line-item">
+                <span class="line-icon"><Icon name="Smartphone" size={20} color="#FF9500" /></span>
+                <div>
+                  <span class="line-label">Direct Mobile &amp; WhatsApp (24/7):</span>
+                  <a href="tel:+971551313403" class="line-val">+971 55 131 3403</a>
+                </div>
+              </div>
+
+              <div class="line-item">
+                <span class="line-icon"><Icon name="Smartphone" size={20} color="#FF9500" /></span>
+                <div>
+                  <span class="line-label">Secondary Engineering Line:</span>
+                  <a href="tel:+971508569972" class="line-val">+971 50 856 9972</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Working Hours -->
+            <div class="hours-box">
+              <h4 style="display:flex; align-items:center; gap:0.4rem;">
+                <Icon name="Clock" size={16} color="#FF9500" /> Operating &amp; Dispatch Hours
+              </h4>
+              <p><strong>Office &amp; Estimates:</strong> Monday – Saturday: 08:00 – 18:00</p>
+              <p><strong>Emergency Breakdowns (AMC):</strong> 24 Hours / 7 Days a Week</p>
+              <p><strong>Sunday:</strong> On-Call Emergency Engineering Only</p>
+            </div>
+
+            <!-- Credentials & Placeholders -->
+            <div class="credentials-badge-box">
+              <h4>Official Business Registration</h4>
+              <div class="cred-item">
+                <span>Trade Licence:</span>
+                <code>[571822 / UAE Register / Placeholder]</code>
+              </div>
+              <div class="cred-item">
+                <span>DEWA Registration No:</span>
+                <code>[DEWA-M-4892 / Placeholder]</code>
+              </div>
+              <div class="cred-item">
+                <span>Contractor Category:</span>
+                <span>Electrical &amp; Mechanical Contracting L.L.C</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick WhatsApp Box -->
+          <div class="wa-action-box">
+            <h3>Need an Immediate Site Inspection?</h3>
+            <p>Our senior engineers are deployed across Dubai daily. Send your location pin and project requirements for a prompt callback.</p>
+            <a href="https://wa.me/971551313403?text=Hi%20Abbadi%20Tech,%20I%20need%20a%20site%20inspection%20in%20Dubai" target="_blank" rel="noopener" class="btn btn-whatsapp-large">
+              <Icon name="MessageSquare" size={18} /> Instant WhatsApp Chat (+971 55 131 3403)
+            </a>
+          </div>
+        </div>
+
+        <!-- Lead Generation Form -->
+        <div class="contact-form-panel">
+          <div class="form-card">
+            <span class="badge badge-blue">Fast Response Guaranteed</span>
+            <h2>Request a Free Site Survey &amp; Quote</h2>
+            <p class="form-intro">
+              Submit your project details below. Our technical estimator will review your requirements and respond within 2 to 4 business hours.
+            </p>
+
+            <form id="contact-lead-form" class="lead-form" action="https://formspree.io/f/placeholder" method="POST">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="contact-name">Full Name or Company Representative *</label>
+                  <input type="text" id="contact-name" name="name" required placeholder="e.g. Tariq Al Mansoori" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-phone">UAE Phone / WhatsApp Number *</label>
+                  <input type="tel" id="contact-phone" name="phone" required placeholder="+971 50 123 4567" class="form-input" />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="contact-email">Email Address *</label>
+                  <input type="email" id="contact-email" name="email" required placeholder="name@company.ae" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-location">Project Location *</label>
+                  <select id="contact-location" name="location" required class="form-input">
+                    <option value="" disabled selected>Select Emirate / District</option>
+                    <option value="Dubai - Al Quoz">Dubai - Al Quoz</option>
+                    <option value="Dubai - Downtown / Dubai Mall">Dubai - Downtown / Dubai Mall</option>
+                    <option value="Dubai - DIFC / Business Bay">Dubai - DIFC / Business Bay</option>
+                    <option value="Dubai - Palm Jumeirah">Dubai - Palm Jumeirah</option>
+                    <option value="Dubai - Marina / JLT">Dubai - Marina / JLT</option>
+                    <option value="Dubai - DIP / JAFZA">Dubai - DIP / JAFZA</option>
+                    <option value="Dubai - Other Area">Dubai - Other Area</option>
+                    <option value="Abu Dhabi">Abu Dhabi</option>
+                    <option value="Ajman">Ajman</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-service">Primary Service Required *</label>
+                <select id="contact-service" name="service" required class="form-input">
+                  <option value="" disabled selected>Select MEP Trade</option>
+                  <option value="Electrical Contractors (DEWA Works, MDB/DB, Wiring)">Electrical Contractors (DEWA Works, MDB/DB, Wiring)</option>
+                  <option value="Plumbing & Drainage (PPR, HDPE, Pumps, Heaters)">Plumbing &amp; Drainage (PPR, HDPE, Pumps, Heaters)</option>
+                  <option value="HVAC & AC (Chilled Water, VRF, Ducting)">HVAC &amp; AC (Chilled Water, VRF, Ducting)</option>
+                  <option value="Turnkey Interior & MEP Fit-Out">Turnkey Interior &amp; MEP Fit-Out</option>
+                  <option value="Annual MEP Maintenance (AMC)">Annual MEP Maintenance (AMC)</option>
+                  <option value="Combined Multi-Disciplinary MEP">Combined Multi-Disciplinary MEP</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Project Scope &amp; Special Requirements</label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="Briefly describe your space (sq ft, restaurant kitchen, villa upgrade, DEWA load increase, target opening date)..." class="form-input"></textarea>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">
+                Submit Free Quote Request <Icon name="ArrowRight" size={16} />
+              </button>
+
+              <div id="form-feedback" class="form-feedback" style="display:none;"></div>
+
+              <p class="form-guarantee">
+                <Icon name="ShieldCheck" size={14} color="#10b981" />
+                <span>We respect your privacy. Technical estimates and drawings are kept strictly confidential under engineering NDA.</span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE MAP EMBED SECTION -->
+  <section class="section map-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Visit Our Headquarters</span>
+        <h2>Our Location in Al Quoz, Dubai</h2>
+        <p class="section-sub">
+          Conveniently situated in the Oberoi Properties Building behind Al Khail Mall, providing rapid highway access to Downtown, Sheikh Zayed Road, and Al Khail Road.
+        </p>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe 
+          title="Abbadi Tech LLC Al Quoz Office Location Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14444.664448777166!2d55.2348!3d25.1384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f697426cfd495%3A0x6b6cfa4efbc08b98!2sAl%20Khail%20Mall!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" 
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map-frame"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Inquiry &amp; Consultation FAQs" 
+    subtitle="Direct answers regarding site visits, estimation timelines, and emergency dispatch."
+    faqs={contactFaqs}
+  />
+</Layout>
+
+<style>
+  .contact-hero {
+    padding: 3.5rem 0 3rem;
+    background: radial-gradient(circle at top right, rgba(255, 149, 0, 0.15) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb a {
+    color: var(--text-muted);
+  }
+
+  .crumb a:hover {
+    color: var(--primary);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .contact-hero-text h1 {
+    font-size: 2.4rem;
+    color: #fff;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    max-width: 900px;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 820px;
+    line-height: 1.7;
+  }
+
+  .contact-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .info-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-card h2 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-top: 0.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .office-address {
+    font-style: normal;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .contact-direct-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .line-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .line-icon {
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    background: #182030;
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .line-label {
+    display: block;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+  }
+
+  .line-val {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: var(--font-heading);
+  }
+
+  .line-val:hover {
+    color: var(--primary);
+  }
+
+  .hours-box {
+    background: #0d121d;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hours-box h4 {
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+
+  .hours-box p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+  }
+
+  .hours-box strong {
+    color: #fff;
+  }
+
+  .credentials-badge-box {
+    background: #0d121d;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .credentials-badge-box h4 {
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+
+  .cred-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+  }
+
+  .cred-item code {
+    color: var(--primary);
+    font-size: 0.78rem;
+  }
+
+  .wa-action-box {
+    background: #182030;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .wa-action-box h3 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .wa-action-box p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-whatsapp-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .btn-whatsapp-large:hover {
+    filter: brightness(1.1);
+  }
+
+  .form-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+  }
+
+  .form-card h2 {
+    font-size: 1.85rem;
+    color: #fff;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-intro {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.82rem;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: #090d15;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-input:focus {
+    border-color: var(--primary);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+
+  .form-guarantee {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .form-feedback {
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .form-feedback.success {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10b981;
+    color: #10b981;
+  }
+
+  .map-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .map-frame {
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    .contact-main-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .form-card, .info-card {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .contact-hero-text h1 {
+      font-size: 1.85rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-lead-form') as HTMLFormElement | null;
+  const feedback = document.getElementById('form-feedback');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  if (form && feedback && submitBtn) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting Request...';
+
+      // Simulate instantaneous confirmation for prototype / lead capture
+      setTimeout(() => {
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Free Quote Request →';
+        feedback.className = 'form-feedback success';
+        feedback.style.display = 'block';
+        feedback.textContent = 'Thank you! Your quote request has been received. Our senior engineer will contact you shortly.';
+      }, 700);
+    });
+  }
+</script>

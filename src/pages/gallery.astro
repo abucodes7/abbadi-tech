@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Icon from '../components/Icon.astro';
+import { galleryFaqs } from '../data/faq';
+
+const pageTitle = "Work Photos Gallery | Electrical & Plumbing On-Site Execution | AbbadiTech LLC";
+const pageDescription = "Browse verified on-site work photos of electrical panel assemblies, DEWA meter rooms, PPR piping & luxury bathroom plumbing in Dubai by AbbadiTech LLC.";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Work Photos Gallery",
+      "item": "https://www.abbaditech.com/gallery"
+    }
+  ]
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath="/gallery"
+  jsonLd={breadcrumbSchema}
+>
+  <!-- GALLERY HERO -->
+  <section class="gallery-hero">
+    <div class="container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <span>Work Photos Gallery</span>
+      </div>
+
+      <div class="gallery-hero-text">
+        <span class="badge badge-gold">Verified On-Site Execution</span>
+        <h1>WORK PHOTOS GALLERY</h1>
+        <p class="lead">
+          Explore photographic proof of high-capacity MDB assemblies, DEWA-compliant meter intake rooms, precision-welded PPR pipework, and luxury bathroom sanitary installations across Dubai and the UAE.
+        </p>
+
+        <div class="gallery-hero-actions">
+          <a href="#gallery-showcase" class="btn btn-primary">
+            <Icon name="Search" size={16} /> Browse Filterable Photos
+          </a>
+          <a href="https://wa.me/971551313403?text=Hi%20AbbadiTech,%20I%20have%20photos%20of%20my%20site%20for%20you%20to%20review" target="_blank" rel="noopener" class="btn btn-secondary">
+            <Icon name="Camera" size={16} /> Submit Site Photos via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE GALLERY GRID WITH LIGHTBOX & FILTERS -->
+  <GalleryGrid 
+    title="Verified Technical Execution Gallery" 
+    subtitle="Click any photo to inspect high-resolution details, engineering specifications, and location verification."
+    showFilters={true}
+  />
+
+  <!-- HOW TO ADD WORK PHOTOS INFO SECTION -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">For Site Engineers &amp; Clients</span>
+        <h2>How to Add or Share Site Work Photos</h2>
+        <p>AbbadiTech maintains continuous photographic QA/QC documentation from first fix to final DEWA energization.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">1</div>
+          <h3>Snap Ongoing Work</h3>
+          <p>Capture electrical conduit routes, DB dressing, PPR pipe pressure gauges, or sanitary rough-ins on site.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">2</div>
+          <h3>Share via WhatsApp</h3>
+          <p>Send photos directly to <strong>+971 55 131 3403</strong> with your site location and inquiry details.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">3</div>
+          <h3>Engineering Review</h3>
+          <p>Our senior MEP project engineers review the installation for DEWA code compliance and share feedback within hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO FAQS -->
+  <FAQSection 
+    items={galleryFaqs} 
+    title="Work Photo & Verification FAQs" 
+    subtitle="Frequently asked questions about on-site photographic logs, inspection records, and site visit arrangements."
+    badge="Gallery SEO FAQs"
+    sectionId="gallery-faqs"
+  />
+</Layout>
+
+<style>
+  .gallery-hero {
+    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3rem, 5vw, 4.5rem);
+    background: radial-gradient(circle at 75% 20%, rgba(255, 148, 16, 0.1) 0%, transparent 55%), #0a0e17;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .crumb a {
+    color: var(--primary);
+  }
+
+  .gallery-hero-text {
+    max-width: 850px;
+  }
+
+  .gallery-hero-text h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: #fff;
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .lead {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Steps Grid */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 2.2rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.25s ease;
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+  }
+
+  .step-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 148, 16, 0.15);
+    color: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    border: 1.5px solid var(--primary);
+  }
+
+  .step-card h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .step-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

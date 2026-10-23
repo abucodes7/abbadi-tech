@@ -1,0 +1,430 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import Icon from '../../components/Icon.astro';
+import { servicesData } from '../../data/services';
+import { projectsList } from '../../data/projects';
+
+const service = servicesData.find(s => s.id === 'electrical')!;
+
+const pageTitle = service.metaTitle;
+const pageDescription = service.metaDescription;
+
+const relevantProjects = projectsList
+  .filter(p => p.scope === 'electrical' || p.scope === 'both')
+  .slice(0, 8);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://www.abbaditech.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": service.title,
+      "item": `https://www.abbaditech.com/services/${service.slug}`
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "serviceType": "Electrical Engineering & Contracting",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Abbadi Tech LLC",
+    "telephone": "+97143805683",
+    "url": "https://www.abbaditech.com/"
+  },
+  "areaServed": ["Dubai", "Abu Dhabi", "Ajman"],
+  "description": service.overview
+};
+
+const pageFaqs = service.faqs;
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath={`/services/${service.slug}`}
+  jsonLd={[breadcrumbSchema, serviceSchema]}
+>
+  <!-- SERVICE HERO -->
+  <section class="service-hero">
+    <div class="container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <a href="/services">Services</a> <span>/</span> <span>{service.title}</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="badges-row">
+          <span class="badge badge-gold"><Icon name="Zap" size={13} /> Registered DEWA Contractor</span>
+          <span class="badge badge-blue">Established 2005</span>
+        </div>
+
+        <h1>{service.heroH1}</h1>
+
+        <p class="hero-lead">
+          {service.overview}
+        </p>
+
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">
+            Request Site Survey &amp; Quote
+          </a>
+          <a href={`https://wa.me/971551313403?text=${encodeURIComponent("Hello Abbadi Tech, I need an electrical contractor for a project in Dubai.")}`} target="_blank" rel="noopener" class="btn btn-secondary">
+            <Icon name="MessageSquare" size={16} /> WhatsApp Lead Engineer
+          </a>
+          <a href="tel:+971551313403" class="btn btn-outline-white">
+            <Icon name="Phone" size={16} /> +971 55 131 3403
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY BENEFITS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Why Choose Abbadi Tech</span>
+        <h2>DEWA-Compliant Electrical Engineering, Handled Start to Finish</h2>
+        <p class="section-sub">
+          We combine 20+ years of Dubai electrical site experience with certified engineers to guarantee timely approval, uncompromised safety, and long-term reliability.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        {service.keyBenefits.map((b) => (
+          <div class="benefit-item-card">
+            <div class="benefit-check"><Icon name="CheckCircle2" size={18} color="#10b981" /></div>
+            <p>{b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE DELIVERABLES -->
+  <section class="section bg-card-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-blue">Scope of Works</span>
+        <h2>Complete Electrical Technical Deliverables</h2>
+      </div>
+
+      <div class="deliverables-grid">
+        {service.deliverables.map((d, idx) => (
+          <div class="deliverable-card">
+            <span class="deliv-idx">0{idx + 1}</span>
+            <h3>{d.title}</h3>
+            <p>{d.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS IN THIS DISCIPLINE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Proven Track Record</span>
+        <h2>Selected Electrical Deliveries in Dubai &amp; UAE</h2>
+      </div>
+
+      <div class="projects-mini-grid">
+        {relevantProjects.map((p) => (
+          <div class="project-card">
+            <div class="p-header">
+              <span class="p-sector">{p.sectorLabel}</span>
+              <span class="p-area">{p.location}</span>
+            </div>
+            <h4>{p.name}</h4>
+            <p class="p-client">{p.clientType}</p>
+            <p class="p-delivered"><strong>Delivered:</strong> {p.delivered}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="center-btn" style="margin-top:2.5rem; text-align:center;">
+        <a href="/projects" class="btn btn-secondary">Explore All 57+ Completed Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions About Electrical Contracting in Dubai" 
+    subtitle="Direct engineering answers regarding DEWA procedures, panel testing, and load schedules."
+    faqs={pageFaqs}
+  />
+
+  <!-- FINAL CTA -->
+  <section class="section section-cta">
+    <div class="container">
+      <div class="cta-inner-card">
+        <h2>Schedule an On-Site Electrical Inspection</h2>
+        <p>Our senior estimation engineers will review your electrical single-line diagram and visit your site to prepare a comprehensive BOQ estimate.</p>
+        <div class="cta-btns">
+          <a href="/contact" class="btn btn-primary">Book Free Site Visit</a>
+          <a href="https://wa.me/971551313403?text=Hi%20Abbadi%20Tech,%20I%20need%20a%20DEWA%20electrical%20quote" target="_blank" rel="noopener" class="btn btn-secondary">
+            <Icon name="MessageSquare" size={16} /> Instant WhatsApp Chat
+          </a>
+          <a href="tel:+97143805683" class="btn btn-outline-white">
+            <Icon name="Phone" size={16} /> Office: +971 4 380 5683
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .service-hero {
+    padding: 3.5rem 0 3rem;
+    background: radial-gradient(circle at top right, rgba(255, 149, 0, 0.15) 0%, transparent 60%);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb a {
+    color: var(--text-muted);
+  }
+
+  .crumb a:hover {
+    color: var(--primary);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .badges-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-hero h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    max-width: 920px;
+  }
+
+  .hero-lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 820px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .benefit-item-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .benefit-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 149, 0, 0.15);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .benefit-item-card p {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+
+  .bg-card-section {
+    background: #0b0f18;
+  }
+
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .deliverable-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .deliverable-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+  }
+
+  .deliv-idx {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: rgba(255, 149, 0, 0.4);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .deliverable-card h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .deliverable-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .projects-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .p-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .p-sector {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .p-area {
+    color: var(--text-dim);
+  }
+
+  .project-card h4 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .p-client {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  .p-delivered {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  .p-delivered strong {
+    color: var(--text-main);
+  }
+
+  .btn-outline-white {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+
+  .btn-outline-white:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-inner-card {
+    background: linear-gradient(135deg, #161e2e 0%, #1e1b18 100%);
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem;
+    text-align: center;
+  }
+
+  .cta-inner-card h2 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-inner-card p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2rem;
+  }
+
+  .cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 992px) {
+    .benefits-grid, .deliverables-grid, .projects-mini-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .service-hero h1 {
+      font-size: 1.85rem;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+## Getting started
+Who is AbbadiTech LLC?|AbbadiTech LLC is a specialized technical contracting firm established in Dubai in 2005, registered with the Dubai Electricity and Water Authority (DEWA). We exclusively deliver Electrical Technical Work and Plumbing Technical Work across the UAE.
+Where is your office?|Oberoi Properties Building, behind Al Khail Mall, Al Quoz, Dubai (PO Box 121908). Please call before visiting so our senior engineering team can confirm a time.
+How do I contact you?|Call +971 55 131 3403 or +971 50 856 9972, phone the office on +971 4 380 5683, or message us directly on WhatsApp at +971 55 131 3403.
+Which parts of the UAE do you work in?|Core operations in Dubai (Dubai Mall, DIFC, Downtown, Palm Jumeirah, Al Quoz, JLT, DIP, Emirates Hills), with extensive completed projects in Abu Dhabi and Ajman.
+How do I start a project with you?|Call or WhatsApp us with your site location, drawings (CAD/PDF), and whether you need electrical, plumbing, or combined technical works. We will schedule a site inspection or provide a BOQ proposal within 24 hours.
+What should I send to get a quote?|Share your site location, property type (restaurant, retail showroom, villa, warehouse, commercial building), architectural or MEP drawings, and target completion deadline.
+Can one contractor do both electrical and plumbing technical work?|Yes. Most of our restaurant, cafe, and retail projects combine both trades under one specialized team, avoiding coordination delays and eliminating site clashes.
+Do you take small jobs as well as large ones?|Our track record ranges from individual luxury villas and boutique restaurants to multi-story buildings, banks, hotels, and 10-warehouse industrial complexes.
+How long have you been in business?|Since 2005, giving AbbadiTech more than 20 continuous years of engineering leadership in the UAE.
+
+## Electrical Technical Work
+What does your Electrical Technical Work scope include?|Power and light layout designing, load schedules, MDB, SMDB, and DB assembling and installing, heavy wiring and cable pulling, cable trays, DEWA incomer DB fixing, meter fixing, and all types of DEWA works.
+What is the difference between an MDB, SMDB and DB?|The MDB (main distribution board) takes incoming DEWA power. SMDBs (sub-main boards) distribute bulk power to zones or floors. DBs (distribution boards) serve final branch circuits.
+What is a load schedule and why do I need one?|A load schedule lists electrical loads on each circuit, phase balancing, and diversity. It is mandatory for DEWA power sanctions and breaker sizing, and we engineer it in-house.
+Can you assemble and test distribution boards?|Yes. We custom assemble, wire, label, and continuity-test MDBs, SMDBs, and DBs in full compliance with DEWA and IEC standards.
+Do you do power and lighting layout designing?|Yes. Power layout and architectural lighting layout designing are core parts of our electrical technical scope.
+Can you install suspended cable trays?|Yes. We supply and install heavy galvanized perforated cable trays, ladder racks, and basket routes for high-ceiling retail, malls, and warehouses.
+Do you handle electrical technical works for restaurants and cafes?|Yes. We have wired six Subway restaurants, Bianca (JBR & Box Park), Caribou Cafe (DIFC), Leto Cafe, and Central Kitchens.
+Can you wire luxury villas?|Yes. We have completed villas in Palm Jumeirah (Villa No. 7), Emirates Hills, Al Barsha, Hor Al Anz, Satwa, and Al Kawaneej.
+Do you handle industrial warehouse electrical works?|Yes. We have energized 10-warehouse complexes in Al Ramool and industrial facilities in Dubai Investments Park (DIP).
+
+## DEWA Works
+Are you registered with DEWA?|Yes. AbbadiTech LLC was established in 2005 and is officially registered with the Dubai Electricity and Water Authority (DEWA).
+What are DEWA works?|Works connected to your official DEWA supply, including intake rooms, incomer DB switchgear, cabling, and smart meters.
+Do you fix DEWA incomer distribution boards?|Yes. DEWA incomer DB fixing and cable terminations are core parts of our electrical service.
+Can you install and commission DEWA power meters?|Yes. Digital smart meter fixing and commissioning are included in our DEWA technical scope.
+Do I need a DEWA-registered contractor for fit-out approvals?|Yes. DEWA mandates that electrical drawings, load schedules, and installations must be executed by a registered contractor.
+
+## Plumbing Technical Work
+What services are included under Plumbing Technical Work?|PPR potable water plumbing, copper pipework, HDPE and UPVC drainage, high-pressure (HP) hydraulic systems, control and pressure motor works, automatic building booster pump panels, water heaters, solar water heaters, and luxury sanitary fittings.
+Do you install and heat-fuse PPR pipes?|Yes. Precision heat-fusion welding of PN20 green PPR potable water supply pipes is a specialty of our plumbing teams.
+Do you install copper water supply pipes?|Yes. We install brazed copper piping manifolds and distribution lines for commercial and luxury residential installations.
+What is the difference between HDPE and UPVC drainage?|HDPE is fusion-welded and provides superior chemical and heat resistance for commercial restaurant kitchens. UPVC is durable, solvent-cemented, and ideal for standard sanitary drainage.
+What is an automatic building pressure motor panel?|An automatic control panel equipped with VFDs and pressure sensors that controls dual booster pumps, maintaining uniform water pressure throughout a multi-story building or villa.
+Can you fit water heaters and solar water heaters?|Yes. We install centralized solar water heating systems, rooftop collectors, and electric storage water heaters with safety pressure relief valves.
+Do you install luxury bathroom sanitary fittings?|Yes. We install wall-hung concealed cisterns (Geberit), thermostatic brushed brass mixers, and luxury sanitary fixtures.
+Have you completed sewage and drainage pump stations?|Yes. We have completed commercial pump stations, including a sewage pump project in Zabeel, Dubai.
+
+## Projects and Credentials
+Which well-known clients and projects has AbbadiTech delivered?|Rolex at Dubai Mall, Ferrari Showroom in Abu Dhabi, Marks & Spencer at DIFC, HSBC Bank in Bur Dubai, ADCB Bank in Jumeirah, and Shangri-La Hotel. See our projects page for all 57+ projects.
+Which malls in Dubai have you worked in?|Dubai Mall, Dubai Marina Mall, Mirdif City Centre, Box Park, and DIFC.
+Have you worked with luxury hotel brands?|Yes. Completed projects include Shangri-La Hotel, Radisson Blu Dubai Marina, and Crowne Plaza.
+Do you finish projects on time?|Strict time-bound completion is our founding core value. Share your handover date and our engineers will meet your schedule.

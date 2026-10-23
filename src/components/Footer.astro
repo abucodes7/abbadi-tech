@@ -1,0 +1,291 @@
+---
+import Icon from './Icon.astro';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <!-- Column 1: Brand & Credentials -->
+    <div class="footer-col brand-col">
+      <div class="footer-logo">ABBADI<span>TECH</span></div>
+      <p class="legal-name">Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C</p>
+      <p class="tagline">
+        Dubai-based MEP contractor established in 2005. Fully registered with DEWA, delivering specialized Electrical, Plumbing, HVAC, and Fit-out contracting across Dubai, Abu Dhabi, and the UAE with over 20 years of proven on-time delivery.
+      </p>
+      <div class="compliance-tags">
+        <span class="compliance-item"><Icon name="Landmark" size={13} /> Trade Licence: <span class="placeholder">[571822 / UAE Register]</span></span>
+        <span class="compliance-item"><Icon name="Zap" size={13} /> DEWA Reg: <span class="placeholder">[DEWA-M-4892]</span></span>
+      </div>
+      <div class="footer-badges">
+        <span class="badge badge-gold"><Icon name="Zap" size={12} /> DEWA Registered</span>
+        <span class="badge badge-blue"><Icon name="Droplets" size={12} /> 57+ UAE Deliveries</span>
+        <span class="badge badge-green"><Icon name="CheckCircle2" size={12} /> 20+ Years Track Record</span>
+      </div>
+    </div>
+
+    <!-- Column 2: Five Core MEP Services -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Our MEP Services</h3>
+      <ul class="footer-links">
+        <li>
+          <a href="/services/electrical-contractors-dubai">
+            <strong style="color:var(--primary); display:flex; align-items:center; gap:0.4rem;">
+              <Icon name="Zap" size={14} /> Electrical Contractors Dubai
+            </strong>
+            <span class="sub">DEWA Works, MDB/SMDB Panels, Load Schedules, Cable Trays</span>
+          </a>
+        </li>
+        <li style="margin-top: 0.6rem;">
+          <a href="/services/plumbing-contractors-dubai">
+            <strong style="color:var(--plumbing-light); display:flex; align-items:center; gap:0.4rem;">
+              <Icon name="Droplets" size={14} /> Plumbing & Drainage Contractors
+            </strong>
+            <span class="sub">PPR, Copper Lines, HDPE Drainage, Booster Pump Panels</span>
+          </a>
+        </li>
+        <li style="margin-top: 0.6rem;">
+          <a href="/services/hvac-contractors-dubai">
+            <strong style="display:flex; align-items:center; gap:0.4rem;">
+              <Icon name="Snowflake" size={14} /> HVAC & Air Conditioning
+            </strong>
+            <span class="sub">Chilled Water FCU/AHU, VRF Systems, Duct Fabrication</span>
+          </a>
+        </li>
+        <li style="margin-top: 0.6rem;">
+          <a href="/services/fit-out-contractors-dubai">
+            <strong style="display:flex; align-items:center; gap:0.4rem;">
+              <Icon name="Building2" size={14} /> Fit-Out & Interior Contractors
+            </strong>
+            <span class="sub">Turnkey Retail, Restaurant & Office MEP Handover</span>
+          </a>
+        </li>
+        <li style="margin-top: 0.6rem;">
+          <a href="/services/mep-maintenance-dubai">
+            <strong style="display:flex; align-items:center; gap:0.4rem;">
+              <Icon name="Wrench" size={14} /> MEP Maintenance Services (AMC)
+            </strong>
+            <span class="sub">Preventative Thermographic Audits & 24/7 Response</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Areas & Quick Navigation -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Coverage & Guides</h3>
+      <ul class="footer-sub-links">
+        <li><a href="/about">About Abbadi Tech & Founder's Story</a></li>
+        <li><a href="/projects">57+ Verified UAE Projects Directory</a></li>
+        <li><a href="/areas-we-serve">Areas Served: Al Quoz, DIFC, Downtown, JLT, Palm, Abu Dhabi</a></li>
+        <li><a href="/resources">DEWA Approval & MEP Fit-Out Cost Guides</a></li>
+        <li><a href="/contact">Schedule Free Site Survey</a></li>
+      </ul>
+
+      <div class="footer-hq-box" style="margin-top:1.5rem">
+        <h4 style="color:#fff; font-size:0.95rem; margin-bottom:0.4rem">Dubai Headquarters</h4>
+        <address class="footer-address">
+          Oberoi Properties Building, Behind Al Khail Mall, Al Quoz,<br/>
+          P.O. Box: 121908, Dubai, United Arab Emirates
+        </address>
+        <div class="footer-phone-list">
+          <a href="tel:+97143805683" style="display:flex; align-items:center; gap:0.4rem;"><Icon name="Phone" size={14} /> +971 4 380 5683 (Office)</a>
+          <a href="tel:+971551313403" style="display:flex; align-items:center; gap:0.4rem;"><Icon name="Smartphone" size={14} /> +971 55 131 3403 (24/7 Mobile)</a>
+          <a href="tel:+971508569972" style="display:flex; align-items:center; gap:0.4rem;"><Icon name="Smartphone" size={14} /> +971 50 856 9972 (Technical)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container bottom-inner">
+      <p>&copy; 2005 - {currentYear} Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C. All rights reserved.</p>
+      <div class="bottom-links">
+        <a href="/">Home</a>
+        <span>•</span>
+        <a href="/about">About Us</a>
+        <span>•</span>
+        <a href="/services">Services</a>
+        <span>•</span>
+        <a href="/projects">Projects</a>
+        <span>•</span>
+        <a href="/areas-we-serve">Areas</a>
+        <span>•</span>
+        <a href="/resources">Guides</a>
+        <span>•</span>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #090d15;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1.3fr 1.3fr 1.1fr;
+    gap: 3rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-logo span {
+    color: var(--primary);
+  }
+
+  .legal-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.8rem;
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .compliance-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-bottom: 1.2rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .placeholder {
+    color: var(--text-muted);
+    font-family: monospace;
+  }
+
+  .footer-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-heading {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--primary);
+  }
+
+  .footer-links, .footer-sub-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links a, .footer-sub-links a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .footer-links a:hover, .footer-sub-links a:hover {
+    color: #fff;
+  }
+
+  .footer-links .sub {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-top: 0.15rem;
+  }
+
+  .footer-address {
+    font-style: normal;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-phone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.88rem;
+  }
+
+  .footer-phone-list a {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .footer-phone-list a:hover {
+    color: var(--primary);
+  }
+
+  .footer-bottom {
+    background: #05070c;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 0;
+    font-size: 0.82rem;
+  }
+
+  .bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .bottom-links {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .bottom-links a:hover {
+    color: var(--primary);
+  }
+
+  @media (max-width: 992px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .bottom-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

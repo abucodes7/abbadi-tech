@@ -1,0 +1,551 @@
+---
+import { galleryItems, galleryCategories, type GalleryItem } from '../data/gallery';
+import Icon from './Icon.astro';
+
+interface Props {
+  limit?: number;
+  showFilters?: boolean;
+  title?: string;
+  subtitle?: string;
+}
+
+const { 
+  limit, 
+  showFilters = true,
+  title = "Work Photos Gallery",
+  subtitle = "High-definition photo records of certified electrical panel assemblies, DEWA meter rooms, PPR water supply lines, and luxury sanitary installations delivered by AbbadiTech."
+} = Astro.props;
+
+const displayItems = limit ? galleryItems.slice(0, limit) : galleryItems;
+---
+
+<section id="gallery-showcase" class="section section-gallery">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-gold">Verified On-Site Execution</span>
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+
+      {showFilters && (
+        <div class="gallery-filters" role="tablist" aria-label="Filter work photos by category">
+          {galleryCategories.map((cat, idx) => (
+            <button 
+              type="button" 
+              class:list={['filter-btn', { active: idx === 0 }]}
+              data-filter={cat.id}
+            >
+              {cat.icon && <Icon name={cat.icon} size={15} />}
+              <span>{cat.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="gallery-container">
+      {displayItems.map((item) => (
+        <article 
+          class="gallery-card" 
+          data-category={item.category}
+          data-trade={item.trade}
+        >
+          <div class="img-wrapper">
+            <img 
+              src={item.image} 
+              alt={`${item.title} - ${item.location} by AbbadiTech`} 
+              loading="lazy" 
+              width="600" 
+              height="450"
+              class="gallery-thumb"
+            />
+            <div class="img-overlay">
+              <span class="zoom-badge">
+                <Icon name="Search" size={14} /> Click to Inspect
+              </span>
+            </div>
+            <div class="card-badges">
+              <span class={item.trade === 'Electrical Technical Work' ? 'badge badge-gold badge-icon-row' : 'badge badge-blue badge-icon-row'}>
+                {item.trade === 'Electrical Technical Work' ? (
+                  <Icon name="Zap" size={13} />
+                ) : (
+                  <Icon name="Droplets" size={13} />
+                )}
+                <span>{item.trade === 'Electrical Technical Work' ? 'Electrical' : 'Plumbing'}</span>
+              </span>
+              <span class="location-tag badge-icon-row">
+                <Icon name="MapPin" size={12} />
+                <span>{item.location}</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="card-info">
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-desc">{item.description}</p>
+            <div class="card-tags">
+              {item.tags.map(tag => (
+                <span class="tag-pill">{tag}</span>
+              ))}
+            </div>
+
+            <div class="card-action">
+              <button 
+                type="button" 
+                class="btn-inspect"
+                data-img={item.image}
+                data-title={item.title}
+                data-location={item.location}
+                data-trade={item.trade}
+                data-desc={item.description}
+              >
+                Inspect Work Photo <Icon name="ArrowRight" size={15} />
+              </button>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="gallery-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content">
+        <button id="modal-close-btn" class="modal-close" aria-label="Close photo preview">&times;</button>
+        <div class="modal-img-container">
+          <img id="modal-img" src="" alt="Work Photo Preview" />
+        </div>
+        <div class="modal-details">
+          <div class="modal-header-line">
+            <span id="modal-trade" class="badge"></span>
+            <span id="modal-location" class="location-tag"></span>
+          </div>
+          <h3 id="modal-title" class="modal-heading"></h3>
+          <p id="modal-desc" class="modal-description"></p>
+          <div class="modal-footer-cta">
+            <a id="modal-wa-link" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+              <Icon name="MessageSquare" size={16} /> Inquire About Similar Work on WhatsApp
+            </a>
+            <a href="tel:+971551313403" class="btn btn-secondary">
+              <Icon name="Phone" size={16} /> Call Engineer +971 55 131 3403
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Extensibility Notice -->
+    <div class="gallery-add-notice">
+      <div class="notice-icon">
+        <Icon name="Camera" size={28} />
+      </div>
+      <div class="notice-text">
+        <h4>Need Technical Documentation or Have Photos for Your Site?</h4>
+        <p>AbbadiTech provides full milestone photography for municipal & DEWA consultants. You can also share site photos directly via WhatsApp for instant technical evaluation.</p>
+      </div>
+      <a href="https://wa.me/971551313403?text=Hi%20AbbadiTech,%20I%20have%20photos%20of%20my%20site%20to%20review" target="_blank" rel="noopener" class="btn btn-primary">
+        <Icon name="MessageSquare" size={16} /> Send Site Photos
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-gallery {
+    background: #0b101c;
+  }
+
+  .gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .filter-btn {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .filter-btn:hover {
+    color: #fff;
+    border-color: var(--primary);
+  }
+
+  .filter-btn.active {
+    background: var(--primary);
+    color: #000;
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(255, 148, 16, 0.4);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+  }
+
+  .gallery-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .img-wrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+
+  .gallery-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gallery-card:hover .gallery-thumb {
+    transform: scale(1.06);
+  }
+
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 14, 23, 0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-card:hover .img-overlay {
+    opacity: 1;
+  }
+
+  .zoom-badge {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .badge-icon-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .card-badges {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .location-tag {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .card-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .tag-pill {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--bg-subtle);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  .card-action {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+  }
+
+  .btn-inspect {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+  }
+
+  .btn-inspect:hover {
+    color: #fff;
+  }
+
+  .btn-inspect span {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-inspect:hover span {
+    transform: translateX(4px);
+  }
+
+  /* Modal Details */
+  .modal-img-container {
+    max-height: 60vh;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #modal-img {
+    max-height: 60vh;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .modal-details {
+    padding: 1.8rem 2rem;
+  }
+
+  .modal-header-line {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .modal-heading {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .modal-description {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-footer-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Notice Box */
+  .gallery-add-notice {
+    margin-top: 4rem;
+    background: linear-gradient(135deg, #111a2e, #172440);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .notice-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 148, 16, 0.15);
+    border: 1px solid rgba(255, 148, 16, 0.3);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .notice-text {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .notice-text h4 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .notice-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 650px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Filter Tabs logic
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        const trade = card.dataset.trade;
+
+        if (filter === 'all') {
+          card.style.display = '';
+        } else if (filter === 'electrical') {
+          card.style.display = trade === 'Electrical Technical Work' ? '' : 'none';
+        } else if (filter === 'plumbing') {
+          card.style.display = trade === 'Plumbing Technical Work' ? '' : 'none';
+        } else if (filter === cat) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Lightbox Modal Logic
+  const modal = document.getElementById('gallery-modal');
+  const modalImg = document.getElementById('modal-img') as HTMLImageElement;
+  const modalTitle = document.getElementById('modal-title');
+  const modalLocation = document.getElementById('modal-location');
+  const modalTrade = document.getElementById('modal-trade');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalWaLink = document.getElementById('modal-wa-link') as HTMLAnchorElement;
+  const closeBtn = document.getElementById('modal-close-btn');
+
+  function openModal(data: any) {
+    if (!modal) return;
+    if (modalImg) modalImg.src = data.img;
+    if (modalTitle) modalTitle.textContent = data.title;
+    if (modalLocation) modalLocation.textContent = data.location;
+    if (modalDesc) modalDesc.textContent = data.desc;
+    
+    if (modalTrade) {
+      modalTrade.textContent = data.trade;
+      modalTrade.className = data.trade === 'Electrical Technical Work' ? 'badge badge-gold' : 'badge badge-blue';
+    }
+
+    if (modalWaLink) {
+      const msg = `Hello AbbadiTech, I saw your work photo for "${data.title}" at ${data.location} and would like to discuss a similar project.`;
+      modalWaLink.href = `https://wa.me/971551313403?text=${encodeURIComponent(msg)}`;
+    }
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Bind click on thumbnail and inspect button
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    const btn = card.querySelector<HTMLElement>('.btn-inspect');
+    const thumbWrap = card.querySelector<HTMLElement>('.img-wrapper');
+    if (!btn) return;
+
+    const data = {
+      img: btn.dataset.img,
+      title: btn.dataset.title,
+      location: btn.dataset.location,
+      trade: btn.dataset.trade,
+      desc: btn.dataset.desc
+    };
+
+    btn.addEventListener('click', () => openModal(data));
+    thumbWrap?.addEventListener('click', () => openModal(data));
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+</script>
