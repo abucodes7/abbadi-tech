@@ -126,7 +126,7 @@ export const resourcesData: ResourceItem[] = [
       <div class="resource-cta-box">
         <h4>Get an Itemized, Accurate BOQ Estimate</h4>
         <p>Avoid unexpected cost variations. Send your space floor plans to Abbadi Tech's estimation team for a line-item MEP bill of quantities within 48 hours.</p>
-        <a href="https://wa.me/971551313403?text=Hi%20AbbadiTech,%20I%20would%20like%20a%20cost%20estimate%20for%20a%20fit-out%20project" target="_blank" rel="noopener" class="btn btn-primary">Request a Free BOQ Estimate</a>
+        <a href="https://wa.me/971505546943?text=Hi%20AbbadiTech,%20I%20would%20like%20a%20cost%20estimate%20for%20a%20fit-out%20project" target="_blank" rel="noopener" class="btn btn-primary">Request a Free BOQ Estimate</a>
       </div>
     `
   },
