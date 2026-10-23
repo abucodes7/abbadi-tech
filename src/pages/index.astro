@@ -5,11 +5,13 @@ import Icon from '../components/Icon.astro';
 import { homeFaqs } from '../data/faq';
 import { projectsList, sectorsList } from '../data/projects';
 import { servicesData } from '../data/services';
+import { galleryItems } from '../data/gallery';
 
 const pageTitle = "Electrical & Plumbing Contractors Dubai | Abbadi Tech LLC";
 const pageDescription = "DEWA-registered electrical and plumbing contractors in Dubai since 2005. Turnkey contracting for villas, malls, restaurants & commercial spaces. Get a free quote today.";
 
 const featuredProjects = projectsList.filter(p => p.featured).slice(0, 6);
+const featuredGallery = galleryItems.filter(item => item.featured).slice(0, 6);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -269,6 +271,62 @@ const faqSchema = {
           <p>Al Quoz and DIP industrial facilities. High-voltage transformers, heavy-duty busbar trunking, 3-phase machinery circuits, and pump stations.</p>
           <span class="tile-client">Deliveries: Al Ramool 10-Unit Complex, DECO Factory, Central Kitchen</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERIFIED ON-SITE WORK EXECUTION (ORGANIC PHOTOS SHOWCASE) -->
+  <section class="section" id="verified-work">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold"><Icon name="Camera" size={13} /> Photographic Proof</span>
+        <h2>Verified On-Site Work Execution</h2>
+        <p class="section-sub">
+          Genuine photographic proof of high-capacity DEWA meter cabinets, commercial EV charging pedestals, smart water manifolds, and distribution switchgear delivered across the UAE.
+        </p>
+      </div>
+
+      <div class="home-gallery-grid">
+        {featuredGallery.map((item) => (
+          <article class="home-gallery-card">
+            <div class="hg-img-wrap">
+              <img 
+                src={item.image} 
+                alt={`${item.title} by Abbadi Tech LLC`} 
+                loading="lazy" 
+                width="600" 
+                height="450" 
+                class="hg-img"
+              />
+              <div class="hg-badges">
+                <span class={item.trade === 'Electrical Technical Work' ? 'badge badge-gold hg-trade' : 'badge badge-blue hg-trade'}>
+                  {item.trade === 'Electrical Technical Work' ? (
+                    <Icon name="Zap" size={12} />
+                  ) : (
+                    <Icon name="Droplets" size={12} />
+                  )}
+                  <span>{item.trade === 'Electrical Technical Work' ? 'Electrical' : 'Plumbing'}</span>
+                </span>
+                <span class="hg-loc"><Icon name="MapPin" size={11} /> {item.location}</span>
+              </div>
+            </div>
+            <div class="hg-body">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <div class="hg-tags">
+                {item.tags.slice(0, 3).map(tag => (
+                  <span class="hg-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="center-btn" style="margin-top:2.75rem; text-align:center;">
+        <a href="/gallery" class="btn btn-primary">
+          <Icon name="Layers" size={16} /> View All 16+ Verified Work Photos in Gallery →
+        </a>
       </div>
     </div>
   </section>
@@ -937,8 +995,116 @@ const faqSchema = {
     background: rgba(255, 255, 255, 0.1);
   }
 
+  /* Home Verified Work Gallery */
+  .home-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+  }
+
+  .home-gallery-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .home-gallery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+  }
+
+  .hg-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .home-gallery-card:hover .hg-img {
+    transform: scale(1.05);
+  }
+
+  .hg-badges {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+
+  .hg-trade {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hg-loc {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .hg-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .hg-body h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+
+  .hg-body p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+    flex: 1;
+  }
+
+  .hg-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .hg-tag {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-subtle);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
   @media (max-width: 1024px) {
-    .services-five-grid, .featured-projects-grid, .sectors-display-grid, .why-us-grid {
+    .services-five-grid, .featured-projects-grid, .sectors-display-grid, .why-us-grid, .home-gallery-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -967,7 +1133,7 @@ const faqSchema = {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .services-five-grid, .featured-projects-grid, .sectors-display-grid, .why-us-grid {
+    .services-five-grid, .featured-projects-grid, .sectors-display-grid, .why-us-grid, .home-gallery-grid {
       grid-template-columns: 1fr;
     }
 

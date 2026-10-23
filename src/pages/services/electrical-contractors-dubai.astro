@@ -4,6 +4,7 @@ import FAQSection from '../../components/FAQSection.astro';
 import Icon from '../../components/Icon.astro';
 import { servicesData } from '../../data/services';
 import { projectsList } from '../../data/projects';
+import { galleryItems } from '../../data/gallery';
 
 const service = servicesData.find(s => s.id === 'electrical')!;
 
@@ -13,6 +14,10 @@ const pageDescription = service.metaDescription;
 const relevantProjects = projectsList
   .filter(p => p.scope === 'electrical' || p.scope === 'both')
   .slice(0, 8);
+
+const electricalPhotos = galleryItems
+  .filter(item => item.trade === 'Electrical Technical Work')
+  .slice(0, 6);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -163,6 +168,52 @@ const pageFaqs = service.faqs;
 
       <div class="center-btn" style="margin-top:2.5rem; text-align:center;">
         <a href="/projects" class="btn btn-secondary">Explore All 57+ Completed Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ON-SITE ELECTRICAL EXECUTION PHOTOS -->
+  <section class="section bg-card-section" id="site-photos">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold"><Icon name="Camera" size={13} /> Photographic Proof</span>
+        <h2>On-Site Electrical Technical Execution</h2>
+        <p class="section-sub">
+          Direct field documentation of our DEWA multi-meter cabinets, ABB EV charging pedestals, switchgear panel dressing, and distribution boards across Dubai.
+        </p>
+      </div>
+
+      <div class="site-photos-grid">
+        {electricalPhotos.map((photo) => (
+          <div class="site-photo-card">
+            <div class="photo-img-wrap">
+              <img 
+                src={photo.image} 
+                alt={`${photo.title} by Abbadi Tech Dubai`} 
+                loading="lazy" 
+                width="500" 
+                height="380" 
+                class="photo-img"
+              />
+              <span class="photo-loc-badge"><Icon name="MapPin" size={11} /> {photo.location}</span>
+            </div>
+            <div class="photo-body">
+              <h4>{photo.title}</h4>
+              <p>{photo.description}</p>
+              <div class="photo-tags">
+                {photo.tags.slice(0, 3).map(tag => (
+                  <span class="p-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="center-btn" style="margin-top:2.5rem; text-align:center;">
+        <a href="/gallery" class="btn btn-primary">
+          <Icon name="Layers" size={16} /> View All 16+ Verified Work Photos in Gallery →
+        </a>
       </div>
     </div>
   </section>
@@ -416,8 +467,101 @@ const pageFaqs = service.faqs;
     flex-wrap: wrap;
   }
 
+  /* Site Photos Showcase */
+  .site-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .site-photo-card {
+    background: #111724;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .site-photo-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+  }
+
+  .photo-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .site-photo-card:hover .photo-img {
+    transform: scale(1.05);
+  }
+
+  .photo-loc-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .photo-body {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .photo-body h4 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+
+  .photo-body p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .photo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .p-tag {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-subtle);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
   @media (max-width: 992px) {
-    .benefits-grid, .deliverables-grid, .projects-mini-grid {
+    .benefits-grid, .deliverables-grid, .projects-mini-grid, .site-photos-grid {
       grid-template-columns: 1fr;
     }
   }
