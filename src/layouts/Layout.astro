@@ -23,10 +23,10 @@ const {
   jsonLd
 } = Astro.props;
 
-// Base LocalBusiness Schema (Electrician, Plumber, HVACBusiness)
+// Base LocalBusiness Schema (Electrician, Plumber)
 const businessSchema = {
   "@context": "https://schema.org",
-  "@type": ["Electrician", "Plumber", "HVACBusiness", "GeneralContractor"],
+  "@type": ["Electrician", "Plumber", "GeneralContractor"],
   "@id": "https://www.abbaditech.com/#business",
   "name": "Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C",
   "alternateName": "Abbadi Tech LLC",
@@ -78,30 +78,6 @@ const businessSchema = {
           "@type": "Service",
           "name": "Plumbing & Drainage Contractors Dubai",
           "description": "PPR and copper water lines, HDPE and UPVC drainage, booster pumps, and luxury sanitary fittings."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "HVAC & Air Conditioning Contractors Dubai",
-          "description": "Commercial chilled water FCU/AHU, VRF/VRV systems, ductwork fabrication, and air balancing."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Fit-Out & Interior Contractors Dubai",
-          "description": "Turnkey retail, restaurant, and corporate office MEP fit-outs with full authority approvals."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "MEP Maintenance Services Dubai",
-          "description": "Annual Maintenance Contracts (AMC) and 24/7 emergency response for electrical, plumbing, and AC."
         }
       }
     ]
