@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 
 const pageTitle = "About Abbadi Tech | MEP Contractors in Dubai Since 2005";
-const pageDescription = "20+ years of electrical and plumbing contracting in the UAE. Meet Founder and Chairman Koyakutty Mohammed and the team behind 57+ delivered projects.";
+const pageDescription = "21+ years of electrical and plumbing contracting in the UAE. Meet Founder and Chairman Koyakutty Mohammed and the team behind 1000+ delivered projects.";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -39,27 +39,31 @@ const breadcrumbSchema = {
       </div>
 
       <div class="hero-text-wrap">
-        <span class="badge badge-gold">Established 2005 • Dubai, UAE</span>
-        <h1>OVER 20 YEARS OF MEP ENGINEERING EXCELLENCE IN DUBAI</h1>
+        <div class="badges-row" style="display:flex; gap:0.5rem; margin-bottom:0.8rem;">
+          <span class="live-status-pill"><span class="pulse-dot"></span> DEWA Dispatch: Active</span>
+          <span class="badge badge-gold">Established 2005 • Dubai, UAE</span>
+          <span class="badge badge-green">21+ Years Experience</span>
+        </div>
+        <h1>OVER 21 YEARS OF MEP ENGINEERING EXCELLENCE IN DUBAI</h1>
         <p class="hero-lead">
-          From complex DEWA electrical substations and luxury boutique fit-outs in The Dubai Mall to high-pressure plumbing for 5-star hotels, Abbadi Tech LLC has delivered engineering integrity and strict time-bound execution for over two decades.
+          From complex DEWA electrical substations and luxury boutique fit-outs in The Dubai Mall to high-pressure plumbing for 5-star hotels, Abbadi Tech LLC has delivered engineering integrity and strict time-bound execution for over 21 years across the UAE.
         </p>
 
         <div class="stats-ribbon">
-          <div class="stat-item">
-            <span class="stat-val text-gradient">2005</span>
+          <div class="stat-item card-interactive">
+            <span class="stat-val text-gradient" data-counter="2005">2005</span>
             <span class="stat-lbl">Year Established</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item card-interactive">
             <span class="stat-val" style="color:var(--primary)">DEWA</span>
             <span class="stat-lbl">Registered Contractor</span>
           </div>
-          <div class="stat-item">
-            <span class="stat-val" style="color:var(--plumbing-light)">57+</span>
+          <div class="stat-item card-interactive">
+            <span class="stat-val" style="color:var(--plumbing-light)" data-counter="1000" data-suffix="+">1000+</span>
             <span class="stat-lbl">Landmark Deliveries</span>
           </div>
-          <div class="stat-item">
-            <span class="stat-val" style="color:#10b981">100%</span>
+          <div class="stat-item card-interactive">
+            <span class="stat-val" style="color:#10b981" data-counter="100" data-suffix="%">100%</span>
             <span class="stat-lbl">On-Time Handover</span>
           </div>
         </div>

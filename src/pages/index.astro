@@ -6,6 +6,7 @@ import { homeFaqs } from '../data/faq';
 import { projectsList, sectorsList } from '../data/projects';
 import { servicesData } from '../data/services';
 import { galleryItems } from '../data/gallery';
+import HeroAnimation from '../components/HeroAnimation.astro';
 
 const pageTitle = "Electrical & Plumbing Contractors Dubai | Abbadi Tech LLC";
 const pageDescription = "DEWA-registered electrical and plumbing contractors in Dubai since 2005. Turnkey contracting for villas, malls, restaurants & commercial spaces. Get a free quote today.";
@@ -36,27 +37,29 @@ const faqSchema = {
   <!-- 1. HERO SECTION -->
   <section class="hero-section">
     <div class="hero-bg-glow"></div>
+    <HeroAnimation />
     <div class="container hero-container">
       <div class="hero-content">
         <!-- Trust Badge Row -->
-        <div class="hero-badges">
+        <div class="hero-badges reveal">
+          <span class="live-status-pill"><span class="pulse-dot"></span> DEWA Dispatch: Active</span>
           <span class="badge badge-gold"><Icon name="Zap" size={13} /> Registered DEWA Contractor</span>
-          <span class="badge badge-blue"><Icon name="Droplets" size={13} /> Established 2005 in Dubai</span>
-          <span class="badge badge-green"><Icon name="CheckCircle2" size={13} /> Over 20 Years Experience</span>
+          <span class="badge badge-blue"><Icon name="Droplets" size={13} /> Established 2005</span>
+          <span class="badge badge-green"><Icon name="CheckCircle2" size={13} /> 21+ Years Experience</span>
         </div>
 
         <!-- H1 Heading -->
-        <h1 class="hero-title">
+        <h1 class="hero-title reveal stagger-1">
           ELECTRICAL &amp; PLUMBING CONTRACTORS IN DUBAI: <span class="text-gradient">TRUSTED SINCE 2005</span>
         </h1>
 
         <!-- Subheadline / Value Proposition -->
-        <p class="hero-lead">
+        <p class="hero-lead reveal stagger-2">
           <strong>Abbadi Tech LLC</strong> delivers certified turnkey electrical and plumbing contracting across Dubai and Abu Dhabi. From high-capacity DEWA power infrastructure and luxury retail fit-outs to high-pressure plumbing, drainage networks, and booster pump systems—delivered strictly on schedule.
         </p>
 
         <!-- The 2 CTAs -->
-        <div class="hero-cta-group">
+        <div class="hero-cta-group reveal stagger-3">
           <a href="/contact" class="btn btn-primary btn-hero">
             Get Free Quote →
           </a>
@@ -65,22 +68,22 @@ const faqSchema = {
           </a>
         </div>
 
-        <!-- Metric Cards -->
-        <div class="hero-stats">
-          <div class="stat-card">
-            <span class="stat-num text-gradient">2005</span>
+        <!-- Metric Cards with Animated Counters -->
+        <div class="hero-stats reveal stagger-4">
+          <div class="stat-card card-interactive">
+            <span class="stat-num text-gradient" data-counter="2005">2005</span>
             <span class="stat-label">Established in Dubai</span>
           </div>
-          <div class="stat-card">
+          <div class="stat-card card-interactive">
             <span class="stat-num" style="color:var(--primary)">DEWA</span>
             <span class="stat-label">Registered Contractor</span>
           </div>
-          <div class="stat-card">
-            <span class="stat-num" style="color:var(--plumbing-light)">57+</span>
+          <div class="stat-card card-interactive">
+            <span class="stat-num" style="color:var(--plumbing-light)" data-counter="1000" data-suffix="+">1000+</span>
             <span class="stat-label">Delivered UAE Projects</span>
           </div>
-          <div class="stat-card">
-            <span class="stat-num" style="color:#10b981">100%</span>
+          <div class="stat-card card-interactive">
+            <span class="stat-num" style="color:#10b981" data-counter="100" data-suffix="%">100%</span>
             <span class="stat-label">On-Time Handover</span>
           </div>
         </div>
@@ -95,7 +98,7 @@ const faqSchema = {
         <span class="trust-icon"><Icon name="Zap" size={22} color="#FF9500" /></span>
         <div>
           <strong>Since 2005</strong>
-          <span>20+ Years in Dubai</span>
+          <span>21+ Years in Dubai</span>
         </div>
       </div>
       <div class="trust-divider"></div>
@@ -110,7 +113,7 @@ const faqSchema = {
       <div class="trust-item">
         <span class="trust-icon"><Icon name="Trophy" size={22} color="#FF9500" /></span>
         <div>
-          <strong>57+ Projects Delivered</strong>
+          <strong>1000+ Projects Delivered</strong>
           <span>Malls, Banks, Hotels &amp; Villas</span>
         </div>
       </div>
@@ -119,7 +122,7 @@ const faqSchema = {
         <span class="trust-icon"><Icon name="MapPin" size={22} color="#FF9500" /></span>
         <div>
           <strong>Dubai &amp; Abu Dhabi</strong>
-          <span>HQ in Al Quoz, Behind Al Khail Mall</span>
+          <span>Dubai &amp; UAE Coverage</span>
         </div>
       </div>
     </div>
@@ -212,7 +215,7 @@ const faqSchema = {
 
       <div class="center-btn" style="margin-top:2.5rem; text-align:center;">
         <a href="/projects" class="btn btn-secondary">
-          View All 57+ Completed UAE Projects →
+          View All 1000+ Completed UAE Projects →
         </a>
       </div>
     </div>
@@ -348,7 +351,7 @@ const faqSchema = {
 
         <div class="why-card">
           <div class="why-icon"><Icon name="Calendar" size={24} color="#FF9500" /></div>
-          <h3>Established 2005 (20+ Years)</h3>
+          <h3>Established 2005 (21+ Years)</h3>
           <p>Over two decades of continuous UAE contracting experience. We understand Dubai's soil, water chemistry, climate, and municipal building codes inside out.</p>
         </div>
 
@@ -372,8 +375,8 @@ const faqSchema = {
 
         <div class="why-card">
           <div class="why-icon"><Icon name="MapPin" size={24} color="#FF9500" /></div>
-          <h3>Centrally Stationed in Al Quoz</h3>
-          <p>Located in the Oberoi Properties Building behind Al Khail Mall. Fast access to Downtown, DIFC, JLT, Marina, and DIP for rapid response.</p>
+          <h3>Centrally Stationed in Dubai</h3>
+          <p>Located in the Oberoi Properties Building behind Al Khail Mall. Fast access across Downtown, DIFC, JLT, Palm, and Abu Dhabi for rapid engineering response.</p>
         </div>
       </div>
     </div>

@@ -5,8 +5,8 @@ import Icon from '../components/Icon.astro';
 import { projectsFaqs } from '../data/faq';
 import { projectsList, sectorsList, areasList } from '../data/projects';
 
-const pageTitle = "Our Projects | MEP Work in Dubai & Abu Dhabi | Abbadi Tech";
-const pageDescription = "Explore 57+ completed electrical and plumbing projects: boutiques, restaurants, hotels, banks and villas across the UAE delivered by Abbadi Tech since 2005.";
+const pageTitle = "1000+ Completed Projects | Electrical & Plumbing in Dubai | Abbadi Tech";
+const pageDescription = "Explore 1000+ completed electrical and plumbing contracting projects: boutiques, restaurants, hotels, banks and villas across the UAE delivered by Abbadi Tech since 2005.";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -42,26 +42,30 @@ const breadcrumbSchema = {
       </div>
 
       <div class="projects-hero-text">
-        <span class="badge badge-gold">57+ Verified UAE Case Studies</span>
-        <h1>COMPLETED MEP CONTRACTING PROJECTS IN DUBAI &amp; ABU DHABI</h1>
+        <div class="badges-row" style="display:flex; gap:0.5rem; margin-bottom:0.8rem;">
+          <span class="live-status-pill"><span class="pulse-dot"></span> Active UAE Execution</span>
+          <span class="badge badge-gold">1000+ Completed Projects</span>
+          <span class="badge badge-green">21+ Years in Dubai</span>
+        </div>
+        <h1>1000+ COMPLETED MEP CONTRACTING PROJECTS IN DUBAI &amp; UAE</h1>
         <p class="lead">
-          Explore our complete delivery record spanning luxury boutiques in The Dubai Mall, high-volume dining on JBR Walk and DIFC, banking headquarters, 5-star beachfront resorts, and heavy industrial facilities across the UAE.
+          Explore our extensive delivery record spanning luxury boutiques in The Dubai Mall, high-volume dining on JBR Walk and DIFC, banking headquarters, 5-star beachfront resorts, and heavy industrial facilities across the UAE.
         </p>
 
         <div class="projects-hero-stats">
-          <div class="stat-box">
-            <span class="stat-val text-gradient">57+</span>
+          <div class="stat-box card-interactive">
+            <span class="stat-val text-gradient" data-counter="1000" data-suffix="+">1000+</span>
             <span class="stat-name">Delivered Projects</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-val" style="color:var(--primary)">20+</span>
+          <div class="stat-box card-interactive">
+            <span class="stat-val" style="color:var(--primary)" data-counter="21" data-suffix="+">21+</span>
             <span class="stat-name">Years in UAE</span>
           </div>
-          <div class="stat-box">
+          <div class="stat-box card-interactive">
             <span class="stat-val" style="color:var(--plumbing-light)">6</span>
             <span class="stat-name">Core Sectors</span>
           </div>
-          <div class="stat-box">
+          <div class="stat-box card-interactive">
             <span class="stat-val" style="color:#10b981">100%</span>
             <span class="stat-name">DEWA Compliant</span>
           </div>
@@ -128,7 +132,7 @@ const breadcrumbSchema = {
 
       <!-- Live Counter -->
       <div class="results-header">
-        <span id="results-count" class="results-count">Showing all 57 projects</span>
+        <span id="results-count" class="results-count">Showing all 57 featured case studies (from 1,000+ projects delivered)</span>
         <button id="reset-filters" class="reset-btn" type="button" style="display:inline-flex; align-items:center; gap:0.35rem;">
           <Icon name="RotateCcw" size={13} /> Reset Filters
         </button>
@@ -659,7 +663,7 @@ const breadcrumbSchema = {
     });
 
     if (resultsCount) {
-      resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} projects`;
+      resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} featured case studies (from 1,000+ delivered)`;
     }
 
     if (noResults) {

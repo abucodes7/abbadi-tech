@@ -16,7 +16,8 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services', hasDropdown: true },
-  { href: '/projects', label: 'Projects (57+)' },
+  { href: '/gallery', label: 'Work Photos', badge: '16+ Photos' },
+  { href: '/projects', label: 'Projects (1000+)' },
   { href: '/areas-we-serve', label: 'Areas Served' },
   { href: '/resources', label: 'Resources' },
   { href: '/contact', label: 'Contact' },
@@ -28,8 +29,9 @@ const navItems = [
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="badges-group">
-        <span class="badge badge-gold"><Icon name="Zap" size={13} /> DEWA Registered Contractor</span>
-        <span class="badge badge-blue"><Icon name="Droplets" size={13} /> Established 2005 • Dubai, UAE</span>
+        <span class="live-status-pill"><span class="pulse-dot"></span> DEWA Dispatch: Active Now</span>
+        <span class="badge badge-gold"><Icon name="Zap" size={13} /> Registered DEWA Contractor</span>
+        <span class="badge badge-green"><Icon name="CheckCircle2" size={13} /> 21+ Years in Dubai</span>
       </div>
       <div class="top-contact">
         <a href="tel:+971505546943" class="phone-link"><Icon name="Phone" size={13} /> +971 50 554 6943</a>
@@ -80,7 +82,13 @@ const navItems = [
               href={item.href} 
               class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
             >
-              {item.label}
+              <span>{item.label}</span>
+              {item.badge && (
+                <span class="nav-badge-pill">
+                  <span class="badge-dot"></span>
+                  {item.badge}
+                </span>
+              )}
             </a>
           )
         ))}
@@ -118,7 +126,10 @@ const navItems = [
         ))}
       </div>
 
-      <a href="/projects" class:list={['mobile-nav-link', { active: currentPath === '/projects' }]}>Projects (57+ Completed)</a>
+      <a href="/gallery" class:list={['mobile-nav-link', { active: currentPath === '/gallery' }]}>
+        Work Photos <span class="nav-badge-pill">16+ Verified</span>
+      </a>
+      <a href="/projects" class:list={['mobile-nav-link', { active: currentPath === '/projects' }]}>Projects (1000+ Completed)</a>
       <a href="/areas-we-serve" class:list={['mobile-nav-link', { active: currentPath === '/areas-we-serve' }]}>Areas We Serve</a>
       <a href="/resources" class:list={['mobile-nav-link', { active: currentPath === '/resources' }]}>Guides & Resources</a>
       <a href="/contact" class:list={['mobile-nav-link', { active: currentPath === '/contact' }]}>Contact Us</a>
@@ -144,9 +155,44 @@ const navItems = [
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(15, 20, 29, 0.96);
+    background: rgba(15, 20, 29, 0.94);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .site-header.header-scrolled {
+    background: rgba(10, 14, 23, 0.98);
+    border-bottom: 1px solid rgba(255, 149, 0, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .site-header.header-scrolled .main-header {
+    padding: 0.6rem 0;
+  }
+
+  .nav-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    background: rgba(16, 185, 129, 0.18);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-left: 0.25rem;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+    display: inline-block;
   }
 
   .top-bar {
@@ -417,6 +463,19 @@ const navItems = [
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 1250px) {
+    .desktop-nav {
+      gap: 0.85rem;
+    }
+    .nav-link {
+      font-size: 0.84rem;
+    }
+    .nav-badge-pill {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.38rem;
+    }
   }
 
   @media (max-width: 1024px) {

@@ -10,7 +10,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "Is AbbadiTech an officially DEWA-registered electrical contractor in Dubai?",
-    answer: "Yes, AbbadiTech LLC was established in Dubai in 2005 and has been officially registered with the Dubai Electricity and Water Authority (DEWA) for over 20 years. We handle all DEWA approvals, load schedule submissions, incomer DB installations, and final meter energization across Dubai."
+    answer: "Yes, AbbadiTech LLC was established in Dubai in 2005 and has been officially registered with the Dubai Electricity and Water Authority (DEWA) for over 21 years. We handle all DEWA approvals, load schedule submissions, incomer DB installations, and final meter energization across Dubai."
   },
   {
     question: "Can AbbadiTech handle combined electrical and plumbing technical works under one contract?",
@@ -26,11 +26,11 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "How long has AbbadiTech been operating in the UAE?",
-    answer: "AbbadiTech LLC was founded in 2005 by Chairman Koyakutty Mohammed. With over two decades of engineering leadership in the UAE, we have successfully handed over more than 57 landmark commercial, retail, hospitality, and residential projects on time and on budget."
+    answer: "AbbadiTech LLC was founded in 2005 by Chairman Koyakutty Mohammed. With over two decades of engineering leadership in the UAE, we have successfully handed over more than 1,000 landmark commercial, retail, hospitality, and residential projects on time and on budget."
   },
   {
     question: "How quickly can your engineering team inspect my project and provide a quote?",
-    answer: "You can send your architectural or MEP drawings via WhatsApp to +971 55 131 3403 or call our technical team. We can schedule an on-site engineering assessment within 24 hours across Dubai."
+    answer: "You can send your architectural or MEP drawings via WhatsApp to +971 50 554 6943 or call our technical team. We can schedule an on-site engineering assessment within 24 hours across Dubai."
   }
 ];
 
@@ -115,7 +115,7 @@ export const galleryFaqs: FAQItem[] = [
   },
   {
     question: "Can I request to visit an ongoing or completed AbbadiTech technical site?",
-    answer: "Yes, site visits can be arranged for prospective clients subject to project security clearances and client permissions. Contact our management team at +971 55 131 3403."
+    answer: "Yes, site visits can be arranged for prospective clients subject to project security clearances and client permissions. Contact our management team at +971 50 554 6943."
   },
   {
     question: "How frequently do you update the work photos gallery?",
@@ -126,7 +126,7 @@ export const galleryFaqs: FAQItem[] = [
 export const projectsFaqs: FAQItem[] = [
   {
     question: "How many projects has AbbadiTech delivered across the UAE?",
-    answer: "AbbadiTech has successfully completed over 57 major technical contracting projects across Dubai, Abu Dhabi, and Ajman since 2005."
+    answer: "AbbadiTech has successfully completed over 1,000 major technical contracting projects across Dubai, Abu Dhabi, and Ajman since 2005."
   },
   {
     question: "Have you delivered projects in premier UAE shopping malls?",
@@ -145,15 +145,15 @@ export const projectsFaqs: FAQItem[] = [
 export const contactFaqs: FAQItem[] = [
   {
     question: "Where is the AbbadiTech LLC office located in Dubai?",
-    answer: "Our office is located at Oberoi Properties Building, Behind Al Khail Mall, Al Quoz, Dubai, UAE (PO Box 121908). We welcome clients for technical consultations."
+    answer: "Our office is located at Oberoi Properties Building, Behind Al Khail Mall, Dubai, UAE (PO Box 121908). We welcome clients for technical consultations."
   },
   {
     question: "What is the fastest way to get an engineering quote for technical works?",
-    answer: "The quickest method is contacting us directly via WhatsApp at +971 55 131 3403 with your project drawings (CAD/PDF), location, and required scope. Our senior engineering estimator will respond promptly."
+    answer: "The quickest method is contacting us directly via WhatsApp at +971 50 554 6943 or email it.abbaditech@gmail.com with your project drawings (CAD/PDF), location, and required scope. Our senior engineering estimator will respond promptly."
   },
   {
     question: "What are your official telephone and mobile contact numbers?",
-    answer: "You can reach us on Mobile: +971 55 131 3403, Mobile: +971 50 856 9972, or Landline Office: +971 4 380 5683."
+    answer: "You can reach us on Mobile / WhatsApp: +971 50 554 6943, or Email: it.abbaditech@gmail.com."
   },
   {
     question: "Do you offer emergency technical assessments for active sites?",
