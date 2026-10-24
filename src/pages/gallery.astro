@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Icon from '../components/Icon.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
 import { galleryFaqs } from '../data/faq';
 
 const pageTitle = "Work Photos Gallery | Electrical & Plumbing On-Site Execution | AbbadiTech LLC";
@@ -36,7 +37,8 @@ const breadcrumbSchema = {
 >
   <!-- GALLERY HERO -->
   <section class="gallery-hero">
-    <div class="container">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
       <div class="crumb">
         <a href="/">Home</a> <span>/</span> <span>Work Photos Gallery</span>
       </div>
@@ -115,9 +117,16 @@ const breadcrumbSchema = {
 
 <style>
   .gallery-hero {
-    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3rem, 5vw, 4.5rem);
-    background: radial-gradient(circle at 75% 20%, rgba(255, 148, 16, 0.1) 0%, transparent 55%), #0a0e17;
-    border-bottom: 3px solid var(--primary);
+    position: relative;
+    padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(3.5rem, 5vw, 4.5rem);
+    background: var(--color-navy-dark);
+    border-bottom: 1px solid var(--color-navy-border);
+    overflow: hidden;
+  }
+
+  .hero-inner-container {
+    position: relative;
+    z-index: 2;
   }
 
   .crumb {

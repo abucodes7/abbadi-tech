@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
 import { servicesData } from '../../data/services';
 import { projectsList } from '../../data/projects';
 import { galleryItems } from '../../data/gallery';
@@ -71,15 +72,17 @@ const pageFaqs = electricalFaqs;
 >
   <!-- SERVICE HERO -->
   <section class="service-hero">
-    <div class="container">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
       <div class="crumb">
         <a href="/">Home</a> <span>/</span> <a href="/services">Services</a> <span>/</span> <span>{service.title}</span>
       </div>
 
       <div class="hero-content">
         <div class="badges-row">
-          <span class="badge badge-gold"><Icon name="Zap" size={13} /> Registered DEWA Contractor</span>
-          <span class="badge badge-blue">Established 2005</span>
+          <span class="live-status-pill"><span class="pulse-dot"></span> Registered DEWA Contractor</span>
+          <span class="badge badge-amber"><Icon name="Zap" size={13} /> Trade Lic. 571822</span>
+          <span class="badge badge-white-on-navy">21+ Years Experience</span>
         </div>
 
         <h1>{service.heroH1}</h1>
@@ -248,9 +251,16 @@ const pageFaqs = electricalFaqs;
 
 <style>
   .service-hero {
-    padding: 4.5rem 0 3.5rem;
-    background: #0B1F33;
+    position: relative;
+    padding: 5rem 0 4rem;
+    background: var(--color-navy-dark);
     border-bottom: 1px solid var(--color-navy-border);
+    overflow: hidden;
+  }
+
+  .hero-inner-container {
+    position: relative;
+    z-index: 2;
   }
 
   .crumb {

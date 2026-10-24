@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
 import { blogPosts, type BlogPost } from '../../data/blog';
 
 export function getStaticPaths() {
@@ -83,6 +84,7 @@ const articleSchema = {
 >
   <!-- ARTICLE HERO -->
   <header class="article-hero">
+    <HeroAnimation />
     <div class="container article-hero-container">
       <div class="crumb">
         <a href="/">Home</a> <span>/</span> <a href="/blog">Blog</a> <span>/</span> <span>{post.category}</span>
@@ -271,10 +273,17 @@ const articleSchema = {
      ARTICLE HERO
      ========================================================================== */
   .article-hero {
-    padding: 4.5rem 0 3.5rem;
-    background: #0B1F33;
+    position: relative;
+    padding: 5rem 0 4rem;
+    background: var(--color-navy-dark);
     border-bottom: 1px solid var(--color-navy-border);
     color: #FFFFFF;
+    overflow: hidden;
+  }
+
+  .article-hero-container {
+    position: relative;
+    z-index: 2;
   }
 
   .crumb {

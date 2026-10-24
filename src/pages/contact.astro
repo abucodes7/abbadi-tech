@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Icon from '../components/Icon.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
 import { contactFaqs } from '../data/faq';
 
 const pageTitle = "Contact Abbadi Tech | Dubai, UAE | +971 50 554 6943";
@@ -35,7 +36,8 @@ const breadcrumbSchema = {
 >
   <!-- CONTACT HERO -->
   <section class="contact-hero">
-    <div class="container">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
       <div class="crumb">
         <a href="/">Home</a> <span>/</span> <span>Contact Us</span>
       </div>
@@ -250,9 +252,16 @@ const breadcrumbSchema = {
 
 <style>
   .contact-hero {
-    padding: 3.5rem 0 3rem;
-    background: radial-gradient(circle at top right, rgba(255, 149, 0, 0.15) 0%, transparent 60%);
-    border-bottom: 1px solid var(--border-subtle);
+    position: relative;
+    padding: 5rem 0 4rem;
+    background: var(--color-navy-dark);
+    border-bottom: 1px solid var(--color-navy-border);
+    overflow: hidden;
+  }
+
+  .hero-inner-container {
+    position: relative;
+    z-index: 2;
   }
 
   .crumb {
