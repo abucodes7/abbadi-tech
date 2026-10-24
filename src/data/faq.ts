@@ -428,6 +428,38 @@ export const dewaWorksFaqs: FAQItem[] = [
   {
     question: "Why should clients select Abbadi Tech for high-stakes DEWA approvals in Dubai?",
     answer: "With 21+ years of clean compliance since 2005, Abbadi Tech maintains an unblemished reputation with DEWA engineering review divisions, ensuring your permits are processed rapidly and without red-tape delays."
+  },
+  {
+    question: "What is a DEWA Red Notice, and how quickly can Abbadi Tech clear violations?",
+    answer: "A DEWA Red Notice is an official non-compliance citation issued by utility inspectors for safety violations, unapproved load additions, or defective wiring. It carries a strict rectification deadline (typically 7 to 14 days) before power disconnection. Abbadi Tech conducts emergency 24-hour on-site audits, rectifies panel wiring, conducts Megger insulation tests, and secures the Green Clearance Certificate to keep your power live."
+  },
+  {
+    question: "What is the difference between a DEWA NOC and a Trakhees NOC in Dubai?",
+    answer: "Mainland Dubai properties fall directly under Dubai Municipality and DEWA jurisdiction. Developments located in Free Zones like Jebel Ali Free Zone (JAFZA), Dubai Investments Park (DIP), and Dubai Maritime City fall under Trakhees CED (Civil Engineering Department). Trakhees issues its own building permits and utility NOCs, which then interface with DEWA for final power energization. Abbadi Tech is fully registered and licensed to handle both authorities."
+  },
+  {
+    question: "Can commercial tenants apply for DEWA approvals directly, or is owner consent required?",
+    answer: "Tenants with a valid Ejari tenancy contract and commercial trade license can apply for interior fit-out NOCs and smart meter accounts. However, landlords or building owners must provide formal written consent (Owner NOC) and provide base-building electrical intake drawings showing sanctioned upstream breaker capacity."
+  },
+  {
+    question: "What is the Shams Dubai solar connection and net metering process?",
+    answer: "Under DEWA's Shams Dubai initiative, commercial building owners and villa residents can install rooftop solar photovoltaic (PV) systems to offset their monthly electricity bills. Surplus solar power exported to DEWA's grid is credited at full retail tariff via bi-directional smart meters. Abbadi Tech engineers the AC integration, grid isolators, and safety trip switches to pass DEWA solar inspection."
+  },
+  {
+    question: "What are the common reasons DEWA rejects electrical applications, and how do you prevent them?",
+    answer: "The top rejection causes include: 1. Unbalanced 3-phase load schedules exceeding 10% phase deviation; 2. Single Line Diagrams that do not match site cable sizes; 3. Non-compliant breaker trip curves; 4. Incomplete landlord documentation. Abbadi Tech's licensed electrical design office conducts internal engineering QA reviews on every calculation, ensuring a 100% first-pass approval rate."
+  },
+  {
+    question: "What is RSB approval and why does it matter for Dubai utility projects?",
+    answer: "The Regulation and Supervision Bureau (RSB) oversees Dubai's water and electricity sector standards. Certain specialized commercial energy audits, solar integration schemes, and utility sub-contractors must adhere to RSB guidelines. Working with a compliant, veteran engineering firm like Abbadi Tech guarantees your installation aligns with RSB and DEWA regulatory frameworks."
+  },
+  {
+    question: "What are the legal and financial penalties for operating unauthorized power connections in Dubai?",
+    answer: "Operating unapproved electrical connections or tampering with DEWA meters is a serious violation under UAE Federal and Dubai Municipal law. Penalties include heavy fines (often exceeding AED 50,000 to AED 200,000+), immediate power disconnection, retroactive billing at peak penalty tariffs, and commercial license suspension until full engineering regularization."
+  },
+  {
+    question: "At what power demand does DEWA mandate a dedicated substation transformer room?",
+    answer: "For individual facilities or buildings where the maximum electrical demand exceeds approximately 400kVA to 500kVA (or where local LV distribution networks are congested), DEWA requires the developer or building owner to allocate a dedicated, ground-level 11kV electrical substation or package transformer room with 24/7 direct access for DEWA service trucks."
   }
 ];
 

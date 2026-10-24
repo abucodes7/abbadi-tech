@@ -1,0 +1,793 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { blogPosts, type BlogPost } from '../../data/blog';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+const relatedPosts = blogPosts
+  .filter((p) => post.relatedSlugs?.includes(p.slug) || (p.category === post.category && p.slug !== post.slug))
+  .slice(0, 3);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Engineering Blog",
+      "item": "https://www.abbaditech.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.title,
+      "item": `https://www.abbaditech.com/blog/${post.slug}`
+    }
+  ]
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": `https://www.abbaditech.com/blog/${post.slug}#article`,
+  "headline": post.title,
+  "description": post.metaDescription,
+  "image": `https://www.abbaditech.com${post.image}`,
+  "datePublished": "2026-10-01T08:00:00+04:00",
+  "dateModified": "2026-10-24T12:00:00+04:00",
+  "author": {
+    "@type": "Person",
+    "name": post.author.name,
+    "jobTitle": post.author.role
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abbadi Tech Technical Solutions LLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.abbaditech.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://www.abbaditech.com/blog/${post.slug}`
+  }
+};
+---
+
+<Layout 
+  title={`${post.title} | Abbadi Tech Blog`} 
+  description={post.metaDescription} 
+  currentPath={`/blog/${post.slug}`}
+  ogImage={`https://www.abbaditech.com${post.image}`}
+  jsonLd={[breadcrumbSchema, articleSchema]}
+>
+  <!-- ARTICLE HERO -->
+  <header class="article-hero">
+    <div class="container article-hero-container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <a href="/blog">Blog</a> <span>/</span> <span>{post.category}</span>
+      </div>
+
+      <div class="article-header-content">
+        <div class="header-badge-row">
+          <span class="badge badge-amber">{post.category}</span>
+          <span class="article-date"><Icon name="Calendar" size={13} /> {post.publishDate}</span>
+          <span class="article-read"><Icon name="Clock" size={13} /> {post.readTime}</span>
+        </div>
+
+        <h1>{post.title}</h1>
+        <p class="article-lead">{post.summary}</p>
+
+        <!-- Author Byline -->
+        <div class="author-byline">
+          <div class="author-emblem">
+            <Icon name="ShieldCheck" size={20} />
+          </div>
+          <div>
+            <strong>Authored &amp; Reviewed by {post.author.name}</strong>
+            <span>{post.author.role}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT & SIDEBAR -->
+  <section class="section section-article-body">
+    <div class="container">
+      <div class="article-layout-grid">
+        <!-- Main Content Area -->
+        <main class="article-main">
+          <!-- Featured Image -->
+          <div class="article-featured-image-wrap">
+            <img 
+              src={post.image} 
+              alt={post.title} 
+              width="820" 
+              height="460" 
+              class="article-main-img" 
+              loading="eager"
+            />
+            <div class="img-caption">Verified Technical Installation by Abbadi Tech Technical Solutions LLC</div>
+          </div>
+
+          <!-- Key Takeaways Callout Box -->
+          {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+            <div class="takeaways-box">
+              <div class="tb-header">
+                <Icon name="CheckCircle2" size={18} />
+                <h3>Key Engineering Takeaways</h3>
+              </div>
+              <ul class="tb-list">
+                {post.keyTakeaways.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Rich Content HTML -->
+          <div class="prose-content" set:html={post.contentHtml} />
+
+          <!-- Author Biography Box -->
+          <div class="author-bio-card">
+            <div class="abc-icon">
+              <Icon name="Award" size={32} />
+            </div>
+            <div class="abc-info">
+              <h4>About the Reviewing Authority</h4>
+              <p>
+                <strong>{post.author.name}</strong> leads Abbadi Tech Technical Solutions LLC (Trade License No. 571822). With over two decades of engineering practice in Dubai, our technical directors ensure that all electrical installations, Single Line Diagrams, and plumbing systems strictly comply with DEWA and Dubai Municipality regulations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Direct Article Inquiry Dispatch -->
+          <div class="article-whatsapp-callout">
+            <div class="awc-text">
+              <h3>Have Questions About This Technical Topic?</h3>
+              <p>Share your site drawings or premise ID with our senior engineers for an immediate consultation.</p>
+            </div>
+            <a 
+              href={`https://wa.me/971505546943?text=${encodeURIComponent(`Hello Abbadi Tech, I read your article "${post.title}" and have a technical query for my site.`)}`} 
+              target="_blank" 
+              rel="noopener" 
+              class="btn btn-primary btn-hero"
+            >
+              <Icon name="MessageSquare" size={16} /> Consult Engineer on WhatsApp
+            </a>
+          </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+          <!-- Consultation Card -->
+          <div class="sidebar-card consultation-card">
+            <span class="badge badge-gold">Direct Support</span>
+            <h3>Need DEWA or MEP Assistance?</h3>
+            <p>Our senior estimators provide free on-site inspections anywhere in Dubai within 24 hours.</p>
+
+            <a 
+              href={`https://wa.me/971505546943?text=${encodeURIComponent(`Hello Abbadi Tech, I need an estimate for ${post.category}`)}`} 
+              target="_blank" 
+              rel="noopener" 
+              class="btn btn-primary" 
+              style="width: 100%; margin-bottom: 0.75rem;"
+            >
+              <Icon name="MessageSquare" size={15} /> Instant WhatsApp Chat
+            </a>
+
+            <a href="tel:+971505546943" class="btn btn-navy" style="width: 100%;">
+              <Icon name="Phone" size={15} /> Call: +971 50 554 6943
+            </a>
+
+            <div class="sidebar-trust-points">
+              <div>✓ Trade License No. 571822</div>
+              <div>✓ Registered DEWA Contractor</div>
+              <div>✓ 21+ Years UAE Practice</div>
+            </div>
+          </div>
+
+          <!-- Quick Navigation / Related Articles -->
+          {relatedPosts.length > 0 && (
+            <div class="sidebar-card">
+              <h4 class="sidebar-heading">Related Engineering Guides</h4>
+              <ul class="sidebar-links-list">
+                {relatedPosts.map((rel) => (
+                  <li>
+                    <a href={`/blog/${rel.slug}`}>
+                      <span class="rel-cat">{rel.category}</span>
+                      <strong class="rel-title">{rel.title}</strong>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Division Link -->
+          <div class="sidebar-card division-portal-card">
+            <span class="pulse-dot"></span>
+            <h4>DEWA Approvals Dubai Division</h4>
+            <p>Dedicated lead portal for Single Line Diagrams, power load additions, and meter energizations.</p>
+            <a href="/dewa-approvals-dubai" class="portal-link">
+              Visit Approvals Portal →
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED ARTICLES FOOTER -->
+  {relatedPosts.length > 0 && (
+    <section class="section section-light" style="border-top: 1px solid var(--color-border-light);">
+      <div class="container">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+          <span class="badge badge-navy">Further Reading</span>
+          <h2>Explore More Technical Intelligence</h2>
+        </div>
+
+        <div class="related-posts-grid">
+          {relatedPosts.map((rel) => (
+            <article class="related-card">
+              <img src={rel.image} alt={rel.title} class="rc-img" loading="lazy" />
+              <div class="rc-body">
+                <span class="rc-cat">{rel.category}</span>
+                <h3><a href={`/blog/${rel.slug}`}>{rel.title}</a></h3>
+                <p>{rel.summary.slice(0, 110)}...</p>
+                <a href={`/blog/${rel.slug}`} class="rc-link">Read Full Guide →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  /* ==========================================================================
+     ARTICLE HERO
+     ========================================================================== */
+  .article-hero {
+    padding: 4.5rem 0 3.5rem;
+    background: #0B1F33;
+    border-bottom: 1px solid var(--color-navy-border);
+    color: #FFFFFF;
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb a {
+    color: #CBD5E1;
+  }
+
+  .crumb a:hover {
+    color: var(--color-amber);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .article-header-content {
+    max-width: 900px;
+  }
+
+  .header-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #94A3B8;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .article-date, .article-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .article-hero h1 {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.025em;
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #CBD5E1;
+    margin-bottom: 2rem;
+  }
+
+  .author-byline {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.25rem;
+  }
+
+  .author-emblem {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-amber-subtle);
+    color: var(--color-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .author-byline strong {
+    display: block;
+    font-size: 0.92rem;
+    color: #FFFFFF;
+  }
+
+  .author-byline span {
+    font-size: 0.78rem;
+    color: #94A3B8;
+  }
+
+  /* ==========================================================================
+     LAYOUT & PROSE
+     ========================================================================== */
+  .section-article-body {
+    background: #FFFFFF;
+  }
+
+  .article-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .article-featured-image-wrap {
+    margin-bottom: 2.5rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .article-main-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-caption {
+    font-size: 0.76rem;
+    color: var(--color-slate);
+    padding: 0.6rem 1rem;
+    background: var(--color-bg-light);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  /* Key Takeaways */
+  .takeaways-box {
+    background: #F6F8FA;
+    border: 1px solid var(--color-border-strong);
+    border-left: 4px solid var(--color-amber);
+    border-radius: var(--radius-sm);
+    padding: 1.75rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .tb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #B87708;
+    margin-bottom: 1rem;
+  }
+
+  .tb-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin: 0;
+  }
+
+  .tb-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .tb-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.95rem;
+    color: var(--color-graphite);
+    line-height: 1.5;
+  }
+
+  .tb-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-amber);
+    font-weight: 800;
+  }
+
+  /* Prose Styling */
+  .prose-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-graphite);
+  }
+
+  .prose-content :global(h2) {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .prose-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(p) {
+    margin-bottom: 1.35rem;
+  }
+
+  .prose-content :global(ul), .prose-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-content :global(table.data-table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .prose-content :global(table.data-table th) {
+    background: #0B1F33;
+    color: #FFFFFF;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+
+  .prose-content :global(table.data-table td) {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-graphite);
+  }
+
+  .prose-content :global(table.data-table tr:nth-child(even) td) {
+    background: #F8FAFC;
+  }
+
+  /* Author Bio Card */
+  .author-bio-card {
+    display: flex;
+    gap: 1.5rem;
+    background: #F6F8FA;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin-top: 3.5rem;
+    align-items: center;
+  }
+
+  .abc-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-sm);
+    background: #0B1F33;
+    color: var(--color-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .abc-info h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .abc-info p {
+    font-size: 0.9rem;
+    color: var(--color-slate);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* WhatsApp Callout */
+  .article-whatsapp-callout {
+    background: #0B1F33;
+    color: #FFFFFF;
+    border: 1px solid var(--color-navy-border);
+    border-radius: var(--radius-md);
+    padding: 2.25rem;
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .awc-text h3 {
+    font-size: 1.35rem;
+    color: #FFFFFF;
+    margin-bottom: 0.4rem;
+  }
+
+  .awc-text p {
+    font-size: 0.92rem;
+    color: #CBD5E1;
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     SIDEBAR
+     ========================================================================== */
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .consultation-card {
+    background: #F6F8FA;
+    border-top: 3px solid var(--color-amber);
+  }
+
+  .consultation-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .consultation-card p {
+    font-size: 0.88rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .sidebar-trust-points {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-light);
+    font-size: 0.78rem;
+    color: #64748B;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .sidebar-heading {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .sidebar-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sidebar-links-list a {
+    display: block;
+  }
+
+  .rel-cat {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #B87708;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+  }
+
+  .rel-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    line-height: 1.35;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .sidebar-links-list a:hover .rel-title {
+    color: var(--color-amber);
+  }
+
+  .division-portal-card {
+    background: #0B1F33;
+    color: #FFFFFF;
+    border: 1px solid var(--color-navy-border);
+  }
+
+  .division-portal-card h4 {
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .division-portal-card p {
+    font-size: 0.82rem;
+    color: #CBD5E1;
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
+  }
+
+  .portal-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-amber);
+  }
+
+  /* ==========================================================================
+     RELATED ARTICLES FOOTER
+     ========================================================================== */
+  .related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .related-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rc-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .rc-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .rc-cat {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #B87708;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .rc-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+
+  .rc-body p {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .rc-link {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .rc-link:hover {
+    color: var(--color-amber);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .article-layout-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .article-sidebar {
+      position: static;
+    }
+    .article-whatsapp-callout {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .related-posts-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .article-main-img {
+      height: 240px;
+    }
+    .related-posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

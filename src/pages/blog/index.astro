@@ -1,0 +1,707 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { blogPosts } from '../../data/blog';
+import { dewaWorksFaqs } from '../../data/faq';
+
+const pageTitle = "Engineering Insights & DEWA Regulatory Blog | Abbadi Tech Dubai";
+const pageDescription = "Authoritative technical guides and regulatory insights for Dubai MEP engineering: DEWA fit-out NOCs, Red Notice rectifications, Shams Dubai solar net metering, and plumbing codes.";
+
+const featuredPost = blogPosts.find(p => p.featured) || blogPosts[0];
+const regularPosts = blogPosts.filter(p => p.slug !== featuredPost.slug);
+
+const categories = ['All Guides', 'DEWA Approvals', 'Electrical Engineering', 'Plumbing & Hydraulics', 'Regulatory & Compliance'];
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://www.abbaditech.com/blog#blog",
+  "name": "Abbadi Tech Engineering Insights & Regulatory Hub",
+  "description": pageDescription,
+  "url": "https://www.abbaditech.com/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abbadi Tech Technical Solutions LLC",
+    "logo": "https://www.abbaditech.com/logo.png"
+  },
+  "blogPost": blogPosts.map(p => ({
+    "@type": "BlogPosting",
+    "headline": p.title,
+    "description": p.metaDescription,
+    "url": `https://www.abbaditech.com/blog/${p.slug}`,
+    "datePublished": "2026-10-01",
+    "author": {
+      "@type": "Person",
+      "name": p.author.name
+    }
+  }))
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath="/blog"
+  jsonLd={blogSchema}
+>
+  <!-- BLOG HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="crumb">
+        <a href="/">Home</a> <span>/</span> <span>Engineering Insights &amp; Blog</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge-row">
+          <span class="live-status-pill"><span class="pulse-dot"></span> Active Engineering Journal</span>
+          <span class="badge badge-amber"><Icon name="Zap" size={13} /> Trade Lic. 571822</span>
+          <span class="badge badge-white-on-navy"><Icon name="CheckCircle2" size={13} /> 21+ Years UAE Practice</span>
+        </div>
+
+        <h1>DUBAI MEP &amp; DEWA REGULATORY INSIGHTS</h1>
+        <p class="hero-lead">
+          In-depth technical guides, code compliance walkthroughs, and practical engineering advice published by Abbadi Tech Technical Solutions LLC. Written by registered UAE electrical and plumbing engineers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & CATEGORY BAR -->
+  <section class="blog-filter-section">
+    <div class="container">
+      <div class="filter-controls-wrap">
+        <div class="category-tabs" id="category-tabs">
+          {categories.map((cat, idx) => (
+            <button 
+              class:list={['cat-tab-btn', { active: idx === 0 }]} 
+              data-cat={cat === 'All Guides' ? 'all' : cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div class="blog-search-box">
+          <input 
+            type="search" 
+            id="blog-search-input" 
+            placeholder="Search guides (e.g. SLD, Red Notice, Shams Dubai, grease trap)..." 
+            aria-label="Search technical blog articles"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED HERO ARTICLE -->
+  <section class="section section-featured-post">
+    <div class="container">
+      <div class="featured-article-card" id="featured-article" data-category={featuredPost.category}>
+        <div class="fac-media">
+          <img 
+            src={featuredPost.image} 
+            alt={featuredPost.title} 
+            width="640" 
+            height="420" 
+            class="fac-img"
+          />
+          <span class="fac-badge">{featuredPost.category}</span>
+        </div>
+        <div class="fac-content">
+          <div class="fac-meta-row">
+            <span class="meta-item"><Icon name="Calendar" size={13} /> {featuredPost.publishDate}</span>
+            <span class="meta-item"><Icon name="Clock" size={13} /> {featuredPost.readTime}</span>
+            <span class="meta-item author-tag"><Icon name="ShieldCheck" size={13} /> Verified Expert Review</span>
+          </div>
+          <h2>
+            <a href={`/blog/${featuredPost.slug}`}>{featuredPost.title}</a>
+          </h2>
+          <p class="fac-summary">{featuredPost.summary}</p>
+          
+          <div class="fac-author-box">
+            <div class="author-info">
+              <strong>{featuredPost.author.name}</strong>
+              <span>{featuredPost.author.role}</span>
+            </div>
+            <a href={`/blog/${featuredPost.slug}`} class="btn btn-primary">
+              Read Complete Guide →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGULAR ARTICLES GRID -->
+  <section class="section section-light" id="articles-grid-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2.5rem; text-align: left;">
+        <span class="badge badge-navy">Technical Guides Archive</span>
+        <h2>Explore Specialist Topics</h2>
+        <p>Curated engineering intelligence covering electrical substations, municipal plumbing codes, and authority approvals.</p>
+      </div>
+
+      <div class="blog-grid" id="blog-articles-grid">
+        {regularPosts.map((post) => (
+          <article class="blog-card" data-category={post.category}>
+            <div class="bc-media">
+              <img 
+                src={post.image} 
+                alt={post.title} 
+                width="500" 
+                height="320" 
+                loading="lazy" 
+                class="bc-img"
+              />
+              <span class="bc-cat-tag">{post.category}</span>
+            </div>
+
+            <div class="bc-body">
+              <div class="bc-meta">
+                <span><Icon name="Calendar" size={12} /> {post.publishDate}</span>
+                <span>•</span>
+                <span><Icon name="Clock" size={12} /> {post.readTime}</span>
+              </div>
+
+              <h3>
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h3>
+
+              <p class="bc-summary">{post.summary}</p>
+
+              <div class="bc-footer">
+                <span class="bc-author">{post.author.name}</span>
+                <a href={`/blog/${post.slug}`} class="bc-read-link">
+                  Read Article →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div id="no-results-msg" class="no-results-box" style="display: none;">
+        <Icon name="SearchCheck" size={32} />
+        <p>No technical guides match your search term. Try searching for "DEWA", "SLD", "PPR", or "Load".</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION: Authority Competitor-Benchmarked Questions -->
+  <FAQSection 
+    title="Frequently Asked Authority &amp; Regulatory Questions" 
+    subtitle="Direct answers from our senior MEP engineers regarding DEWA Red Notices, Trakhees Free Zone jurisdiction, Shams Dubai net metering, and load upgrades."
+    badge="DEWA Authority FAQ"
+    faqs={dewaWorksFaqs}
+  />
+
+  <!-- LEAD CAPTURE CONSULTATION BANNER -->
+  <section class="section section-navy">
+    <div class="container">
+      <div class="blog-cta-box">
+        <div class="bcb-text">
+          <span class="badge badge-gold">Direct Engineering Assistance</span>
+          <h2>Have an Upcoming Fit-Out or Complex DEWA Approval?</h2>
+          <p>
+            Avoid costly application rejections and project delays. Speak directly with Founder &amp; Chairman Koyakutty Mohammed and our lead engineering estimators today.
+          </p>
+        </div>
+        <div class="bcb-actions">
+          <a href="/contact" class="btn btn-primary btn-hero">
+            Request Engineering Review →
+          </a>
+          <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20have%20an%20inquiry%20regarding%20DEWA%20approvals%20and%20contracting" target="_blank" rel="noopener" class="btn btn-secondary btn-hero">
+            <Icon name="MessageSquare" size={16} /> WhatsApp: +971 50 554 6943
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Client-side category filtering and search
+  const tabBtns = document.querySelectorAll('.cat-tab-btn');
+  const searchInput = document.getElementById('blog-search-input') as HTMLInputElement;
+  const cards = document.querySelectorAll<HTMLElement>('.blog-card');
+  const featuredCard = document.getElementById('featured-article');
+  const noResults = document.getElementById('no-results-msg');
+
+  let activeCat = 'all';
+  let searchTerm = '';
+
+  function filterPosts() {
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardCat = card.dataset.category || '';
+      const cardText = card.textContent?.toLowerCase() || '';
+
+      const matchesCat = activeCat === 'all' || cardCat.toLowerCase() === activeCat.toLowerCase();
+      const matchesSearch = !searchTerm || cardText.includes(searchTerm);
+
+      if (matchesCat && matchesSearch) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (featuredCard) {
+      const featCat = featuredCard.dataset.category || '';
+      const featText = featuredCard.textContent?.toLowerCase() || '';
+      const matchesCat = activeCat === 'all' || featCat.toLowerCase() === activeCat.toLowerCase();
+      const matchesSearch = !searchTerm || featText.includes(searchTerm);
+
+      if (matchesCat && matchesSearch) {
+        featuredCard.style.display = 'grid';
+        visibleCount++;
+      } else {
+        featuredCard.style.display = 'none';
+      }
+    }
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.getAttribute('data-cat') || 'all';
+      filterPosts();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchTerm = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      filterPosts();
+    });
+  }
+</script>
+
+<style>
+  /* ==========================================================================
+     BLOG HERO
+     ========================================================================== */
+  .blog-hero {
+    padding: 4.5rem 0 3.5rem;
+    background: #0B1F33;
+    border-bottom: 1px solid var(--color-navy-border);
+    color: #FFFFFF;
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin-bottom: 1.25rem;
+  }
+
+  .crumb a {
+    color: #CBD5E1;
+  }
+
+  .crumb a:hover {
+    color: var(--color-amber);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .hero-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(2.1rem, 3.8vw, 3rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-lead {
+    font-size: 1.12rem;
+    line-height: 1.65;
+    color: #CBD5E1;
+    max-width: 820px;
+  }
+
+  /* ==========================================================================
+     FILTER BAR
+     ========================================================================== */
+  .blog-filter-section {
+    background: #071524;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.15rem 0;
+  }
+
+  .filter-controls-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cat-tab-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #CBD5E1;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cat-tab-btn:hover {
+    color: #FFFFFF;
+    border-color: var(--color-amber);
+  }
+
+  .cat-tab-btn.active {
+    background: var(--color-amber);
+    color: var(--color-navy);
+    border-color: #D98E16;
+    font-weight: 700;
+  }
+
+  .blog-search-box input {
+    background: #0B1F33;
+    border: 1px solid var(--color-navy-border);
+    color: #FFFFFF;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    width: 280px;
+  }
+
+  .blog-search-box input:focus {
+    outline: none;
+    border-color: var(--color-amber);
+  }
+
+  /* ==========================================================================
+     FEATURED ARTICLE CARD
+     ========================================================================== */
+  .section-featured-post {
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+    background: #F6F8FA;
+  }
+
+  .featured-article-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    border-top: 4px solid var(--color-amber);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .featured-article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .fac-media {
+    position: relative;
+    height: 100%;
+    min-height: 340px;
+  }
+
+  .fac-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fac-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #0B1F33;
+    color: var(--color-amber);
+    border: 1px solid var(--color-amber-border);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .fac-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fac-meta-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--color-slate);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .author-tag {
+    color: #059669;
+    font-weight: 600;
+  }
+
+  .fac-content h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .fac-content h2 a:hover {
+    color: var(--color-amber);
+  }
+
+  .fac-summary {
+    font-size: 0.95rem;
+    color: var(--color-graphite);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+  .fac-author-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 1.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-navy);
+  }
+
+  .author-info span {
+    font-size: 0.76rem;
+    color: var(--color-slate);
+  }
+
+  /* ==========================================================================
+     REGULAR ARTICLES GRID
+     ========================================================================== */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .bc-media {
+    position: relative;
+    height: 200px;
+  }
+
+  .bc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bc-cat-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: #0B1F33;
+    color: var(--color-amber);
+    border: 1px solid var(--color-amber-border);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .bc-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .bc-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    margin-bottom: 0.65rem;
+  }
+
+  .bc-body h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    line-height: 1.35;
+    margin-bottom: 0.65rem;
+  }
+
+  .bc-body h3 a:hover {
+    color: var(--color-amber);
+  }
+
+  .bc-summary {
+    font-size: 0.88rem;
+    color: var(--color-slate);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .bc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 0.85rem;
+    font-size: 0.78rem;
+  }
+
+  .bc-author {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  .bc-read-link {
+    color: #B87708;
+    font-weight: 700;
+    transition: color 0.2s ease;
+  }
+
+  .bc-read-link:hover {
+    color: var(--color-navy);
+  }
+
+  .no-results-box {
+    text-align: center;
+    padding: 3.5rem;
+    color: var(--color-slate);
+  }
+
+  /* ==========================================================================
+     BLOG CTA BANNER
+     ========================================================================== */
+  .blog-cta-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .bcb-text h2 {
+    font-size: 1.85rem;
+    color: #FFFFFF;
+    margin-top: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .bcb-text p {
+    font-size: 1rem;
+    color: #CBD5E1;
+    max-width: 650px;
+    line-height: 1.6;
+  }
+
+  .bcb-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .featured-article-card {
+      grid-template-columns: 1fr;
+    }
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .blog-cta-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .bcb-actions {
+      width: 100%;
+    }
+    .bcb-actions .btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .filter-controls-wrap {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .blog-search-box input {
+      width: 100%;
+    }
+    .fac-content {
+      padding: 1.5rem;
+    }
+  }
+</style>
