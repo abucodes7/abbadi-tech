@@ -51,7 +51,7 @@ export const homeFaqs: FAQItem[] = [
 export const aboutFaqs: FAQItem[] = [
   {
     question: "What commercial licenses and accreditations does Abbadi Tech LLC hold in Dubai?",
-    answer: "Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C is registered with the Dubai Department of Economy and Tourism (DET / DED) under Trade Licence No. 571822, classified as an Electrical & Mechanical Contracting company. We hold direct registration and contractor portal credentials with the Dubai Electricity and Water Authority (DEWA Reg. DEWA-M-4892), Dubai Municipality (DM), and the Dubai Chamber of Commerce."
+    answer: "Abbadi Tech Technical Solutions LLC is registered with the Dubai Department of Economy and Tourism (DET / DED) under Trade Licence No. 571822, classified as a Technical Solutions & Contracting company. We hold direct registration and contractor portal credentials with the Dubai Electricity and Water Authority (DEWA Reg. DEWA-M-4892), Dubai Municipality (DM), and the Dubai Chamber of Commerce."
   },
   {
     question: "Does Abbadi Tech use sub-contracted third-party labor or in-house engineers?",

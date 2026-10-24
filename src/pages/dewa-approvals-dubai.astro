@@ -1,0 +1,772 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { dewaWorksFaqs } from '../data/faq';
+import { projectsList } from '../data/projects';
+
+const pageTitle = "DEWA Approvals Dubai | Fast-Track Electrical & Water NOCs | Abbadi Tech";
+const pageDescription = "Fast, guaranteed DEWA approvals in Dubai. Single-Line Diagrams (SLD), load schedules, fit-out NOCs, and meter energization by Abbadi Tech Technical Solutions LLC.";
+
+const dewaProjects = projectsList
+  .filter(p => p.scope === 'electrical' || p.scope === 'both')
+  .slice(0, 6);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.abbaditech.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "DEWA Approvals Dubai",
+      "item": "https://www.abbaditech.com/dewa-approvals-dubai"
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "DEWA Approvals Dubai",
+  "serviceType": "DEWA Electrical & Water Approvals, SLD Design & Meter Energization",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "DEWA Approvals Dubai - Division of Abbadi Tech Technical Solutions LLC",
+    "telephone": "+971505546943",
+    "email": "it.abbaditech@gmail.com",
+    "url": "https://www.abbaditech.com/dewa-approvals-dubai"
+  },
+  "areaServed": "Dubai",
+  "description": "Specialized division of Abbadi Tech Technical Solutions LLC providing fast-track DEWA approvals, load enhancement, electrical drawing design, and meter installation across Dubai."
+};
+---
+
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  currentPath="/dewa-approvals-dubai"
+  jsonLd={[breadcrumbSchema, serviceSchema]}
+>
+  <!-- HERO WITH LEAD CAPTURE FORM -->
+  <section class="dewa-hero">
+    <div class="container dewa-hero-container">
+      <div class="dewa-hero-text">
+        <div class="crumb">
+          <a href="/">Home</a> <span>/</span> <span>DEWA Approvals Dubai</span>
+        </div>
+
+        <div class="lead-division-badge">
+          <span class="pulse-dot"></span>
+          <span>Official Subordinate Division of Abbadi Tech Technical Solutions LLC</span>
+        </div>
+
+        <h1>DEWA APPROVALS DUBAI: <span class="text-gradient">FAST-TRACK ELECTRICAL &amp; WATER NOCS</span></h1>
+        
+        <p class="lead-desc">
+          Need swift, guaranteed DEWA approvals for your commercial fit-out, retail shop, restaurant, or villa? Our accredited engineers prepare certified Single-Line Diagrams (SLD), calculate connected load schedules, and manage online portal submissions directly to official meter release.
+        </p>
+
+        <!-- Trust stats -->
+        <div class="dewa-trust-row">
+          <div class="dt-item">
+            <strong>21+ Years</strong>
+            <span>DEWA Registered</span>
+          </div>
+          <div class="dt-divider"></div>
+          <div class="dt-item">
+            <strong>3 - 5 Days</strong>
+            <span>Typical NOC Turnaround</span>
+          </div>
+          <div class="dt-divider"></div>
+          <div class="dt-item">
+            <strong>100%</strong>
+            <span>First-Pass Inspection</span>
+          </div>
+        </div>
+
+        <div class="direct-hotline-box">
+          <div class="dh-icon"><Icon name="PhoneCall" size={24} color="#FF9500" /></div>
+          <div>
+            <span class="dh-label">Urgent Approval Hotline (24/7):</span>
+            <a href="tel:+971505546943" class="dh-num">+971 50 554 6943</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Capture Card -->
+      <div class="dewa-lead-card">
+        <div class="dlc-header">
+          <span class="badge badge-gold">Fast Response</span>
+          <h3>Request DEWA Approval Lead Assessment</h3>
+          <p>Submit your site requirements below for an instant engineering review.</p>
+        </div>
+
+        <form class="dewa-form" id="dewa-lead-form">
+          <div class="form-group">
+            <label for="lead-name">Your Full Name *</label>
+            <input type="text" id="lead-name" name="name" required placeholder="e.g. Tariq Al Mansoori" class="form-input" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lead-phone">Mobile / WhatsApp *</label>
+              <input type="tel" id="lead-phone" name="phone" required placeholder="+971 50 000 0000" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="lead-email">Business Email</label>
+              <input type="email" id="lead-email" name="email" placeholder="name@company.com" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lead-type">Property Category *</label>
+              <select id="lead-type" name="property_type" required class="form-input">
+                <option value="Retail Boutique / Shop">Retail Boutique / Mall Store</option>
+                <option value="Restaurant / F&B Cafe">Restaurant / F&B Cafe</option>
+                <option value="Corporate Office / Tower">Corporate Office / Tower</option>
+                <option value="Luxury Private Villa">Luxury Private Villa</option>
+                <option value="Warehouse / Industrial">Warehouse / Industrial</option>
+                <option value="Other Commercial Unit">Other Commercial Unit</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lead-scope">Required DEWA Service *</label>
+              <select id="lead-scope" name="service_scope" required class="form-input">
+                <option value="DEWA Fit-Out NOC">DEWA Fit-Out NOC (Decoration)</option>
+                <option value="Power Load Upgrade">Power Load Upgrade (Enhancement)</option>
+                <option value="SLD & Load Schedule Design">Single-Line Diagram (SLD) Design</option>
+                <option value="Smart Meter Release & Energization">Smart Meter Release &amp; Energization</option>
+                <option value="Inspection Red Notice Rectification">Inspection Rejection Rectification</option>
+                <option value="Temporary Builder Power">Temporary Construction Power</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lead-details">Project Details / Unit Number &amp; Premise ID</label>
+            <textarea id="lead-details" name="details" rows="3" placeholder="Mention unit location (e.g. Dubai Mall, Business Bay, JLT), premise ID, or existing load..." class="form-input"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-shimmer" id="lead-submit-btn">
+            ⚡ Submit For Fast-Track DEWA Approval →
+          </button>
+
+          <p class="form-privacy-note">
+            <Icon name="ShieldCheck" size={14} color="#10B981" /> 100% Confidential. Directly handled by Abbadi Tech Technical Solutions LLC.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 CORE DEWA APPROVAL LEAD SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Core Capabilities</span>
+        <h2>Comprehensive DEWA Approval Services in Dubai</h2>
+        <p class="section-sub">
+          As a registered contractor for over 21 years, we manage every phase of authority documentation, technical calculation, and physical site coordination.
+        </p>
+      </div>
+
+      <div class="dewa-services-grid">
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="FileCheck" size={26} color="#FF9500" /></div>
+          <h3>1. DEWA Fit-Out NOC (Decoration)</h3>
+          <p>Complete engineering documentation and E-Services portal submission for retail shops, offices, and restaurants to secure fast DEWA No Objection Certificates without delay.</p>
+          <ul class="dsc-points">
+            <li>Review tenancy manuals &amp; landlord permits</li>
+            <li>Submission of approved layouts &amp; electrical load</li>
+            <li>Fast 3 to 5 business day approval turnaround</li>
+          </ul>
+        </div>
+
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="Zap" size={26} color="#FF9500" /></div>
+          <h3>2. Power Load Upgrades &amp; Enhancements</h3>
+          <p>Need extra electrical power for heavy commercial ovens, chillers, or EV charging stations? We conduct connected load audits and secure DEWA sanctions for increased kilowatt capacity.</p>
+          <ul class="dsc-points">
+            <li>Assessment of building transformer margin</li>
+            <li>Load schedule revision &amp; breaker enhancement</li>
+            <li>Substation upgrade coordination with DEWA</li>
+          </ul>
+        </div>
+
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="Layers" size={26} color="#FF9500" /></div>
+          <h3>3. Certified Single-Line Diagrams (SLD)</h3>
+          <p>Under Dubai law, only registered contractors can draft and stamp electrical schematics. We calculate diversified maximum demand and engineer compliant SLDs matching DEWA regulations.</p>
+          <ul class="dsc-points">
+            <li>Precise cable sizing &amp; voltage drop formulas</li>
+            <li>Phase balancing (Red, Yellow, Blue)</li>
+            <li>RCD, MCCB, and MCB protection calibration</li>
+          </ul>
+        </div>
+
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="Landmark" size={26} color="#FF9500" /></div>
+          <h3>4. MDB Panel Assembly &amp; Intake Rooms</h3>
+          <p>We supply, build, and test Main Distribution Boards (MDB), Sub-Main Boards (SMDB), and meter cabinets in strict accordance with DEWA spatial and safety regulations.</p>
+          <ul class="dsc-points">
+            <li>Factory-tested busbars and ferruled wiring</li>
+            <li>DEWA-compliant rubber floor mats &amp; directories</li>
+            <li>Adequate ventilation &amp; spatial clearances</li>
+          </ul>
+        </div>
+
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="CheckCircle2" size={26} color="#FF9500" /></div>
+          <h3>5. Smart Meter Fixing &amp; Energization</h3>
+          <p>Following successful field inspection pass, we coordinate with DEWA technicians to mount and commission the smart kilowatt-hour meter, releasing live electrical power to your premises.</p>
+          <ul class="dsc-points">
+            <li>CT chamber wiring for loads exceeding 100A</li>
+            <li>Communication conduit verification</li>
+            <li>Immediate live power turn-on</li>
+          </ul>
+        </div>
+
+        <div class="dewa-service-card card-interactive">
+          <div class="dsc-icon"><Icon name="AlertTriangle" size={26} color="#FF9500" /></div>
+          <h3>6. Inspection Rejection Rectification</h3>
+          <p>Did an uncertified fit-out contractor fail your DEWA inspection? We conduct urgent diagnostic site audits, rectify all wiring/earthing non-compliances, and secure re-inspection clearance.</p>
+          <ul class="dsc-points">
+            <li>Correction of cable gauge &amp; earthing resistance</li>
+            <li>Resolution of phase imbalance &amp; labeling faults</li>
+            <li>Rapid re-scheduling of DEWA inspectors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP-BY-STEP APPROVAL WORKFLOW -->
+  <section class="section bg-card-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Transparent Timeline</span>
+        <h2>How We Secure Your DEWA Approval Step-by-Step</h2>
+        <p class="section-sub">A streamlined 5-stage process designed to eliminate red tape and avoid inspection delays.</p>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="wf-card">
+          <span class="wf-step">01</span>
+          <h4>Drawing &amp; Load Audit</h4>
+          <p>You share your architectural plans and equipment schedule. We audit power demands and confirm existing building capacity within 24 hours.</p>
+        </div>
+
+        <div class="wf-card">
+          <span class="wf-step">02</span>
+          <h4>SLD Design &amp; Calculation</h4>
+          <p>Our registered electrical engineers prepare compliant single-line diagrams, load schedules, and cable containment plans.</p>
+        </div>
+
+        <div class="wf-card">
+          <span class="wf-step">03</span>
+          <h4>Online DEWA Submission</h4>
+          <p>We submit the package via the DEWA E-Services portal, tracking review division feedback until official NOC sanction is granted.</p>
+        </div>
+
+        <div class="wf-card">
+          <span class="wf-step">04</span>
+          <h4>Pre-Inspection Testing</h4>
+          <p>Our technicians conduct calibrated Megger insulation resistance testing, loop impedance, and earth continuity (&lt;1.0 Ohm) on site.</p>
+        </div>
+
+        <div class="wf-card">
+          <span class="wf-step">05</span>
+          <h4>Inspection &amp; Energization</h4>
+          <p>We accompany the DEWA inspector on site, secure immediate green clearance, and oversee final smart meter energization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVEN RECENT ENERGIZATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gold">Proven Handover</span>
+        <h2>Recent DEWA-Approved Project Handing Overs</h2>
+        <p class="section-sub">A selection of commercial, retail, dining, and villa installations energized across Dubai.</p>
+      </div>
+
+      <div class="projects-mini-grid">
+        {dewaProjects.map((p) => (
+          <div class="project-card">
+            <div class="p-header">
+              <span class="p-sector">{p.sectorLabel}</span>
+              <span class="p-area">{p.location}</span>
+            </div>
+            <h4>{p.name}</h4>
+            <p class="p-client">{p.clientType}</p>
+            <p class="p-delivered"><strong>Delivered:</strong> {p.delivered}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="center-btn" style="margin-top:2.5rem; text-align:center;">
+        <a href="/projects" class="btn btn-secondary">Explore All 1000+ Completed Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALIZED FAQ -->
+  <FAQSection 
+    title="Frequently Asked Questions About DEWA Approvals in Dubai" 
+    subtitle="Direct answers from our DEWA liaison engineers regarding approvals, load schedules, inspections, and energization."
+    badge="DEWA Approvals FAQ"
+    faqs={dewaWorksFaqs}
+  />
+
+  <!-- BOTTOM LEAD CTA BANNER -->
+  <section class="section section-cta">
+    <div class="container">
+      <div class="cta-inner-card">
+        <span class="badge badge-gold" style="margin-bottom:1rem">Lead Division Hotline</span>
+        <h2>Need an Urgent DEWA Approval or Load Sanction in Dubai?</h2>
+        <p>Connect directly with senior DEWA liaison engineers at Abbadi Tech Technical Solutions LLC for fast drawing reviews, site surveys, and approval submissions.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/971505546943?text=Hello%20DEWA%20Approvals%20Dubai,%20I%20need%20urgent%20DEWA%20approval%20assistance" target="_blank" rel="noopener" class="btn btn-primary">
+            <Icon name="MessageSquare" size={16} /> WhatsApp Approval Desk (+971 50 554 6943)
+          </a>
+          <a href="tel:+971505546943" class="btn btn-secondary">
+            <Icon name="Phone" size={16} /> Call +971 50 554 6943
+          </a>
+          <a href="/contact" class="btn btn-outline-white">
+            Submit Drawings via Web Form
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Dynamic WhatsApp Lead Form Redirect
+  const leadForm = document.getElementById('dewa-lead-form') as HTMLFormElement;
+  if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('lead-name') as HTMLInputElement)?.value || '';
+      const phone = (document.getElementById('lead-phone') as HTMLInputElement)?.value || '';
+      const type = (document.getElementById('lead-type') as HTMLSelectElement)?.value || '';
+      const scope = (document.getElementById('lead-scope') as HTMLSelectElement)?.value || '';
+      const details = (document.getElementById('lead-details') as HTMLTextAreaElement)?.value || '';
+
+      const waMsg = `Hello Abbadi Tech (DEWA Approvals Dubai), I am requesting an approval assessment:%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Property Type:* ${encodeURIComponent(type)}%0A*Required Service:* ${encodeURIComponent(scope)}%0A*Details:* ${encodeURIComponent(details)}`;
+
+      window.open(`https://wa.me/971505546943?text=${waMsg}`, '_blank');
+    });
+  }
+</script>
+
+<style>
+  .dewa-hero {
+    padding: 3.5rem 0 4rem;
+    background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15) 0%, transparent 60%), #0A0F1D;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dewa-hero-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .crumb {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .crumb a {
+    color: var(--text-muted);
+  }
+
+  .crumb a:hover {
+    color: var(--primary);
+  }
+
+  .crumb span {
+    margin: 0 0.35rem;
+  }
+
+  .lead-division-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34D399;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dewa-hero-text h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    font-weight: 800;
+  }
+
+  .lead-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+
+  .dewa-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+  }
+
+  .dt-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dt-item strong {
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .dt-item span {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+
+  .dt-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border-subtle);
+  }
+
+  .direct-hotline-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.25rem;
+  }
+
+  .dh-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dh-num {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .dh-num:hover {
+    color: var(--primary);
+  }
+
+  /* Lead Capture Card */
+  .dewa-lead-card {
+    background: #0D1424;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.1);
+  }
+
+  .dlc-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .dlc-header h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .dlc-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .dewa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .form-input {
+    background: #080D18;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.88rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+
+  .btn-block {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.85rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .form-privacy-note {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    justify-content: center;
+    margin-top: 0.4rem;
+  }
+
+  /* Services Grid */
+  .dewa-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .dewa-service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dsc-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .dewa-service-card h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .dewa-service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .dsc-points {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0 0;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .dsc-points li {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .dsc-points li::before {
+    content: "✓";
+    color: #10B981;
+    position: absolute;
+    left: 0;
+    font-weight: 800;
+  }
+
+  /* Workflow */
+  .workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .wf-card {
+    background: #090D18;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.25rem;
+    position: relative;
+  }
+
+  .wf-step {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(245, 158, 11, 0.35);
+    display: block;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+
+  .wf-card h4 {
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .wf-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Projects Mini Grid */
+  .projects-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+  }
+
+  .p-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .p-area {
+    color: var(--text-dim);
+  }
+
+  .project-card h4 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .p-client {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .p-delivered {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .dewa-hero-container {
+      grid-template-columns: 1fr;
+    }
+    .dewa-services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .workflow-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .projects-mini-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .dewa-services-grid {
+      grid-template-columns: 1fr;
+    }
+    .workflow-grid {
+      grid-template-columns: 1fr;
+    }
+    .projects-mini-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .dewa-trust-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .dt-divider {
+      display: none;
+    }
+  }
+</style>

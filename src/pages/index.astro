@@ -55,7 +55,7 @@ const faqSchema = {
 
         <!-- Subheadline / Value Proposition -->
         <p class="hero-lead reveal stagger-2">
-          <strong>Abbadi Tech LLC</strong> delivers certified turnkey electrical and plumbing contracting across Dubai and Abu Dhabi. From high-capacity DEWA power infrastructure and luxury retail fit-outs to high-pressure plumbing, drainage networks, and booster pump systems—delivered strictly on schedule.
+          <strong>Abbadi Tech Technical Solutions LLC</strong> delivers certified turnkey electrical and plumbing contracting across Dubai and Abu Dhabi. From high-capacity DEWA power infrastructure and luxury retail fit-outs to high-pressure plumbing, drainage networks, and booster pump systems—delivered strictly on schedule.
         </p>
 
         <!-- The 2 CTAs -->
@@ -168,6 +168,28 @@ const faqSchema = {
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- DEWA Approvals Dubai Subordinate Division Lead Callout -->
+      <div class="dewa-lead-portal-banner reveal">
+        <div class="dlpb-content">
+          <div class="dlpb-badge">
+            <span class="pulse-dot"></span>
+            <span>Lead Generation Division: dewaapprovalsdubai</span>
+          </div>
+          <h3>Need Fast-Track DEWA Approvals &amp; Load Enhancements in Dubai?</h3>
+          <p>
+            <strong>DEWA Approvals Dubai</strong> operates as a specialized subordinate lead &amp; approval division of <strong>Abbadi Tech Technical Solutions LLC</strong>. We fast-track retail, restaurant, and commercial electrical NOCs, Single-Line Diagrams (SLD), and meter energizations across Dubai.
+          </p>
+        </div>
+        <div class="dlpb-actions">
+          <a href="/dewa-approvals-dubai" class="btn btn-primary btn-shimmer">
+            ⚡ Request DEWA Approval Lead Assessment →
+          </a>
+          <a href="https://wa.me/971505546943?text=Hello%20DEWA%20Approvals%20Dubai,%20I%20need%20urgent%20approval%20support" target="_blank" rel="noopener" class="btn btn-secondary">
+            <Icon name="MessageSquare" size={16} /> WhatsApp Approval Desk
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -467,6 +489,71 @@ const faqSchema = {
 </Layout>
 
 <style>
+  /* DEWA Approvals Dubai Banner */
+  .dewa-lead-portal-banner {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(13, 20, 36, 0.95) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+  }
+
+  .dlpb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34D399;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dlpb-content h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .dlpb-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 700px;
+  }
+
+  .dlpb-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .dewa-lead-portal-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.75rem;
+    }
+    .dlpb-actions {
+      width: 100%;
+    }
+    .dlpb-actions .btn {
+      width: 100%;
+    }
+  }
+
   /* HERO SECTION */
   .hero-section {
     position: relative;

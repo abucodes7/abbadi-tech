@@ -10,6 +10,7 @@ const { currentPath = '' } = Astro.props;
 const serviceLinks = [
   { href: '/services/electrical-contractors-dubai', label: 'Electrical Contractors', icon: 'Zap', desc: 'DEWA Works, MDB/SMDB Panels, Metering' },
   { href: '/services/plumbing-contractors-dubai', label: 'Plumbing & Drainage', icon: 'Droplets', desc: 'PPR, Copper, HDPE & Booster Pumps' },
+  { href: '/dewa-approvals-dubai', label: 'DEWA Approvals Dubai', icon: 'CheckCircle2', desc: 'Fast-Track DEWA NOCs, SLD & Approvals Division' },
 ];
 
 const navItems = [
@@ -29,7 +30,9 @@ const navItems = [
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="badges-group">
-        <span class="live-status-pill"><span class="pulse-dot"></span> DEWA Dispatch: Active Now</span>
+        <a href="/dewa-approvals-dubai" style="text-decoration:none; display:inline-flex;">
+          <span class="live-status-pill"><span class="pulse-dot"></span> DEWA Approvals Dubai</span>
+        </a>
         <span class="badge badge-gold"><Icon name="Zap" size={13} /> Registered DEWA Contractor</span>
         <span class="badge badge-green"><Icon name="CheckCircle2" size={13} /> 21+ Years in Dubai</span>
       </div>
@@ -56,7 +59,7 @@ const navItems = [
         />
         <div class="brand-text-block">
           <div class="logo-text"><span class="logo-abbadi">ABBADI</span><span class="logo-tech">TECH</span></div>
-          <div class="logo-sub">ELECTRICAL & MECHANICAL CONT. CO. L.L.C</div>
+          <div class="logo-sub">TECHNICAL SOLUTIONS L.L.C</div>
         </div>
       </a>
 
