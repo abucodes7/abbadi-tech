@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { servicesData } from '../../data/services';
+import { servicesIndexFaqs } from '../../data/faq';
 
 const pageTitle = "Electrical & Plumbing Contractors Dubai | Abbadi Tech LLC";
 const pageDescription = "Explore Abbadi Tech's core contracting services in Dubai: DEWA electrical works, MDB panels, and commercial plumbing & drainage engineering.";
@@ -149,6 +151,14 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions About MEP Contracting Services" 
+    subtitle="Direct engineering answers regarding turnkey MEP scope, authority coordination, trade bundling, and testing."
+    badge="Services & Execution FAQ"
+    faqs={servicesIndexFaqs}
+  />
 
   <!-- CTA -->
   <section class="section section-cta">

@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { areasData } from '../../data/areas';
 import { projectsList } from '../../data/projects';
+import { areasFaqs } from '../../data/faq';
 
 const pageTitle = "Areas We Serve in Dubai & UAE | MEP Contractors | Abbadi Tech";
 const pageDescription = "Explore Abbadi Tech's MEP contracting coverage across Dubai and the UAE: Dubai Central HQ, Downtown, DIFC, Palm Jumeirah, JLT, Dubai Marina, DIP, and Abu Dhabi.";
@@ -131,6 +133,14 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions: Dubai & UAE Regional Contracting" 
+    subtitle="Direct answers on jurisdiction approvals: Dubai Municipality, DDA, DMCC, Trakhees, Nakheel, and Abu Dhabi."
+    badge="Jurisdiction & Coverage FAQ"
+    faqs={areasFaqs}
+  />
 
   <!-- CTA -->
   <section class="section section-cta">

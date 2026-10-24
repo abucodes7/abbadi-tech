@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { resourcesData } from '../../data/resources';
+import { resourcesFaqs } from '../../data/faq';
 
 const pageTitle = "Technical Resources & Guides | DEWA & MEP Dubai | Abbadi Tech";
 const pageDescription = "Authoritative technical guides for Dubai MEP projects: step-by-step DEWA electrical approval processes, commercial fit-out cost benchmarks, and UAE plumbing standards.";
@@ -73,6 +75,14 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions: Costs, Permits & Approvals" 
+    subtitle="Direct answers regarding DEWA approval steps, fit-out cost benchmarks per sq. ft, and document checklists."
+    badge="Costs & Approvals FAQ"
+    faqs={resourcesFaqs}
+  />
 
   <!-- CTA -->
   <section class="section section-cta">

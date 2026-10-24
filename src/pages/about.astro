@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { aboutFaqs } from '../data/faq';
 
 const pageTitle = "About Abbadi Tech | MEP Contractors in Dubai Since 2005";
 const pageDescription = "21+ years of electrical and plumbing contracting in the UAE. Meet Founder and Chairman Koyakutty Mohammed and the team behind 1000+ delivered projects.";
@@ -219,6 +221,14 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <!-- FAQ SECTION -->
+  <FAQSection 
+    title="Frequently Asked Questions About Abbadi Tech LLC" 
+    subtitle="Direct answers regarding our 21+ years of UAE licensing, compliance, in-house engineers, and warranties."
+    badge="Corporate & Standards FAQ"
+    faqs={aboutFaqs}
+  />
 
   <!-- BOTTOM CTA -->
   <section class="section section-cta">
