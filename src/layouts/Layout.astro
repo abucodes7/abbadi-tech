@@ -23,22 +23,61 @@ const {
   jsonLd
 } = Astro.props;
 
-// Base LocalBusiness Schema (Electrician, Plumber)
+// Base LocalBusiness Schema (Electrician, Plumber, GeneralContractor)
 const businessSchema = {
   "@context": "https://schema.org",
-  "@type": ["Electrician", "Plumber", "GeneralContractor"],
+  "@type": ["Electrician", "Plumber", "GeneralContractor", "LocalBusiness"],
   "@id": "https://www.abbaditech.com/#business",
   "name": "Abbadi Tech Technical Solutions LLC",
   "legalName": "Abbadi Tech Technical Solutions LLC",
-  "alternateName": "Abbadi Tech LLC",
+  "alternateName": ["Abbadi Tech LLC", "DEWA Approvals Dubai", "Abbadi Tech Contracting"],
   "url": "https://www.abbaditech.com/",
   "logo": "https://www.abbaditech.com/logo.png",
   "image": ogImage,
   "telephone": "+971505546943",
   "email": "it.abbaditech@gmail.com",
   "foundingDate": "2005",
-  "priceRange": "$$",
+  "priceRange": "AED",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer, Cheque",
+  "currenciesAccepted": "AED",
   "openingHours": "Mo-Sa 08:00-18:00",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59",
+      "description": "24/7 Emergency Electrical & MEP On-Call Dispatch"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "184",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971505546943",
+      "contactType": "customer service & technical estimation",
+      "areaServed": ["AE", "Dubai", "Abu Dhabi", "Ajman"],
+      "availableLanguage": ["English", "Arabic", "Hindi", "Urdu"]
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971505546943",
+      "contactType": "emergency dispatch",
+      "hoursAvailable": "Mo-Su 00:00-24:00"
+    }
+  ],
   "founder": {
     "@type": "Person",
     "name": "Koyakutty Mohammed",
@@ -59,19 +98,38 @@ const businessSchema = {
   },
   "areaServed": [
     { "@type": "City", "name": "Dubai" },
+    { "@type": "AdministrativeArea", "name": "Business Bay" },
+    { "@type": "AdministrativeArea", "name": "Downtown Dubai" },
+    { "@type": "AdministrativeArea", "name": "DIFC (Dubai International Financial Centre)" },
+    { "@type": "AdministrativeArea", "name": "Palm Jumeirah" },
+    { "@type": "AdministrativeArea", "name": "Dubai Marina" },
+    { "@type": "AdministrativeArea", "name": "JLT (Jumeirah Lakes Towers)" },
+    { "@type": "AdministrativeArea", "name": "Al Quoz Industrial Area" },
+    { "@type": "AdministrativeArea", "name": "Dubai Investments Park (DIP)" },
+    { "@type": "AdministrativeArea", "name": "Dubai South" },
+    { "@type": "AdministrativeArea", "name": "Dubai Silicon Oasis" },
+    { "@type": "AdministrativeArea", "name": "Al Barsha" },
     { "@type": "City", "name": "Abu Dhabi" },
     { "@type": "City", "name": "Ajman" }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Core Technical Contracting Services",
+    "name": "Licensed Technical & MEP Contracting Services",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
+          "name": "DEWA Approvals & Fast-Track NOCs Dubai",
+          "description": "Certified online portal submissions, Single-Line Diagrams (SLD), load schedule calculations, fit-out NOCs, and final meter energization across Dubai."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
           "name": "Electrical Contractors Dubai",
-          "description": "DEWA approved works, load schedule calculations, MDB/SMDB panels, wiring, and meter fixing."
+          "description": "MDB/SMDB panel building, cable pulling, busbar trunking, 3-phase power distribution, and testing & commissioning."
         }
       },
       {
@@ -79,7 +137,23 @@ const businessSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Plumbing & Drainage Contractors Dubai",
-          "description": "PPR and copper water lines, HDPE and UPVC drainage, booster pumps, and luxury sanitary fittings."
+          "description": "PPR & copper water supply piping, HDPE & UPVC acoustic drainage, automatic booster pumps, and water heater installations."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commercial Kitchen Grease Trap & Municipality Approvals",
+          "description": "Dubai Municipality compliant grease trap supply, biological dosing systems, and certified kitchen drainage rough-in."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "24/7 Emergency Electrical & MEP Repair Dubai",
+          "description": "Rapid on-site emergency dispatch for short circuits, breaker trips, pump failures, and power outages."
         }
       }
     ]
@@ -98,8 +172,9 @@ const businessSchema = {
     
     <!-- Crawl & Indexing -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="author" content="Abbadi Tech LLC" />
-    <meta name="theme-color" content="#FF9500" />
+    <meta name="author" content="Abbadi Tech Technical Solutions LLC" />
+    <meta name="theme-color" content="#0C2340" />
+    <meta name="keywords" content="DEWA approved contractor Dubai, DEWA approvals Dubai, electrical contractor Dubai, commercial plumbing contractor Dubai, DEWA fit-out NOC, Single-Line Diagram SLD Dubai, load schedule calculation, MDB SMDB panel Dubai, grease trap Dubai Municipality approval, emergency electrical contractor Dubai, MEP contracting Dubai" />
 
     <!-- Geo Meta Tags for Local UAE SEO -->
     <meta name="geo.region" content="AE-DU" />

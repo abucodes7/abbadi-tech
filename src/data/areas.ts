@@ -14,17 +14,17 @@ export interface AreaItem {
 
 export const areasData: AreaItem[] = [
   {
-    id: "al-quoz",
-    slug: "al-quoz",
-    name: "Al Quoz & Industrial Area",
-    headline: "Fast-Response MEP Contractors in Al Quoz Industrial Hub",
-    metaTitle: "MEP Contractors Al Quoz Dubai | Electrical & Plumbing | Abbadi Tech",
-    metaDescription: "Based in Al Quoz behind Al Khail Mall. Abbadi Tech delivers DEWA electrical works, warehouse plumbing, and commercial HVAC across Al Quoz 1, 2, 3 & 4.",
-    description: "Abbadi Tech LLC is headquartered directly in Al Quoz (Oberoi Properties Building, Behind Al Khail Mall). We provide immediate same-day site visits, heavy 3-phase industrial power installations, commercial kitchen plumbing, warehouse high-bay lighting, and mechanical maintenance throughout Al Quoz 1, 2, 3, and 4.",
-    keyLandmarks: ["Behind Al Khail Mall", "Al Quoz Creative Zone", "Al Serkal Avenue", "Al Quoz Industrial 1-4"],
-    servicesOffered: ["DEWA Substation & MDB Panels", "Heavy Warehouse Electrical Cabling", "Commercial Cloud Kitchen Plumbing", "Industrial AC & Exhaust Systems", "24/7 Emergency Repairs"],
-    responseTime: "15 - 30 Minutes (Headquarters Location)",
-    projectsCount: "12+ Projects"
+    id: "business-bay",
+    slug: "business-bay",
+    name: "Business Bay Commercial District",
+    headline: "Commercial Office & Hospitality MEP Contractors in Business Bay",
+    metaTitle: "MEP Contractors Business Bay Dubai | DEWA Approved | Abbadi Tech",
+    metaDescription: "Premier MEP contractors in Business Bay Dubai: turnkey corporate fit-outs, restaurant MEP, DEWA approvals & DB panel building. Call +971 50 554 6943.",
+    description: "Business Bay is Dubai's high-density business epicentre. Abbadi Tech delivers precision electrical load schedule engineering, DEWA NOC approvals, corporate chilled water FCUs, and luxury restaurant drainage for landmark commercial towers along Marasi Drive, Bay Square, and the Dubai Canal.",
+    keyLandmarks: ["Bay Square Commercial", "The Executive Towers", "The Opus by Omniyat", "Marasi Drive", "Iris Bay"],
+    servicesOffered: ["DEWA Commercial Load Approvals & NOCs", "MDB & SMDB Distribution Board Upgrades", "Restaurant Kitchen Drainage & Grease Traps", "High-Rise Chilled Water FCU Commissioning", "24/7 Rapid Emergency Dispatch"],
+    responseTime: "20 - 35 Minutes Rapid Dispatch",
+    projectsCount: "25+ Projects"
   },
   {
     id: "downtown",

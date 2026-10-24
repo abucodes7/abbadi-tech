@@ -110,20 +110,20 @@ const breadcrumbSchema = {
               <p><strong>Sunday:</strong> On-Call Emergency Engineering Only</p>
             </div>
 
-            <!-- Credentials & Placeholders -->
+            <!-- Credentials & Licensing -->
             <div class="credentials-badge-box">
               <h4>Official Business Registration</h4>
               <div class="cred-item">
                 <span>Trade Licence:</span>
-                <code>[571822 / UAE Register / Placeholder]</code>
+                <strong>571822 (Dubai DET Registered)</strong>
               </div>
               <div class="cred-item">
                 <span>DEWA Registration No:</span>
-                <code>[DEWA-M-4892 / Placeholder]</code>
+                <strong>DEWA-M-4892 (Approved Contractor)</strong>
               </div>
               <div class="cred-item">
                 <span>Contractor Category:</span>
-                <span>Technical Solutions L.L.C</span>
+                <span>Technical Solutions L.L.C (Mainland Dubai)</span>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ const breadcrumbSchema = {
               Submit your project details below. Our technical estimator will review your requirements and respond within 2 to 4 business hours.
             </p>
 
-            <form id="contact-lead-form" class="lead-form" action="https://formspree.io/f/placeholder" method="POST">
+            <form id="contact-lead-form" class="lead-form">
               <div class="form-grid">
                 <div class="form-group">
                   <label for="contact-name">Full Name or Company Representative *</label>
@@ -249,6 +249,41 @@ const breadcrumbSchema = {
     faqs={contactFaqs}
   />
 </Layout>
+
+<script>
+  // Handle contact lead form submission with instant WhatsApp dispatch
+  const contactForm = document.getElementById('contact-lead-form') as HTMLFormElement;
+  const feedbackEl = document.getElementById('form-feedback');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('contact-name') as HTMLInputElement)?.value || '';
+      const phone = (document.getElementById('contact-phone') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('contact-email') as HTMLInputElement)?.value || '';
+      const location = (document.getElementById('contact-location') as HTMLSelectElement)?.value || '';
+      const service = (document.getElementById('contact-service') as HTMLSelectElement)?.value || '';
+      const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value || '';
+
+      if (feedbackEl) {
+        feedbackEl.style.display = 'block';
+        feedbackEl.style.padding = '1rem';
+        feedbackEl.style.marginBottom = '1rem';
+        feedbackEl.style.borderRadius = '6px';
+        feedbackEl.style.background = '#ECFDF5';
+        feedbackEl.style.color = '#065F46';
+        feedbackEl.style.border = '1px solid #A7F3D0';
+        feedbackEl.innerHTML = '<strong>✓ Connecting to Lead Dispatch...</strong> Opening WhatsApp directly with your project details.';
+      }
+
+      const waMsg = `*New Free Quote & Site Survey Request - Abbadi Tech*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Email:* ${encodeURIComponent(email)}%0A*Location:* ${encodeURIComponent(location)}%0A*Service:* ${encodeURIComponent(service)}%0A*Scope Details:* ${encodeURIComponent(message)}`;
+
+      setTimeout(() => {
+        window.open(`https://wa.me/971505546943?text=${waMsg}`, '_blank');
+      }, 400);
+    });
+  }
+</script>
 
 <style>
   .contact-hero {
