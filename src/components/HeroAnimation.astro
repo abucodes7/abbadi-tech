@@ -1,54 +1,161 @@
 ---
-// Hero Technical Blueprint: Refined architectural schematics for electrical and hydraulic engineering
+// Hero Technical Electrical Grid: Authentic UAE MEP Single-Line Diagram (SLD) & Power Distribution Animation
 ---
 
 <div class="hero-canvas-wrap" aria-hidden="true">
-  <svg class="hero-svg" viewBox="0 0 1440 700" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-svg" viewBox="0 0 1440 760" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Subtle Electrical Amber Gradient -->
-      <linearGradient id="electricGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#F5A623" stop-opacity="0" />
-        <stop offset="50%" stop-color="#F5A623" stop-opacity="0.45" />
-        <stop offset="100%" stop-color="#F5A623" stop-opacity="0" />
+      <!-- High-Voltage Electric Blue Pulse Gradient -->
+      <linearGradient id="electricBlueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284C7" stop-opacity="0" />
+        <stop offset="30%" stop-color="#0066FF" stop-opacity="0.2" />
+        <stop offset="50%" stop-color="#38BDF8" stop-opacity="1" />
+        <stop offset="70%" stop-color="#0066FF" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
       </linearGradient>
 
-      <!-- Subtle Plumbing Teal Gradient -->
-      <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#16A6A1" stop-opacity="0" />
-        <stop offset="50%" stop-color="#16A6A1" stop-opacity="0.4" />
-        <stop offset="100%" stop-color="#16A6A1" stop-opacity="0" />
+      <!-- Industrial Amber Current Gradient -->
+      <linearGradient id="electricAmberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0" />
+        <stop offset="40%" stop-color="#F59E0B" stop-opacity="0.3" />
+        <stop offset="50%" stop-color="#FDE047" stop-opacity="1" />
+        <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
       </linearGradient>
+
+      <!-- 3-Phase Busbar Linear Gradients -->
+      <linearGradient id="redPhaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#EF4444" stop-opacity="0.1" />
+        <stop offset="50%" stop-color="#EF4444" stop-opacity="0.75" />
+        <stop offset="100%" stop-color="#EF4444" stop-opacity="0.1" />
+      </linearGradient>
+      <linearGradient id="yellowPhaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.1" />
+        <stop offset="50%" stop-color="#F59E0B" stop-opacity="0.75" />
+        <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.1" />
+      </linearGradient>
+      <linearGradient id="bluePhaseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284C7" stop-opacity="0.1" />
+        <stop offset="50%" stop-color="#0284C7" stop-opacity="0.75" />
+        <stop offset="100%" stop-color="#0284C7" stop-opacity="0.1" />
+      </linearGradient>
+
+      <!-- Glow Filters for High-Voltage Currents -->
+      <filter id="electricGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <filter id="sparkGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4.5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
     </defs>
 
-    <!-- Blueprint Engineering Grid -->
-    <g class="grid-layer" opacity="0.06">
-      <path d="M0 120 H1440 M0 240 H1440 M0 360 H1440 M0 480 H1440 M0 600 H1440" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 6" />
-      <path d="M160 0 V700 M320 0 V700 M480 0 V700 M640 0 V700 M800 0 V700 M960 0 V700 M1120 0 V700 M1280 0 V700" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 6" />
+    <!-- 1. Architectural CAD Coordinate Grid -->
+    <g class="grid-layer" opacity="0.07">
+      <path d="M0 80 H1440 M0 180 H1440 M0 280 H1440 M0 380 H1440 M0 480 H1440 M0 580 H1440 M0 680 H1440" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 8" />
+      <path d="M120 0 V760 M240 0 V760 M360 0 V760 M480 0 V760 M600 0 V760 M720 0 V760 M840 0 V760 M960 0 V760 M1080 0 V760 M1200 0 V760 M1320 0 V760" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 8" />
     </g>
 
-    <!-- Electrical Conduits (Amber #F5A623) -->
-    <g class="conduit-layer" opacity="0.6">
-      <path class="circuit-path pulse-1" d="M -50 180 H 420 L 520 280 H 980 L 1080 180 H 1500" stroke="url(#electricGrad)" stroke-width="1.8" />
-      <path class="circuit-path pulse-2" d="M 300 -50 V 220 L 400 320 V 650" stroke="url(#electricGrad)" stroke-width="1.5" />
-      <path class="circuit-path pulse-3" d="M 850 -50 V 150 L 750 250 H 550 V 550" stroke="url(#electricGrad)" stroke-width="1.4" />
+    <!-- 2. Static Architectural Single Line Schematic Lines (Blueprint Foundations) -->
+    <g class="sld-base-layer" opacity="0.18" stroke="#38BDF8" stroke-width="1.2">
+      <!-- Incomer Feeder lines -->
+      <path d="M 120 0 V 180 H 480 V 380 H 780" />
+      <path d="M 480 180 H 980 V 280 H 1320 V 520" />
+      <path d="M 980 280 V 620 H 640 V 760" />
+      <path d="M 240 760 V 580 H 560 V 440 H 840" />
+      <path d="M 1120 0 V 160 H 1380 V 380" />
+      <path d="M 720 0 V 120 H 880" />
     </g>
 
-    <!-- Plumbing Piping (Teal #16A6A1) -->
-    <g class="piping-layer" opacity="0.6">
-      <path class="pipe-path flow-1" d="M 1500 480 H 1060 L 960 380 H 520 L 420 480 H -50" stroke="url(#waterGrad)" stroke-width="1.6" stroke-dasharray="8 16" />
-      <path class="pipe-path flow-2" d="M 1180 750 V 420 L 1080 320 H 920" stroke="url(#waterGrad)" stroke-width="1.4" stroke-dasharray="6 12" />
+    <!-- 3. DEWA 3-Phase Main Busbar Incomer (R-Y-B Lines) -->
+    <g class="busbar-layer" opacity="0.35">
+      <!-- Red Phase (415V L1) -->
+      <path d="M 0 135 H 440 L 540 235 H 1020 L 1120 135 H 1440" stroke="url(#redPhaseGrad)" stroke-width="2.2" />
+      <!-- Yellow Phase (415V L2) -->
+      <path d="M 0 145 H 445 L 545 245 H 1015 L 1115 145 H 1440" stroke="url(#yellowPhaseGrad)" stroke-width="2.2" />
+      <!-- Blue Phase (415V L3) -->
+      <path d="M 0 155 H 450 L 550 255 H 1010 L 1110 155 H 1440" stroke="url(#bluePhaseGrad)" stroke-width="2.2" />
     </g>
 
-    <!-- Refined Engineering Nodes -->
-    <g class="nodes-layer" opacity="0.5">
-      <circle cx="420" cy="180" r="3.5" fill="#F5A623" />
-      <circle cx="520" cy="280" r="3.5" fill="#F5A623" />
-      <circle cx="980" cy="280" r="3.5" fill="#F5A623" />
-      <circle cx="1080" cy="180" r="3.5" fill="#F5A623" />
-      <circle cx="1060" cy="480" r="3.5" fill="#16A6A1" />
-      <circle cx="960" cy="380" r="3.5" fill="#16A6A1" />
-      <circle cx="520" cy="380" r="3.5" fill="#16A6A1" />
-      <circle cx="420" cy="480" r="3.5" fill="#16A6A1" />
+    <!-- 4. ACTIVE DYNAMIC ELECTRICAL CURRENT CIRCUITS (Traveling Energy Pulses) -->
+    <g class="active-circuits" filter="url(#electricGlow)">
+      <!-- Main High-Voltage Feeder Pulse -->
+      <path class="current-pulse pulse-fast" d="M -80 145 H 445 L 545 245 H 1015 L 1115 145 H 1520" stroke="url(#electricAmberGrad)" stroke-width="2.8" stroke-linecap="round" />
+      
+      <!-- Substation Incomer 1 (Top Left to Center) -->
+      <path class="current-pulse pulse-med" d="M 180 -50 V 220 L 320 360 H 680 V 540 L 820 680 H 1240" stroke="url(#electricBlueGrad)" stroke-width="2.4" stroke-linecap="round" />
+
+      <!-- Distribution Circuit 2 (Right to Bottom Center) -->
+      <path class="current-pulse pulse-reverse" d="M 1500 320 H 1160 L 1020 460 H 620 L 480 600 H -60" stroke="url(#electricBlueGrad)" stroke-width="2.2" stroke-linecap="round" />
+
+      <!-- Vertical Branch to MDB Panel (Top Center to Down Right) -->
+      <path class="current-pulse pulse-slow" d="M 820 -40 V 180 L 960 320 V 620 L 1080 740" stroke="url(#electricAmberGrad)" stroke-width="2.5" stroke-linecap="round" />
+
+      <!-- Diagonal Transformer Incomer Circuit -->
+      <path class="current-pulse pulse-cross" d="M 360 780 V 480 L 500 340 H 860 L 980 220 V -40" stroke="url(#electricBlueGrad)" stroke-width="2.0" stroke-linecap="round" />
+    </g>
+
+    <!-- 5. Active Relay Nodes & Transformer Junction Relays -->
+    <g class="relay-nodes" filter="url(#sparkGlow)">
+      <!-- Node A: Main Incomer Distribution -->
+      <g class="node-group" transform="translate(445, 145)">
+        <circle r="4.5" fill="#F59E0B" />
+        <circle class="ring-pulse" r="12" stroke="#F59E0B" stroke-width="1.5" fill="none" opacity="0.6" />
+      </g>
+
+      <!-- Node B: Sub-Main Busbar Switch -->
+      <g class="node-group" transform="translate(545, 245)">
+        <circle r="4" fill="#38BDF8" />
+        <circle class="ring-pulse delay-1" r="10" stroke="#38BDF8" stroke-width="1.4" fill="none" opacity="0.6" />
+      </g>
+
+      <!-- Node C: Center MDB Panel Hub -->
+      <g class="node-group" transform="translate(680, 540)">
+        <circle r="5" fill="#0066FF" />
+        <circle class="ring-pulse delay-2" r="14" stroke="#38BDF8" stroke-width="1.6" fill="none" opacity="0.7" />
+      </g>
+
+      <!-- Node D: Secondary Busbar Junction -->
+      <g class="node-group" transform="translate(1015, 245)">
+        <circle r="4.5" fill="#F59E0B" />
+        <circle class="ring-pulse delay-3" r="12" stroke="#F59E0B" stroke-width="1.5" fill="none" opacity="0.6" />
+      </g>
+
+      <!-- Node E: Outgoing Feeder Isolator -->
+      <g class="node-group" transform="translate(1115, 145)">
+        <circle r="4" fill="#38BDF8" />
+        <circle class="ring-pulse delay-1" r="10" stroke="#38BDF8" stroke-width="1.4" fill="none" opacity="0.6" />
+      </g>
+
+      <!-- Node F: Transformer Incomer Breaker -->
+      <g class="node-group" transform="translate(960, 320)">
+        <circle r="4.5" fill="#38BDF8" />
+        <circle class="ring-pulse delay-2" r="11" stroke="#38BDF8" stroke-width="1.4" fill="none" opacity="0.6" />
+      </g>
+
+      <!-- Node G: Low Voltage Earth Bond -->
+      <g class="node-group" transform="translate(320, 360)">
+        <circle r="3.5" fill="#0066FF" />
+        <circle class="ring-pulse delay-3" r="9" stroke="#0066FF" stroke-width="1.2" fill="none" opacity="0.5" />
+      </g>
+    </g>
+
+    <!-- 6. Architectural Electrical Engineering Callouts (Authentic SLD Badges) -->
+    <g class="sld-tags" opacity="0.32" fill="#94A3B8" font-family="'Inter', monospace" font-size="9" font-weight="600" letter-spacing="0.08em">
+      <text x="50" y="125">DEWA 415V 3-PHASE INCOMER [1600A ACB]</text>
+      <text x="560" y="235">BUS-COUPLER [MDB-01 PANEL]</text>
+      <text x="1035" y="235">SMDB-HV01 FEEDER [400A MCCB]</text>
+      <text x="700" y="530">LOAD BALANCING: 0.98 PF</text>
+      <text x="1135" y="130">DEWA METER CT CABINET [APPROVED]</text>
+      <text x="195" y="240">EARTH IMPEDANCE: &lt;1.0 OHM</text>
     </g>
   </svg>
 </div>
@@ -59,7 +166,10 @@
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
+    background: radial-gradient(circle at 75% 25%, rgba(2, 132, 199, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 25% 75%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
+                #07172B;
   }
 
   .hero-svg {
@@ -68,34 +178,81 @@
     object-fit: cover;
   }
 
-  .circuit-path {
-    stroke-dasharray: 200 400;
-    animation: circuitFlow 14s linear infinite;
+  /* Traveling Electrical Current Pulses */
+  .current-pulse {
+    stroke-dasharray: 180 520;
+    animation: electricalCurrentFlow linear infinite;
   }
 
-  .pulse-1 { animation-duration: 10s; }
-  .pulse-2 { animation-duration: 13s; animation-delay: -3s; }
-  .pulse-3 { animation-duration: 16s; animation-delay: -6s; }
-
-  @keyframes circuitFlow {
-    0% { stroke-dashoffset: 600; }
-    100% { stroke-dashoffset: -600; }
+  .pulse-fast {
+    animation-duration: 6.5s;
   }
 
-  .pipe-path {
-    animation: pipeFlow 12s linear infinite;
+  .pulse-med {
+    animation-duration: 9s;
+    animation-delay: -2s;
   }
 
-  .flow-1 { animation-duration: 15s; animation-direction: reverse; }
-  .flow-2 { animation-duration: 10s; }
+  .pulse-slow {
+    animation-duration: 12s;
+    animation-delay: -4s;
+  }
 
-  @keyframes pipeFlow {
-    0% { stroke-dashoffset: 200; }
-    100% { stroke-dashoffset: -200; }
+  .pulse-cross {
+    animation-duration: 10s;
+    animation-delay: -6s;
+  }
+
+  .pulse-reverse {
+    animation-duration: 8.5s;
+    animation-direction: reverse;
+  }
+
+  @keyframes electricalCurrentFlow {
+    0% {
+      stroke-dashoffset: 700;
+    }
+    100% {
+      stroke-dashoffset: -700;
+    }
+  }
+
+  /* Active Relay Sparking & Ring Pulses */
+  .ring-pulse {
+    transform-origin: center;
+    animation: relayPulse 3.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  }
+
+  .delay-1 {
+    animation-delay: 0.8s;
+  }
+
+  .delay-2 {
+    animation-delay: 1.6s;
+  }
+
+  .delay-3 {
+    animation-delay: 2.4s;
+  }
+
+  @keyframes relayPulse {
+    0% {
+      r: 4px;
+      opacity: 0.9;
+    }
+    50% {
+      r: 16px;
+      opacity: 0.3;
+    }
+    100% {
+      r: 24px;
+      opacity: 0;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .circuit-path, .pipe-path {
+    .current-pulse,
+    .ring-pulse {
       animation: none !important;
     }
   }

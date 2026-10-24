@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import ElectricalCircuitDecor from '../../components/ElectricalCircuitDecor.astro';
 import { blogPosts } from '../../data/blog';
 import { dewaWorksFaqs } from '../../data/faq';
 
@@ -46,8 +47,9 @@ const blogSchema = {
   jsonLd={blogSchema}
 >
   <!-- BLOG HERO -->
-  <section class="blog-hero">
-    <div class="container">
+  <section class="blog-hero" style="position: relative; overflow: hidden;">
+    <ElectricalCircuitDecor variant="vibrant" accent="blue" />
+    <div class="container" style="position: relative; z-index: 1;">
       <div class="crumb">
         <a href="/">Home</a> <span>/</span> <span>Engineering Insights &amp; Blog</span>
       </div>

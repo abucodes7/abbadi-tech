@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import FAQSection from '../components/FAQSection.astro';
+import ElectricalCircuitDecor from '../components/ElectricalCircuitDecor.astro';
 import { dewaWorksFaqs } from '../data/faq';
 import { projectsList } from '../data/projects';
 
@@ -55,8 +56,9 @@ const serviceSchema = {
   jsonLd={[breadcrumbSchema, serviceSchema]}
 >
   <!-- HERO WITH LEAD CAPTURE FORM -->
-  <section class="dewa-hero">
-    <div class="container dewa-hero-container">
+  <section class="dewa-hero" style="position: relative; overflow: hidden;">
+    <ElectricalCircuitDecor variant="vibrant" accent="blue" />
+    <div class="container dewa-hero-container" style="position: relative; z-index: 1;">
       <div class="dewa-hero-text">
         <div class="crumb">
           <a href="/">Home</a> <span>/</span> <span>DEWA Approvals Dubai</span>

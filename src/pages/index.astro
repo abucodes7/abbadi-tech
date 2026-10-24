@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Icon from '../components/Icon.astro';
 import HeroAnimation from '../components/HeroAnimation.astro';
+import ElectricalCircuitDecor from '../components/ElectricalCircuitDecor.astro';
 import { homeFaqs } from '../data/faq';
 import { projectsList } from '../data/projects';
 import { galleryItems } from '../data/gallery';
@@ -165,8 +166,9 @@ const faqSchema = {
   <!-- ==========================================================================
        2. SERVICES SECTION: Distinct but Visually Coordinated Pillars
        ========================================================================== -->
-  <section class="section section-white" id="services-pillars">
-    <div class="container">
+  <section class="section section-white" id="services-pillars" style="position: relative; overflow: hidden;">
+    <ElectricalCircuitDecor variant="subtle" accent="blue" />
+    <div class="container" style="position: relative; z-index: 1;">
       <div class="section-header">
         <span class="badge badge-navy">Our Specialized Disciplines</span>
         <h2>Core Technical Engineering Capabilities</h2>
@@ -607,8 +609,9 @@ const faqSchema = {
   <!-- ==========================================================================
        8. CONTACT & CONVERSION EXPERIENCE: Interactive Quote Request Form
        ========================================================================== -->
-  <section class="section section-navy" id="quote-section">
-    <div class="container">
+  <section class="section section-navy" id="quote-section" style="position: relative; overflow: hidden;">
+    <ElectricalCircuitDecor variant="vibrant" accent="dual" />
+    <div class="container" style="position: relative; z-index: 1;">
       <div class="quote-conversion-wrap">
         <div class="qc-intro reveal">
           <span class="badge badge-gold">Let's Discuss Your Project</span>
@@ -732,7 +735,7 @@ const faqSchema = {
   .hero-section {
     position: relative;
     padding: 5.5rem 0 4.5rem;
-    background: #0B1F33;
+    background: var(--color-navy-dark);
     color: #FFFFFF;
     overflow: hidden;
     border-bottom: 1px solid var(--color-navy-border);
@@ -768,7 +771,9 @@ const faqSchema = {
   }
 
   .hero-title-accent {
-    color: var(--color-amber);
+    background: linear-gradient(135deg, #F59E0B 0%, #FDE047 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-block;
   }
 
@@ -823,7 +828,7 @@ const faqSchema = {
   }
 
   .text-amber { color: var(--color-amber); }
-  .text-teal { color: var(--color-teal-light); }
+  .text-teal { color: #38BDF8; }
 
   /* Hero Media Block */
   .hero-media-block {
@@ -849,18 +854,18 @@ const faqSchema = {
     position: absolute;
     bottom: -18px;
     left: -20px;
-    background: #071524;
+    background: var(--color-navy-surface);
     border: 1px solid var(--color-navy-border);
     border-radius: var(--radius-sm);
     padding: 0.85rem 1.15rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 16px 36px rgba(7, 23, 43, 0.5);
   }
 
   .ffc-icon {
-    color: var(--color-teal-light);
+    color: #38BDF8;
   }
 
   .ffc-content {
@@ -882,32 +887,33 @@ const faqSchema = {
     position: absolute;
     top: -14px;
     right: 12px;
-    background: #FFFFFF;
-    color: var(--color-navy);
-    border: 1px solid var(--color-border-strong);
+    background: var(--color-navy-dark);
+    color: #FFFFFF;
+    border: 1px solid rgba(56, 189, 248, 0.35);
     border-radius: var(--radius-sm);
-    padding: 0.4rem 0.85rem;
+    padding: 0.45rem 0.95rem;
     font-size: 0.76rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   .fqp-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--color-amber);
+    background: #38BDF8;
+    box-shadow: 0 0 8px #38BDF8;
   }
 
   /* ==========================================================================
      KEY TRUST BAR
      ========================================================================== */
   .trust-bar {
-    background: #071524;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--color-navy-dark);
+    border-bottom: 1px solid var(--color-navy-border);
     padding: 1.25rem 0;
   }
 

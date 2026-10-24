@@ -1,0 +1,107 @@
+---
+// Reusable Architectural Electrical Circuit Animation for Background Sections
+interface Props {
+  variant?: 'subtle' | 'vibrant' | 'horizontal';
+  accent?: 'blue' | 'amber' | 'dual';
+}
+
+const { variant = 'subtle', accent = 'dual' } = Astro.props;
+---
+
+<div class={`circuit-decor-wrap variant-${variant} accent-${accent}`} aria-hidden="true">
+  <svg class="decor-svg" viewBox="0 0 1200 360" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="traceBlueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0284C7" stop-opacity="0" />
+        <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.9" />
+        <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
+      </linearGradient>
+
+      <linearGradient id="traceAmberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0" />
+        <stop offset="50%" stop-color="#FCD34D" stop-opacity="0.9" />
+        <stop offset="100%" stop-color="#F59E0B" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+
+    <!-- Faint CAD Grid Base -->
+    <path d="M0 60 H1200 M0 180 H1200 M0 300 H1200" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8" opacity="0.08" />
+    <path d="M200 0 V360 M400 0 V360 M600 0 V360 M800 0 V360 M1000 0 V360" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8" opacity="0.08" />
+
+    <!-- Static Schematic Blueprint Lines -->
+    <g opacity="0.12" stroke="currentColor" stroke-width="1.2">
+      <path d="M -50 90 H 280 L 370 180 H 740 L 830 90 H 1250" />
+      <path d="M 1250 270 H 880 L 790 180 H 420 L 330 270 H -50" />
+      <path d="M 600 -20 V 120 L 660 180 V 380" />
+    </g>
+
+    <!-- Dynamic Flowing Circuit Energy Pulses -->
+    <g class="energy-pulses">
+      <path class="decor-pulse pulse-a" d="M -50 90 H 280 L 370 180 H 740 L 830 90 H 1250" stroke={accent === 'amber' ? 'url(#traceAmberGrad)' : 'url(#traceBlueGrad)'} stroke-width="2" stroke-linecap="round" />
+      <path class="decor-pulse pulse-b" d="M 1250 270 H 880 L 790 180 H 420 L 330 270 H -50" stroke={accent === 'blue' ? 'url(#traceBlueGrad)' : 'url(#traceAmberGrad)'} stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Pulsing Junction Contact Points -->
+    <g class="decor-nodes" opacity="0.55">
+      <circle cx="280" cy="90" r="3.5" fill="#38BDF8" />
+      <circle cx="370" cy="180" r="4" fill="#F59E0B" />
+      <circle cx="740" cy="180" r="4" fill="#38BDF8" />
+      <circle cx="830" cy="90" r="3.5" fill="#F59E0B" />
+      <circle cx="790" cy="180" r="3.5" fill="#F59E0B" />
+      <circle cx="420" cy="180" r="3.5" fill="#38BDF8" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .circuit-decor-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .variant-subtle {
+    opacity: 0.45;
+  }
+
+  .variant-vibrant {
+    opacity: 0.85;
+  }
+
+  .decor-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .decor-pulse {
+    stroke-dasharray: 140 460;
+    animation: decorFlow linear infinite;
+  }
+
+  .pulse-a {
+    animation-duration: 8s;
+  }
+
+  .pulse-b {
+    animation-duration: 9.5s;
+    animation-direction: reverse;
+    animation-delay: -3s;
+  }
+
+  @keyframes decorFlow {
+    0% {
+      stroke-dashoffset: 600;
+    }
+    100% {
+      stroke-dashoffset: -600;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .decor-pulse {
+      animation: none !important;
+    }
+  }
+</style>

@@ -62,19 +62,25 @@ const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(defaultMessage)}
   .wa-tooltip {
     position: absolute;
     right: calc(100% + 14px);
-    background: #111827;
-    border: 1px solid var(--border-subtle);
-    padding: 0.6rem 0.9rem;
+    background: #0C2340;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.55rem 0.85rem;
     border-radius: var(--radius-sm);
     color: #fff;
     white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    opacity: 0.95;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .wa-float-btn:hover .wa-tooltip {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .wa-tooltip strong {
