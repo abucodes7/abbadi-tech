@@ -47,8 +47,17 @@ const navItems = [
   <div class="main-header">
     <div class="container header-container">
       <a href="/" class="brand-logo" aria-label="Abbadi Tech LLC Home">
-        <div class="logo-text">ABBADI<span>TECH</span></div>
-        <div class="logo-sub">ELECTRICAL & MECHANICAL CONT. CO. L.L.C</div>
+        <img 
+          src="/images/logo/logo-icon.png" 
+          alt="Abbadi Tech Official Emblem" 
+          width="40" 
+          height="40" 
+          class="brand-emblem-img" 
+        />
+        <div class="brand-text-block">
+          <div class="logo-text"><span class="logo-abbadi">ABBADI</span><span class="logo-tech">TECH</span></div>
+          <div class="logo-sub">ELECTRICAL & MECHANICAL CONT. CO. L.L.C</div>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
@@ -112,6 +121,9 @@ const navItems = [
 
   <!-- Mobile Drawer Menu -->
   <div id="mobile-drawer" class="mobile-drawer">
+    <div class="mobile-drawer-brand">
+      <img src="/images/logo/logo-dark.png" alt="Abbadi Tech LLC Official Logo" width="140" class="drawer-logo" />
+    </div>
     <nav class="mobile-nav">
       <a href="/" class:list={['mobile-nav-link', { active: currentPath === '/' }]}>Home</a>
       <a href="/about" class:list={['mobile-nav-link', { active: currentPath === '/about' }]}>About Abbadi Tech</a>
@@ -248,30 +260,71 @@ const navItems = [
 
   .brand-logo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .brand-emblem-img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .brand-logo:hover .brand-emblem-img {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  .brand-text-block {
+    display: flex;
+    flex-direction: column;
   }
 
   .logo-text {
     font-family: var(--font-heading);
-    font-size: 1.65rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #fff;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
     line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.15rem;
   }
 
-  .logo-text span {
-    color: var(--primary);
+  .logo-abbadi {
+    color: #ffffff;
+  }
+
+  .logo-tech {
+    color: #10B981;
+    font-weight: 900;
   }
 
   .logo-sub {
     font-family: var(--font-heading);
-    font-size: 0.58rem;
+    font-size: 0.54rem;
     letter-spacing: 0.12em;
     color: var(--text-muted);
-    margin-top: 0.2rem;
+    margin-top: 0.25rem;
     font-weight: 600;
+  }
+
+  .mobile-drawer-brand {
+    padding: 1.25rem 1rem 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .drawer-logo {
+    max-height: 70px;
+    width: auto;
+    object-fit: contain;
   }
 
   .desktop-nav {

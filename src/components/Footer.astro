@@ -7,7 +7,14 @@ const currentYear = new Date().getFullYear();
   <div class="container footer-content">
     <!-- Column 1: Brand & Credentials -->
     <div class="footer-col brand-col">
-      <div class="footer-logo">ABBADI<span>TECH</span></div>
+      <a href="/" class="footer-brand-logo" aria-label="Abbadi Tech Home">
+        <img 
+          src="/images/logo/logo-dark.png" 
+          alt="Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C" 
+          width="160" 
+          class="footer-logo-img" 
+        />
+      </a>
       <p class="legal-name">Abbadi Tech Electrical & Mechanical Cont. Co. L.L.C</p>
       <p class="tagline">
         Dubai-based contractor established in 2005. Fully registered with DEWA, delivering specialized Electrical and Plumbing contracting across Dubai, Abu Dhabi, and the UAE with over 21 years of proven on-time delivery.
@@ -112,16 +119,21 @@ const currentYear = new Date().getFullYear();
     padding-bottom: 4rem;
   }
 
-  .footer-logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.3rem;
+  .footer-brand-logo {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
   }
 
-  .footer-logo span {
-    color: var(--primary);
+  .footer-brand-logo:hover {
+    transform: translateY(-2px);
+  }
+
+  .footer-logo-img {
+    max-height: 85px;
+    width: auto;
+    object-fit: contain;
   }
 
   .legal-name {
