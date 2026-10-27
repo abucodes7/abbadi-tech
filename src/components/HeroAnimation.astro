@@ -59,13 +59,13 @@
     </defs>
 
     <!-- 1. Architectural CAD Coordinate Grid -->
-    <g class="grid-layer" opacity="0.07">
+    <g class="grid-layer" opacity="0.02">
       <path d="M0 80 H1440 M0 180 H1440 M0 280 H1440 M0 380 H1440 M0 480 H1440 M0 580 H1440 M0 680 H1440" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 8" />
       <path d="M120 0 V760 M240 0 V760 M360 0 V760 M480 0 V760 M600 0 V760 M720 0 V760 M840 0 V760 M960 0 V760 M1080 0 V760 M1200 0 V760 M1320 0 V760" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 8" />
     </g>
 
     <!-- 2. Static Architectural Single Line Schematic Lines (Blueprint Foundations) -->
-    <g class="sld-base-layer" opacity="0.18" stroke="#38BDF8" stroke-width="1.2">
+    <g class="sld-base-layer" opacity="0.08" stroke="#38BDF8" stroke-width="1.2">
       <!-- Incomer Feeder lines -->
       <path d="M 120 0 V 180 H 480 V 380 H 780" />
       <path d="M 480 180 H 980 V 280 H 1320 V 520" />
@@ -76,7 +76,7 @@
     </g>
 
     <!-- 3. DEWA 3-Phase Main Busbar Incomer (R-Y-B Lines) -->
-    <g class="busbar-layer" opacity="0.35">
+    <g class="busbar-layer" opacity="0.15">
       <!-- Red Phase (415V L1) -->
       <path d="M 0 135 H 440 L 540 235 H 1020 L 1120 135 H 1440" stroke="url(#redPhaseGrad)" stroke-width="2.2" />
       <!-- Yellow Phase (415V L2) -->
@@ -149,7 +149,7 @@
     </g>
 
     <!-- 6. Architectural Electrical Engineering Callouts (Authentic SLD Badges) -->
-    <g class="sld-tags" opacity="0.32" fill="#94A3B8" font-family="'Inter', monospace" font-size="9" font-weight="600" letter-spacing="0.08em">
+    <g class="sld-tags" opacity="0.12" fill="#94A3B8" font-family="'Inter', monospace" font-size="9" font-weight="600" letter-spacing="0.08em">
       <text x="50" y="125">DEWA 415V 3-PHASE INCOMER [1600A ACB]</text>
       <text x="560" y="235">BUS-COUPLER [MDB-01 PANEL]</text>
       <text x="1035" y="235">SMDB-HV01 FEEDER [400A MCCB]</text>
@@ -167,8 +167,8 @@
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle at 75% 25%, rgba(2, 132, 199, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 25% 75%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
+    background: radial-gradient(circle at 75% 25%, rgba(2, 132, 199, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 25% 75%, rgba(245, 158, 11, 0.03) 0%, transparent 55%),
                 #07172B;
   }
 
@@ -176,76 +176,84 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.4;
   }
 
-  /* Traveling Electrical Current Pulses */
+  /* Traveling Electrical Current Pulses - Much Slower & Subtle */
   .current-pulse {
     stroke-dasharray: 180 520;
     animation: electricalCurrentFlow linear infinite;
+    opacity: 0.25;
   }
 
   .pulse-fast {
-    animation-duration: 6.5s;
+    animation-duration: 18s;
   }
 
   .pulse-med {
-    animation-duration: 9s;
-    animation-delay: -2s;
-  }
-
-  .pulse-slow {
-    animation-duration: 12s;
-    animation-delay: -4s;
-  }
-
-  .pulse-cross {
-    animation-duration: 10s;
+    animation-duration: 24s;
     animation-delay: -6s;
   }
 
+  .pulse-slow {
+    animation-duration: 30s;
+    animation-delay: -10s;
+  }
+
+  .pulse-cross {
+    animation-duration: 26s;
+    animation-delay: -14s;
+  }
+
   .pulse-reverse {
-    animation-duration: 8.5s;
+    animation-duration: 22s;
     animation-direction: reverse;
   }
 
   @keyframes electricalCurrentFlow {
     0% {
       stroke-dashoffset: 700;
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.35;
     }
     100% {
       stroke-dashoffset: -700;
+      opacity: 0.15;
     }
   }
 
-  /* Active Relay Sparking & Ring Pulses */
+  /* Active Relay Sparking & Ring Pulses - Much Slower & Subtle */
   .ring-pulse {
     transform-origin: center;
-    animation: relayPulse 3.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    animation: relayPulse 6.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    opacity: 0.35;
   }
 
   .delay-1 {
-    animation-delay: 0.8s;
+    animation-delay: 1.5s;
   }
 
   .delay-2 {
-    animation-delay: 1.6s;
+    animation-delay: 3s;
   }
 
   .delay-3 {
-    animation-delay: 2.4s;
+    animation-delay: 4.5s;
   }
 
   @keyframes relayPulse {
     0% {
       r: 4px;
-      opacity: 0.9;
+      opacity: 0.4;
     }
     50% {
-      r: 16px;
-      opacity: 0.3;
+      r: 14px;
+      opacity: 0.15;
     }
     100% {
-      r: 24px;
+      r: 20px;
       opacity: 0;
     }
   }
