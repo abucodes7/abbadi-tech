@@ -3,17 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Icon from '../components/Icon.astro';
 import HeroAnimation from '../components/HeroAnimation.astro';
-import ElectricalCircuitDecor from '../components/ElectricalCircuitDecor.astro';
+import { siteConfig } from '../config/site';
 import { homeFaqs } from '../data/faq';
-import { projectsList } from '../data/projects';
 import { galleryItems } from '../data/gallery';
 
-const pageTitle = "Electrical & Plumbing Technical Contractors Dubai | Abbadi Tech";
-const pageDescription = "Specialized electrical & commercial plumbing technical contractors in Dubai since 2005. Turnkey fit-outs, SLD design, DEWA approval services, MDB panels & 1000+ projects. Call +971 50 554 6943.";
+const pageTitle = "Electrical & Plumbing Contractors Dubai | Abbadi Tech";
+const pageDescription = "Licensed electrical & commercial plumbing contractors in Dubai since 2005. Turnkey fit-outs, DEWA approvals, SLD design & MDB panels. Call +971 50 554 6943.";
 
 const featuredGallery = galleryItems.slice(0, 6);
-const electricalProjects = projectsList.filter(p => p.scope === 'electrical').slice(0, 4);
-const plumbingProjects = projectsList.filter(p => p.scope === 'plumbing' || p.scope === 'mep').slice(0, 4);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -27,1710 +24,1442 @@ const faqSchema = {
     }
   }))
 };
+
+const electricalCapabilities = [
+  "Electrical installations & containment",
+  "Wiring & power distribution",
+  "Architectural lighting & controls",
+  "MDB & SMDB panel assembly",
+  "Inspection & fault diagnosis",
+  "DEWA approvals & load upgrades"
+];
+
+const plumbingCapabilities = [
+  "Water supply & PPR piping",
+  "Drainage & waste water networks",
+  "Leak detection & pressure testing",
+  "Booster & transfer pump stations",
+  "Sanitary fixture installation",
+  "Preventive maintenance & repairs"
+];
+
+const strengths = [
+  {
+    n: "01",
+    title: "DEWA approval specialists",
+    body: "Direct authority liaison and proven relations with DEWA inspectors. We prepare, submit, and secure single-line diagram approvals and load upgrades without red tape."
+  },
+  {
+    n: "02",
+    title: "Leak-proof hydraulic standards",
+    body: "Every plumbing line undergoes mandatory 10-bar hydrostatic testing before handover. High-density PPR and copper pipework installed with meticulous insulation."
+  },
+  {
+    n: "03",
+    title: "100% in-house technical teams",
+    body: "No critical works are subcontracted to unverified third parties. Our permanent electricians, wiremen, and master plumbers guarantee uniform quality."
+  },
+  {
+    n: "04",
+    title: "Transparent quotations & BOQs",
+    body: "Clear line-item pricing detailing cable gauges, conduit brands, breaker ratings, and pipe specifications. No hidden extras or surprise variations."
+  },
+  {
+    n: "05",
+    title: "Dependable schedule adherence",
+    body: "Commercial fit-outs and retail openings run on strict deadlines. We deploy phased operations and night shifts to protect your opening date."
+  },
+  {
+    n: "06",
+    title: "Responsive service & support",
+    body: "Centrally stationed in the Oberoi Properties Building, Dubai. Rapid mobilisation for site surveys, municipal inspections, and urgent fault rectification."
+  }
+];
+
+const process = [
+  { n: "01", title: "Submit an enquiry", body: "Share your drawings, premise ID, or scope via the quote form, phone, or direct WhatsApp." },
+  { n: "02", title: "Discuss requirements", body: "A senior engineer reviews load requirements, inspects existing feeder lines, and conducts an on-site survey." },
+  { n: "03", title: "Receive a quotation", body: "An itemised quotation with material schedules, DEWA approval milestones, and clear timelines." },
+  { n: "04", title: "Complete the work", body: "Certified in-house teams install, conduct Megger and pressure testing, and secure authority sign-off." }
+];
 ---
 
-<Layout 
-  title={pageTitle} 
-  description={pageDescription} 
+<Layout
+  title={pageTitle}
+  description={pageDescription}
   currentPath="/"
+  arabicUrl={`${siteConfig.primaryDomain}/ar`}
   jsonLd={faqSchema}
 >
-  <!-- ==========================================================================
-       1. HERO SECTION: Split-Screen Editorial Image-Led Layout
-       ========================================================================== -->
-  <section class="hero-section">
+  <!-- HERO -->
+  <section class="hero">
     <HeroAnimation />
-    <div class="container hero-container">
-      <div class="hero-split">
-        <!-- Left: Copy & Value Proposition -->
-        <div class="hero-text-block">
-          <!-- Trust Badge Row -->
-          <div class="hero-badges reveal">
-            <span class="live-status-pill"><span class="pulse-dot"></span> 21+ Years Experience</span>
-            <span class="badge badge-amber"><Icon name="Award" size={13} /> 1,000+ Projects Delivered</span>
-            <span class="badge badge-white-on-navy"><Icon name="CheckCircle2" size={13} /> Established 2005</span>
-          </div>
-
-          <!-- Exact Headline Requested in Brief -->
-          <h1 class="hero-title reveal stagger-1">
-            Reliable Electrical &amp; Plumbing Solutions. <span class="hero-title-accent">Built on Trust.</span>
-          </h1>
-
-          <!-- Exact Supporting Copy Requested in Brief -->
-          <p class="hero-lead reveal stagger-2">
-            Professional electrical and plumbing services focused on quality workmanship, dependable solutions, and lasting customer confidence across Dubai and the UAE.
-          </p>
-
-          <!-- The 2 CTAs -->
-          <div class="hero-cta-group reveal stagger-3">
-            <a href="#quote-section" class="btn btn-primary btn-hero">
-              Request a Quote
-            </a>
-            <a href="#services-pillars" class="btn btn-secondary btn-hero">
-              Explore Our Services
-            </a>
-          </div>
-
-          <!-- Trust Signals -->
-          <div class="hero-trust-chips reveal stagger-4">
-            <div class="trust-chip">
-              <span class="chip-num">21+</span>
-              <span class="chip-text">Years UAE Experience</span>
-            </div>
-            <div class="trust-chip-divider"></div>
-            <div class="trust-chip">
-              <span class="chip-num text-amber">DEWA</span>
-              <span class="chip-text">Approval Services</span>
-            </div>
-            <div class="trust-chip-divider"></div>
-            <div class="trust-chip">
-              <span class="chip-num text-teal">1,000+</span>
-              <span class="chip-text">Projects Completed</span>
-            </div>
-          </div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="hero-meta reveal">
+          <span class="live-status-pill"><span class="pulse-dot"></span> Established 2005 · Dubai, UAE</span>
+          <span class="hero-meta-rule"></span>
+          <span class="hero-meta-text">Electrical &amp; Plumbing Contracting</span>
         </div>
 
-        <!-- Right: Editorial Image Composition with Authentic Field Work -->
-        <div class="hero-media-block reveal stagger-2">
-          <div class="hero-image-frame">
-            <img 
-              src="/images/gallery/electrical-panel-assembly.jpg" 
-              alt="Professional electrical panel assembly and wiring by Abbadi Tech" 
-              width="640" 
-              height="480" 
-              class="hero-primary-img" 
-              loading="eager"
-            />
-            
-            <!-- Floating Verified Craftsmanship Badge -->
-            <div class="floating-field-card">
-              <div class="ffc-icon">
-                <Icon name="ShieldCheck" size={24} />
-              </div>
-              <div class="ffc-content">
-                <strong>Certified In-House Engineers</strong>
-                <span>DEWA &amp; DM Municipal Code Compliant</span>
-              </div>
-            </div>
+        <h1 class="hero-title reveal stagger-1">
+          Reliable electrical &amp; plumbing.
+          <em>Built on trust.</em>
+        </h1>
 
-            <!-- Floating Direct Callout -->
-            <div class="floating-quote-pill">
-              <span class="fqp-dot"></span>
-              <span>Direct Estimations: <strong>+971 50 554 6943</strong></span>
-            </div>
-          </div>
+        <p class="hero-lead reveal stagger-2">
+          Professional electrical and plumbing services focused on quality workmanship, dependable solutions, and lasting customer confidence across Dubai and the UAE.
+        </p>
+
+        <div class="hero-actions reveal stagger-3">
+          <a href="#quote-section" class="btn btn-primary btn-hero">
+            Request a Quote
+            <Icon name="ArrowUpRight" size={17} />
+          </a>
+          <a href="#services-pillars" class="btn btn-outline-white btn-hero">
+            Explore Our Services
+          </a>
         </div>
+
+        <dl class="hero-figures reveal stagger-4">
+          <div>
+            <dt>21+</dt>
+            <dd>Years in the UAE</dd>
+          </div>
+          <div>
+            <dt>100%</dt>
+            <dd>In-House Teams</dd>
+          </div>
+          <div>
+            <dt>Licensed</dt>
+            <dd>Certified engineers</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-media reveal stagger-2">
+        <div class="hero-frame-main">
+          <img
+            src="/images/gallery/abb-three-phase-db-panel-dressing.jpg"
+            alt="ABB three-phase distribution board panel dressing by Abbadi Tech"
+            width="640"
+            height="760"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="hero-frame-index">01 — Electrical execution</span>
+        </div>
+
+        <div class="hero-frame-secondary" data-parallax="0.05">
+          <img
+            src="/images/gallery/plumbing-ppr-pipework.jpg"
+            alt="High-pressure PPR water distribution pipework installed by Abbadi Tech"
+            width="420"
+            height="320"
+            loading="eager"
+          />
+        </div>
+
+        <div class="hero-note">
+          <Icon name="ShieldCheck" size={18} />
+          <span>
+            <strong>Certified in-house engineers</strong>
+            DEWA &amp; DM municipal code compliant
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <span class="hero-scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust-band" aria-label="Key credentials">
+    <div class="container trust-inner">
+      <div class="trust-item">
+        <span class="trust-label">Since 2005</span>
+        <span class="trust-value">21+ years of continuous UAE operations</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-label">Certified engineering</span>
+        <span class="trust-value">Compliant technical execution</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-label">Proven track record</span>
+        <span class="trust-value">Commercial, residential &amp; industrial</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-label">Dubai &amp; UAE coverage</span>
+        <span class="trust-value">Rapid engineering dispatch</span>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       KEY TRUST BAR
-       ========================================================================== -->
-  <div class="trust-bar" aria-label="Key Trust Signals">
-    <div class="container trust-bar-inner">
-      <div class="trust-item">
-        <span class="trust-icon"><Icon name="Calendar" size={20} /></span>
-        <div>
-          <strong>Since 2005</strong>
-          <span>21+ Years Continuous UAE Operations</span>
-        </div>
+  <!-- INTRO / POSITIONING -->
+  <section class="section section-ivory intro-section">
+    <div class="container intro-grid">
+      <div class="intro-heading reveal">
+        <span class="eyebrow">The Abbadi standard</span>
+        <h2>Engineering excellence, rooted in two decades of UAE craftsmanship.</h2>
       </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-icon"><Icon name="Landmark" size={20} /></span>
-        <div>
-          <strong>Certified Engineering</strong>
-          <span>Compliant Technical Execution</span>
+
+      <div class="intro-body reveal stagger-1">
+        <p class="intro-lead">
+          Established in 2005, <strong>Abbadi Tech Technical Solutions LLC</strong> was founded by Koyakutty Mohammed with a singular commitment: uncompromised technical integrity in electrical and plumbing contracting.
+        </p>
+        <p>
+          Across Dubai's demanding commercial and residential landscape, our reputation has been built on precision execution, strict adherence to DEWA regulations, and transparent engineering ethics. We never subcontract core MEP responsibilities — every cable pulled, panel dressed, and pipe welded is executed by our certified, in-house team.
+        </p>
+        <div class="intro-signals">
+          <div>
+            <Icon name="ShieldCheck" size={19} />
+            <span><strong>Uncompromising safety</strong>Civil Defence &amp; QHSE verified workflows</span>
+          </div>
+          <div>
+            <Icon name="Landmark" size={19} />
+            <span><strong>Authority compliance</strong>DEWA, ADDC, SEWA &amp; DM standards</span>
+          </div>
         </div>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-icon"><Icon name="CheckCircle2" size={20} /></span>
-        <div>
-          <strong>1,000+ Projects Handed Over</strong>
-          <span>Commercial, Residential &amp; Industrial</span>
-        </div>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-icon"><Icon name="MapPin" size={20} /></span>
-        <div>
-          <strong>Dubai &amp; UAE Coverage</strong>
-          <span>Rapid Engineering Dispatch</span>
-        </div>
+        <a href="/about" class="text-link">
+          Read the Abbadi Tech story
+          <Icon name="ArrowUpRight" size={15} />
+        </a>
       </div>
     </div>
-  </div>
 
-  <!-- ==========================================================================
-       2. SERVICES SECTION: Distinct but Visually Coordinated Pillars
-       ========================================================================== -->
-  <section class="section section-white" id="services-pillars" style="position: relative; overflow: hidden;">
-    <ElectricalCircuitDecor variant="subtle" accent="blue" />
-    <div class="container" style="position: relative; z-index: 1;">
-      <div class="section-header">
-        <span class="badge badge-navy">Our Specialized Disciplines</span>
-        <h2>Core Technical Engineering Capabilities</h2>
-        <p>
-          We provide specialized electrical and plumbing services structured into two dedicated engineering divisions, delivering turnkey reliability from planning to testing and handover.
+    <div class="container intro-media-grid">
+      <figure class="intro-media intro-media-wide reveal-img">
+        <img src="/images/gallery/dewa-meter-installation.jpg" alt="DEWA meter installation completed by Abbadi Tech" loading="lazy" width="760" height="480" />
+        <figcaption class="img-caption"><Icon name="CheckCircle2" size={13} /> DEWA meter room handover</figcaption>
+      </figure>
+      <figure class="intro-media reveal-img stagger-1">
+        <img src="/images/gallery/commercial-multi-tenant-water-meters.jpg" alt="Multi-tenant water meter manifold installation in Dubai" loading="lazy" width="520" height="480" />
+        <figcaption class="img-caption"><Icon name="MapPin" size={13} /> Multi-tenant metering</figcaption>
+      </figure>
+      <div class="intro-year reveal">
+        <span class="intro-year-num">2005</span>
+        <span class="intro-year-label">Established in Dubai</span>
+        <p>Over two decades of continuous delivery across the Emirates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-paper services-section" id="services-pillars">
+    <div class="container">
+      <div class="services-head">
+        <div class="reveal">
+          <span class="eyebrow">Core disciplines</span>
+          <h2>Two specialist divisions.<br /><em>One accountable team.</em></h2>
+        </div>
+        <p class="lede reveal stagger-1">
+          Turnkey electrical and plumbing services delivered in-house — from design and authority approvals to testing, commissioning, and certified handover.
         </p>
       </div>
 
-      <div class="service-pillars-grid">
-        <!-- Pillar 1: Electrical Services (Amber Accent #F5A623) -->
-        <div class="pillar-card electrical-pillar reveal">
-          <div class="pillar-header">
-            <div class="pillar-badge badge-amber">
-              <Icon name="Zap" size={14} /> Electrical Services
-            </div>
-            <h3>Electrical Installations &amp; Power Infrastructure</h3>
-            <p class="pillar-intro">
-              Turnkey electrical engineering for commercial buildings, retail fit-outs, villas, and industrial facilities with complete DEWA compliance.
-            </p>
+      <article class="service-row reveal">
+        <div class="service-visual">
+          <div class="service-image img-frame">
+            <img src="/images/gallery/electrical-panel-assembly.jpg" alt="Electrical panel assembly and wiring by Abbadi Tech" loading="lazy" width="680" height="540" />
+            <span class="service-image-tag">Electrical services</span>
           </div>
-
-          <div class="pillar-image-wrap">
-            <img 
-              src="/images/gallery/abb-three-phase-db-panel-dressing.jpg" 
-              alt="ABB Three Phase DB Panel Assembly by Abbadi Tech" 
-              width="500" 
-              height="300" 
-              loading="lazy" 
-              class="pillar-img"
-            />
-            <div class="pillar-img-overlay">
-              <span>Authentic Project Photo: 3-Phase DB Panel Dressing</span>
-            </div>
-          </div>
-
-          <ul class="pillar-services-list">
-            <li>
-              <strong>Electrical Installations &amp; Containment:</strong> Complete conduit runs, GI trunking, cable trays, and busbar trunking systems.
-            </li>
-            <li>
-              <strong>Wiring &amp; Power Distribution:</strong> Safe circuit cabling, load balancing, sub-main feeder pulling, and industrial switchgear setup.
-            </li>
-            <li>
-              <strong>Lighting Systems &amp; Controls:</strong> Architectural LED layouts, emergency lighting, central battery systems, and smart sensor zoning.
-            </li>
-            <li>
-              <strong>MDB &amp; SMDB Panel Assembly:</strong> In-house panel dressing, ferruled wire numbering, breaker calibration, and busbar torque checks.
-            </li>
-            <li>
-              <strong>Inspections &amp; Fault Diagnosis:</strong> Megger insulation resistance testing, thermal imaging, and short-circuit troubleshooting.
-            </li>
-            <li>
-              <strong>DEWA Approvals &amp; Load Upgrades:</strong> Single Line Diagram (SLD) preparation, online portal submissions, and meter energization.
-            </li>
-          </ul>
-
-          <div class="pillar-actions">
-            <a href="/services/electrical-contractors-dubai" class="btn btn-outline-amber">
-              Explore Electrical Services Details →
-            </a>
-            <a href="#quote-section" class="btn btn-primary">
-              Request Electrical Quote
-            </a>
-          </div>
+          <span class="service-index">01</span>
         </div>
 
-        <!-- Pillar 2: Plumbing Services (Teal Accent #16A6A1) -->
-        <div class="pillar-card plumbing-pillar reveal stagger-1">
-          <div class="pillar-header">
-            <div class="pillar-badge badge-teal">
-              <Icon name="Droplets" size={14} /> Plumbing Services
-            </div>
-            <h3>Plumbing Installations &amp; Hydraulic Systems</h3>
-            <p class="pillar-intro">
-              Engineered sanitary, drainage, and water supply solutions ensuring zero leakage, high pressure stability, and hygiene code compliance.
-            </p>
-          </div>
-
-          <div class="pillar-image-wrap">
-            <img 
-              src="/images/gallery/plumbing-ppr-pipework.jpg" 
-              alt="High-pressure PPR and copper water distribution manifold by Abbadi Tech" 
-              width="500" 
-              height="300" 
-              loading="lazy" 
-              class="pillar-img"
-            />
-            <div class="pillar-img-overlay">
-              <span>Authentic Project Photo: High-Pressure PPR Pipework</span>
-            </div>
-          </div>
-
-          <ul class="pillar-services-list plumbing-list">
-            <li>
-              <strong>Water Supply &amp; Piping:</strong> Certified PPR hot/cold fusion welding, PEX manifolds, and copper piping for high durability.
-            </li>
-            <li>
-              <strong>Drainage &amp; Waste Water Networks:</strong> UPVC and acoustic soil/waste pipes, grease trap installations, and vent line balancing.
-            </li>
-            <li>
-              <strong>Leak Detection &amp; Pressure Testing:</strong> 10-bar hydrostatic line testing, ultrasonic acoustic detection, and pipe repairs.
-            </li>
-            <li>
-              <strong>Booster &amp; Transfer Pump Stations:</strong> Dual-redundant variable frequency drive (VFD) pressure booster pumps and float controls.
-            </li>
-            <li>
-              <strong>Sanitary Fixture Installation:</strong> Concealed cisterns, touchless faucets, commercial kitchen rough-ins, and luxury bathrooms.
-            </li>
-            <li>
-              <strong>Preventive Maintenance &amp; Repairs:</strong> Annual maintenance contracts (AMC), periodic pipe flushing, and 24/7 emergency dispatch.
-            </li>
-          </ul>
-
-          <div class="pillar-actions">
-            <a href="/services/plumbing-contractors-dubai" class="btn btn-outline-teal">
-              Explore Plumbing Services Details →
-            </a>
-            <a href="#quote-section" class="btn btn-teal">
-              Request Plumbing Quote
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- DEWA Approvals Dubai Subordinate Division Lead Callout -->
-      <div class="dewa-portal-callout reveal">
-        <div class="dpc-info">
-          <div class="dpc-pill">
-            <span class="pulse-dot"></span>
-            <span>Lead Generation Division: dewaapprovalsdubai</span>
-          </div>
-          <h3>Fast-Track DEWA Approvals, Fit-Out NOCs &amp; Load Upgrades</h3>
+        <div class="service-content">
+          <span class="service-kicker"><Icon name="Zap" size={15} /> Electrical installations &amp; power infrastructure</span>
+          <h3>Power systems engineered for demanding buildings.</h3>
           <p>
-            Operating as our dedicated approvals division, <strong>DEWA Approvals Dubai</strong> manages online authority submissions, Single Line Diagram (SLD) engineering, and inspector handovers so your fit-out opens strictly on schedule.
+            Turnkey electrical engineering for commercial buildings, retail fit-outs, villas, and industrial facilities — with complete DEWA compliance from first fix to energisation.
+          </p>
+          <ul class="service-list">
+            {electricalCapabilities.map(item => (
+              <li><Icon name="ArrowUpRight" size={14} /> {item}</li>
+            ))}
+          </ul>
+          <div class="service-actions">
+            <a href="/services/electrical-contractors-dubai" class="text-link">
+              Electrical services in detail
+              <Icon name="ArrowRight" size={15} />
+            </a>
+            <a href="#quote-section" class="btn btn-outline btn-sm">Request electrical quote</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-row service-row-reverse reveal">
+        <div class="service-visual">
+          <div class="service-image img-frame">
+            <img src="/images/gallery/booster-pump-drainage.jpg" alt="Automatic booster pump and drainage installation by Abbadi Tech" loading="lazy" width="680" height="540" />
+            <span class="service-image-tag">Plumbing services</span>
+          </div>
+          <span class="service-index">02</span>
+        </div>
+
+        <div class="service-content">
+          <span class="service-kicker"><Icon name="Droplets" size={15} /> Plumbing installations &amp; hydraulic systems</span>
+          <h3>Hydraulics that stay silent, stable, and leak-free.</h3>
+          <p>
+            Engineered sanitary, drainage, and water supply solutions ensuring zero leakage, high pressure stability, and hygiene code compliance across every floor.
+          </p>
+          <ul class="service-list">
+            {plumbingCapabilities.map(item => (
+              <li><Icon name="ArrowUpRight" size={14} /> {item}</li>
+            ))}
+          </ul>
+          <div class="service-actions">
+            <a href="/services/plumbing-contractors-dubai" class="text-link">
+              Plumbing services in detail
+              <Icon name="ArrowRight" size={15} />
+            </a>
+            <a href="#quote-section" class="btn btn-outline btn-sm">Request plumbing quote</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- DEWA DIVISION -->
+    <div class="container">
+      <div class="dewa-band reveal">
+        <div class="dewa-copy">
+          <span class="badge badge-white-on-navy"><span class="pulse-dot"></span> Approvals division</span>
+          <h3>Fast-track DEWA approvals, fit-out NOCs &amp; load upgrades.</h3>
+          <p>
+            Operating as our dedicated approvals division, <strong>DEWA Approvals Dubai</strong> manages online authority submissions, Single Line Diagram engineering, and inspector handovers so your fit-out opens strictly on schedule.
           </p>
         </div>
-        <div class="dpc-actions">
+        <div class="dewa-actions">
           <a href="/dewa-approvals-dubai" class="btn btn-primary">
-            Visit DEWA Approvals Portal →
+            Visit DEWA approvals
+            <Icon name="ArrowUpRight" size={15} />
           </a>
-          <a href="https://wa.me/971505546943?text=Hello%20DEWA%20Approvals%20Dubai,%20I%20need%20urgent%20approval%20support" target="_blank" rel="noopener" class="btn btn-secondary">
-            <Icon name="MessageSquare" size={15} /> WhatsApp Approval Desk
+          <a href="https://wa.me/971505546943?text=Hello%20DEWA%20Approvals%20Dubai,%20I%20need%20urgent%20approval%20support" target="_blank" rel="noopener" class="btn btn-outline-white">
+            <Icon name="MessageSquare" size={15} /> WhatsApp approval desk
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       3. ABOUT ABBADI TECH: Editorial-Style Company Introduction
-       ========================================================================== -->
-  <section class="section section-light" id="about-intro">
-    <div class="container">
-      <div class="about-editorial-grid">
-        <div class="about-text-content reveal">
-          <span class="badge badge-navy">About Abbadi Tech</span>
-          <h2>Engineering Excellence Rooted in 21 Years of UAE Craftsmanship</h2>
-          
-          <p class="about-lead-p">
-            Established in 2005, <strong>Abbadi Tech Technical Solutions LLC</strong> was founded by Koyakutty Mohammed with a singular commitment: delivering uncompromised technical integrity in electrical and plumbing contracting.
-          </p>
-          
-          <p>
-            Over two decades in Dubai's demanding commercial and residential landscape, our reputation has been built on precision execution, strict adherence to DEWA regulations, and transparent engineering ethics. We never subcontract core MEP responsibilities—every cable pulled, panel dressed, and pipe welded is executed by our certified, in-house technical team.
-          </p>
-
-          <div class="about-pillars-row">
-            <div class="apr-item">
-              <Icon name="ShieldCheck" size={20} />
-              <div>
-                <strong>Uncompromising Safety</strong>
-                <span>Civil Defence &amp; QHSE verified workflows</span>
-              </div>
-            </div>
-            <div class="apr-item">
-              <Icon name="Award" size={20} />
-              <div>
-                <strong>Authority Compliance</strong>
-                <span>DEWA, ADDC, SEWA &amp; DM standards</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-cta-row">
-            <a href="/about" class="btn btn-navy">
-              Read Our Full Company Story →
-            </a>
-            <a href="tel:+971505546943" class="btn btn-outline">
-              <Icon name="Phone" size={15} /> Speak to Technical Director
-            </a>
-          </div>
-        </div>
-
-        <div class="about-visual-content reveal stagger-1">
-          <div class="about-card-stack">
-            <div class="stack-main-card">
-              <img 
-                src="/images/gallery/commercial-multi-tenant-water-meters.jpg" 
-                alt="Multi-tenant water meter installation in Dubai by Abbadi Tech" 
-                width="540" 
-                height="380" 
-                loading="lazy" 
-                class="stack-img"
-              />
-              <div class="stack-caption">
-                <strong>Certified Multi-Tenant Installation</strong>
-                <span>Water meter manifolds and pressure regulation</span>
-              </div>
-            </div>
-
-            <div class="stack-metric-card">
-              <div class="smc-number">2005</div>
-              <div class="smc-label">Established in Dubai</div>
-              <div class="smc-sub">Over two decades of continuous delivery</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       4. WHY CHOOSE US: Verified Strengths
-       ========================================================================== -->
-  <section class="section section-white" id="why-choose-us">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-amber">Proven Advantages</span>
-        <h2>Why Clients Trust Abbadi Tech</h2>
+  <!-- WHY ABBADI -->
+  <section class="section section-ink why-section" id="why-choose-us">
+    <div class="container why-grid">
+      <div class="why-aside reveal">
+        <span class="eyebrow">Why Abbadi Tech</span>
+        <h2>Trust is earned on site, <em>not in a brochure.</em></h2>
         <p>
-          Our verified strengths reflect decades of practical site mastery, direct authority liaison, and transparent communication.
+          Our strengths reflect decades of practical site mastery, direct authority liaison, and transparent communication with the people who own the outcome.
         </p>
+        <a href="/about" class="text-link light">
+          Meet the team behind the work
+          <Icon name="ArrowUpRight" size={15} />
+        </a>
       </div>
 
-      <div class="why-us-grid">
-        <div class="why-card reveal">
-          <div class="why-icon-wrap amber"><Icon name="Zap" size={24} /></div>
-          <h3>DEWA Approval Specialists</h3>
-          <p>
-            Direct authority liaison and proven relations with DEWA inspectors. We prepare, submit, and secure single-line diagram (SLD) approvals and load upgrades without red tape.
-          </p>
-        </div>
-
-        <div class="why-card reveal stagger-1">
-          <div class="why-icon-wrap teal"><Icon name="Droplets" size={24} /></div>
-          <h3>Leak-Proof Hydraulic Standards</h3>
-          <p>
-            Every plumbing line undergoes mandatory 10-bar hydrostatic testing prior to handover. High-density PPR and copper pipework installed with meticulous thermal insulation.
-          </p>
-        </div>
-
-        <div class="why-card reveal stagger-2">
-          <div class="why-icon-wrap navy"><Icon name="Users" size={24} /></div>
-          <h3>100% In-House Technical Teams</h3>
-          <p>
-            We do not subcontract critical works to unverified third parties. Our permanent team of certified electricians, wiremen, and master plumbers guarantees uniform quality.
-          </p>
-        </div>
-
-        <div class="why-card reveal stagger-3">
-          <div class="why-icon-wrap amber"><Icon name="FileText" size={24} /></div>
-          <h3>Transparent Quotations &amp; BOQs</h3>
-          <p>
-            Clear line-item pricing detailing cable gauges, conduit brands, breaker ratings, and pipe specifications. No hidden extras or surprise variations.
-          </p>
-        </div>
-
-        <div class="why-card reveal stagger-4">
-          <div class="why-icon-wrap teal"><Icon name="Clock" size={24} /></div>
-          <h3>Dependable Schedule Adherence</h3>
-          <p>
-            Commercial fit-outs and retail openings operate on strict calendar deadlines. We deploy night-shift operations and phased testing to protect your opening date.
-          </p>
-        </div>
-
-        <div class="why-card reveal stagger-5">
-          <div class="why-icon-wrap navy"><Icon name="Headphones" size={24} /></div>
-          <h3>Responsive Service &amp; Support</h3>
-          <p>
-            Centrally stationed in the Oberoi Properties Building, Dubai. Rapid mobilization for site surveys, municipal inspections, and urgent fault rectifications.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. PROJECTS & WORK SHOWCASE: Authentic Real Gallery
-       ========================================================================== -->
-  <section class="section section-light" id="projects-showcase">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-navy">Authentic Portfolio</span>
-        <h2>Work Showcase: Real Project Installations</h2>
-        <p>
-          Explore verified photographs from our electrical and plumbing installations across Dubai's commercial towers, luxury residences, and industrial hubs.
-        </p>
-      </div>
-
-      <div class="gallery-cards-grid">
-        {featuredGallery.map((item, index) => (
-          <article class="gallery-card reveal" style={`transition-delay: ${index * 0.08}s`}>
-            <div class="gc-media">
-              <img 
-                src={item.image} 
-                alt={`${item.title} delivered by Abbadi Tech`} 
-                width="600" 
-                height="420" 
-                loading="lazy" 
-                class="gc-img"
-              />
-              <span class={item.trade === 'Electrical Technical Work' ? 'gc-trade-badge trade-amber' : 'gc-trade-badge trade-teal'}>
-                {item.trade === 'Electrical Technical Work' ? 'Electrical' : 'Plumbing'}
-              </span>
-            </div>
-            <div class="gc-info">
+      <div class="why-list reveal-group">
+        {strengths.map(item => (
+          <div class="why-item">
+            <span class="why-number">{item.n}</span>
+            <div>
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div class="gc-meta">
-                <span class="gc-loc"><Icon name="MapPin" size={12} /> {item.location}</span>
-                <span class="gc-status"><Icon name="CheckCircle2" size={12} /> Completed Project</span>
-              </div>
+              <p>{item.body}</p>
             </div>
-          </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SHOWCASE -->
+  <section class="section section-ivory work-section" id="projects-showcase">
+    <div class="container">
+      <div class="work-head">
+        <div class="reveal">
+          <span class="eyebrow">Selected work</span>
+          <h2>Real installations,<br /><em>documented on site.</em></h2>
+        </div>
+        <div class="work-head-actions reveal stagger-1">
+          <p class="lede">Verified photographs from electrical and plumbing installations across Dubai's commercial towers, residences, and industrial hubs.</p>
+          <a href="/gallery" class="text-link">
+            View the complete gallery
+            <Icon name="ArrowRight" size={15} />
+          </a>
+        </div>
+      </div>
+
+      <div class="work-grid reveal-group">
+        {featuredGallery.map((item, index) => (
+          <a href="/gallery" class:list={['work-card', { 'work-card-feature': index === 0 }]}>
+            <div class="work-media">
+              <img
+                src={item.image}
+                alt={`${item.title} delivered by Abbadi Tech`}
+                width="640"
+                height="460"
+                loading="lazy"
+              />
+              <span class="work-tag">{item.trade === 'Electrical Technical Work' ? 'Electrical' : 'Plumbing'}</span>
+              <span class="work-open"><Icon name="ArrowUpRight" size={16} /></span>
+            </div>
+            <div class="work-caption">
+              <h3>{item.title}</h3>
+              <span><Icon name="MapPin" size={12} /> {item.location}</span>
+            </div>
+          </a>
         ))}
       </div>
 
-      <div class="center-btn-row">
-        <a href="/gallery" class="btn btn-navy">
-          View Complete 16+ Work Photos Gallery →
+      <div class="work-footer reveal">
+        <a href="/projects" class="btn btn-secondary">
+          Browse verified project handovers
+          <Icon name="ArrowUpRight" size={15} />
         </a>
-        <a href="/projects" class="btn btn-outline">
-          Browse 1,000+ Completed Projects →
-        </a>
+        <span class="work-note">Photographs from live Abbadi Tech project sites.</span>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       6. HOW IT WORKS: 4-Step Intuitive Service Journey
-       ========================================================================== -->
-  <section class="section section-white" id="how-it-works">
+  <!-- PROCESS -->
+  <section class="section section-paper process-section" id="how-it-works">
     <div class="container">
-      <div class="section-header">
-        <span class="badge badge-amber">Streamlined Process</span>
-        <h2>How It Works: Simple 4-Step Service Journey</h2>
-        <p>
-          A disciplined, predictable technical workflow from initial contact to certified handover.
-        </p>
+      <div class="process-head reveal">
+        <span class="eyebrow">How we work</span>
+        <h2>A disciplined path from enquiry to <em>certified handover.</em></h2>
       </div>
 
-      <div class="process-steps-grid">
-        <div class="process-step-item reveal">
-          <div class="step-badge">01</div>
-          <h3>Submit an Enquiry</h3>
-          <p>
-            Share your project drawings, premise ID, or scope via our quote form, phone, or direct WhatsApp.
-          </p>
-        </div>
+      <ol class="process-grid reveal-group">
+        {process.map(step => (
+          <li class="process-step">
+            <span class="process-number">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
-        <div class="process-step-item reveal stagger-1">
-          <div class="step-badge">02</div>
-          <h3>Discuss Your Requirements</h3>
-          <p>
-            Our senior engineer reviews load requirements, inspects existing feeder lines, and conducts an on-site survey.
-          </p>
-        </div>
+  <!-- TESTIMONIALS -->
+  <section class="section section-ivory testimonials-section" id="testimonials">
+    <div class="container testimonials-grid">
+      <div class="testimonial-heading reveal">
+        <span class="eyebrow">Client confidence</span>
+        <h2>Quietly relied on <em>across the UAE.</em></h2>
+        <p>Facility directors, fit-out contractors, and property owners on partnering with Abbadi Tech.</p>
+      </div>
 
-        <div class="process-step-item reveal stagger-2">
-          <div class="step-badge">03</div>
-          <h3>Receive a Quotation</h3>
-          <p>
-            Receive a transparent, itemized quotation with clear material schedules, DEWA approval milestones, and timelines.
-          </p>
-        </div>
+      <figure class="testimonial-feature reveal stagger-1">
+        <div class="testimonial-stars" aria-label="Five out of five">★★★★★</div>
+        <blockquote>
+          “Abbadi Tech handled our entire restaurant fit-out electrical distribution and commercial plumbing rough-ins. Their familiarity with DEWA load schedules saved us at least two weeks on our opening timeline.”
+        </blockquote>
+        <figcaption>
+          <span class="testimonial-avatar">TM</span>
+          <span><strong>Tariq M.</strong>F&amp;B Operations Director, Downtown Dubai</span>
+        </figcaption>
+      </figure>
 
-        <div class="process-step-item reveal stagger-3">
-          <div class="step-badge">04</div>
-          <h3>Schedule &amp; Complete the Work</h3>
-          <p>
-            Our certified in-house teams execute the installation, conduct Megger/pressure testing, and secure authority sign-off.
-          </p>
-        </div>
+      <div class="testimonial-stack reveal stagger-2">
+        <figure class="testimonial-small">
+          <div class="testimonial-stars" aria-label="Five out of five">★★★★★</div>
+          <blockquote>“Clean MDB panel dressing and a reliable water booster pump setup for our commercial warehouse. Transparent BOQ with zero hidden costs at final inspection.”</blockquote>
+          <figcaption><strong>Suresh K.</strong>Logistics Facility Manager, Al Quoz</figcaption>
+        </figure>
+        <figure class="testimonial-small">
+          <div class="testimonial-stars" aria-label="Five out of five">★★★★★</div>
+          <blockquote>“We hired Abbadi Tech for villa plumbing repiping and a DB upgrade in Palm Jumeirah. High-pressure testing was conducted rigorously and with complete professionalism.”</blockquote>
+          <figcaption><strong>Mariam A.</strong>Private Property Representative, Palm Jumeirah</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       7. TESTIMONIALS & TRUST: Authentic Client Feedback
-       ========================================================================== -->
-  <section class="section section-light" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-navy">Client Feedback</span>
-        <h2>Client Confidence Across the UAE</h2>
+  <!-- QUOTE / CONTACT -->
+  <section class="section section-ink quote-section" id="quote-section">
+    <div class="container quote-grid">
+      <div class="quote-copy reveal">
+        <span class="eyebrow">Let's discuss your project</span>
+        <h2>Request a free <em>technical quote.</em></h2>
         <p>
-          What facility directors, fit-out contractors, and property owners say about partnering with Abbadi Tech.
+          Provide your project details to receive a line-item estimate from our engineering team. For immediate assistance or emergency dispatch, contact us directly.
         </p>
-      </div>
 
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">
-            “Abbadi Tech handled our entire restaurant fit-out electrical distribution and commercial plumbing rough-ins. Their familiarity with DEWA load schedules saved us at least two weeks on our opening timeline.”
-          </p>
-          <div class="testimonial-author">
-            <strong>Tariq M.</strong>
-            <span>F&amp;B Operations Director, Downtown Dubai</span>
-          </div>
-        </div>
-
-        <div class="testimonial-card reveal stagger-1">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">
-            “Clean MDB panel dressing and reliable water booster pump setup for our commercial warehouse. Transparent BOQ with zero hidden costs at final inspection.”
-          </p>
-          <div class="testimonial-author">
-            <strong>Suresh K.</strong>
-            <span>Logistics Facility Manager, Al Quoz</span>
-          </div>
-        </div>
-
-        <div class="testimonial-card reveal stagger-2">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">
-            “We hired Abbadi Tech for a comprehensive villa plumbing repiping and DB upgrade in Palm Jumeirah. High-pressure testing was conducted rigorously and with complete professionalism.”
-          </p>
-          <div class="testimonial-author">
-            <strong>Mariam A.</strong>
-            <span>Private Property Representative, Palm Jumeirah</span>
-          </div>
+        <div class="quote-contact-list">
+          <a href="tel:+971505546943" class="quote-contact">
+            <span class="quote-contact-icon"><Icon name="Phone" size={17} /></span>
+            <span><small>Phone support</small><strong>+971 50 554 6943</strong></span>
+            <Icon name="ArrowUpRight" size={15} class="quote-contact-arrow" />
+          </a>
+          <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20would%20like%20to%20request%20a%20quote" target="_blank" rel="noopener" class="quote-contact">
+            <span class="quote-contact-icon"><Icon name="MessageSquare" size={17} /></span>
+            <span><small>WhatsApp quick dispatch</small><strong>Chat with a technical estimator</strong></span>
+            <Icon name="ArrowUpRight" size={15} class="quote-contact-arrow" />
+          </a>
+          <a href="mailto:info@abbaditech.com" class="quote-contact">
+            <span class="quote-contact-icon"><Icon name="Mail" size={17} /></span>
+            <span><small>Email drawings &amp; BOQs</small><strong>info@abbaditech.com</strong></span>
+            <Icon name="ArrowUpRight" size={15} class="quote-contact-arrow" />
+          </a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-       8. CONTACT & CONVERSION EXPERIENCE: Interactive Quote Request Form
-       ========================================================================== -->
-  <section class="section section-navy" id="quote-section" style="position: relative; overflow: hidden;">
-    <ElectricalCircuitDecor variant="vibrant" accent="dual" />
-    <div class="container" style="position: relative; z-index: 1;">
-      <div class="quote-conversion-wrap">
-        <div class="qc-intro reveal">
-          <span class="badge badge-gold">Let's Discuss Your Project</span>
-          <h2>Request a Free Technical Quote</h2>
-          <p>
-            Provide your project details below to receive a line-item estimate from our engineering team. For immediate assistance or emergency dispatch, contact us directly.
-          </p>
-
-          <div class="qc-contact-points">
-            <a href="tel:+971505546943" class="qcp-link">
-              <div class="qcp-icon"><Icon name="Phone" size={18} /></div>
-              <div>
-                <span class="qcp-label">Phone Support</span>
-                <strong>+971 50 554 6943</strong>
-              </div>
-            </a>
-            <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20would%20like%20to%20request%20a%20quote" target="_blank" rel="noopener" class="qcp-link">
-              <div class="qcp-icon teal"><Icon name="MessageSquare" size={18} /></div>
-              <div>
-                <span class="qcp-label">WhatsApp Quick Dispatch</span>
-                <strong>Chat with Technical Estimator</strong>
-              </div>
-            </a>
-            <a href="mailto:it.abbaditech@gmail.com" class="qcp-link">
-              <div class="qcp-icon"><Icon name="Mail" size={18} /></div>
-              <div>
-                <span class="qcp-label">Email Drawings &amp; BOQs</span>
-                <strong>it.abbaditech@gmail.com</strong>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Interactive Form -->
-        <div class="qc-form-card reveal stagger-1">
-          <form id="home-quote-form" class="quote-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="q-name">Your Full Name *</label>
-                <input type="text" id="q-name" name="name" required placeholder="e.g. Tariq Mohammed" />
-              </div>
-              <div class="form-group">
-                <label for="q-phone">Phone / WhatsApp Number *</label>
-                <input type="tel" id="q-phone" name="phone" required placeholder="+971 50 123 4567" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="q-service">Service Category *</label>
-                <select id="q-service" name="service" required>
-                  <option value="Electrical Services">Electrical Services (DEWA, Panels, Wiring)</option>
-                  <option value="Plumbing Services">Plumbing Services (Piping, Pumps, Drainage)</option>
-                  <option value="Combined MEP Services">Combined Electrical &amp; Plumbing (MEP)</option>
-                  <option value="DEWA Approvals Only">DEWA Approvals &amp; Fit-Out NOC</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="q-location">Project Location / Emirate *</label>
-                <select id="q-location" name="location" required>
-                  <option value="Dubai">Dubai</option>
-                  <option value="Abu Dhabi">Abu Dhabi</option>
-                  <option value="Sharjah / Northern Emirates">Sharjah / Northern Emirates</option>
-                  <option value="Other UAE Location">Other UAE Location</option>
-                </select>
-              </div>
-            </div>
-
+      <div class="quote-form-card reveal stagger-1">
+        <form id="home-quote-form" class="quote-form">
+          <div class="form-row">
             <div class="form-group">
-              <label for="q-details">Project Requirements / Premise Details *</label>
-              <textarea id="q-details" name="details" rows="3" required placeholder="Describe your project: e.g. Restaurant fit-out in Downtown, need 45kW DEWA load upgrade and drainage rough-in..."></textarea>
+              <label for="q-name">Your full name *</label>
+              <input type="text" id="q-name" name="name" required placeholder="e.g. Tariq Mohammed" />
             </div>
+            <div class="form-group">
+              <label for="q-phone">Phone / WhatsApp *</label>
+              <input type="tel" id="q-phone" name="phone" required placeholder="+971 50 123 4567" />
+            </div>
+          </div>
 
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-hero" style="width:100%;">
-                Send Quote Request via WhatsApp →
-              </button>
-              <p class="form-disclaimer">
-                Direct dispatch to lead engineer. Your information is strictly used for technical estimation.
-              </p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="q-service">Service category *</label>
+              <select id="q-service" name="service" required>
+                <option value="Electrical Services">Electrical services</option>
+                <option value="Plumbing Services">Plumbing services</option>
+                <option value="Combined MEP Services">Combined electrical &amp; plumbing</option>
+                <option value="DEWA Approvals Only">DEWA approvals &amp; fit-out NOC</option>
+              </select>
             </div>
-          </form>
-        </div>
+            <div class="form-group">
+              <label for="q-location">Project location *</label>
+              <select id="q-location" name="location" required>
+                <option value="Dubai">Dubai</option>
+                <option value="Abu Dhabi">Abu Dhabi</option>
+                <option value="Sharjah / Northern Emirates">Sharjah / Northern Emirates</option>
+                <option value="Other UAE Location">Other UAE location</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="q-details">Project requirements *</label>
+            <textarea id="q-details" name="details" rows="3" required placeholder="Describe your project — e.g. restaurant fit-out in Downtown, 45kW DEWA load upgrade and drainage rough-in…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-hero submit-btn">
+            Send quote request via WhatsApp
+            <Icon name="ArrowRight" size={16} />
+          </button>
+          <p class="form-disclaimer">Direct dispatch to a lead engineer. Your information is used strictly for technical estimation.</p>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       9. FAQ SECTION: Authority SEO Questions
-       ========================================================================== -->
-  <FAQSection 
-    title="Frequently Asked Questions About Electrical & Plumbing Services" 
-    subtitle="Direct answers from our senior engineering team regarding DEWA approvals, load calculations, plumbing standards, and warranty."
+  <FAQSection
+    title="Frequently asked questions"
+    subtitle="Direct answers from our senior engineering team on DEWA approvals, load calculations, plumbing standards, and warranty."
+    badge="Engineering FAQ"
     faqs={homeFaqs}
   />
 </Layout>
 
 <script>
-  // Dynamic Quote Request Form Handling
   const quoteForm = document.getElementById('home-quote-form');
   if (quoteForm) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = (document.getElementById('q-name') as HTMLInputElement)?.value || '';
-      const phone = (document.getElementById('q-phone') as HTMLInputElement)?.value || '';
-      const service = (document.getElementById('q-service') as HTMLSelectElement)?.value || '';
-      const location = (document.getElementById('q-location') as HTMLSelectElement)?.value || '';
-      const details = (document.getElementById('q-details') as HTMLTextAreaElement)?.value || '';
-
-      const msg = `*Quote Request from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Service Category:* ${service}\n*Location:* ${location}\n*Requirements:* ${details}`;
-      const url = `https://wa.me/971505546943?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
+      const val = (id: string) => (document.getElementById(id) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)?.value || '';
+      const msg = `*Quote Request from Website*\n\n*Name:* ${val('q-name')}\n*Phone:* ${val('q-phone')}\n*Service Category:* ${val('q-service')}\n*Location:* ${val('q-location')}\n*Requirements:* ${val('q-details')}`;
+      window.open(`https://wa.me/971505546943?text=${encodeURIComponent(msg)}`, '_blank');
     });
   }
 </script>
 
 <style>
   /* ==========================================================================
-     HERO SECTION
+     HERO
      ========================================================================== */
-  .hero-section {
+  .hero {
     position: relative;
-    padding: 5.5rem 0 4.5rem;
-    background: var(--color-navy-dark);
-    color: #FFFFFF;
+    background: var(--ink-deep);
+    color: var(--white);
     overflow: hidden;
-    border-bottom: 1px solid var(--color-navy-border);
+    padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .hero-container {
+  .hero-inner {
     position: relative;
     z-index: 2;
-  }
-
-  .hero-split {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3.5rem;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
     align-items: center;
   }
 
-  .hero-badges {
+  .hero-meta {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.9rem;
     flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-meta-rule { width: 32px; height: 1px; background: rgba(255, 255, 255, 0.22); }
+
+  .hero-meta-text {
+    font-family: var(--font-heading);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
   }
 
   .hero-title {
-    font-size: clamp(2.35rem, 4.2vw, 3.4rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
-    margin-bottom: 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6.2vw, 5.4rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.018em;
+    color: var(--white);
+    margin-bottom: 1.6rem;
   }
 
-  .hero-title-accent {
-    background: linear-gradient(135deg, #F59E0B 0%, #FDE047 50%, #F59E0B 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+  .hero-title em {
+    display: block;
+    font-style: italic;
+    color: var(--brass-soft);
   }
 
   .hero-lead {
-    font-size: 1.12rem;
-    line-height: 1.65;
-    color: #CBD5E1;
-    margin-bottom: 2.25rem;
-    max-width: 600px;
+    font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.66);
+    max-width: 52ch;
+    margin-bottom: 2.1rem;
   }
 
-  .hero-cta-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
+  .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2.6rem; }
 
-  .hero-trust-chips {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-    padding-top: 1.5rem;
+  .hero-figures {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.4rem;
   }
 
-  .trust-chip {
-    display: flex;
-    flex-direction: column;
+  .hero-figures > div {
+    padding: 0 1.6rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
   }
 
-  .chip-num {
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 800;
-    line-height: 1.1;
-    color: #FFFFFF;
-  }
+  .hero-figures > div:first-child { padding-left: 0; }
+  .hero-figures > div:last-child { border-right: 0; }
 
-  .chip-text {
-    font-size: 0.76rem;
-    color: #94A3B8;
-    margin-top: 0.15rem;
-  }
-
-  .trust-chip-divider {
-    width: 1px;
-    height: 32px;
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .text-amber { color: var(--color-amber); }
-  .text-teal { color: #38BDF8; }
-
-  /* Hero Media Block */
-  .hero-media-block {
-    position: relative;
-  }
-
-  .hero-image-frame {
-    position: relative;
-    border-radius: var(--radius-md);
-    overflow: visible;
-  }
-
-  .hero-primary-img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-navy-border);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-  }
-
-  .floating-field-card {
-    position: absolute;
-    bottom: -18px;
-    left: -20px;
-    background: var(--color-navy-surface);
-    border: 1px solid var(--color-navy-border);
-    border-radius: var(--radius-sm);
-    padding: 0.85rem 1.15rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    box-shadow: 0 16px 36px rgba(7, 23, 43, 0.5);
-  }
-
-  .ffc-icon {
-    color: #38BDF8;
-  }
-
-  .ffc-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ffc-content strong {
-    font-size: 0.85rem;
-    color: #FFFFFF;
-  }
-
-  .ffc-content span {
-    font-size: 0.72rem;
-    color: #94A3B8;
-  }
-
-  .floating-quote-pill {
-    position: absolute;
-    top: -14px;
-    right: 12px;
-    background: var(--color-navy-dark);
-    color: #FFFFFF;
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    border-radius: var(--radius-sm);
-    padding: 0.45rem 0.95rem;
-    font-size: 0.76rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  }
-
-  .fqp-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #38BDF8;
-    box-shadow: 0 0 8px #38BDF8;
-  }
-
-  /* ==========================================================================
-     KEY TRUST BAR
-     ========================================================================== */
-  .trust-bar {
-    background: var(--color-navy-dark);
-    border-bottom: 1px solid var(--color-navy-border);
-    padding: 1.25rem 0;
-  }
-
-  .trust-bar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .trust-icon {
-    color: var(--color-amber);
-    display: flex;
-    align-items: center;
-  }
-
-  .trust-item strong {
-    display: block;
-    font-size: 0.92rem;
-    color: #FFFFFF;
-  }
-
-  .trust-item span {
-    display: block;
-    font-size: 0.76rem;
-    color: #94A3B8;
-  }
-
-  .trust-divider {
-    width: 1px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  /* ==========================================================================
-     SERVICE PILLARS
-     ========================================================================== */
-  .service-pillars-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .pillar-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    padding: 2.25rem;
-    box-shadow: var(--shadow-subtle);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .pillar-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .electrical-pillar {
-    border-top: 4px solid var(--color-amber);
-  }
-
-  .plumbing-pillar {
-    border-top: 4px solid var(--color-teal);
-  }
-
-  .pillar-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-sm);
-    margin-bottom: 0.85rem;
-  }
-
-  .pillar-header h3 {
-    font-size: 1.45rem;
-    font-weight: 800;
-    color: var(--color-navy);
-    margin-bottom: 0.5rem;
-  }
-
-  .pillar-intro {
-    font-size: 0.95rem;
-    color: var(--color-slate);
-    line-height: 1.55;
-    margin-bottom: 1.5rem;
-  }
-
-  .pillar-image-wrap {
-    position: relative;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-  }
-
-  .pillar-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-
-  .pillar-card:hover .pillar-img {
-    transform: scale(1.02);
-  }
-
-  .pillar-img-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(0deg, rgba(11, 31, 51, 0.85) 0%, transparent 100%);
-    padding: 0.6rem 0.85rem;
-    color: #FFFFFF;
-    font-size: 0.74rem;
-    font-weight: 500;
-  }
-
-  .pillar-services-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    margin-bottom: 2rem;
-    flex-grow: 1;
-  }
-
-  .pillar-services-list li {
-    font-size: 0.88rem;
-    color: var(--color-graphite);
-    line-height: 1.5;
-    position: relative;
-    padding-left: 1.6rem;
-  }
-
-  .pillar-services-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--color-amber);
-    font-weight: 800;
-    font-size: 1rem;
-  }
-
-  .plumbing-list li::before {
-    color: var(--color-teal);
-  }
-
-  .pillar-actions {
-    display: flex;
-    gap: 0.85rem;
-    flex-wrap: wrap;
-    margin-top: auto;
-  }
-
-  /* DEWA Approvals Dubai Callout */
-  .dewa-portal-callout {
-    background: #0B1F33;
-    color: #FFFFFF;
-    border: 1px solid var(--color-navy-border);
-    border-radius: var(--radius-md);
-    padding: 2.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2.5rem;
-    box-shadow: var(--shadow-md);
-  }
-
-  .dpc-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(245, 166, 35, 0.14);
-    border: 1px solid var(--color-amber-border);
-    color: var(--color-amber);
-    padding: 0.3rem 0.85rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.74rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.85rem;
-  }
-
-  .dpc-info h3 {
-    font-size: 1.45rem;
-    color: #FFFFFF;
-    margin-bottom: 0.5rem;
-  }
-
-  .dpc-info p {
-    font-size: 0.95rem;
-    color: #CBD5E1;
-    line-height: 1.6;
-    max-width: 680px;
-  }
-
-  .dpc-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    flex-shrink: 0;
-  }
-
-  /* ==========================================================================
-     ABOUT EDITORIAL
-     ========================================================================== */
-  .about-editorial-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3.5rem;
-    align-items: center;
-  }
-
-  .about-lead-p {
-    font-size: 1.1rem;
-    color: var(--color-navy);
-    font-weight: 500;
-    line-height: 1.65;
-    margin-bottom: 1rem;
-    margin-top: 0.75rem;
-  }
-
-  .about-text-content p {
-    font-size: 0.98rem;
-    line-height: 1.65;
-    color: var(--color-graphite);
-    margin-bottom: 1.5rem;
-  }
-
-  .about-pillars-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-  }
-
-  .apr-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .apr-item strong {
-    display: block;
-    font-size: 0.92rem;
-    color: var(--color-navy);
-  }
-
-  .apr-item span {
-    font-size: 0.8rem;
-    color: var(--color-slate);
-  }
-
-  .about-cta-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .about-card-stack {
-    position: relative;
-  }
-
-  .stack-main-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-  }
-
-  .stack-img {
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .stack-caption {
-    padding: 1rem 1.25rem;
-    background: #FFFFFF;
-  }
-
-  .stack-caption strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--color-navy);
-  }
-
-  .stack-caption span {
-    font-size: 0.78rem;
-    color: var(--color-slate);
-  }
-
-  .stack-metric-card {
-    position: absolute;
-    bottom: -15px;
-    right: -15px;
-    background: var(--color-navy);
-    color: #FFFFFF;
-    border: 1px solid var(--color-navy-border);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.5rem;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .smc-number {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--color-amber);
+  .hero-figures dt {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
     line-height: 1;
+    color: var(--white);
   }
 
-  .smc-label {
-    font-size: 0.85rem;
+  .hero-figures dd {
+    margin-top: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 0.63rem;
     font-weight: 600;
-    margin-top: 0.25rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.42);
   }
 
-  .smc-sub {
-    font-size: 0.72rem;
-    color: #94A3B8;
-  }
+  .hero-media { position: relative; padding-bottom: 2.5rem; padding-left: 2rem; }
 
-  /* ==========================================================================
-     WHY US GRID
-     ========================================================================== */
-  .why-us-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .why-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    padding: 2rem;
-    box-shadow: var(--shadow-subtle);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .why-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .why-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-  }
-
-  .why-icon-wrap.amber {
-    background: var(--color-amber-subtle);
-    color: #B87708;
-    border: 1px solid var(--color-amber-border);
-  }
-
-  .why-icon-wrap.teal {
-    background: var(--color-teal-subtle);
-    color: var(--color-teal);
-    border: 1px solid var(--color-teal-border);
-  }
-
-  .why-icon-wrap.navy {
-    background: rgba(11, 31, 51, 0.08);
-    color: var(--color-navy);
-    border: 1px solid rgba(11, 31, 51, 0.18);
-  }
-
-  .why-card h3 {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--color-navy);
-    margin-bottom: 0.65rem;
-  }
-
-  .why-card p {
-    font-size: 0.92rem;
-    color: var(--color-slate);
-    line-height: 1.6;
-  }
-
-  /* ==========================================================================
-     GALLERY SHOWCASE
-     ========================================================================== */
-  .gallery-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .gallery-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-subtle);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .gallery-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .gc-media {
+  .hero-frame-main {
     position: relative;
-    height: 220px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    aspect-ratio: 4 / 5;
+    max-height: 560px;
   }
 
-  .gc-img {
+  .hero-frame-main img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transform: scale(1.01);
   }
 
-  .gallery-card:hover .gc-img {
-    transform: scale(1.03);
-  }
-
-  .gc-trade-badge {
+  .hero-frame-main::after {
+    content: '';
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.25rem 0.65rem;
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 18, 23, 0) 50%, rgba(8, 18, 23, 0.55) 100%);
   }
 
-  .trade-amber {
-    background: #0B1F33;
-    color: var(--color-amber);
-    border: 1px solid var(--color-amber-border);
-  }
-
-  .trade-teal {
-    background: #0B1F33;
-    color: var(--color-teal-light);
-    border: 1px solid var(--color-teal-border);
-  }
-
-  .gc-info {
-    padding: 1.5rem;
-  }
-
-  .gc-info h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--color-navy);
-    margin-bottom: 0.45rem;
-  }
-
-  .gc-info p {
-    font-size: 0.85rem;
-    color: var(--color-slate);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-
-  .gc-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.76rem;
-    color: #64748B;
-    border-top: 1px solid var(--color-border-light);
-    padding-top: 0.75rem;
-  }
-
-  .gc-loc, .gc-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .gc-status {
-    color: #059669;
+  .hero-frame-index {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-size: 0.62rem;
     font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    background: rgba(8, 18, 23, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+    padding: 0.35rem 0.65rem;
+    backdrop-filter: blur(6px);
   }
 
-  .center-btn-row {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
+  .hero-frame-secondary {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: var(--shadow-xl);
+    aspect-ratio: 4 / 3;
   }
+
+  .hero-frame-secondary img { width: 100%; height: 100%; object-fit: cover; }
+
+  .hero-note {
+    position: absolute;
+    right: 0;
+    bottom: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    max-width: 230px;
+    background: rgba(19, 38, 47, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 0.8rem 0.9rem;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-note svg { color: var(--brass-soft); flex-shrink: 0; margin-top: 2px; }
+
+  .hero-note span { display: flex; flex-direction: column; font-size: 0.68rem; color: rgba(255, 255, 255, 0.55); line-height: 1.45; }
+  .hero-note strong { color: var(--white); font-size: 0.76rem; font-weight: 600; }
+
+  .hero-scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 1.25rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    z-index: 3;
+  }
+
+  .hero-scroll-line { width: 1px; height: 26px; background: linear-gradient(rgba(255,255,255,0.35), transparent); }
 
   /* ==========================================================================
-     PROCESS STEPS (4 STEPS)
+     TRUST BAND
      ========================================================================== */
-  .process-steps-grid {
+  .trust-band { background: var(--ink); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+
+  .trust-inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.75rem;
+    gap: 0;
   }
 
-  .process-step-item {
-    background: var(--color-bg-light);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    padding: 2rem 1.5rem;
-    position: relative;
-    box-shadow: var(--shadow-subtle);
+  .trust-item {
+    padding: 1.5rem 1.75rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 
-  .step-badge {
+  .trust-item:first-child { padding-left: 0; }
+  .trust-item:last-child { border-right: 0; }
+
+  .trust-label {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--color-amber);
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .trust-value { font-size: 0.76rem; color: rgba(255, 255, 255, 0.4); line-height: 1.5; }
+
+  /* ==========================================================================
+     INTRO
+     ========================================================================== */
+  .section-ivory { background: var(--ivory); }
+  .section-paper { background: var(--paper); }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .intro-heading h2 {
+    font-size: clamp(2.2rem, 3.9vw, 3.5rem);
+    margin-top: 1.1rem;
+    color: var(--ink);
+  }
+
+  .intro-body { padding-top: 2.4rem; }
+
+  .intro-lead { font-size: 1.08rem; line-height: 1.7; color: var(--ink); margin-bottom: 1.15rem; }
+  .intro-body > p:not(.intro-lead) { font-size: 0.97rem; color: var(--stone); margin-bottom: 1.6rem; }
+
+  .intro-signals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-signals > div { display: flex; gap: 0.7rem; align-items: flex-start; }
+  .intro-signals svg { color: var(--brass); flex-shrink: 0; margin-top: 2px; }
+  .intro-signals span { display: flex; flex-direction: column; font-size: 0.78rem; color: var(--stone); line-height: 1.45; }
+  .intro-signals strong { color: var(--ink); font-size: 0.88rem; font-weight: 600; }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-heading);
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 0.2rem;
+    transition: color 0.24s, border-color 0.24s, gap 0.24s var(--ease-out);
+  }
+
+  .text-link:hover { color: var(--brass-deep); border-color: var(--brass); gap: 0.7rem; }
+  .text-link.light { color: var(--white); border-color: rgba(255, 255, 255, 0.25); }
+  .text-link.light:hover { color: var(--brass-soft); border-color: var(--brass-soft); }
+
+  .intro-media-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr 0.9fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .intro-media {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: 300px;
+    margin: 0;
+    background: var(--ink-2);
+  }
+
+  .intro-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease-out); }
+  .intro-media:hover img { transform: scale(1.035); }
+
+  .intro-year {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.6rem;
+    border-radius: var(--radius-lg);
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink-line);
+  }
+
+  .intro-year-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
     line-height: 1;
+    color: var(--brass-soft);
   }
 
-  .process-step-item h3 {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--color-navy);
-    margin-bottom: 0.65rem;
+  .intro-year-label {
+    margin-top: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
   }
 
-  .process-step-item p {
-    font-size: 0.9rem;
-    color: var(--color-slate);
-    line-height: 1.6;
+  .intro-year p { margin-top: 0.75rem; font-size: 0.78rem; line-height: 1.55; color: rgba(255, 255, 255, 0.45); }
+
+  /* ==========================================================================
+     SERVICES
+     ========================================================================== */
+  .services-head {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
   }
+
+  .services-head h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-top: 1rem; color: var(--ink); }
+  .services-head .lede { padding-bottom: 0.5rem; }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding: clamp(2.5rem, 4.5vw, 4rem) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .service-row:last-of-type { border-bottom: 1px solid var(--line); }
+  .service-row-reverse .service-visual { order: 2; }
+  .service-row-reverse .service-content { order: 1; }
+
+  .service-visual { position: relative; }
+
+  .service-image {
+    aspect-ratio: 4 / 3;
+    position: relative;
+  }
+
+  .service-image-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(8, 18, 23, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 7px;
+    padding: 0.35rem 0.7rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .service-index {
+    position: absolute;
+    right: 0;
+    bottom: -1.6rem;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.7;
+    color: var(--ivory-deep);
+    z-index: -1;
+    user-select: none;
+  }
+
+  .service-content { padding: 0.5rem 0; }
+
+  .service-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass-deep);
+    margin-bottom: 1.1rem;
+  }
+
+  .service-content h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.06;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-content > p { font-size: 0.96rem; color: var(--stone); line-height: 1.7; margin-bottom: 1.5rem; max-width: 52ch; }
+
+  .service-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--ink);
+    line-height: 1.45;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-list svg { color: var(--brass); flex-shrink: 0; margin-top: 3px; }
+
+  .service-row-reverse .service-list svg { color: var(--teal); }
+
+  .service-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+
+  .dewa-band {
+    margin-top: clamp(2.5rem, 4vw, 4rem);
+    background: var(--ink-2);
+    border: 1px solid var(--ink-line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dewa-band::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--brass);
+  }
+
+  .dewa-copy h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 400;
+    color: var(--white);
+    margin: 0.9rem 0 0.65rem;
+    max-width: 26ch;
+  }
+
+  .dewa-copy p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.58); line-height: 1.65; max-width: 62ch; }
+  .dewa-copy strong { color: var(--brass-soft); font-weight: 600; }
+  .dewa-actions { display: flex; flex-direction: column; gap: 0.65rem; flex-shrink: 0; }
+
+  /* ==========================================================================
+     WHY
+     ========================================================================== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .why-aside { position: sticky; top: 130px; }
+  .why-aside .eyebrow { color: var(--brass-soft); }
+  .why-aside h2 { color: var(--white); font-size: clamp(2.2rem, 3.8vw, 3.3rem); margin: 1rem 0 1.15rem; }
+  .why-aside h2 em { color: var(--brass-soft); }
+  .why-aside p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.52); line-height: 1.7; margin-bottom: 1.5rem; max-width: 42ch; }
+
+  .why-list { display: grid; grid-template-columns: 1fr; gap: 0; }
+
+  .why-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .why-item:first-child { border-top: 1px solid rgba(255, 255, 255, 0.09); }
+
+  .why-number {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--brass-soft);
+    padding-top: 0.15rem;
+  }
+
+  .why-item h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  .why-item p { font-size: 0.86rem; color: rgba(255, 255, 255, 0.5); line-height: 1.65; }
+
+  /* ==========================================================================
+     WORK
+     ========================================================================== */
+  .work-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: clamp(2.25rem, 4vw, 3.5rem);
+  }
+
+  .work-head h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-top: 1rem; }
+  .work-head-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; padding-bottom: 0.5rem; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 240px;
+    gap: 1rem;
+  }
+
+  .work-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--ink-2);
+    color: var(--white);
+    isolation: isolate;
+  }
+
+  .work-card-feature { grid-column: span 2; grid-row: span 2; }
+
+  .work-media { position: absolute; inset: 0; z-index: -1; }
+
+  .work-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s var(--ease-out), filter 0.5s var(--ease-soft);
+  }
+
+  .work-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 18, 23, 0.05) 30%, rgba(8, 18, 23, 0.78) 100%);
+    transition: background 0.4s var(--ease-soft);
+  }
+
+  .work-card:hover .work-media img { transform: scale(1.05); }
+  .work-card:hover .work-media::after { background: linear-gradient(180deg, rgba(8, 18, 23, 0.15) 0%, rgba(8, 18, 23, 0.88) 100%); }
+
+  .work-tag {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(8, 18, 23, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 0.28rem 0.55rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .work-open {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s, transform 0.3s var(--ease-out);
+  }
+
+  .work-card:hover .work-open { opacity: 1; transform: none; }
+
+  .work-caption { position: relative; padding: 1.1rem 1.2rem; }
+
+  .work-caption h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+
+  .work-card-feature .work-caption h3 { font-size: 1.3rem; }
+
+  .work-caption span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .work-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .work-note { font-size: 0.78rem; color: var(--stone-light); }
+
+  /* ==========================================================================
+     PROCESS
+     ========================================================================== */
+  .process-head { max-width: 780px; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .process-head h2 { margin-top: 1rem; font-size: clamp(2.1rem, 3.8vw, 3.2rem); }
+  .process-head em { color: var(--brass-deep); }
+
+  .process-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .process-step {
+    padding: 2rem 1.6rem 0 0;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: 0; }
+  .process-step:not(:first-child) { padding-left: 1.6rem; }
+
+  .process-number {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--brass);
+    display: block;
+    margin-bottom: 1.4rem;
+  }
+
+  .process-step h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.55rem; }
+  .process-step p { font-size: 0.86rem; color: var(--stone); line-height: 1.65; }
 
   /* ==========================================================================
      TESTIMONIALS
      ========================================================================== */
   .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
   }
 
-  .testimonial-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    padding: 2rem;
+  .testimonial-heading h2 { font-size: clamp(2.1rem, 3.6vw, 3.1rem); margin: 1rem 0 1rem; }
+  .testimonial-heading em { color: var(--brass-deep); }
+  .testimonial-heading p { font-size: 0.93rem; color: var(--stone); max-width: 36ch; }
+
+  .testimonial-feature {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
     box-shadow: var(--shadow-subtle);
-    display: flex;
-    flex-direction: column;
   }
 
-  .testimonial-stars {
-    color: var(--color-amber);
-    font-size: 1.1rem;
-    margin-bottom: 0.85rem;
-    letter-spacing: 0.1em;
+  .testimonial-stars { color: var(--brass); font-size: 0.85rem; letter-spacing: 0.18em; margin-bottom: 1rem; }
+
+  .testimonial-feature blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
   }
 
-  .testimonial-quote {
-    font-size: 0.95rem;
-    color: var(--color-graphite);
-    line-height: 1.65;
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-  }
+  .testimonial-feature figcaption { display: flex; align-items: center; gap: 0.75rem; }
 
-  .testimonial-author strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--color-navy);
-  }
-
-  .testimonial-author span {
-    font-size: 0.78rem;
-    color: var(--color-slate);
-  }
-
-  /* ==========================================================================
-     QUOTE CONVERSION SECTION
-     ========================================================================== */
-  .quote-conversion-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 3.5rem;
-    align-items: center;
-  }
-
-  .qc-intro h2 {
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
-    color: #FFFFFF;
-    margin-top: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .qc-intro p {
-    font-size: 1.05rem;
-    color: #CBD5E1;
-    line-height: 1.65;
-    margin-bottom: 2rem;
-  }
-
-  .qc-contact-points {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .qcp-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #071524;
-    border: 1px solid var(--color-navy-border);
-    padding: 0.85rem 1.25rem;
-    border-radius: var(--radius-sm);
-    color: #FFFFFF;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .qcp-link:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-amber);
-  }
-
-  .qcp-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-sm);
-    background: rgba(245, 166, 35, 0.14);
-    color: var(--color-amber);
-    display: flex;
+  .testimonial-avatar {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--brass-soft);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .testimonial-feature figcaption span:last-child,
+  .testimonial-small figcaption { display: flex; flex-direction: column; font-size: 0.78rem; color: var(--stone); line-height: 1.5; }
+  .testimonial-feature figcaption strong,
+  .testimonial-small figcaption strong { font-family: var(--font-heading); font-size: 0.86rem; color: var(--ink); font-weight: 600; }
+
+  .testimonial-stack { display: flex; flex-direction: column; gap: 1rem; }
+
+  .testimonial-small {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .testimonial-small:hover { border-color: var(--line-strong); background: var(--paper); }
+  .testimonial-small blockquote { font-size: 0.88rem; line-height: 1.65; color: var(--graphite); margin-bottom: 0.9rem; }
+  .testimonial-small .testimonial-stars { font-size: 0.72rem; margin-bottom: 0.6rem; }
+
+  /* ==========================================================================
+     QUOTE
+     ========================================================================== */
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .quote-copy .eyebrow { color: var(--brass-soft); }
+  .quote-copy h2 { color: var(--white); font-size: clamp(2.2rem, 4vw, 3.4rem); margin: 1rem 0 1.1rem; }
+  .quote-copy h2 em { color: var(--brass-soft); }
+  .quote-copy > p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.55); line-height: 1.7; margin-bottom: 2rem; max-width: 46ch; }
+
+  .quote-contact-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+  .quote-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .quote-contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--brass-soft);
     flex-shrink: 0;
   }
 
-  .qcp-icon.teal {
-    background: rgba(22, 166, 161, 0.14);
-    color: var(--color-teal-light);
+  .quote-contact span:nth-child(2) { display: flex; flex-direction: column; line-height: 1.4; }
+  .quote-contact small { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.38); }
+  .quote-contact strong { font-size: 0.9rem; font-weight: 500; color: var(--white); }
+  .quote-contact-arrow { margin-left: auto; color: rgba(255, 255, 255, 0.3); transition: transform 0.25s var(--ease-out), color 0.25s; }
+  .quote-contact:hover .quote-contact-arrow { transform: translate(2px, -2px); color: var(--brass-soft); }
+
+  .quote-form-card {
+    background: var(--paper);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: var(--shadow-xl);
   }
 
-  .qcp-label {
-    display: block;
-    font-size: 0.74rem;
-    color: #94A3B8;
-  }
-
-  .qcp-link strong {
-    font-size: 0.95rem;
-    color: #FFFFFF;
-  }
-
-  .qc-form-card {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-md);
-    padding: 2.5rem;
-    box-shadow: var(--shadow-lg);
-    color: var(--color-graphite);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    margin-bottom: 1.25rem;
-  }
+  .quote-form { display: flex; flex-direction: column; gap: 1.15rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.42rem; }
 
   .form-group label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--color-navy);
     font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--stone);
   }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--color-graphite);
-    background: #FFFFFF;
-    border: 1.5px solid var(--color-border-strong);
-    border-radius: var(--radius-sm);
-    padding: 0.75rem 0.95rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 0.78rem 0.9rem;
+    font-size: 0.9rem;
+    background: var(--white);
   }
 
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-navy);
-    box-shadow: 0 0 0 3px rgba(11, 31, 51, 0.1);
-  }
-
-  .form-disclaimer {
-    font-size: 0.75rem;
-    color: #64748B;
-    text-align: center;
-    margin-top: 0.75rem;
-  }
+  .form-group textarea { resize: vertical; min-height: 92px; }
+  .submit-btn { width: 100%; margin-top: 0.35rem; }
+  .form-disclaimer { font-size: 0.7rem; color: var(--stone-light); text-align: center; line-height: 1.5; margin-top: 0.25rem; }
 
   /* ==========================================================================
-     RESPONSIVE BREAKPOINTS
+     RESPONSIVE
      ========================================================================== */
   @media (max-width: 1024px) {
-    .hero-split,
-    .about-editorial-grid,
-    .quote-conversion-wrap {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .service-pillars-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .why-us-grid,
-    .gallery-cards-grid,
-    .testimonials-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .process-steps-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .dewa-portal-callout {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-
-    .dpc-actions {
-      width: 100%;
-    }
-
-    .dpc-actions .btn {
-      width: 100%;
-    }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-media { max-width: 560px; padding-left: 2.5rem; }
+    .hero-scroll-hint { display: none; }
+    .trust-inner { grid-template-columns: 1fr 1fr; }
+    .trust-item { padding: 1.25rem 1.25rem; }
+    .trust-item:nth-child(2) { border-right: 0; }
+    .trust-item:nth-child(1), .trust-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .trust-item:nth-child(3) { padding-left: 0; }
+    .intro-grid, .services-head, .work-head, .why-grid, .quote-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .intro-body { padding-top: 0; }
+    .why-aside { position: static; }
+    .intro-media-grid { grid-template-columns: 1.4fr 1fr; }
+    .intro-year { grid-column: span 2; flex-direction: row; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+    .intro-year p { margin: 0; }
+    .service-row { grid-template-columns: 1fr; gap: 2.25rem; }
+    .service-row-reverse .service-visual { order: 0; }
+    .service-row-reverse .service-content { order: 0; }
+    .work-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+    .work-card-feature { grid-column: span 2; grid-row: span 1; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .process-step:nth-child(2) { border-right: 0; }
+    .process-step:nth-child(1), .process-step:nth-child(2) { border-bottom: 1px solid var(--line); padding-bottom: 1.75rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .dewa-band { flex-direction: column; align-items: flex-start; }
+    .dewa-actions { width: 100%; flex-direction: row; flex-wrap: wrap; }
   }
 
   @media (max-width: 640px) {
-    .hero-section {
-      padding: 3.5rem 0 3rem;
-    }
-
-    .hero-primary-img {
-      height: 280px;
-    }
-
-    .floating-field-card {
-      position: static;
-      margin-top: 1rem;
-    }
-
-    .floating-quote-pill {
-      position: static;
-      margin-bottom: 0.75rem;
-      display: inline-flex;
-    }
-
-    .trust-bar-inner {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .trust-divider {
-      display: none;
-    }
-
-    .why-us-grid,
-    .gallery-cards-grid,
-    .testimonials-grid,
-    .process-steps-grid,
-    .form-row,
-    .about-pillars-row {
-      grid-template-columns: 1fr;
-    }
-
-    .qc-form-card {
-      padding: 1.5rem;
-    }
+    .hero { padding-top: 2.5rem; }
+    .hero-title { font-size: clamp(2.7rem, 12vw, 3.6rem); }
+    .hero-figures { grid-template-columns: 1fr 1fr 1fr; }
+    .hero-figures > div { padding: 0 0.8rem; }
+    .hero-figures dt { font-size: 1.3rem; }
+    .hero-figures dd { font-size: 0.55rem; }
+    .hero-media { padding-left: 1.25rem; padding-bottom: 3.5rem; }
+    .hero-frame-secondary { width: 56%; }
+    .hero-note { right: 0; bottom: 0; max-width: 220px; }
+    .trust-inner { grid-template-columns: 1fr; }
+    .trust-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.07); padding-left: 0; }
+    .trust-item:last-child { border-bottom: 0; }
+    .intro-media-grid { grid-template-columns: 1fr; }
+    .intro-year { grid-column: auto; }
+    .intro-signals { grid-template-columns: 1fr; }
+    .service-list { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+    .work-card-feature { grid-column: auto; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-step, .process-step:not(:first-child) { padding: 1.5rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+    .process-step:last-child { border-bottom: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .quote-contact strong { font-size: 0.84rem; }
   }
 </style>

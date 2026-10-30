@@ -41,8 +41,8 @@ const {
     left: 0;
     right: 0;
     z-index: 9998;
-    background: #0B1F33;
-    border-top: 1px solid var(--color-navy-border);
+    background: var(--ink-deep);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0.65rem 0.85rem;
     padding-bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px));
     gap: 0.65rem;
@@ -56,32 +56,32 @@ const {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.65rem 0.75rem;
-    border-radius: var(--radius-sm);
+    border-radius: 10px;
     text-decoration: none;
     font-family: var(--font-heading);
     transition: transform 0.15s ease, filter 0.15s ease;
   }
 
   .action-call {
-    background: #132B45;
-    border: 1px solid var(--color-navy-border);
+    background: var(--ink-2);
+    border: 1px solid var(--ink-line);
     color: #FFFFFF;
   }
 
   .action-call:hover, .action-call:active {
-    background: #1A3859;
-    color: var(--color-amber);
+    background: var(--ink-3);
+    color: var(--brass-soft);
   }
 
   .action-whatsapp {
-    background: #16A6A1;
+    background: var(--teal);
     color: #FFFFFF;
-    border: 1px solid #107E7A;
-    box-shadow: 0 2px 8px rgba(22, 166, 161, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: none;
   }
 
   .action-whatsapp:hover, .action-whatsapp:active {
-    background: #128A86;
+    background: #235651;
   }
 
   .action-icon {

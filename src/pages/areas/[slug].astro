@@ -1,0 +1,699 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
+import { areaDetailsList, type AreaDetail } from '../../data/area-details';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return areaDetailsList.map((area) => ({
+    params: { slug: area.slug },
+    props: { area }
+  }));
+}
+
+interface Props {
+  area: AreaDetail;
+}
+
+const { area } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `${siteConfig.primaryDomain}/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Areas We Serve",
+      "item": `${siteConfig.primaryDomain}/areas-we-serve`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": area.name,
+      "item": `${siteConfig.primaryDomain}/areas/${area.slug}`
+    }
+  ]
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Electrician", "Plumber", "GeneralContractor", "LocalBusiness"],
+  "name": `${siteConfig.legalName} - ${area.name} Division`,
+  "telephone": siteConfig.phoneRaw,
+  "email": siteConfig.email,
+  "url": `${siteConfig.primaryDomain}/areas/${area.slug}`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteConfig.address.street,
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "AE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": area.geo.lat.toString(),
+    "longitude": area.geo.lng.toString()
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": area.name
+  },
+  "description": area.directAnswer
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": area.faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+---
+
+<Layout
+  title={area.metaTitle}
+  description={area.metaDescription}
+  currentPath={`/areas/${area.slug}`}
+  jsonLd={[breadcrumbSchema, localBusinessSchema, faqJsonLd]}
+>
+  <!-- HERO -->
+  <section class="sp-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/areas-we-serve">Areas We Serve</a>
+        <span>/</span>
+        <span>{area.name}</span>
+      </nav>
+
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">{area.badge}</span>
+          <h1 class="hero-title">{area.h1}</h1>
+
+          <!-- Answer-First Snippet for Search Engines & AI Overviews -->
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>Local Engineering Coverage Overview</strong>
+            </div>
+            <p class="answer-text">{area.directAnswer}</p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">District Character</span>
+              <strong class="hm-val">{area.districtType}</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">Mobilization Speed</span>
+              <strong class="hm-val">{area.dispatchTime.split(' ')[0]} {area.dispatchTime.split(' ')[1]} {area.dispatchTime.split(' ')[2]}</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">HQ Proximity</span>
+              <strong class="hm-val">Al Khail Corridor Direct</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- RFQ Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>Schedule Site Survey in {area.name}</h3>
+            <p>Our senior estimation engineers mobilize daily across {area.name}.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <input type="hidden" name="area" value={area.slug} />
+            <div class="form-group">
+              <label for="premise-tower">Tower / Building or Villa Community</label>
+              <input type="text" id="premise-tower" name="building" placeholder="e.g. Tower name or cluster" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone-contact">WhatsApp / Phone Number</label>
+              <input type="tel" id="phone-contact" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Request Fast-Track Survey <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>Urgent Dispatch: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRICT OVERVIEW & AUTHORITIES -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="content-split-grid">
+        <div class="main-column">
+          <span class="eyebrow">Local Infrastructure Context</span>
+          <h2>MEP Execution &amp; Permitting in {area.name}</h2>
+          <p class="body-lead">{area.overview}</p>
+
+          <div class="authorities-box">
+            <h3>Relevant Permitting &amp; Governing Authorities</h3>
+            <ul class="authority-bullet-list">
+              {area.localAuthorities.map((auth) => (
+                <li>
+                  <Icon name="ShieldCheck" size={18} color="var(--brass)" />
+                  <span>{auth}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <aside class="aside-column">
+          <div class="info-card">
+            <h4><Icon name="Building2" size={18} /> Typical Building Types</h4>
+            <ul class="specs-list">
+              {area.buildingTypes.map((bt) => (
+                <li>{bt}</li>
+              ))}
+            </ul>
+            <hr />
+            <h4><Icon name="MapPin" size={18} /> Key Landmarks Served</h4>
+            <ul class="specs-list">
+              {area.keyLandmarks.map((lm) => (
+                <li>{lm}</li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL ENGINEERING CHALLENGES & PROJECT CASE STUDY -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="split-audit-grid">
+        <div class="audit-col">
+          <span class="eyebrow">Technical Reality</span>
+          <h3>Engineering Considerations in {area.name}</h3>
+          <ul class="audit-list">
+            {area.engineeringChallenges.map((ch) => (
+              <li>
+                <Icon name="CheckCircle" size={16} color="var(--teal)" />
+                <span>{ch}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="audit-col project-case-col">
+          <span class="eyebrow">Local Delivery Experience</span>
+          <h3>Delivered Case Study Archetype</h3>
+          <div class="case-study-card">
+            <div class="cs-badge"><Icon name="Building2" size={14} /> Completed in {area.name}</div>
+            <h4>{area.projectArchetype.title}</h4>
+            <p class="cs-scope"><strong>Engineering Scope:</strong> {area.projectArchetype.scope}</p>
+            <p class="cs-outcome"><strong>Authority &amp; Handover Outcome:</strong> {area.projectArchetype.outcome}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Local Intelligence</span>
+        <h2>Frequently Asked Questions in {area.name}</h2>
+        <p>Specific answers regarding authority regulations and response times.</p>
+      </div>
+
+      <div class="faq-list">
+        {area.faqs.map((f) => (
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="q-text">{f.question}</span>
+              <span class="faq-toggle"></span>
+            </summary>
+            <div class="faq-body">
+              <p>{f.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXTUAL INTERNAL LINKING -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="related-block">
+        <h3>Core Services Deployed Across {area.name}</h3>
+        <div class="related-links">
+          <a href="/dewa-approvals-dubai" class="related-pill related-pill-hub">
+            <Icon name="FileCheck" size={14} />
+            <span>DEWA Approvals Portal</span>
+          </a>
+          <a href="/services/commercial-electrical-contractor-dubai" class="related-pill">
+            <Icon name="Zap" size={14} />
+            <span>Commercial Electrical</span>
+          </a>
+          <a href="/services/commercial-plumbing-dubai" class="related-pill">
+            <Icon name="Droplets" size={14} />
+            <span>Commercial Plumbing</span>
+          </a>
+          <a href="/areas-we-serve" class="related-pill">
+            <Icon name="MapPin" size={14} />
+            <span>All Areas We Serve</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <div>
+        <span class="eyebrow">Local Dubai Support</span>
+        <h2>Operating in {area.name}?</h2>
+        <p>Our centralized mobile technical teams reach {area.name} within {area.dispatchTime.split(' ')[0]}–{area.dispatchTime.split(' ')[2]} minutes for fast on-site evaluations.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          Schedule Site Visit <Icon name="ArrowUpRight" size={16} />
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappNumber}?text=Hi%20Abbadi%20Tech,%20I%20need%20an%20engineering%20survey%20in%20${encodeURIComponent(area.name)}`} target="_blank" rel="noopener" class="btn btn-outline-white">
+          <Icon name="MessageSquare" size={16} /> WhatsApp Pin
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-left: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .rfq-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .rfq-header p {
+    font-size: 0.82rem;
+    color: var(--stone);
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .form-group input {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+  }
+
+  .hotline-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    font-size: 0.82rem;
+    color: var(--stone);
+  }
+
+  .hotline-strip a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .content-split-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3rem;
+  }
+
+  .body-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--stone-deep);
+    margin-bottom: 2rem;
+  }
+
+  .authorities-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .authority-bullet-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .authority-bullet-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--stone);
+  }
+
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+  }
+
+  .info-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .specs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .specs-list li {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+
+  .info-card hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 1.25rem 0;
+  }
+
+  .split-audit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .audit-col {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+  }
+
+  .audit-col h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+
+  .audit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .audit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+
+  .case-study-card {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1.4rem;
+  }
+
+  .cs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--brass-deep);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .case-study-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-card p {
+    font-size: 0.84rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-card p:last-child { margin-bottom: 0; }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .faq-summary {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .faq-body {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--stone);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .related-block { text-align: center; }
+  .related-block h3 { font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1.25rem; }
+
+  .related-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .related-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .related-pill:hover { border-color: var(--brass); color: var(--brass-deep); }
+  .related-pill-hub { background: var(--ink); color: var(--brass-soft); border-color: var(--ink); }
+
+  .cta-banner {
+    background: var(--ink-2);
+    color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: var(--white);
+    margin: 0.5rem 0;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+
+  @media (max-width: 1024px) {
+    .hero-split, .content-split-grid, .split-audit-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

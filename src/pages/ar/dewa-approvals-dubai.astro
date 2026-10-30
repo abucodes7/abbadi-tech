@@ -1,0 +1,470 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
+import { siteConfig } from '../../config/site';
+
+const pageTitle = "موافقات ديوا دبي | شهادة عدم ممانعة ومخططات SLD معتمدة | عبادي تك";
+const pageDescription = "استخراج موافقات هيئة كهرباء ومياه دبي (ديوا)، شهادات عدم الممانعة للديكور والتشطيبات، ترقية الأحمال واعتماد مخططات SLD خلال 3-5 أيام عمل. اتصل: 971505546943+";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${siteConfig.primaryDomain}/ar` },
+    { "@type": "ListItem", "position": 2, "name": "موافقات ديوا دبي", "item": `${siteConfig.primaryDomain}/ar/dewa-approvals-dubai` }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "خدمات موافقات هيئة كهرباء ومياه دبي (ديوا)",
+  "serviceType": "DEWA Approvals, Fit-Out NOC & Stamped SLD Engineering",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteConfig.legalName,
+    "telephone": siteConfig.phoneRaw,
+    "email": siteConfig.email,
+    "url": `${siteConfig.primaryDomain}/ar/dewa-approvals-dubai`
+  },
+  "areaServed": "Dubai",
+  "description": "استخراج اعتمادات هيئة كهرباء ومياه دبي، شهادات عدم الممانعة لأعمال الديكور والتشطيب، ترقية الأحمال الكهربائية، فحص الجهد المنخفض وتركيب العدادات."
+};
+
+const dewaSubServicesAr = [
+  {
+    title: "شهادة عدم ممانعة أعمال الديكور والتشطيب (Fit-Out NOC)",
+    desc: "إعداد ومطابقة المخططات الهندسية وجداول الأحمال لاستخراج شهادة عدم الممانعة للشركات والمطاعم والمحلات والمكاتب في دبي.",
+    slug: "fit-out-approval-noc",
+    timeline: "3–5 أيام عمل"
+  },
+  {
+    title: "ترقية الأحمال الكهربائية (Additional Load Upgrade)",
+    desc: "حسابات الطلب الأقصى، وتحديد سعة كابلات التغذية، وترقية لوحات التوزيع وقواطع الدورة للمباني والمستودعات والفلل.",
+    slug: "additional-load-upgrade",
+    timeline: "7–14 يوم عمل"
+  },
+  {
+    title: "تصميم واعتماد المخطط أحادي الخط (SLD Stamping)",
+    desc: "إعداد المخططات أحادية الخط SLD وجداول الأحمال Load Schedules وختمها وتقديمها عبر بوابة ديوا الإلكترونية.",
+    slug: "single-line-diagram-load-schedule",
+    timeline: "2–4 أيام عمل"
+  },
+  {
+    title: "فحص الجهد المنخفض وتركيب العداد (LV Inspection & Metering)",
+    desc: "فحص العزل واختبارات القواطع وتجهيز الموقع وتنسيق حضور مفتش ديوا لتركيب العداد وإطلاق التيار الكهربائي الحي.",
+    slug: "lv-inspection-meter-connection",
+    timeline: "3–7 أيام عمل"
+  },
+  {
+    title: "معالجة الإشعار الأحمر (Red Notice Rectification)",
+    desc: "فحص وتصحيح الملاحظات الهندسية ومخالفات الموقع الصادرة من مفتشي ديوا وإعادة تقديم طلب الفحص بنجاح.",
+    slug: "red-notice-inspection-rectification",
+    timeline: "24–48 ساعة استجابة"
+  },
+  {
+    title: "توصيل الكهرباء المؤقتة للإنشاءات (Temporary Power)",
+    desc: "تصميم وتركيب لوحات الكهرباء المؤقتة وكابلات التغذية للمواقع الإنشائية ومشاريع البناء والترميم.",
+    slug: "temporary-construction-power",
+    timeline: "5–10 أيام عمل"
+  }
+];
+
+const faqsAr = [
+  {
+    q: "كم يستغرق استخراج شهادة عدم الممانعة من ديوا (DEWA NOC)؟",
+    a: "تستغرق المراجعة الفنية القياسية لشهادة عدم الممانعة لأعمال الديكور والتشطيب لدى ديوا بين 3 إلى 5 أيام عمل، بشرط تقديم مخططات هندسية مكتملة وجداول أحمال مطابقة لمعايير ومواصفات الهيئة."
+  },
+  {
+    q: "ما هي المستندات المطلوبة للتقديم على موافقة ديوا لأعمال الديكور؟",
+    a: "تشمل المستندات الأساسية: عقد إيجاري ساري المفعول، رقم المبنى (Premise ID / Makani)، رخصة تجارية، مخطط معماري معتمد من الدفاع المدني والبلدية، والمخطط الكهربائي أحادي الخط (SLD) المعتمد مع جدول الأحمال."
+  },
+  {
+    q: "هل يمكن للمستأجر التقديم مباشرة دون مقاول معتمد؟",
+    a: "لا، تتطلب لوائح هيئة كهرباء ومياه دبي تقديم المخططات الكهربائية وأعمال التعديل والتفتيش الفني حصراً عبر مقاول كهروميكانيكي أو استشاري هندسي مرخص ومسجل لدى الهيئة."
+  },
+  {
+    q: "ما أسباب رفض فحص ديوا (Red Notice) وكيف يتم حله؟",
+    a: "أبرز أسباب الرفض تشمل: عدم تطابق التوصيلات الفعلية مع المخطط المعتمد، نقص التأريض (Earthing)، عدم مطابقة سعة القواطع، أو خلل في عزل الكابلات (Megger test). نقوم بإجراء مسح فوري وتصحيح العيوب وإعادة حجز موعد الفحص."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqsAr.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/ar/dewa-approvals-dubai"
+  englishUrl={`${siteConfig.primaryDomain}/dewa-approvals-dubai`}
+  isArabic={true}
+  canonicalUrl={`${siteConfig.primaryDomain}/ar/dewa-approvals-dubai`}
+  jsonLd={[breadcrumbSchema, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="sp-hero ar-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">خدمات الاعتماد الهندسي الحكومي · دبي</span>
+          <h1 class="hero-title">موافقات هيئة كهرباء ومياه دبي (ديوا) بدون تأخير</h1>
+          
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>إجابة مباشرة: متطلبات وإجراءات اعتماد ديوا في دبي</strong>
+            </div>
+            <p class="answer-text">
+              تتطلب جميع أعمال التعديلات الكهربائية، والديكور الداخلي (Fit-Out)، وترقية الأحمال في إمارة دبي استخراج شهادة عدم ممانعة (NOC) ومخطط هندسي أحادي الخط (SLD) معتمد من هيئة كهرباء ومياه دبي (ديوا). بصفتنا مقاولاً كهروميكانيكياً معتمداً ومسجلاً (رخصة تجارية 571822، رقم تسجيل ديوا DEWA-M-4892)، نتولى إعداد الحسابات الهندسية، وفحص مطابقة الموقع، والتقديم عبر منصة ديوا الإلكترونية مع فترة إنجاز قياسية تتراوح بين 3 إلى 5 أيام عمل.
+            </p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">زمن إصدار شهادة NOC</span>
+              <strong class="hm-val">3–5 أيام عمل</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">مراجعة المخططات</span>
+              <strong class="hm-val">فحص هندسي مسبق دقيق</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">الترخيص والتسجيل</span>
+              <strong class="hm-val">مسجل لدى ديوا وبلدية دبي</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- RFQ Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>طلب دراسة معاملة ديوا</h3>
+            <p>أدخل بيانات العقار وسيتواصل معك مهندس معتمد لمراجعة المخططات.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <div class="form-group">
+              <label for="premise-ar">رقم العقار (Premise ID / رقم مكاني)</label>
+              <input type="text" id="premise-ar" name="premise" placeholder="مثال: 12345678" required />
+            </div>
+
+            <div class="form-group">
+              <label for="service-type-ar">نوع المعاملة المطلوبة</label>
+              <select id="service-type-ar" name="type" class="form-select">
+                <option value="fit-out">شهادة عدم ممانعة ديكور (Fit-Out NOC)</option>
+                <option value="load-upgrade">ترقية أحمال كهربائية (Load Upgrade)</option>
+                <option value="sld">اعتماد مخطط SLD وجدول أحمال</option>
+                <option value="meter">فحص الجهد المنخفض وتركيب عداد</option>
+                <option value="red-notice">معالجة إشعار أحمر (Red Notice)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="phone-ar">رقم الهاتف / الواتساب</label>
+              <input type="tel" id="phone-ar" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              طلب مراجعة هندسية فورية <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>خط الاتصال السريع: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB SERVICES SECTION -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">خدماتنا المتخصصة في معاملات ديوا</span>
+        <h2>حلول هندسية متكاملة لجميع طلبات هيئة كهرباء ومياه دبي</h2>
+        <p class="section-desc">من التقديم الأولي للمخططات وحتى إطلاق التيار الكهربائي الحي وتركيب العدادات.</p>
+      </div>
+
+      <div class="ar-services-grid">
+        {dewaSubServicesAr.map((item) => (
+          <div class="ar-card">
+            <div class="card-timeline-tag">{item.timeline}</div>
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-desc">{item.desc}</p>
+            <a href={`/dewa-approvals-dubai/${item.slug}`} class="card-link">
+              التفاصيل الفنية والرسوم <Icon name="ArrowUpRight" size={15} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-STEP APPROVAL PROCESS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">منهجية العمل والاعتماد</span>
+        <h2>مراحل إنجاز موافقات ديوا خطوة بخطوة</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h4>المعاينة وحساب الأحمال</h4>
+          <p>مسح ميداني للموقع، ومطابقة لوحات التوزيع الحالية، وحساب الأحمال المتصلة والمطلوبة بدقة.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h4>رسم ومطابقة مخططات SLD</h4>
+          <p>تصميم المخطط أحادي الخط وجداول القواطع والكابلات وفق كود ولوائح ديوا للكهرباء والمياه.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h4>التقديم الإلكتروني والمتابعة</h4>
+          <p>رفع المعاملة عبر بوابة ديوا الإلكترونية للمقاولين ومتابعة الملاحظات الفنية مع مهندسي الهيئة.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <h4>التفتيش الميداني والتشغيل</h4>
+          <p>إجراء اختبارات العزل والجهد وتنسيق التفتيش النهائي لتركيب العداد وإطلاق التيار بنجاح.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION ARABIC -->
+  <section class="section section-paper">
+    <div class="container" style="max-width: 860px;">
+      <div class="section-header">
+        <span class="eyebrow">الأسئلة الشائعة</span>
+        <h2>كل ما تحتاج معرفته عن إجراءات وموافقات ديوا دبي</h2>
+      </div>
+
+      <div class="ar-faq-list">
+        {faqsAr.map((faq) => (
+          <div class="ar-faq-item">
+            <h3 class="ar-faq-q">{faq.q}</h3>
+            <p class="ar-faq-a">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section-cta">
+    <div class="container text-center">
+      <h2>هل تواجه تأخيراً أو إشعاراً أحمر من ديوا؟</h2>
+      <p>فريقنا الهندسي جاهز لمعاينة موقعك وتصحيح المخططات والملاحظات خلال 24 ساعة.</p>
+      <div class="cta-actions">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary">
+          <Icon name="PhoneCall" size={16} /> اتصال فوري: {siteConfig.phone}
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappRaw}?text=${encodeURIComponent('مرحباً، أود الاستفسار عن موافقات ديوا دبي')}`} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <Icon name="MessageSquare" size={16} /> تواصل عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ar-hero { text-align: right; }
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-right: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.72rem; color: rgba(255, 255, 255, 0.5); }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    text-align: right;
+  }
+  .rfq-header h3 { font-family: var(--font-heading); font-size: 1.25rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .rfq-header p { font-size: 0.82rem; color: var(--stone); margin-bottom: 1.25rem; }
+  .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .form-group input, .form-select {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--ink);
+  }
+  .hotline-strip { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.82rem; color: var(--stone); }
+  .hotline-strip a { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+  .ar-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .ar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .ar-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brass);
+  }
+  .card-timeline-tag {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--brass);
+    background: rgba(180, 134, 76, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .card-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.88rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.25rem; }
+  .card-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+  }
+  .card-link:hover { color: var(--brass); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .step-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brass);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .step-card h4 { font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; margin: 0; }
+
+  .ar-faq-list { display: flex; flex-direction: column; gap: 1rem; text-align: right; }
+  .ar-faq-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .ar-faq-q { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+  .ar-faq-a { font-size: 0.9rem; line-height: 1.7; color: var(--stone); margin: 0; }
+
+  .section-cta {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 5vw, 4.5rem) 0;
+    text-align: center;
+  }
+  .section-cta h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 0.75rem; color: var(--white); }
+  .section-cta p { font-size: 1rem; color: rgba(255, 255, 255, 0.8); max-width: 650px; margin: 0 auto 2rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-split { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-meta-row { flex-wrap: wrap; }
+  }
+</style>

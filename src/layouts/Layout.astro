@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import MobileStickyBar from '../components/MobileStickyBar.astro';
+import { siteConfig } from '../config/site';
 import '../styles/global.css';
 
 interface Props {
@@ -12,30 +13,36 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
+  arabicUrl?: string;
+  englishUrl?: string;
+  isArabic?: boolean;
 }
 
 const { 
   title, 
   description, 
   currentPath = '',
-  canonicalUrl = `https://www.abbaditech.com${currentPath || '/'}`,
-  ogImage = 'https://www.abbaditech.com/images/gallery/electrical-panel-assembly.jpg',
-  jsonLd
+  canonicalUrl = `${siteConfig.primaryDomain}${currentPath === '/' ? '' : currentPath}`,
+  ogImage = `${siteConfig.primaryDomain}/images/gallery/electrical-panel-assembly.jpg`,
+  jsonLd,
+  arabicUrl,
+  englishUrl,
+  isArabic = false
 } = Astro.props;
 
-// Base LocalBusiness Schema (Electrician, Plumber, GeneralContractor)
+// Base Schema: Validated LocalBusiness & Engineering Contractor without unverified reviews
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": ["Electrician", "Plumber", "GeneralContractor", "LocalBusiness"],
-  "@id": "https://www.abbaditech.com/#business",
-  "name": "Abbadi Tech Technical Solutions LLC",
-  "legalName": "Abbadi Tech Technical Solutions LLC",
-  "alternateName": ["Abbadi Tech LLC", "DEWA Approvals Dubai", "Abbadi Tech Contracting"],
-  "url": "https://www.abbaditech.com/",
-  "logo": "https://www.abbaditech.com/logo.png",
+  "@id": `${siteConfig.primaryDomain}/#business`,
+  "name": siteConfig.legalName,
+  "legalName": siteConfig.legalName,
+  "alternateName": [siteConfig.siteShortName, "Abbadi Tech LLC", "DEWA Approvals Dubai"],
+  "url": `${siteConfig.primaryDomain}/`,
+  "logo": `${siteConfig.primaryDomain}/logo.png`,
   "image": ogImage,
-  "telephone": "+971505546943",
-  "email": "it.abbaditech@gmail.com",
+  "telephone": siteConfig.phoneRaw,
+  "email": siteConfig.email,
   "foundingDate": "2005",
   "priceRange": "AED",
   "paymentAccepted": "Cash, Credit Card, Bank Transfer, Cheque",
@@ -56,46 +63,50 @@ const businessSchema = {
       "description": "24/7 Emergency Electrical & MEP On-Call Dispatch"
     }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "184",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "contactPoint": [
     {
       "@type": "ContactPoint",
-      "telephone": "+971505546943",
-      "contactType": "customer service & technical estimation",
+      "telephone": siteConfig.phoneRaw,
+      "contactType": "technical estimation & authority coordination",
       "areaServed": ["AE", "Dubai", "Abu Dhabi", "Ajman"],
       "availableLanguage": ["English", "Arabic", "Hindi", "Urdu"]
     },
     {
       "@type": "ContactPoint",
-      "telephone": "+971505546943",
-      "contactType": "emergency dispatch",
+      "telephone": siteConfig.phoneRaw,
+      "contactType": "emergency electrical dispatch",
       "hoursAvailable": "Mo-Su 00:00-24:00"
     }
   ],
   "founder": {
     "@type": "Person",
-    "name": "Koyakutty Mohammed",
-    "jobTitle": "Founder & Chairman"
+    "name": siteConfig.founder.name,
+    "jobTitle": siteConfig.founder.title
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Oberoi Properties Building, Behind Al Khail Mall",
-    "addressLocality": "Dubai",
-    "addressRegion": "Dubai",
-    "postOfficeBoxNumber": "121908",
-    "addressCountry": "AE"
+    "streetAddress": siteConfig.address.street,
+    "addressLocality": siteConfig.address.city,
+    "addressRegion": siteConfig.address.region,
+    "postOfficeBoxNumber": siteConfig.address.postalCode,
+    "addressCountry": siteConfig.address.country
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "25.1384",
-    "longitude": "55.2348"
+    "latitude": siteConfig.address.latitude.toString(),
+    "longitude": siteConfig.address.longitude.toString()
   },
+  "knowsAbout": [
+    "DEWA Approvals & NOCs",
+    "Single-Line Diagrams (SLD)",
+    "Load Schedule Calculations",
+    "MDB & SMDB Panel Assembly",
+    "Commercial Kitchen Grease Traps",
+    "Dubai Municipality Plumbing Regulations",
+    "Civil Defence Life Safety Compliance",
+    "Water Booster Pump Stations",
+    "LV Inspection & Meter Connections"
+  ],
   "areaServed": [
     { "@type": "City", "name": "Dubai" },
     { "@type": "AdministrativeArea", "name": "Business Bay" },
@@ -111,58 +122,12 @@ const businessSchema = {
     { "@type": "AdministrativeArea", "name": "Al Barsha" },
     { "@type": "City", "name": "Abu Dhabi" },
     { "@type": "City", "name": "Ajman" }
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Licensed Technical & MEP Contracting Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "DEWA Approvals & Fast-Track NOCs Dubai",
-          "description": "Certified online portal submissions, Single-Line Diagrams (SLD), load schedule calculations, fit-out NOCs, and final meter energization across Dubai."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Electrical Contractors Dubai",
-          "description": "MDB/SMDB panel building, cable pulling, busbar trunking, 3-phase power distribution, and testing & commissioning."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Plumbing & Drainage Contractors Dubai",
-          "description": "PPR & copper water supply piping, HDPE & UPVC acoustic drainage, automatic booster pumps, and water heater installations."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Commercial Kitchen Grease Trap & Municipality Approvals",
-          "description": "Dubai Municipality compliant grease trap supply, biological dosing systems, and certified kitchen drainage rough-in."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "24/7 Emergency Electrical & MEP Repair Dubai",
-          "description": "Rapid on-site emergency dispatch for short circuits, breaker trips, pump failures, and power outages."
-        }
-      }
-    ]
-  }
+  ]
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={isArabic ? "ar" : "en"} dir={isArabic ? "rtl" : "ltr"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,20 +137,37 @@ const businessSchema = {
     
     <!-- Crawl & Indexing -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="author" content="Abbadi Tech Technical Solutions LLC" />
-    <meta name="theme-color" content="#0C2340" />
-    <meta name="keywords" content="DEWA approval services Dubai, electrical contractor Dubai, commercial plumbing contractor Dubai, DEWA fit-out NOC, Single-Line Diagram SLD Dubai, load schedule calculation, MDB SMDB panel Dubai, grease trap Dubai Municipality approval, emergency electrical contractor Dubai, MEP contracting Dubai" />
+    <meta name="author" content={siteConfig.legalName} />
+    <meta name="theme-color" content={siteConfig.colors.navyDark} />
 
-    <!-- Geo Meta Tags for Local UAE SEO -->
+    <!-- Hreflang Canonical & Regional Language Annotations -->
+    {isArabic ? (
+      <>
+        <link rel="alternate" hreflang="ar-ae" href={canonicalUrl} />
+        <link rel="alternate" hreflang="en-ae" href={englishUrl || `${siteConfig.primaryDomain}${currentPath.replace(/^\/ar/, '') || '/'}`} />
+        <link rel="alternate" hreflang="x-default" href={englishUrl || `${siteConfig.primaryDomain}${currentPath.replace(/^\/ar/, '') || '/'}`} />
+      </>
+    ) : (
+      <>
+        <link rel="alternate" hreflang="en-ae" href={canonicalUrl} />
+        <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+        {arabicUrl && (
+          <link rel="alternate" hreflang="ar-ae" href={arabicUrl} />
+        )}
+      </>
+    )}
+
+    <!-- Geo Meta Tags for UAE Local Pack -->
     <meta name="geo.region" content="AE-DU" />
     <meta name="geo.placename" content="Dubai" />
-    <meta name="geo.position" content="25.1384;55.2348" />
-    <meta name="ICBM" content="25.1384, 55.2348" />
+    <meta name="geo.position" content={`${siteConfig.address.latitude};${siteConfig.address.longitude}`} />
+    <meta name="ICBM" content={`${siteConfig.address.latitude}, ${siteConfig.address.longitude}`} />
 
     <!-- Open Graph (Facebook / LinkedIn / WhatsApp) -->
-    <meta property="og:locale" content="en_AE" />
+    <meta property="og:locale" content={isArabic ? "ar_AE" : "en_AE"} />
+    <meta property="og:locale:alternate" content={isArabic ? "en_AE" : "ar_AE"} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Abbadi Tech LLC" />
+    <meta property="og:site_name" content={siteConfig.siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -203,14 +185,10 @@ const businessSchema = {
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <!-- Fonts Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <!-- Schema.org Base Organization & LocalBusiness Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
 
-    <!-- Additional Custom JSON-LD (e.g. Service or Breadcrumbs) -->
+    <!-- Additional Custom JSON-LD (e.g. Service, BreadcrumbList, FAQPage, Article) -->
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}

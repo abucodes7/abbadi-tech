@@ -1,0 +1,389 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Flexible MEP & DEWA Approval Pricing Dubai | Abbadi Tech";
+const pageDescription = "Transparent, flexible pricing for DEWA approvals, electrical contracting & commercial plumbing in Dubai. Custom itemized BOQs based on your project: +971 50 554 6943.";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteConfig.primaryDomain}/` },
+    { "@type": "ListItem", "position": 2, "name": "Pricing & Rates", "item": `${siteConfig.primaryDomain}/pricing` }
+  ]
+};
+
+const pricePackages = [
+  {
+    category: "DEWA Approvals & NOCs",
+    items: [
+      { service: "DEWA Fit-Out NOC (Decoration Approval)", range: "Tailored Project Quote", turnaround: "3–5 Days", note: "Includes site survey, stamped SLD drafting & online portal submission" },
+      { service: "Certified Single-Line Diagram (SLD)", range: "Flexible / Scope-Based", turnaround: "24–48 Hours", note: "AutoCAD schematic stamped by registered electrical engineer" },
+      { service: "Electrical Load Upgrade Submission", range: "Custom Load Feasibility", turnaround: "7–14 Days", note: "Load schedule calculation & upstream transformer feasibility" },
+      { service: "DEWA LV Pre-Inspection & Testing", range: "Project-Specific Pricing", turnaround: "3–5 Days", note: "Full Megger insulation test certificate & engineer attendance" },
+      { service: "Red Notice Rectification (Emergency)", range: "Custom Remediation Proposal", turnaround: "24–48 Hours", note: "Rapid fault triage & submission correction for failed inspections" }
+    ]
+  },
+  {
+    category: "Electrical Contracting & Switchgear",
+    items: [
+      { service: "Final Distribution Board (DB) Replacement", range: "Tailored Specification Quote", turnaround: "1–2 Days", note: "ABB/Schneider breakers, RCBO earth protection & ferruled dressing" },
+      { service: "Sub-Main Distribution Board (SMDB) Assembly", range: "Custom Switchgear BOQ", turnaround: "3–7 Days", note: "Form 2/3 segregated switchgear with MCCB incoming breakers" },
+      { service: "Commercial EV Charger Installation (Type 2)", range: "Tailored Site Proposal", turnaround: "1–2 Days", note: "Dedicated armored cable run, Type B RCD & DEWA notification" },
+      { service: "Annual Electrical Maintenance Contract (AMC)", range: "Custom AMC Agreement", turnaround: "Scheduled", note: "Quarterly thermal imaging scans, contact torquing & 24/7 SLA dispatch" }
+    ]
+  },
+  {
+    category: "Commercial Plumbing & Drainage",
+    items: [
+      { service: "Commercial Kitchen Grease Trap Installation", range: "Tailored to Kitchen Layout", turnaround: "2–4 Days", note: "Dubai Municipality approved unit sizing, acoustic HDPE piping & sign-off" },
+      { service: "Water Booster Pump Skid Replacement", range: "Custom Skid Specifications", turnaround: "1–3 Days", note: "Grundfos/Lowara VFD pumps, pressure vessel & stainless manifold" },
+      { service: "Non-Destructive Leak Detection Survey", range: "Site Survey Quotation", turnaround: "Same Day", note: "Acoustic ground microphone & FLIR infrared thermal scan" },
+      { service: "10-Bar Hydrostatic Pressure Testing", range: "Certified Testing Quote", turnaround: "24 Hours", note: "Calibrated gauge hold with signed engineering certification" }
+    ]
+  }
+];
+
+const costDrivers = [
+  { title: "Connected Load (kW / Amperage)", desc: "Higher capacity installations require larger copper busbars, CT metering cubicles, and heavier armored cables." },
+  { title: "Physical Cable Run Distance", desc: "The length of conduit pathways between the building intake pillar and your unit distribution board directly dictates cable and GI tray costs." },
+  { title: "Substation vs Building Feeder Capacity", desc: "If existing transformer capacity supports your scope, engineering fees are minimal. If a DEWA transformer upgrade is required, statutory utility capital fees apply." },
+  { title: "Mall & Night-Shift Restrictions", desc: "Projects executed inside major shopping malls (The Dubai Mall, Mall of the Emirates) require acoustic lagging, dust partitions, and overnight labor scheduling." }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/pricing"
+  jsonLd={breadcrumbSchema}
+>
+  <section class="sp-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Pricing &amp; Rates</span>
+      </nav>
+
+      <div class="hero-center">
+        <span class="badge badge-amber">Flexible Project-Based Pricing</span>
+        <h1 class="hero-title">Transparent, Flexible MEP &amp; DEWA Approval Pricing in Dubai</h1>
+        <p class="hero-lead">
+          At Abbadi Tech, there are no rigid or arbitrary fixed charges. Every project is quoted transparently based on your actual drawings, connected load (kW), and site parameters — ensuring you only pay for exactly what your premises requires.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING TABLES -->
+  <section class="section section-paper">
+    <div class="container">
+      {pricePackages.map((pkg) => (
+        <div class="pricing-group">
+          <div class="group-header">
+            <h2>{pkg.category}</h2>
+            <span class="group-tag">Flexible Engineering Scope</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="price-table">
+              <thead>
+                <tr>
+                  <th>Scope / Service</th>
+                  <th>Pricing Structure</th>
+                  <th>Typical Timeline</th>
+                  <th>Engineering Inclusions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pkg.items.map((row) => (
+                  <tr>
+                    <td><strong>{row.service}</strong></td>
+                    <td class="price-val">{row.range}</td>
+                    <td><span class="time-badge">{row.turnaround}</span></td>
+                    <td class="note-val">{row.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+
+      <div class="statutory-note">
+        <Icon name="AlertTriangle" size={20} color="var(--brass)" />
+        <p>
+          <strong>Statutory Authority Fee Clarification:</strong> The engineering fees above cover technical survey, certified drawing preparation, AutoCAD modeling, and portal submission. Official statutory fees (e.g. DEWA security deposits, connection charges per kW, municipal inspection fees) are set by the Government of Dubai and invoiced directly to the property account.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT CHANGES THE PRICE -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Cost Transparency</span>
+        <h2>What Factors Determine Your Final Quotation?</h2>
+        <p>Every commercial space has unique structural and electrical parameters that affect execution scope.</p>
+      </div>
+
+      <div class="drivers-grid">
+        {costDrivers.map((driver) => (
+          <div class="driver-card">
+            <div class="driver-icon"><Icon name="Layers" size={22} color="var(--brass)" /></div>
+            <h3>{driver.title}</h3>
+            <p>{driver.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <div>
+        <span class="eyebrow">Itemized Quotation</span>
+        <h2>Need a firm BOQ for your project?</h2>
+        <p>Send us your floor plans, Premise ID, or equipment list for an itemized commercial proposal within 24 hours.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          Upload Drawings for Free BOQ <Icon name="ArrowUpRight" size={16} />
+        </a>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-outline-white">
+          <Icon name="Phone" size={15} /> {siteConfig.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .crumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .hero-center {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .hero-lead {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .pricing-group {
+    margin-bottom: 3.5rem;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 0.75rem;
+  }
+
+  .group-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+
+  .group-tag {
+    font-size: 0.75rem;
+    color: var(--brass-deep);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .price-table th {
+    background: var(--ivory);
+    padding: 1rem 1.25rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--stone-deep);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .price-table td {
+    padding: 1.15rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+    color: var(--stone);
+  }
+
+  .price-table tr:last-child td { border-bottom: 0; }
+
+  .price-val {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--brass-deep);
+    white-space: nowrap;
+  }
+
+  .time-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    font-size: 0.75rem;
+    color: var(--ink);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .note-val { font-size: 0.82rem; }
+
+  .statutory-note {
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .statutory-note p {
+    font-size: 0.88rem;
+    color: var(--stone-deep);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .driver-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+  }
+
+  .driver-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--ivory);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .driver-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .driver-card p {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-banner {
+    background: var(--ink-2);
+    color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: var(--white);
+    margin: 0.5rem 0;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+
+  @media (max-width: 768px) {
+    .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+    .group-header { flex-direction: column; gap: 0.35rem; }
+  }
+</style>

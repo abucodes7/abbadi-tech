@@ -5,174 +5,167 @@ import Icon from '../components/Icon.astro';
 import HeroAnimation from '../components/HeroAnimation.astro';
 import { contactFaqs } from '../data/faq';
 
-const pageTitle = "Contact Abbadi Tech | Dubai, UAE | +971 50 554 6943";
-const pageDescription = "Contact Abbadi Tech LLC in Dubai, UAE. Call +971 50 554 6943 or email it.abbaditech@gmail.com for a free quote on electrical and plumbing works. Fast on-site engineering surveys.";
+const pageTitle = "Contact Abbadi Tech Dubai | MEP & DEWA Contractors";
+const pageDescription = "Contact Abbadi Tech in Dubai. Call +971 50 554 6943 or email info@abbaditech.com for fast on-site electrical surveys, commercial plumbing & DEWA NOCs.";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.abbaditech.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Contact Us",
-      "item": "https://www.abbaditech.com/contact"
-    }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbaditech.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": "https://www.abbaditech.com/contact" }
   ]
 };
 ---
 
-<Layout 
-  title={pageTitle} 
-  description={pageDescription} 
+<Layout
+  title={pageTitle}
+  description={pageDescription}
   currentPath="/contact"
   jsonLd={breadcrumbSchema}
 >
-  <!-- CONTACT HERO -->
+  <!-- HERO -->
   <section class="contact-hero">
     <HeroAnimation />
     <div class="container hero-inner-container">
-      <div class="crumb">
-        <a href="/">Home</a> <span>/</span> <span>Contact Us</span>
-      </div>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Contact</span>
+      </nav>
 
-      <div class="contact-hero-text">
-        <span class="badge badge-gold">Direct Engineering Liaison</span>
-        <h1>CONTACT ABBADI TECH IN DUBAI, UAE</h1>
-        <p class="lead">
-          Connect directly with our senior estimation engineers for certified electrical load reviews, plumbing designs, and DEWA authority coordination across Dubai, Abu Dhabi, and Ajman.
-        </p>
+      <div class="contact-hero-grid">
+        <div class="contact-hero-text">
+          <span class="eyebrow">Direct engineering liaison</span>
+          <h1>Talk to the engineers, not a call centre.</h1>
+          <p class="lead">
+            Connect directly with our senior estimation engineers for certified electrical load reviews, plumbing designs, and DEWA authority coordination across Dubai, Abu Dhabi, and Ajman.
+          </p>
+        </div>
+
+        <div class="hero-contact-rail">
+          <a href="tel:+971505546943" class="rail-link">
+            <span class="rail-icon"><Icon name="Phone" size={18} /></span>
+            <span>
+              <span class="rail-label">Direct line / 24-7 dispatch</span>
+              <span class="rail-value">+971 50 554 6943</span>
+            </span>
+            <Icon name="ArrowUpRight" size={16} class="rail-arrow" />
+          </a>
+          <a href="mailto:info@abbaditech.com" class="rail-link">
+            <span class="rail-icon"><Icon name="Mail" size={18} /></span>
+            <span>
+              <span class="rail-label">Official email</span>
+              <span class="rail-value">info@abbaditech.com</span>
+            </span>
+            <Icon name="ArrowUpRight" size={16} class="rail-arrow" />
+          </a>
+          <a href="https://wa.me/971505546943?text=Hi%20Abbadi%20Tech,%20I%20need%20a%20site%20inspection%20in%20Dubai" target="_blank" rel="noopener" class="rail-link">
+            <span class="rail-icon"><Icon name="MessageSquare" size={18} /></span>
+            <span>
+              <span class="rail-label">WhatsApp inspection request</span>
+              <span class="rail-value">Send your location pin</span>
+            </span>
+            <Icon name="ArrowUpRight" size={16} class="rail-arrow" />
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT GRID SECTION -->
-  <section class="section">
+  <!-- CONTACT GRID -->
+  <section class="section section-paper contact-section">
     <div class="container">
       <div class="contact-main-grid">
-        <!-- Contact Info & Headquarters Card -->
+        <!-- Contact info -->
         <div class="contact-info-panel">
-          <div class="info-card">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; gap:1rem; flex-wrap:wrap;">
+          <div class="info-head">
+            <span class="eyebrow">Dubai headquarters</span>
+            <h2>Office &amp; engineering centre</h2>
+            <img src="/images/logo/logo-dark.png" alt="Abbadi Tech LLC official corporate logo" width="132" />
+          </div>
+
+          <address class="office-address">
+            <p><strong>Oberoi Properties Building</strong></p>
+            <p>Behind Al Khail Mall,</p>
+            <p>Dubai, United Arab Emirates</p>
+            <p class="address-pobox">P.O. Box: 121908, Dubai, UAE</p>
+          </address>
+
+          <div class="contact-direct-lines">
+            <div class="line-item">
+              <span class="line-icon"><Icon name="Phone" size={18} /></span>
               <div>
-                <span class="badge badge-gold">Dubai Headquarters</span>
-                <h2>Office &amp; Engineering Center</h2>
-              </div>
-              <img src="/images/logo/logo-dark.png" alt="Abbadi Tech LLC Official Corporate Logo" width="130" style="max-height:65px; object-fit:contain;" />
-            </div>
-            
-            <address class="office-address">
-              <p class="address-line"><strong>Oberoi Properties Building</strong></p>
-              <p class="address-line">Behind Al Khail Mall,</p>
-              <p class="address-line">Dubai, United Arab Emirates</p>
-              <p class="address-pobox">P.O. Box: 121908, Dubai, UAE</p>
-            </address>
-
-            <div class="contact-direct-lines">
-              <div class="line-item">
-                <span class="line-icon"><Icon name="Phone" size={20} color="#FF9500" /></span>
-                <div>
-                  <span class="line-label">Direct Line / Call (24/7):</span>
-                  <a href="tel:+971505546943" class="line-val">+971 50 554 6943</a>
-                </div>
-              </div>
-
-              <div class="line-item">
-                <span class="line-icon"><Icon name="MessageSquare" size={20} color="#FF9500" /></span>
-                <div>
-                  <span class="line-label">Official WhatsApp:</span>
-                  <a href="https://wa.me/971505546943" target="_blank" rel="noopener" class="line-val">+971 50 554 6943</a>
-                </div>
-              </div>
-
-              <div class="line-item">
-                <span class="line-icon"><Icon name="Mail" size={20} color="#FF9500" /></span>
-                <div>
-                  <span class="line-label">Official Email:</span>
-                  <a href="mailto:it.abbaditech@gmail.com" class="line-val">it.abbaditech@gmail.com</a>
-                </div>
+                <span class="line-label">Direct line / call (24/7)</span>
+                <a href="tel:+971505546943" class="line-val">+971 50 554 6943</a>
               </div>
             </div>
-
-            <!-- Working Hours -->
-            <div class="hours-box">
-              <h4 style="display:flex; align-items:center; gap:0.4rem;">
-                <Icon name="Clock" size={16} color="#FF9500" /> Operating &amp; Dispatch Hours
-              </h4>
-              <p><strong>Office &amp; Estimates:</strong> Monday – Saturday: 08:00 – 18:00</p>
-              <p><strong>Emergency Breakdowns (AMC):</strong> 24 Hours / 7 Days a Week</p>
-              <p><strong>Sunday:</strong> On-Call Emergency Engineering Only</p>
-            </div>
-
-            <!-- Credentials & Licensing -->
-            <div class="credentials-badge-box">
-              <h4>Official Technical Practice</h4>
-              <div class="cred-item">
-                <span>Established:</span>
-                <strong>2005 (21+ Years Continuous Practice)</strong>
+            <div class="line-item">
+              <span class="line-icon"><Icon name="MessageSquare" size={18} /></span>
+              <div>
+                <span class="line-label">Official WhatsApp</span>
+                <a href="https://wa.me/971505546943" target="_blank" rel="noopener" class="line-val">+971 50 554 6943</a>
               </div>
-              <div class="cred-item">
-                <span>Contractor Category:</span>
-                <span>Technical Solutions L.L.C (Mainland Dubai)</span>
+            </div>
+            <div class="line-item">
+              <span class="line-icon"><Icon name="Mail" size={18} /></span>
+              <div>
+                <span class="line-label">Official email</span>
+                <a href="mailto:info@abbaditech.com" class="line-val">info@abbaditech.com</a>
               </div>
             </div>
           </div>
 
-          <!-- Quick WhatsApp Box -->
-          <div class="wa-action-box">
-            <h3>Need an Immediate Site Inspection?</h3>
-            <p>Our senior engineers are deployed across Dubai daily. Send your location pin and project requirements for a prompt callback.</p>
-            <a href="https://wa.me/971505546943?text=Hi%20Abbadi%20Tech,%20I%20need%20a%20site%20inspection%20in%20Dubai" target="_blank" rel="noopener" class="btn btn-whatsapp-large">
-              <Icon name="MessageSquare" size={18} /> Instant WhatsApp Chat (+971 50 554 6943)
-            </a>
+          <div class="hours-box">
+            <h4><Icon name="Clock" size={15} /> Operating &amp; dispatch hours</h4>
+            <p><strong>Office &amp; estimates:</strong> Monday – Saturday, 08:00 – 18:00</p>
+            <p><strong>Emergency breakdowns (AMC):</strong> 24 hours / 7 days a week</p>
+            <p><strong>Sunday:</strong> On-call emergency engineering only</p>
+          </div>
+
+          <div class="credentials-box">
+            <h4>Official technical practice</h4>
+            <div class="cred-item"><span>Established</span><strong>2005 · 21+ years</strong></div>
+            <div class="cred-item"><span>Contractor category</span><strong>Technical Solutions L.L.C</strong></div>
+            <div class="cred-item"><span>Jurisdiction</span><strong>Mainland Dubai</strong></div>
           </div>
         </div>
 
-        <!-- Lead Generation Form -->
+        <!-- Lead form -->
         <div class="contact-form-panel">
           <div class="form-card">
-            <span class="badge badge-blue">Fast Response Guaranteed</span>
-            <h2>Request a Free Site Survey &amp; Quote</h2>
+            <span class="eyebrow light">Fast response guaranteed</span>
+            <h2>Request a free site survey &amp; quote.</h2>
             <p class="form-intro">
               Submit your project details below. Our technical estimator will review your requirements and respond within 2 to 4 business hours.
             </p>
 
-            <form id="contact-lead-form" class="lead-form">
+            <form id="contact-lead-form" class="lead-form" novalidate>
               <div class="form-grid">
                 <div class="form-group">
-                  <label for="contact-name">Full Name or Company Representative *</label>
-                  <input type="text" id="contact-name" name="name" required placeholder="e.g. Tariq Al Mansoori" class="form-input" />
+                  <label for="contact-name">Full name or company representative *</label>
+                  <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="e.g. Tariq Al Mansoori" class="form-input" />
                 </div>
-
                 <div class="form-group">
-                  <label for="contact-phone">UAE Phone / WhatsApp Number *</label>
-                  <input type="tel" id="contact-phone" name="phone" required placeholder="+971 50 123 4567" class="form-input" />
+                  <label for="contact-phone">UAE phone / WhatsApp number *</label>
+                  <input type="tel" id="contact-phone" name="phone" required autocomplete="tel" placeholder="+971 50 123 4567" class="form-input" />
                 </div>
               </div>
 
               <div class="form-grid">
                 <div class="form-group">
-                  <label for="contact-email">Email Address *</label>
-                  <input type="email" id="contact-email" name="email" required placeholder="name@company.ae" class="form-input" />
+                  <label for="contact-email">Email address *</label>
+                  <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="name@company.ae" class="form-input" />
                 </div>
-
                 <div class="form-group">
-                  <label for="contact-location">Project Location *</label>
+                  <label for="contact-location">Project location *</label>
                   <select id="contact-location" name="location" required class="form-input">
-                    <option value="" disabled selected>Select Emirate / District</option>
+                    <option value="" disabled selected>Select emirate / district</option>
                     <option value="Dubai - Al Quoz">Dubai - Al Quoz</option>
                     <option value="Dubai - Downtown / Dubai Mall">Dubai - Downtown / Dubai Mall</option>
                     <option value="Dubai - DIFC / Business Bay">Dubai - DIFC / Business Bay</option>
                     <option value="Dubai - Palm Jumeirah">Dubai - Palm Jumeirah</option>
                     <option value="Dubai - Marina / JLT">Dubai - Marina / JLT</option>
                     <option value="Dubai - DIP / JAFZA">Dubai - DIP / JAFZA</option>
-                    <option value="Dubai - Other Area">Dubai - Other Area</option>
+                    <option value="Dubai - Other Area">Dubai - Other area</option>
                     <option value="Abu Dhabi">Abu Dhabi</option>
                     <option value="Ajman">Ajman</option>
                   </select>
@@ -180,57 +173,65 @@ const breadcrumbSchema = {
               </div>
 
               <div class="form-group">
-                <label for="contact-service">Primary Service Required *</label>
+                <label for="contact-service">Primary service required *</label>
                 <select id="contact-service" name="service" required class="form-input">
-                  <option value="" disabled selected>Select Trade</option>
-                  <option value="Electrical Contractors (DEWA Works, MDB/DB, Wiring)">Electrical Contractors (DEWA Works, MDB/DB, Wiring)</option>
-                  <option value="Plumbing & Drainage (PPR, HDPE, Pumps, Heaters)">Plumbing &amp; Drainage (PPR, HDPE, Pumps, Heaters)</option>
-                  <option value="Combined Electrical & Plumbing Works">Combined Electrical &amp; Plumbing Works</option>
+                  <option value="" disabled selected>Select trade</option>
+                  <option value="Electrical Contractors (DEWA Works, MDB/DB, Wiring)">Electrical contractors (DEWA works, MDB/DB, wiring)</option>
+                  <option value="Plumbing & Drainage (PPR, HDPE, Pumps, Heaters)">Plumbing &amp; drainage (PPR, HDPE, pumps, heaters)</option>
+                  <option value="Combined Electrical & Plumbing Works">Combined electrical &amp; plumbing works</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="contact-message">Project Scope &amp; Special Requirements</label>
-                <textarea id="contact-message" name="message" rows="4" placeholder="Briefly describe your space (sq ft, restaurant kitchen, villa upgrade, DEWA load increase, target opening date)..." class="form-input"></textarea>
+                <label for="contact-message">Project scope &amp; special requirements</label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="Briefly describe your space (sq ft, restaurant kitchen, villa upgrade, DEWA load increase, target opening date)…" class="form-input"></textarea>
               </div>
 
               <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">
-                Submit Free Quote Request <Icon name="ArrowRight" size={16} />
+                Submit free quote request <Icon name="ArrowRight" size={16} />
               </button>
 
-              <div id="form-feedback" class="form-feedback" style="display:none;"></div>
+              <div id="form-feedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
 
               <p class="form-guarantee">
-                <Icon name="ShieldCheck" size={14} color="#10b981" />
+                <Icon name="ShieldCheck" size={14} />
                 <span>We respect your privacy. Technical estimates and drawings are kept strictly confidential under engineering NDA.</span>
               </p>
             </form>
+          </div>
+
+          <div class="wa-action-box">
+            <div>
+              <h3>Need an immediate site inspection?</h3>
+              <p>Our senior engineers are deployed across Dubai daily. Send your location pin and project requirements for a prompt callback.</p>
+            </div>
+            <a href="https://wa.me/971505546943?text=Hi%20Abbadi%20Tech,%20I%20need%20a%20site%20inspection%20in%20Dubai" target="_blank" rel="noopener" class="btn btn-teal">
+              <Icon name="MessageSquare" size={17} /> Instant WhatsApp chat
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GOOGLE MAP EMBED SECTION -->
-  <section class="section map-section">
+  <!-- MAP -->
+  <section class="section section-ivory map-section">
     <div class="container">
-      <div class="section-header">
-        <span class="badge badge-gold">Visit Our Headquarters</span>
-        <h2>Our Office Location in Dubai, UAE</h2>
-        <p class="section-sub">
-          Conveniently situated in the Oberoi Properties Building behind Al Khail Mall, providing rapid highway access to Downtown, Sheikh Zayed Road, and Al Khail Road.
-        </p>
+      <div class="section-header section-header-left map-head">
+        <span class="eyebrow">Visit our headquarters</span>
+        <h2>Our office location in Dubai.</h2>
+        <p>Conveniently situated in the Oberoi Properties Building behind Al Khail Mall, providing rapid highway access to Downtown, Sheikh Zayed Road, and Al Khail Road.</p>
       </div>
 
       <div class="map-wrapper">
-        <iframe 
-          title="Abbadi Tech LLC Dubai Office Location Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14444.664448777166!2d55.2348!3d25.1384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f697426cfd495%3A0x6b6cfa4efbc08b98!2sAl%20Khail%20Mall!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" 
-          width="100%" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
+        <iframe
+          title="Abbadi Tech LLC Dubai office location map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14444.664448777166!2d55.2348!3d25.1384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f697426cfd495%3A0x6b6cfa4efbc08b98!2sAl%20Khail%20Mall!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+          width="100%"
+          height="460"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="map-frame"
         ></iframe>
@@ -238,45 +239,95 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
-  <FAQSection 
-    title="Inquiry &amp; Consultation FAQs" 
+  <FAQSection
+    title="Inquiry & consultation FAQs"
     subtitle="Direct answers regarding site visits, estimation timelines, and emergency dispatch."
+    badge="Contact & Response"
     faqs={contactFaqs}
   />
 </Layout>
 
 <script>
-  // Handle contact lead form submission with instant WhatsApp dispatch
-  const contactForm = document.getElementById('contact-lead-form') as HTMLFormElement;
-  const feedbackEl = document.getElementById('form-feedback');
+  const contactForm = document.getElementById('contact-lead-form') as HTMLFormElement | null;
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = (document.getElementById('contact-name') as HTMLInputElement)?.value || '';
-      const phone = (document.getElementById('contact-phone') as HTMLInputElement)?.value || '';
-      const email = (document.getElementById('contact-email') as HTMLInputElement)?.value || '';
-      const location = (document.getElementById('contact-location') as HTMLSelectElement)?.value || '';
-      const service = (document.getElementById('contact-service') as HTMLSelectElement)?.value || '';
-      const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value || '';
 
-      if (feedbackEl) {
-        feedbackEl.style.display = 'block';
-        feedbackEl.style.padding = '1rem';
-        feedbackEl.style.marginBottom = '1rem';
-        feedbackEl.style.borderRadius = '6px';
-        feedbackEl.style.background = '#ECFDF5';
-        feedbackEl.style.color = '#065F46';
-        feedbackEl.style.border = '1px solid #A7F3D0';
-        feedbackEl.innerHTML = '<strong>✓ Connecting to Lead Dispatch...</strong> Opening WhatsApp directly with your project details.';
+      const feedback = document.getElementById('form-feedback') as HTMLDivElement | null;
+      const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+      const nameEl = document.getElementById('contact-name') as HTMLInputElement | null;
+      const phoneEl = document.getElementById('contact-phone') as HTMLInputElement | null;
+      const emailEl = document.getElementById('contact-email') as HTMLInputElement | null;
+      const locationEl = document.getElementById('contact-location') as HTMLSelectElement | null;
+      const serviceEl = document.getElementById('contact-service') as HTMLSelectElement | null;
+      const messageEl = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+
+      const values = {
+        name: nameEl?.value.trim() || '',
+        phone: phoneEl?.value.trim() || '',
+        email: emailEl?.value.trim() || '',
+        location: locationEl?.value || '',
+        service: serviceEl?.value || '',
+        message: messageEl?.value.trim() || ''
+      };
+
+      const missing = !values.name || !values.phone || !values.email || !values.location || !values.service;
+
+      if (missing) {
+        [nameEl, phoneEl, emailEl, locationEl, serviceEl].forEach((el) => {
+          el?.closest('.form-group')?.classList.remove('has-error');
+        });
+        if (!values.name) nameEl?.closest('.form-group')?.classList.add('has-error');
+        if (!values.phone) phoneEl?.closest('.form-group')?.classList.add('has-error');
+        if (!values.email) emailEl?.closest('.form-group')?.classList.add('has-error');
+        if (!values.location) locationEl?.closest('.form-group')?.classList.add('has-error');
+        if (!values.service) serviceEl?.closest('.form-group')?.classList.add('has-error');
+
+        if (feedback) {
+          feedback.className = 'form-feedback error';
+          feedback.hidden = false;
+          feedback.textContent = 'Please complete the required fields so we can route your request to the right engineer.';
+        }
+        return;
       }
 
-      const waMsg = `*New Free Quote & Site Survey Request - Abbadi Tech*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Email:* ${encodeURIComponent(email)}%0A*Location:* ${encodeURIComponent(location)}%0A*Service:* ${encodeURIComponent(service)}%0A*Scope Details:* ${encodeURIComponent(message)}`;
+      const waText = [
+        '*New free quote & site survey request — Abbadi Tech*',
+        '',
+        `*Name:* ${values.name}`,
+        `*Phone:* ${values.phone}`,
+        `*Email:* ${values.email}`,
+        `*Location:* ${values.location}`,
+        `*Service:* ${values.service}`,
+        `*Scope details:* ${values.message || 'Not specified'}`
+      ].join('\n');
 
-      setTimeout(() => {
-        window.open(`https://wa.me/971505546943?text=${waMsg}`, '_blank');
-      }, 400);
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Opening WhatsApp…';
+      }
+
+      if (feedback) {
+        feedback.className = 'form-feedback success';
+        feedback.hidden = false;
+        feedback.textContent = 'Your request is ready. WhatsApp is opening in a new tab — press send there to dispatch it to our estimation desk.';
+      }
+
+      window.open(`https://wa.me/971505546943?text=${encodeURIComponent(waText)}`, '_blank', 'noopener');
+
+      window.setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Submit free quote request <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        }
+      }, 1600);
+    });
+
+    contactForm.querySelectorAll('input, select, textarea').forEach((field) => {
+      field.addEventListener('input', () => {
+        field.closest('.form-group')?.classList.remove('has-error');
+      });
     });
   }
 </script>
@@ -284,368 +335,198 @@ const breadcrumbSchema = {
 <style>
   .contact-hero {
     position: relative;
-    padding: 5rem 0 4rem;
-    background: var(--color-navy-dark);
-    border-bottom: 1px solid var(--color-navy-border);
+    background: var(--ink-deep);
+    color: var(--white);
+    padding: clamp(2.75rem, 5vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem);
     overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .hero-inner-container {
-    position: relative;
-    z-index: 2;
-  }
+  .hero-inner-container { position: relative; z-index: 2; }
 
   .crumb {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2.25rem;
   }
 
-  .crumb a {
-    color: var(--text-muted);
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .contact-hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: end;
   }
 
-  .crumb a:hover {
-    color: var(--primary);
-  }
-
-  .crumb span {
-    margin: 0 0.35rem;
-  }
+  .contact-hero-text .eyebrow { color: var(--brass-soft); }
 
   .contact-hero-text h1 {
-    font-size: 2.4rem;
-    color: #fff;
-    margin-top: 0.8rem;
-    margin-bottom: 1rem;
-    max-width: 900px;
+    color: var(--white);
+    font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+    margin: 1rem 0 1.25rem;
+    max-width: 16ch;
   }
 
   .lead {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 820px;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.62);
+    max-width: 60ch;
   }
 
-  .contact-main-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 3rem;
-    align-items: start;
-  }
+  .hero-contact-rail { border-top: 1px solid rgba(255, 255, 255, 0.12); }
 
-  .info-card {
-    background: #111724;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .info-card h2 {
-    font-size: 1.6rem;
-    color: #fff;
-    margin-top: 0.6rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .office-address {
-    font-style: normal;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .contact-direct-lines {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .line-item {
+  .rail-link {
     display: flex;
     align-items: center;
     gap: 0.85rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    transition: gap 0.3s var(--ease-out), padding 0.3s var(--ease-out);
   }
 
-  .line-icon {
-    font-size: 1.5rem;
-    width: 44px;
-    height: 44px;
-    background: #182030;
-    border: 1px solid rgba(255, 149, 0, 0.3);
-    border-radius: var(--radius-sm);
-    display: flex;
+  .rail-link:hover { gap: 1.15rem; padding-left: 0.35rem; }
+
+  .rail-icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    background: rgba(180, 134, 76, 0.08);
+    color: var(--brass-soft);
   }
 
-  .line-label {
-    display: block;
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-dim);
+  .rail-link > span:nth-child(2) { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; }
+  .rail-label { font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: rgba(255, 255, 255, 0.4); }
+  .rail-value { font-family: var(--font-heading); font-size: 0.9rem; font-weight: 500; color: var(--white); }
+  .rail-arrow { color: var(--brass-soft); flex-shrink: 0; }
+
+  .section-paper { background: var(--paper); }
+  .section-ivory { background: var(--ivory); }
+
+  .contact-main-grid {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
   }
 
-  .line-val {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #fff;
-    font-family: var(--font-heading);
-  }
-
-  .line-val:hover {
-    color: var(--primary);
-  }
-
-  .hours-box {
-    background: #0d121d;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hours-box h4 {
-    font-size: 0.85rem;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.6rem;
-  }
-
-  .hours-box p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 0.35rem;
-    line-height: 1.4;
-  }
-
-  .hours-box strong {
-    color: #fff;
-  }
-
-  .credentials-badge-box {
-    background: #0d121d;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-  }
-
-  .credentials-badge-box h4 {
-    font-size: 0.85rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.6rem;
-  }
-
-  .cred-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    color: var(--text-muted);
-  }
-
-  .cred-item code {
-    color: var(--primary);
-    font-size: 0.78rem;
-  }
-
-  .wa-action-box {
-    background: #182030;
-    border: 1px solid rgba(37, 211, 102, 0.35);
+  .contact-info-panel {
+    background: var(--ivory);
+    border: 1px solid var(--line);
     border-radius: var(--radius-lg);
-    padding: 2rem;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
   }
 
-  .wa-action-box h3 {
-    font-size: 1.25rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
+  .info-head { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+  .info-head h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 2.5vw, 2.1rem); font-weight: 400; color: var(--ink); margin-top: 0.5rem; max-width: 14ch; }
+  .info-head img { max-height: 58px; object-fit: contain; }
 
-  .wa-action-box p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin-bottom: 1.25rem;
-  }
+  .office-address { font-style: normal; font-size: 0.92rem; line-height: 1.65; color: var(--stone); padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+  .office-address strong { color: var(--ink); font-weight: 600; }
+  .address-pobox { margin-top: 0.6rem; font-size: 0.8rem; color: var(--stone-light); }
 
-  .btn-whatsapp-large {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
-    color: #fff;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    padding: 0.85rem 1.25rem;
-    border-radius: var(--radius-sm);
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-  }
+  .contact-direct-lines { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+  .line-item { display: flex; align-items: center; gap: 0.85rem; }
+  .line-icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; flex-shrink: 0; border-radius: 11px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--brass-deep); }
+  .line-label { display: block; font-family: var(--font-heading); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone-light); margin-bottom: 0.12rem; }
+  .line-val { font-family: var(--font-heading); font-size: 0.96rem; font-weight: 600; color: var(--ink); transition: color 0.24s; }
+  .line-val:hover { color: var(--brass-deep); }
 
-  .btn-whatsapp-large:hover {
-    filter: brightness(1.1);
-  }
+  .hours-box, .credentials-box { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 1.2rem; }
+  .hours-box { margin-bottom: 1rem; }
+  .hours-box h4, .credentials-box h4 { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-heading); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-deep); margin-bottom: 0.7rem; }
+  .hours-box p { font-size: 0.8rem; line-height: 1.5; color: var(--stone); margin-bottom: 0.3rem; }
+  .hours-box strong { color: var(--ink); font-weight: 600; }
+  .cred-item { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.78rem; padding: 0.45rem 0; border-bottom: 1px solid var(--line); color: var(--stone); }
+  .cred-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .cred-item strong { color: var(--ink); font-weight: 600; text-align: right; }
 
   .form-card {
-    background: #111724;
-    border: 1px solid var(--border-subtle);
+    background: var(--ink-2);
+    border: 1px solid var(--ink-line);
     border-radius: var(--radius-lg);
-    padding: 3rem;
+    padding: clamp(1.6rem, 3vw, 2.6rem);
+    color: var(--white);
   }
 
-  .form-card h2 {
-    font-size: 1.85rem;
-    color: #fff;
-    margin-top: 0.6rem;
-    margin-bottom: 0.6rem;
-  }
+  .form-card .eyebrow { color: var(--brass-soft); }
+  .form-card h2 { color: var(--white); font-size: clamp(1.9rem, 3vw, 2.5rem); margin: 0.8rem 0 0.65rem; max-width: 18ch; }
+  .form-intro { font-size: 0.9rem; line-height: 1.65; color: rgba(255, 255, 255, 0.55); margin-bottom: 1.75rem; }
 
-  .form-intro {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  .lead-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .form-group label {
-    font-size: 0.82rem;
-    color: #fff;
-    font-weight: 600;
-  }
+  .lead-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.38rem; }
+  .form-group label { font-family: var(--font-heading); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.66); }
 
   .form-input {
     width: 100%;
-    padding: 0.85rem 1rem;
-    background: #090d15;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    color: #fff;
-    font-size: 0.92rem;
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-
-  .form-input:focus {
-    border-color: var(--primary);
-  }
-
-  .btn-submit {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.05rem;
-    margin-top: 0.5rem;
-    cursor: pointer;
-  }
-
-  .form-guarantee {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: 0.5rem;
-    line-height: 1.4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-  }
-
-  .form-feedback {
-    padding: 1rem;
-    border-radius: var(--radius-sm);
+    padding: 0.82rem 0.95rem;
+    background: var(--ink-deep);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    color: var(--white);
+    font-family: var(--font-body);
     font-size: 0.9rem;
-    text-align: center;
+    transition: border-color 0.24s, box-shadow 0.24s;
   }
 
-  .form-feedback.success {
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid #10b981;
-    color: #10b981;
-  }
+  .form-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .form-input:focus { outline: none; border-color: var(--brass); box-shadow: 0 0 0 3px rgba(180, 134, 76, 0.18); }
+  .form-input option { background: var(--ink-2); color: var(--white); }
+  .form-group.has-error .form-input { border-color: #C97A5E; box-shadow: 0 0 0 3px rgba(201, 122, 94, 0.14); }
 
-  .map-wrapper {
+  .btn-submit { width: 100%; padding: 0.95rem; margin-top: 0.4rem; }
+  .btn-submit:disabled { opacity: 0.65; }
+
+  .form-guarantee { display: flex; align-items: flex-start; gap: 0.45rem; font-size: 0.72rem; line-height: 1.5; color: rgba(255, 255, 255, 0.38); margin-top: 0.2rem; }
+  .form-guarantee svg { color: var(--brass-soft); flex-shrink: 0; margin-top: 1px; }
+
+  .form-feedback { border-radius: 10px; padding: 0.85rem 0.95rem; font-size: 0.84rem; line-height: 1.55; }
+  .form-feedback.success { background: rgba(47, 110, 104, 0.18); border: 1px solid rgba(123, 170, 163, 0.35); color: #BFDAD5; }
+  .form-feedback.error { background: rgba(201, 122, 94, 0.12); border: 1px solid rgba(201, 122, 94, 0.35); color: #E7C2B4; }
+
+  .wa-action-box {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--brass-wash);
+    border: 1px solid rgba(180, 134, 76, 0.24);
     border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 1.4rem;
   }
 
-  .map-frame {
-    display: block;
-  }
+  .wa-action-box h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+  .wa-action-box p { font-size: 0.82rem; line-height: 1.55; color: var(--stone); }
 
-  @media (max-width: 992px) {
-    .contact-main-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
+  .map-section { border-top: 1px solid var(--line); }
+  .map-head { margin-bottom: 2rem; }
 
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
+  .map-wrapper { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line-strong); box-shadow: var(--shadow-md); background: var(--ink-2); }
+  .map-frame { display: block; filter: saturate(0.72) contrast(1.02); }
+
+  @media (max-width: 1024px) {
+    .contact-hero-grid { grid-template-columns: 1fr; }
+    .contact-main-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 600px) {
-    .form-card, .info-card {
-      padding: 1.75rem 1.25rem;
-    }
-
-    .contact-hero-text h1 {
-      font-size: 1.85rem;
-    }
+    .contact-hero-text h1 { font-size: clamp(2.2rem, 10.5vw, 3rem); }
+    .form-card, .contact-info-panel { padding: 1.35rem; }
+    .wa-action-box .btn { width: 100%; }
   }
 </style>
-
-<script>
-  const form = document.getElementById('contact-lead-form') as HTMLFormElement | null;
-  const feedback = document.getElementById('form-feedback');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
-
-  if (form && feedback && submitBtn) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting Request...';
-
-      // Simulate instantaneous confirmation for prototype / lead capture
-      setTimeout(() => {
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Free Quote Request →';
-        feedback.className = 'form-feedback success';
-        feedback.style.display = 'block';
-        feedback.textContent = 'Thank you! Your quote request has been received. Our senior engineer will contact you shortly.';
-      }, 700);
-    });
-  }
-</script>

@@ -1,0 +1,775 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
+import { dewaServicesList, type DewaApprovalService } from '../../data/dewa-services';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return dewaServicesList.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+interface Props {
+  service: DewaApprovalService;
+}
+
+const { service } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `${siteConfig.primaryDomain}/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "DEWA Approvals Dubai",
+      "item": `${siteConfig.primaryDomain}/dewa-approvals-dubai`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": service.title,
+      "item": `${siteConfig.primaryDomain}/dewa-approvals-dubai/${service.slug}`
+    }
+  ]
+};
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "serviceType": service.h1,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteConfig.legalName,
+    "telephone": siteConfig.phoneRaw,
+    "email": siteConfig.email,
+    "url": `${siteConfig.primaryDomain}/`
+  },
+  "areaServed": "Dubai",
+  "description": service.directAnswer
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": service.faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+---
+
+<Layout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  currentPath={`/dewa-approvals-dubai/${service.slug}`}
+  jsonLd={[breadcrumbSchema, serviceJsonLd, faqJsonLd]}
+>
+  <!-- HERO SECTION -->
+  <section class="sp-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/dewa-approvals-dubai">DEWA Approvals</a>
+        <span>/</span>
+        <span>{service.title}</span>
+      </nav>
+
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">{service.badge}</span>
+          <h1 class="hero-title">{service.h1}</h1>
+          
+          <!-- Answer-First Snippet Box for Google AI Overviews & Searchers -->
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>Direct Regulatory Answer</strong>
+            </div>
+            <p class="answer-text">{service.directAnswer}</p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">Authority</span>
+              <strong class="hm-val">DEWA (Dubai)</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">Typical Turnaround</span>
+              <strong class="hm-val">{service.timeline.split(' ')[0]} {service.timeline.split(' ')[1]} {service.timeline.split(' ')[2]}</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">Submission Enrolled</span>
+              <strong class="hm-val">Direct Contractor Portal</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick RFQ Form Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>Fast-Track Approval Enquiry</h3>
+            <p>Upload your drawings or premise ID for an instant review.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <input type="hidden" name="service" value={service.slug} />
+            <div class="form-group">
+              <label for="premise-id">Premise ID or Unit Location</label>
+              <input type="text" id="premise-id" name="premise" placeholder="e.g. Bay Square, Business Bay" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-phone">Mobile / WhatsApp Number</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Request Fast-Track Survey <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>Urgent Desk: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW & WHO NEEDS IT -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="content-split-grid">
+        <div class="main-column">
+          <span class="eyebrow">Regulatory Context &amp; Purpose</span>
+          <h2>Understanding {service.title}</h2>
+          <p class="body-lead">{service.overview}</p>
+
+          <div class="target-audiences-box">
+            <h3>Who Requires This Approval?</h3>
+            <ul class="audience-list">
+              {service.targetAudience.map((item) => (
+                <li>
+                  <Icon name="ShieldCheck" size={18} color="var(--brass)" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <aside class="aside-column">
+          <div class="info-card">
+            <h4><Icon name="Clock" size={18} /> Approval Timeline Standard</h4>
+            <p>{service.timeline}</p>
+            <hr />
+            <h4><Icon name="Layers" size={18} /> Pricing Guidance</h4>
+            <p>{service.pricingGuidance}</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP BY STEP ROADMAP -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Approval Workflow</span>
+        <h2>How Abbadi Tech Secures Your Clearance Step-by-Step</h2>
+        <p>A systematic engineering trajectory eliminating rejection risks.</p>
+      </div>
+
+      <div class="steps-grid">
+        {service.steps.map((st) => (
+          <div class="step-card">
+            <span class="step-num">{st.step}</span>
+            <h3>{st.title}</h3>
+            <p>{st.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENT CHECKLIST -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Prerequisites &amp; Paperwork</span>
+        <h2>Required Documents for DEWA Submission</h2>
+        <p>Ensure these documents are ready for immediate portal filing.</p>
+      </div>
+
+      <div class="docs-grid">
+        {service.requiredDocuments.map((doc) => (
+          <div class="doc-card">
+            <div class="doc-icon"><Icon name="FileText" size={20} color="var(--brass)" /></div>
+            <div>
+              <h4>{doc.name}</h4>
+              <p>{doc.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL CONSIDERATIONS & COMMON PITFALLS -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="split-audit-grid">
+        <div class="audit-col">
+          <span class="eyebrow">Engineering Specifications</span>
+          <h3>Key Technical Standards</h3>
+          <ul class="audit-list">
+            {service.technicalConsiderations.map((tc) => (
+              <li>
+                <Icon name="CheckCircle" size={16} color="var(--teal)" />
+                <span>{tc}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="audit-col audit-pitfalls">
+          <span class="eyebrow">Common Rejection Reasons</span>
+          <h3>Avoid These Pitfalls</h3>
+          <ul class="audit-list">
+            {service.commonPitfalls.map((pf) => (
+              <li>
+                <Icon name="AlertTriangle" size={16} color="#B4553F" />
+                <span>{pf}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Technical Q&amp;A</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Specific answers regarding authority regulations and processing in Dubai.</p>
+      </div>
+
+      <div class="faq-list">
+        {service.faqs.map((f) => (
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="q-text">{f.question}</span>
+              <span class="faq-toggle"></span>
+            </summary>
+            <div class="faq-body">
+              <p>{f.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXTUAL INTERNAL LINKING -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="related-block">
+        <h3>Related DEWA Approvals &amp; Engineering Services</h3>
+        <div class="related-links">
+          {service.relatedApprovalSlugs.map((slug) => (
+            <a href={`/dewa-approvals-dubai/${slug}`} class="related-pill">
+              <Icon name="FileCheck" size={14} />
+              <span>{slug.replace(/-/g, ' ')}</span>
+            </a>
+          ))}
+          {service.relatedServiceSlugs.map((slug) => (
+            <a href={`/services/${slug}`} class="related-pill">
+              <Icon name="Zap" size={14} />
+              <span>{slug.replace(/-/g, ' ')}</span>
+            </a>
+          ))}
+          <a href="/dewa-approvals-dubai" class="related-pill related-pill-hub">
+            <Icon name="ArrowUpRight" size={14} />
+            <span>Master DEWA Approvals Hub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <div>
+        <span class="eyebrow">Ready to Submit?</span>
+        <h2>Secure your {service.title} without delays.</h2>
+        <p>Our registered engineering team will audit your drawings and manage the entire DEWA submission.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          Submit drawings for survey
+          <Icon name="ArrowUpRight" size={16} />
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappNumber}?text=Hi%20Abbadi%20Tech,%20I%20need%20assistance%20with%20${encodeURIComponent(service.title)}`} target="_blank" rel="noopener" class="btn btn-outline-white">
+          <Icon name="MessageSquare" size={16} /> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-left: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.7rem; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .rfq-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .rfq-header p {
+    font-size: 0.82rem;
+    color: var(--stone);
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .form-group input {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+  }
+
+  .hotline-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    font-size: 0.82rem;
+    color: var(--stone);
+  }
+
+  .hotline-strip a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .content-split-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3rem;
+  }
+
+  .body-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--stone-deep);
+    margin-bottom: 2rem;
+  }
+
+  .target-audiences-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .audience-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .audience-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--stone);
+  }
+
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+  }
+
+  .info-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-card p {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  .info-card hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 1.25rem 0;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--brass);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .doc-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .doc-card h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .doc-card p {
+    font-size: 0.82rem;
+    color: var(--stone);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .split-audit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .audit-col {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+  }
+
+  .audit-col h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+
+  .audit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .audit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .faq-summary {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .faq-body {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--stone);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .related-block {
+    text-align: center;
+  }
+
+  .related-block h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .related-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .related-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    background: var(--ivory);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--ink);
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  .related-pill:hover {
+    border-color: var(--brass);
+    color: var(--brass-deep);
+  }
+
+  .related-pill-hub {
+    background: var(--ink);
+    color: var(--brass-soft);
+    border-color: var(--ink);
+  }
+
+  .cta-banner {
+    background: var(--ink-2);
+    color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: var(--white);
+    margin: 0.5rem 0;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-split, .content-split-grid, .split-audit-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .cta-banner-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

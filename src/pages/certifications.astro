@@ -1,0 +1,391 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Licences, Compliance & Engineering Standards | Abbadi Tech";
+const pageDescription = "Abbadi Tech LLC compliance & certifications in Dubai. DEWA regulations, Dubai Municipality plumbing standards, DET Trade Licence & safety: +971 50 554 6943.";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteConfig.primaryDomain}/` },
+    { "@type": "ListItem", "position": 2, "name": "Compliance & Certifications", "item": `${siteConfig.primaryDomain}/certifications` }
+  ]
+};
+
+const standardsList = [
+  {
+    authority: "Dubai Electricity and Water Authority (DEWA)",
+    scope: "Regulations for Electrical Installations",
+    details: "All electrical designs, Single-Line Diagrams (SLD), cable sizing, earthing systems, and switchgear assemblies adhere strictly to the latest DEWA Regulations for Electrical Installations and Circulars. Submissions are processed through our enrolled contractor e-Services interface."
+  },
+  {
+    authority: "Dubai Municipality (DM)",
+    scope: "Building Drainage & Grease Waste Guidelines",
+    details: "All sanitary and commercial plumbing installations comply with Dubai Municipality Technical Guidelines. Commercial kitchen grease interceptors, biological dosing units, and acoustic drainage are sized and installed to secure immediate municipal environmental health sign-off."
+  },
+  {
+    authority: "Dubai Civil Defence (DCD)",
+    scope: "UAE Fire & Life Safety Code of Practice",
+    details: "Emergency exit lighting, central battery backup units, fire-resistant FP200 cabling, and commercial kitchen gas suppression shut-off interlocks are engineered to conform to UAE Fire and Life Safety regulations."
+  },
+  {
+    authority: "Department of Economy and Tourism (DET)",
+    scope: "Commercial Licensing & Technical Scope",
+    details: "Abbadi Tech Technical Solutions LLC operates under a valid Commercial Trade Licence issued by DET Dubai, authorized for professional electrical fitting contracting, plumbing installations, and technical works since 2005."
+  },
+  {
+    authority: "International Electrotechnical Commission (IEC)",
+    scope: "IEC 61439 Switchgear & BS 7671 Wiring Standards",
+    details: "Our panel assemblies and distribution boards undergo routine testing for insulation resistance, temperature rise, and short-circuit withstand capabilities in accordance with IEC 61439-1/2 and British Standard BS 7671."
+  }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/certifications"
+  jsonLd={breadcrumbSchema}
+>
+  <section class="sp-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Compliance &amp; Certifications</span>
+      </nav>
+
+      <div class="hero-center">
+        <span class="badge badge-amber">Regulatory Integrity</span>
+        <h1 class="hero-title">Licensing, Compliance &amp; Engineering Standards</h1>
+        <p class="hero-lead">
+          In the UAE contracting industry, compliance is not marketing—it is safety, legality, and operational reliability. Abbadi Tech executes all works strictly within statutory Dubai authority frameworks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARDS LIST -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Statutory Frameworks</span>
+        <h2>Governing Authorities &amp; Technical Standards</h2>
+        <p>Every drawing stamped and cable pulled by our team satisfies these mandatory UAE regulations.</p>
+      </div>
+
+      <div class="standards-grid">
+        {standardsList.map((st) => (
+          <div class="standard-card">
+            <div class="st-top">
+              <span class="st-badge"><Icon name="ShieldCheck" size={16} color="var(--brass)" /> Verified Scope</span>
+              <h3>{st.authority}</h3>
+            </div>
+            <strong class="st-scope">{st.scope}</strong>
+            <p class="st-desc">{st.details}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY ASSURANCE PROTOCOL -->
+  <section class="section section-ivory">
+    <div class="container">
+      <div class="content-split-grid">
+        <div class="main-column">
+          <span class="eyebrow">Quality Assurance</span>
+          <h2>Our 4-Point Pre-Submission Protocol</h2>
+          <p class="body-lead">
+            To prevent municipal rejection notes and avoid costly project delays, our in-house Quality Assurance department audits every engineering deliverable before filing with authorities:
+          </p>
+
+          <div class="qa-steps">
+            <div class="qa-item">
+              <span class="qa-num">1</span>
+              <div>
+                <h4>Forensic Load &amp; Phase Balance Audit</h4>
+                <p>Verifying calculated connected load against building intake breaker ratings with balanced single-phase spread.</p>
+              </div>
+            </div>
+            <div class="qa-item">
+              <span class="qa-num">2</span>
+              <div>
+                <h4>Physical Site &amp; Riser Verification</h4>
+                <p>Confirming that actual cable tray pathways, riser conduit dimensions, and meter niche spaces match CAD schematics.</p>
+              </div>
+            </div>
+            <div class="qa-item">
+              <span class="qa-num">3</span>
+              <div>
+                <h4>Mandatory 1000V Megger Insulation Testing</h4>
+                <p>Measuring resistance across all phases and neutral before scheduling DEWA low-voltage site inspections.</p>
+              </div>
+            </div>
+            <div class="qa-item">
+              <span class="qa-num">4</span>
+              <div>
+                <h4>10-Bar Hydrostatic Gauge Hold</h4>
+                <p>Subjecting all potable water pipelines to 10-bar pressure hold for 24 hours prior to wall and ceiling closure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="aside-column">
+          <div class="info-card">
+            <h4><Icon name="FileText" size={18} /> Documentary Proof</h4>
+            <p>
+              Copies of our valid commercial trade licence issued by DET Dubai, certified engineering credentials, and comprehensive third-party liability insurance are provided directly to property developers and main contractors upon tender submission.
+            </p>
+            <hr />
+            <a href="/contact" class="btn btn-primary btn-block">
+              Request Prequalification Pack <Icon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <div>
+        <span class="eyebrow">Direct Accountability</span>
+        <h2>Work with engineers who respect the law.</h2>
+        <p>Zero unauthorized shortcuts. 100% compliant documentation backed by two decades of UAE practice.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          Contact Our Engineering Desk <Icon name="ArrowUpRight" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .crumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .hero-center { max-width: 760px; margin: 0 auto; }
+
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .hero-lead {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .standard-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .st-top { margin-bottom: 0.75rem; }
+
+  .st-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--brass-deep);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .standard-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .st-scope {
+    font-size: 0.82rem;
+    color: var(--brass-deep);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .st-desc {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .content-split-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3rem;
+  }
+
+  .body-lead {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--stone-deep);
+    margin-bottom: 2rem;
+  }
+
+  .qa-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .qa-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+  }
+
+  .qa-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--brass-soft);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .qa-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .qa-item p {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+  }
+
+  .info-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .info-card p {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  .info-card hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 1.25rem 0;
+  }
+
+  .cta-banner {
+    background: var(--ink-2);
+    color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: var(--white);
+    margin: 0.5rem 0;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+
+  @media (max-width: 1024px) {
+    .content-split-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

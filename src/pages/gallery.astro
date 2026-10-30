@@ -13,102 +13,81 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.abbaditech.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Work Photos Gallery",
-      "item": "https://www.abbaditech.com/gallery"
-    }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbaditech.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work Photos Gallery", "item": "https://www.abbaditech.com/gallery" }
   ]
 };
+
+const steps = [
+  { n: "01", title: "Snap ongoing work", body: "Capture electrical conduit routes, DB dressing, PPR pipe pressure gauges, or sanitary rough-ins on site." },
+  { n: "02", title: "Share via WhatsApp", body: "Send photos directly to +971 50 554 6943 with your site location and inquiry details." },
+  { n: "03", title: "Engineering review", body: "Our senior MEP project engineers review the installation for DEWA code compliance and share feedback within hours." }
+];
 ---
 
-<Layout 
-  title={pageTitle} 
-  description={pageDescription} 
+<Layout
+  title={pageTitle}
+  description={pageDescription}
   currentPath="/gallery"
   jsonLd={breadcrumbSchema}
 >
-  <!-- GALLERY HERO -->
+  <!-- HERO -->
   <section class="gallery-hero">
     <HeroAnimation />
     <div class="container hero-inner-container">
-      <div class="crumb">
-        <a href="/">Home</a> <span>/</span> <span>Work Photos Gallery</span>
-      </div>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Gallery</span>
+      </nav>
 
       <div class="gallery-hero-text">
-        <div class="badges-row" style="display:flex; gap:0.5rem; margin-bottom:0.8rem; flex-wrap:wrap;">
-          <span class="live-status-pill"><span class="pulse-dot"></span> 16+ Organic Photos Verified</span>
-          <span class="badge badge-gold">Electrical Technical Work</span>
-          <span class="badge badge-blue">Plumbing Technical Work</span>
-          <span class="badge badge-green">21+ Years in Dubai</span>
+        <div class="badges-row">
+          <span class="live-status-pill"><span class="pulse-dot"></span> 16+ verified photos</span>
+          <span class="badge badge-gold">Electrical technical work</span>
+          <span class="badge badge-teal">Plumbing technical work</span>
         </div>
-        <h1>WORK PHOTOS GALLERY: <span class="text-gradient">ON-SITE EXECUTION</span></h1>
+        <h1>Work photos. Real sites. Documented execution.</h1>
         <p class="lead">
           Explore photographic proof of high-capacity MDB assemblies, DEWA-compliant meter intake rooms, precision-welded PPR pipework, and luxury bathroom sanitary installations across Dubai and the UAE.
         </p>
 
         <div class="gallery-hero-actions">
-          <a href="#gallery-showcase" class="btn btn-primary">
-            <Icon name="Search" size={16} /> Browse Filterable Photos
-          </a>
-          <a href="https://wa.me/971505546943?text=Hi%20AbbadiTech,%20I%20have%20photos%20of%20my%20site%20for%20you%20to%20review" target="_blank" rel="noopener" class="btn btn-secondary">
-            <Icon name="Camera" size={16} /> Submit Site Photos via WhatsApp
-          </a>
+          <a href="#gallery-showcase" class="btn btn-primary"><Icon name="Search" size={16} /> Browse filterable photos</a>
+          <a href="https://wa.me/971505546943?text=Hi%20AbbadiTech,%20I%20have%20photos%20of%20my%20site%20for%20you%20to%20review" target="_blank" rel="noopener" class="btn btn-outline-white"><Icon name="Camera" size={16} /> Submit site photos via WhatsApp</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- INTERACTIVE GALLERY GRID WITH LIGHTBOX & FILTERS -->
-  <GalleryGrid 
-    title="Verified Technical Execution Gallery" 
+  <GalleryGrid
+    title="Verified technical execution gallery"
     subtitle="Click any photo to inspect high-resolution details, engineering specifications, and location verification."
     showFilters={true}
   />
 
-  <!-- HOW TO ADD WORK PHOTOS INFO SECTION -->
-  <section class="section section-alt">
+  <!-- HOW TO SHARE -->
+  <section class="section section-ivory">
     <div class="container">
-      <div class="section-header">
-        <span class="badge badge-gold">For Site Engineers &amp; Clients</span>
-        <h2>How to Add or Share Site Work Photos</h2>
+      <div class="section-header section-header-left">
+        <span class="eyebrow">For site engineers &amp; clients</span>
+        <h2>How to add or share site work photos.</h2>
         <p>AbbadiTech maintains continuous photographic QA/QC documentation from first fix to final DEWA energization.</p>
       </div>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-icon">1</div>
-          <h3>Snap Ongoing Work</h3>
-          <p>Capture electrical conduit routes, DB dressing, PPR pipe pressure gauges, or sanitary rough-ins on site.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-icon">2</div>
-          <h3>Share via WhatsApp</h3>
-          <p>Send photos directly to <strong>+971 50 554 6943</strong> with your site location and inquiry details.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-icon">3</div>
-          <h3>Engineering Review</h3>
-          <p>Our senior MEP project engineers review the installation for DEWA code compliance and share feedback within hours.</p>
-        </div>
+      <div class="steps-grid reveal-group">
+        {steps.map(step => (
+          <div class="step-card">
+            <span class="step-num">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- SEO FAQS -->
-  <FAQSection 
-    items={galleryFaqs} 
-    title="Work Photo & Verification FAQs" 
+  <FAQSection
+    items={galleryFaqs}
+    title="Work photo & verification FAQs"
     subtitle="Frequently asked questions about on-site photographic logs, inspection records, and site visit arrangements."
     badge="Gallery FAQs"
     sectionId="gallery-faqs"
@@ -118,102 +97,108 @@ const breadcrumbSchema = {
 <style>
   .gallery-hero {
     position: relative;
-    padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(3.5rem, 5vw, 4.5rem);
-    background: var(--color-navy-dark);
-    border-bottom: 1px solid var(--color-navy-border);
+    background: var(--ink-deep);
+    color: var(--white);
+    padding: clamp(2.75rem, 5vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     overflow: hidden;
   }
 
-  .hero-inner-container {
-    position: relative;
-    z-index: 2;
-  }
+  .hero-inner-container { position: relative; z-index: 2; }
 
   .crumb {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2.25rem;
   }
 
-  .crumb a {
-    color: var(--primary);
+  .crumb a:hover { color: var(--brass-soft); }
+
+  .gallery-hero-text { max-width: 900px; }
+
+  .badges-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+  .live-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--brass-soft);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
   }
 
-  .gallery-hero-text {
-    max-width: 850px;
-  }
+  .pulse-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--brass-soft); animation: pulseDot 2.4s ease-in-out infinite; }
+  @keyframes pulseDot { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
 
   .gallery-hero-text h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    color: #fff;
-    margin-top: 0.8rem;
-    margin-bottom: 1.2rem;
+    color: var(--white);
+    font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+    margin: 0.9rem 0 1.2rem;
+    max-width: 18ch;
   }
 
   .lead {
-    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-    color: #cbd5e1;
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.62);
     line-height: 1.7;
     margin-bottom: 2rem;
+    max-width: 66ch;
   }
 
-  .gallery-hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .gallery-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-  /* Steps Grid */
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+  .section-ivory { background: var(--ivory); border-top: 1px solid var(--line); }
+
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 
   .step-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 2.2rem;
-    text-align: center;
-    position: relative;
-    transition: transform 0.25s ease;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: clamp(1.4rem, 2.6vw, 1.9rem);
+    transition: transform 0.28s var(--ease-out), border-color 0.28s, box-shadow 0.28s;
   }
 
-  .step-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary);
-  }
+  .step-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: var(--shadow-md); }
 
-  .step-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 148, 16, 0.15);
-    color: var(--primary);
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 700;
-    display: flex;
+  .step-num {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.2rem;
-    border: 1.5px solid var(--primary);
+    width: 34px;
+    height: 34px;
+    margin-bottom: 1rem;
+    border-radius: 9px;
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    background: var(--brass-wash);
+    color: var(--brass-deep);
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
-  .step-card h3 {
-    font-size: 1.2rem;
-    color: #fff;
-    margin-bottom: 0.6rem;
+  .step-card h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+  .step-card p { font-size: 0.84rem; line-height: 1.65; color: var(--stone); }
+  .step-card strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 860px) {
+    .steps-grid { grid-template-columns: 1fr; }
   }
 
-  .step-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
+  @media (max-width: 600px) {
+    .gallery-hero-text h1 { font-size: clamp(2.2rem, 10.5vw, 3rem); }
   }
 </style>

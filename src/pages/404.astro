@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { siteConfig } from '../config/site';
+
+const pageTitle = "Page Not Found (404) | Abbadi Tech Dubai";
+const pageDescription = "The page you are looking for does not exist or has been moved. Explore our DEWA approvals, electrical contracting, or contact our Dubai engineering team.";
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/404"
+>
+  <section class="error-section">
+    <div class="container error-container">
+      <div class="error-badge">
+        <Icon name="AlertTriangle" size={16} />
+        <span>404 Error · Page Moved or Not Found</span>
+      </div>
+
+      <h1 class="error-title">Looking for engineering or DEWA approvals?</h1>
+      <p class="error-lead">
+        The URL you requested is no longer here. Below are the most frequent destinations for Dubai fit-outs, authority submissions, and technical MEP services.
+      </p>
+
+      <div class="error-grid">
+        <a href="/dewa-approvals-dubai" class="error-card">
+          <div class="ec-icon"><Icon name="FileCheck" size={24} /></div>
+          <h3>DEWA Approvals &amp; NOCs</h3>
+          <p>Fit-out NOCs, Single-Line Diagrams (SLD), and electrical load upgrades.</p>
+          <span class="ec-link">Explore approvals <Icon name="ArrowUpRight" size={14} /></span>
+        </a>
+
+        <a href="/services/electrical-contractors-dubai" class="error-card">
+          <div class="ec-icon"><Icon name="Zap" size={24} /></div>
+          <h3>Electrical Contracting</h3>
+          <p>MDB &amp; SMDB panel assembly, cable containment, and 3-phase wiring.</p>
+          <span class="ec-link">View electrical services <Icon name="ArrowUpRight" size={14} /></span>
+        </a>
+
+        <a href="/services/plumbing-contractors-dubai" class="error-card">
+          <div class="ec-icon"><Icon name="Droplets" size={24} /></div>
+          <h3>Plumbing &amp; Drainage</h3>
+          <p>Grease trap installation, booster pumps, and hydrostatic pressure testing.</p>
+          <span class="ec-link">View plumbing services <Icon name="ArrowUpRight" size={14} /></span>
+        </a>
+
+        <a href="/areas-we-serve" class="error-card">
+          <div class="ec-icon"><Icon name="MapPin" size={24} /></div>
+          <h3>Areas We Serve</h3>
+          <p>Rapid engineering dispatch across Business Bay, Downtown, DIFC, and Dubai.</p>
+          <span class="ec-link">Explore coverage <Icon name="ArrowUpRight" size={14} /></span>
+        </a>
+      </div>
+
+      <div class="error-actions">
+        <a href="/" class="btn btn-secondary">
+          Return to homepage
+        </a>
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary">
+          <Icon name="Phone" size={15} /> Urgent Hotline: {siteConfig.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .error-section {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: var(--paper);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .error-container {
+    max-width: 860px;
+    text-align: center;
+  }
+
+  .error-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.12);
+    color: var(--brass-deep);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .error-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .error-lead {
+    font-size: 1.05rem;
+    color: var(--stone);
+    max-width: 620px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  .error-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .error-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .error-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brass);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ec-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--ivory);
+    color: var(--brass-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .error-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .error-card p {
+    font-size: 0.82rem;
+    color: var(--stone);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .ec-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--brass-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .error-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import FAQSection from '../components/FAQSection.astro';
 import HeroAnimation from '../components/HeroAnimation.astro';
+import { siteConfig } from '../config/site';
 import { dewaWorksFaqs } from '../data/faq';
 import { projectsList } from '../data/projects';
 
-const pageTitle = "DEWA Approval Services Dubai | Stamped SLD, NOCs & Meter Energization | Abbadi Tech";
-const pageDescription = "Specialized DEWA electrical contractor services in Dubai since 2005. Fast-track fit-out NOCs, stamped Single-Line Diagrams (SLD), power load upgrades & 100% first-pass inspection target.";
+const pageTitle = "DEWA Approval Dubai | Stamped SLD & Fit-Out NOC | Abbadi Tech";
+const pageDescription = "Fast-track DEWA approvals in Dubai: stamped SLDs, fit-out NOCs, load upgrades & meter connection. 3–5 day turnaround. Call +971 50 554 6943.";
 
 const dewaProjects = projectsList
   .filter(p => p.scope === 'electrical' || p.scope === 'both')
@@ -39,13 +40,13 @@ const serviceSchema = {
   "serviceType": "DEWA Electrical & Water Approvals, SLD Design & Meter Energization",
   "provider": {
     "@type": "LocalBusiness",
-    "name": "DEWA Approvals Dubai - Division of Abbadi Tech Technical Solutions LLC",
+    "name": "Abbadi Tech Technical Solutions LLC",
     "telephone": "+971505546943",
-    "email": "it.abbaditech@gmail.com",
+    "email": "info@abbaditech.com",
     "url": "https://www.abbaditech.com/dewa-approvals-dubai"
   },
   "areaServed": "Dubai",
-  "description": "Specialized division of Abbadi Tech Technical Solutions LLC providing fast-track DEWA approvals, load enhancement, electrical drawing design, and meter installation across Dubai."
+  "description": "Abbadi Tech Technical Solutions LLC provides fast-track DEWA approvals, electrical load upgrades, stamped SLD engineering, and meter energization across Dubai."
 };
 ---
 
@@ -53,6 +54,7 @@ const serviceSchema = {
   title={pageTitle} 
   description={pageDescription} 
   currentPath="/dewa-approvals-dubai"
+  arabicUrl={`${siteConfig.primaryDomain}/ar/dewa-approvals-dubai`}
   jsonLd={[breadcrumbSchema, serviceSchema]}
 >
   <!-- HERO WITH LEAD CAPTURE FORM -->
@@ -66,13 +68,14 @@ const serviceSchema = {
 
         <div class="lead-division-badge">
           <span class="pulse-dot"></span>
-          <span>Official Technical Division of Abbadi Tech Technical Solutions LLC</span>
+          <span>Authority Approvals &amp; Engineering Coordination · Dubai</span>
         </div>
 
-        <h1>DEWA APPROVAL <span class="text-gradient">SERVICES</span></h1>
+        <span class="eyebrow">Authority coordination · Dubai</span>
+        <h1>DEWA approval services, without the delays.</h1>
         
         <p class="lead-desc">
-          Accelerate your commercial fit-out, retail shop, restaurant, or villa with certified DEWA approvals. We engineer stamped Single-Line Diagrams (SLD), calculate connected load schedules, and manage authority submissions directly to live meter energization with a 100% first-pass pass rate.
+          Accelerate your commercial fit-out, retail shop, restaurant, or villa with certified DEWA approvals. We engineer stamped Single-Line Diagrams (SLD), calculate connected load schedules, and manage authority submissions directly to live meter energization with strict pre-submission compliance reviews.
         </p>
 
         <!-- Trust stats -->
@@ -94,7 +97,7 @@ const serviceSchema = {
         </div>
 
         <div class="direct-hotline-box">
-          <div class="dh-icon"><Icon name="PhoneCall" size={24} color="#FF9500" /></div>
+          <div class="dh-icon"><Icon name="PhoneCall" size={24} color="#B4864C" /></div>
           <div>
             <span class="dh-label">Urgent Approval Hotline (24/7):</span>
             <a href="tel:+971505546943" class="dh-num">+971 50 554 6943</a>
@@ -159,11 +162,11 @@ const serviceSchema = {
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-shimmer" id="lead-submit-btn">
-            ⚡ Submit For Fast-Track DEWA Approval →
+            Submit for fast-track DEWA approval
           </button>
 
           <p class="form-privacy-note">
-            <Icon name="ShieldCheck" size={14} color="#10B981" /> 100% Confidential. Directly handled by Abbadi Tech Technical Solutions LLC.
+            <Icon name="ShieldCheck" size={14} color="#3F7D63" /> 100% Confidential. Directly handled by Abbadi Tech Technical Solutions LLC.
           </p>
         </form>
       </div>
@@ -235,13 +238,13 @@ const serviceSchema = {
 
           <div class="estimator-result">
             <span class="er-title">Project Engineering Estimate</span>
-            <div class="er-price" id="calc-price" style="font-size: 1.85rem; color: #E8A85C; font-weight: 700;">Custom Quote</div>
+            <div class="er-price" id="calc-price" style="font-size: 1.85rem; color: #B4864C; font-weight: 700;">Custom Quote</div>
             <div class="er-days" id="calc-days">Flexible Pricing &bull; Turnaround: 3 - 5 Days</div>
 
             <div class="er-details">
-              <div><span>Inspection Standard:</span> <strong style="color: #10B981;">100% First-Pass Target</strong></div>
+              <div><span>Inspection Standard:</span> <strong style="color: #3F7D63;">100% First-Pass Target</strong></div>
               <div><span>Deliverables:</span> <strong id="calc-docs" style="color: #FFFFFF;">SLD + DEWA NOC</strong></div>
-              <div><span>Pricing Policy:</span> <strong style="color: #38BDF8;">Tailored to Scope &amp; Client</strong></div>
+              <div><span>Pricing Policy:</span> <strong style="color: #7BAAA3;">Tailored to Scope &amp; Client</strong></div>
             </div>
 
             <button type="button" class="btn btn-primary btn-block" id="calc-whatsapp-btn">
@@ -268,7 +271,7 @@ const serviceSchema = {
         <!-- 1 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="FileCheck" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="FileCheck" size={26} color="#B4864C" /></div>
             <span class="dsc-time">3 - 5 Days</span>
           </div>
           <h3>1. DEWA Fit-Out NOC (Decoration)</h3>
@@ -283,7 +286,7 @@ const serviceSchema = {
         <!-- 2 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="Zap" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="Zap" size={26} color="#B4864C" /></div>
             <span class="dsc-time">7 - 14 Days</span>
           </div>
           <h3>2. Power Load Upgrades &amp; Enhancements</h3>
@@ -298,7 +301,7 @@ const serviceSchema = {
         <!-- 3 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="Layers" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="Layers" size={26} color="#B4864C" /></div>
             <span class="dsc-time">24 - 48 Hours</span>
           </div>
           <h3>3. Certified Single-Line Diagrams (SLD)</h3>
@@ -313,7 +316,7 @@ const serviceSchema = {
         <!-- 4 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="Landmark" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="Landmark" size={26} color="#B4864C" /></div>
             <span class="dsc-time">Turnkey</span>
           </div>
           <h3>4. MDB Panel Assembly &amp; Intake Rooms</h3>
@@ -328,7 +331,7 @@ const serviceSchema = {
         <!-- 5 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="CheckCircle2" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="CheckCircle2" size={26} color="#B4864C" /></div>
             <span class="dsc-time">2 - 3 Days</span>
           </div>
           <h3>5. Smart Meter Fixing &amp; Energization</h3>
@@ -343,7 +346,7 @@ const serviceSchema = {
         <!-- 6 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="AlertTriangle" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="AlertTriangle" size={26} color="#B4864C" /></div>
             <span class="dsc-time">Emergency 48h</span>
           </div>
           <h3>6. Inspection Rejection Rectification</h3>
@@ -358,7 +361,7 @@ const serviceSchema = {
         <!-- 7 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="Droplets" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="Droplets" size={26} color="#B4864C" /></div>
             <span class="dsc-time">5 - 7 Days</span>
           </div>
           <h3>7. DEWA Water Connection &amp; Meter Manifolds</h3>
@@ -373,7 +376,7 @@ const serviceSchema = {
         <!-- 8 -->
         <div class="dewa-service-card card-interactive">
           <div class="dsc-top">
-            <div class="dsc-icon"><Icon name="Cpu" size={26} color="#FF9500" /></div>
+            <div class="dsc-icon"><Icon name="Cpu" size={26} color="#B4864C" /></div>
             <span class="dsc-time">Fast-Track</span>
           </div>
           <h3>8. Temporary Construction Power Supply</h3>
@@ -466,7 +469,7 @@ const serviceSchema = {
         <div class="pkg-card">
           <h4>Fit-Out NOC Fast-Track</h4>
           <p class="pkg-desc">Ideal for retail shops, cafes, and offices needing quick tenancy approval.</p>
-          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Project-Based</span></div>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #B4864C;">Custom Quote <span style="font-size: 0.85rem; color: #8A9A9D;">/ Project-Based</span></div>
           <span class="pkg-time">Flexible Pricing &bull; Turnaround: 3 - 5 Business Days</span>
           <ul class="pkg-list">
             <li>Single-Line Diagram (SLD) Design</li>
@@ -482,7 +485,7 @@ const serviceSchema = {
           <span class="pkg-badge">Comprehensive</span>
           <h4>Turnkey Meter Energization</h4>
           <p class="pkg-desc">Full end-to-end service from drawing approval to live meter power turn-on.</p>
-          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Turnkey Scope</span></div>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #B4864C;">Custom Quote <span style="font-size: 0.85rem; color: #8A9A9D;">/ Turnkey Scope</span></div>
           <span class="pkg-time">Flexible Pricing &bull; Turnaround: 5 - 10 Business Days</span>
           <ul class="pkg-list">
             <li>All items in Fit-Out NOC Package</li>
@@ -498,7 +501,7 @@ const serviceSchema = {
         <div class="pkg-card">
           <h4>Power Load Upgrade</h4>
           <p class="pkg-desc">For commercial kitchens, restaurants, bakeries, or EV charging stations.</p>
-          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Based on Additional Load</span></div>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #B4864C;">Custom Quote <span style="font-size: 0.85rem; color: #8A9A9D;">/ Based on Additional Load</span></div>
           <span class="pkg-time">Flexible Pricing &bull; Turnaround: 7 - 14 Business Days</span>
           <ul class="pkg-list">
             <li>Transformer &amp; Substation Capacity Audit</li>
@@ -513,7 +516,7 @@ const serviceSchema = {
         <div class="pkg-card">
           <h4>Emergency Rectification</h4>
           <p class="pkg-desc">Did another contractor fail your DEWA site inspection? We fix it rapidly.</p>
-          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Rapid Diagnostic</span></div>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #B4864C;">Custom Quote <span style="font-size: 0.85rem; color: #8A9A9D;">/ Rapid Diagnostic</span></div>
           <span class="pkg-time">Flexible Pricing &bull; Turnaround: 24 - 48 Hours</span>
           <ul class="pkg-list">
             <li>Immediate Diagnostic Site Audit</li>
@@ -588,7 +591,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>Commercial Retail Meter Energization</h4>
-            <div class="hg-meta">📍 Dubai Mall Fashion Avenue • 75 kW</div>
+            <div class="hg-meta">Dubai Mall Fashion Avenue • 75 kW</div>
             <p>Turnkey smart kWh digital meter fixing and live energization for luxury boutique fit-out.</p>
           </div>
         </div>
@@ -600,7 +603,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>Multi-Tenant Commercial Meter Cabinet</h4>
-            <div class="hg-meta">📍 Business Bay Tower • 180 kW</div>
+            <div class="hg-meta">Business Bay Tower • 180 kW</div>
             <p>Full multi-tenant metering cubicle assembly with CT chambers and separate isolation switches.</p>
           </div>
         </div>
@@ -612,7 +615,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>ABB 3-Phase Main Distribution Board</h4>
-            <div class="hg-meta">📍 DIFC Gate Precinct • 120 kW</div>
+            <div class="hg-meta">DIFC Gate Precinct • 120 kW</div>
             <p>Precision ferruled cable dressing, busbar grading, and DEWA compliant color coding (Red, Yellow, Blue).</p>
           </div>
         </div>
@@ -624,7 +627,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>Industrial Warehouse Switchgear</h4>
-            <div class="hg-meta">📍 Al Quoz Industrial 3 • 350 kW</div>
+            <div class="hg-meta">Al Quoz Industrial 3 • 350 kW</div>
             <p>Main switchgear intake room with motorized MCCBs, emergency shunt trips, and rubber floor insulation.</p>
           </div>
         </div>
@@ -636,7 +639,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>Restaurant Kitchen Load Center</h4>
-            <div class="hg-meta">📍 Jumeirah Lake Towers (JLT) • 95 kW</div>
+            <div class="hg-meta">Jumeirah Lake Towers (JLT) • 95 kW</div>
             <p>Connected load enhancement for heavy commercial kitchen cookers, fryers, and cold room compressors.</p>
           </div>
         </div>
@@ -648,7 +651,7 @@ const serviceSchema = {
           </div>
           <div class="hg-info">
             <h4>DEWA Potable Water Connection</h4>
-            <div class="hg-meta">📍 Dubai Hills Estate • Commercial</div>
+            <div class="hg-meta">Dubai Hills Estate • Commercial</div>
             <p>Stainless steel water manifold with wireless smart meter, non-return check valves, and pressure test pass.</p>
           </div>
         </div>
@@ -667,35 +670,35 @@ const serviceSchema = {
 
       <div class="areas-grid">
         <div class="area-card">
-          <h4>📍 Downtown &amp; Dubai Mall</h4>
+          <h4>Downtown &amp; Dubai Mall</h4>
           <p>Fast-track retail boutique NOCs, restaurant kitchen load enhancements, and Emaar tenant handbook compliance.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Business Bay</h4>
+          <h4>Business Bay</h4>
           <p>Office tower electrical submissions, executive floor fit-outs, and multi-tenant smart meter energizations.</p>
         </div>
         <div class="area-card">
-          <h4>📍 DIFC (Financial Center)</h4>
+          <h4>DIFC (Financial Center)</h4>
           <p>Dual-feed high-reliability electrical design, UPS integration, and strict international corporate engineering standards.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Dubai Marina &amp; JBR</h4>
+          <h4>Dubai Marina &amp; JBR</h4>
           <p>Hospitality, beachfront dining cafes, and residential high-rise luxury fit-out electrical NOC approvals.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Jumeirah Lake Towers (JLT)</h4>
+          <h4>Jumeirah Lake Towers (JLT)</h4>
           <p>DMCC authority coordination, retail concourses, and commercial restaurant kitchen power upgrades.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Al Quoz &amp; Industrial Zones</h4>
+          <h4>Al Quoz &amp; Industrial Zones</h4>
           <p>Warehouse power additions, 3-phase machinery distribution, and heavy industrial MDB switchgear approvals.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Dubai Hills Estate &amp; MBR</h4>
+          <h4>Dubai Hills Estate &amp; MBR</h4>
           <p>Luxury villa power expansions, EV wallbox chargers, swimming pool pumps, and landscaped outdoor lighting NOCs.</p>
         </div>
         <div class="area-card">
-          <h4>📍 Deira &amp; Bur Dubai</h4>
+          <h4>Deira &amp; Bur Dubai</h4>
           <p>Heritage building rewiring approvals, load center replacements, and inspection red notice rectifications.</p>
         </div>
       </div>
@@ -787,38 +790,6 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- FLOATING WHATSAPP CHAT WIDGET -->
-  <div class="wa-floating-container">
-    <div class="wa-popup-box" id="wa-popup-box">
-      <div class="wa-popup-header">
-        <div>
-          <h4>DEWA Approvals Desk</h4>
-          <span>Abbadi Tech Technical Solutions LLC • Online</span>
-        </div>
-        <button class="wa-popup-close" id="wa-popup-close">&times;</button>
-      </div>
-      <div class="wa-popup-body">
-        <p>Hello! How can our DEWA approval engineers help you today? Choose a quick option:</p>
-        <button class="wa-quick-btn" data-text="Hello DEWA Approvals Dubai, I need urgent Fit-Out NOC assistance.">
-          ⚡ 1. Request Fast-Track Fit-Out NOC
-        </button>
-        <button class="wa-quick-btn" data-text="Hello DEWA Approvals Dubai, I need to upgrade our electrical power load (kW).">
-          ⚡ 2. Electrical Power Load Upgrade
-        </button>
-        <button class="wa-quick-btn" data-text="Hello DEWA Approvals Dubai, I need Single-Line Diagrams (SLD) prepared & stamped.">
-          ⚡ 3. Stamped SLD Drawing Design
-        </button>
-        <button class="wa-quick-btn" data-text="Hello DEWA Approvals Dubai, we failed our DEWA site inspection and need urgent rectification.">
-          ⚡ 4. Rectify Failed Inspection Red Notice
-        </button>
-      </div>
-    </div>
-
-    <div class="wa-trigger-bubble" id="wa-trigger-bubble" aria-label="Open WhatsApp live chat">
-      <span>💬</span>
-      <span class="wa-pulse-count">1</span>
-    </div>
-  </div>
 </Layout>
 
 <script>
@@ -884,7 +855,7 @@ const serviceSchema = {
     if (prop === 'warehouse') basePrice *= 1.35;
     if (prop === 'villa') basePrice *= 1.15;
 
-    calcPrice.innerHTML = `<span style="font-size: 1.6rem; color: #E8A85C; font-weight: 700;">Custom Quote</span>`;
+    calcPrice.innerHTML = `<span style="font-size: 1.6rem; color: #B4864C; font-weight: 700;">Custom Quote</span>`;
     if (calcDays) calcDays.textContent = `Flexible Pricing • Turnaround: ${days}`;
     if (calcDocs) calcDocs.textContent = docs;
   }
@@ -906,35 +877,12 @@ const serviceSchema = {
     });
   }
 
-  // 3. Floating WhatsApp Widget Toggle
-  const waTrigger = document.getElementById('wa-trigger-bubble');
-  const waPopup = document.getElementById('wa-popup-box');
-  const waClose = document.getElementById('wa-popup-close');
-
-  if (waTrigger && waPopup) {
-    waTrigger.addEventListener('click', () => {
-      waPopup.classList.toggle('active');
-    });
-  }
-
-  if (waClose && waPopup) {
-    waClose.addEventListener('click', () => {
-      waPopup.classList.remove('active');
-    });
-  }
-
-  document.querySelectorAll('.wa-quick-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-text') || 'Hello DEWA Approvals Dubai, I need consultation.';
-      window.open(`https://wa.me/971505546943?text=${encodeURIComponent(text)}`, '_blank');
-    });
-  });
 </script>
 
 <style>
   .dewa-hero {
     padding: 3.5rem 0 4rem;
-    background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15) 0%, transparent 60%), #0A0F1D;
+    background: radial-gradient(circle at top right, rgba(180, 134, 76, 0.15) 0%, transparent 60%), var(--ink-deep);
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -1040,8 +988,8 @@ const serviceSchema = {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.25);
+    background: rgba(180, 134, 76, 0.08);
+    border: 1px solid rgba(180, 134, 76, 0.25);
     border-radius: var(--radius-md);
     padding: 0.85rem 1.25rem;
   }
@@ -1068,10 +1016,10 @@ const serviceSchema = {
   /* Lead Capture Card */
   .dewa-lead-card {
     background: #0D1424;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    border: 1px solid rgba(180, 134, 76, 0.3);
     border-radius: var(--radius-lg);
     padding: 2rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(180, 134, 76, 0.1);
   }
 
   .dlc-header {
@@ -1127,7 +1075,7 @@ const serviceSchema = {
   .form-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 0 2px rgba(180, 134, 76, 0.2);
   }
 
   .btn-block {
@@ -1185,7 +1133,7 @@ const serviceSchema = {
   }
 
   .atb-item.highlight {
-    color: #10B981;
+    color: #3F7D63;
     font-weight: 700;
   }
 
@@ -1245,7 +1193,7 @@ const serviceSchema = {
     border-radius: 50%;
     background: var(--primary);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 10px rgba(180, 134, 76, 0.5);
   }
 
   .slider-markers {
@@ -1304,7 +1252,7 @@ const serviceSchema = {
 
   .er-days {
     font-size: 0.85rem;
-    color: #38BDF8;
+    color: #7BAAA3;
     font-weight: 700;
     margin-bottom: 1rem;
   }
@@ -1354,8 +1302,8 @@ const serviceSchema = {
   .dsc-icon {
     width: 44px;
     height: 44px;
-    background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.25);
+    background: rgba(180, 134, 76, 0.12);
+    border: 1px solid rgba(180, 134, 76, 0.25);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
@@ -1366,7 +1314,7 @@ const serviceSchema = {
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--primary);
-    background: rgba(245, 158, 11, 0.12);
+    background: rgba(180, 134, 76, 0.12);
     padding: 0.2rem 0.5rem;
     border-radius: var(--radius-full);
   }
@@ -1404,7 +1352,7 @@ const serviceSchema = {
 
   .dsc-points li::before {
     content: "✓";
-    color: #10B981;
+    color: #3F7D63;
     position: absolute;
     left: 0;
     font-weight: 800;
@@ -1443,14 +1391,14 @@ const serviceSchema = {
   }
 
   .th-prime {
-    background: rgba(245, 158, 11, 0.15) !important;
+    background: rgba(180, 134, 76, 0.15) !important;
     color: var(--primary) !important;
     border-left: 2px solid var(--primary);
     border-right: 2px solid var(--primary);
   }
 
   .td-prime {
-    background: rgba(245, 158, 11, 0.05);
+    background: rgba(180, 134, 76, 0.05);
     font-weight: 700;
     color: #fff;
     border-left: 2px solid var(--primary);
@@ -1458,13 +1406,13 @@ const serviceSchema = {
   }
 
   .c-tick {
-    color: #10B981;
+    color: #3F7D63;
     font-weight: 800;
     margin-right: 0.35rem;
   }
 
   .c-cross {
-    color: #EF4444;
+    color: #B4553F;
     font-weight: 800;
     margin-right: 0.35rem;
   }
@@ -1489,7 +1437,7 @@ const serviceSchema = {
   .pkg-featured {
     border-color: var(--primary);
     background: #0E1B33;
-    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 10px 30px rgba(180, 134, 76, 0.2);
     transform: translateY(-4px);
   }
 
@@ -1534,7 +1482,7 @@ const serviceSchema = {
 
   .pkg-time {
     font-size: 0.78rem;
-    color: #38BDF8;
+    color: #7BAAA3;
     font-weight: 600;
     margin-bottom: 1.25rem;
     display: block;
@@ -1557,7 +1505,7 @@ const serviceSchema = {
 
   .pkg-list li::before {
     content: "✓";
-    color: #10B981;
+    color: #3F7D63;
     position: absolute;
     left: 0;
     font-weight: 800;
@@ -1587,7 +1535,7 @@ const serviceSchema = {
     font-family: var(--font-heading);
     font-size: 2rem;
     font-weight: 800;
-    color: rgba(245, 158, 11, 0.35);
+    color: rgba(180, 134, 76, 0.35);
     display: block;
     margin-bottom: 0.75rem;
     line-height: 1;
@@ -1655,7 +1603,7 @@ const serviceSchema = {
     right: 10px;
     background: rgba(7, 13, 26, 0.85);
     backdrop-filter: blur(4px);
-    color: #38BDF8;
+    color: #7BAAA3;
     font-size: 0.72rem;
     font-weight: 700;
     padding: 0.25rem 0.6rem;
@@ -1702,7 +1650,7 @@ const serviceSchema = {
   }
 
   .area-card:hover {
-    border-color: #38BDF8;
+    border-color: #7BAAA3;
     background: #0F1D36;
     transform: translateY(-3px);
   }
@@ -1765,7 +1713,7 @@ const serviceSchema = {
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    color: #38BDF8;
+    color: #7BAAA3;
   }
 
   .t-author strong {
@@ -1793,7 +1741,7 @@ const serviceSchema = {
   .wa-trigger-bubble {
     width: 58px;
     height: 58px;
-    background: #25D366;
+    background: var(--teal);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1814,7 +1762,7 @@ const serviceSchema = {
     position: absolute;
     top: -2px;
     right: -2px;
-    background: #EF4444;
+    background: #B4553F;
     color: #fff;
     font-size: 0.65rem;
     font-weight: 800;
@@ -1844,7 +1792,7 @@ const serviceSchema = {
   }
 
   .wa-popup-header {
-    background: #25D366;
+    background: var(--teal);
     color: #fff;
     padding: 0.85rem 1.15rem;
     display: flex;
@@ -1889,16 +1837,16 @@ const serviceSchema = {
     border-radius: var(--radius-xs);
     padding: 0.6rem 0.85rem;
     font-size: 0.78rem;
-    color: #38BDF8;
+    color: #7BAAA3;
     text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .wa-quick-btn:hover {
-    background: #0284C7;
+    background: #2F6E68;
     color: #fff;
-    border-color: #38BDF8;
+    border-color: #7BAAA3;
   }
 
   /* Responsive Adjustments */
@@ -1960,4 +1908,165 @@ const serviceSchema = {
       display: none;
     }
   }
+
+  /* Editorial alignment with the Abbadi Tech design system */
+  .dewa-hero {
+    background: var(--ink-deep);
+    padding: clamp(2.75rem, 5vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .dewa-hero-container { gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+
+  .dewa-hero-text h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 0.9rem 0 1.15rem;
+    max-width: 17ch;
+  }
+
+  .lead-desc { color: rgba(255, 255, 255, 0.62); font-size: 1rem; line-height: 1.7; max-width: 62ch; }
+
+  .lead-division-badge {
+    background: rgba(180, 134, 76, 0.1);
+    border-color: rgba(180, 134, 76, 0.28);
+    color: var(--brass-soft);
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.32rem 0.75rem;
+  }
+
+  .pulse-dot { background: var(--brass-soft); }
+
+  .dewa-trust-row { background: transparent; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.12); border-radius: 0; padding: 1rem 0 0; gap: 1.25rem; }
+  .dt-item strong { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; color: var(--brass-soft); }
+  .dt-item span { color: rgba(255, 255, 255, 0.4); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.09em; font-family: var(--font-heading); }
+  .dt-divider { background: rgba(255, 255, 255, 0.12); }
+
+  .direct-hotline-box { background: rgba(180, 134, 76, 0.08); border-color: rgba(180, 134, 76, 0.24); border-radius: 12px; }
+  .dh-label { color: rgba(255, 255, 255, 0.4); font-size: 0.6rem; letter-spacing: 0.1em; font-family: var(--font-heading); }
+  .dh-num { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--white); }
+  .dh-num:hover { color: var(--brass-soft); }
+
+  .dewa-lead-card {
+    background: var(--ink-2);
+    border: 1px solid var(--ink-line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.4rem, 2.6vw, 2rem);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .dlc-header h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; color: var(--white); }
+  .dlc-header p { color: rgba(255, 255, 255, 0.48); font-size: 0.82rem; }
+
+  .dewa-form .form-group label { color: rgba(255, 255, 255, 0.62); font-family: var(--font-heading); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.03em; }
+  .dewa-form .form-input { background: var(--ink-deep); border-color: rgba(255, 255, 255, 0.13); border-radius: 9px; color: var(--white); font-size: 0.86rem; }
+  .dewa-form .form-input::placeholder { color: rgba(255, 255, 255, 0.28); }
+  .dewa-form .form-input:focus { border-color: var(--brass); box-shadow: 0 0 0 3px rgba(180, 134, 76, 0.18); }
+  .dewa-form .form-input option { background: var(--ink-2); color: var(--white); }
+  .form-privacy-note { color: rgba(255, 255, 255, 0.36); }
+  .form-privacy-note svg { color: var(--brass-soft); }
+
+  .authority-trust-bar { background: var(--ivory); border-color: var(--line); padding: 1rem 0; }
+  .atb-title { color: var(--stone-light); font-family: var(--font-heading); font-size: 0.6rem; letter-spacing: 0.12em; }
+  .atb-item { color: var(--stone); font-size: 0.72rem; font-weight: 500; }
+  .atb-item.highlight { color: var(--brass-deep); }
+
+  .section-estimator { background: var(--ink); border: 0; }
+  .section-estimator .section-header h2 { color: var(--white); }
+  .section-estimator .section-header p { color: rgba(255, 255, 255, 0.5); }
+
+  .estimator-box { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: none; }
+  .estimator-box label { color: rgba(255, 255, 255, 0.6); font-family: var(--font-heading); font-size: 0.7rem; }
+  .estimator-box .form-input { background: var(--ink-deep); border-color: rgba(255, 255, 255, 0.13); color: var(--white); border-radius: 9px; }
+  .load-display-tag { background: var(--brass-wash); color: var(--brass-soft); border: 1px solid rgba(180, 134, 76, 0.3); border-radius: 7px; font-family: var(--font-heading); }
+  .load-range-slider { accent-color: var(--brass); }
+  .slider-markers span { color: rgba(255, 255, 255, 0.36); }
+  .estimator-result { background: var(--ink-deep); border: 1px solid var(--ink-line); border-radius: var(--radius-md); }
+  .er-title { color: var(--brass-soft); font-family: var(--font-heading); letter-spacing: 0.1em; font-size: 0.62rem; text-transform: uppercase; }
+  .er-price { color: var(--brass-soft) !important; font-family: var(--font-display); }
+  .er-days { color: rgba(255, 255, 255, 0.45); }
+  .er-details { border-top: 1px solid var(--ink-line); }
+  .er-details div { color: rgba(255, 255, 255, 0.5); border-color: var(--ink-line); }
+  .er-details strong { color: var(--white) !important; }
+
+  #services-section { background: var(--paper); }
+  .dewa-services-grid { gap: 1rem; }
+  .dewa-service-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: none; }
+  .dewa-service-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
+  .dsc-icon { background: var(--brass-wash); border: 1px solid rgba(180, 134, 76, 0.24); border-radius: 10px; }
+  .dsc-icon svg { color: var(--brass-deep) !important; }
+  .dsc-time { background: var(--ivory); border: 1px solid var(--line); color: var(--stone); border-radius: 6px; font-family: var(--font-heading); font-size: 0.62rem; }
+  .dewa-service-card h3 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--ink); }
+  .dewa-service-card p { color: var(--stone); font-size: 0.82rem; }
+  .dsc-points li { color: var(--stone); font-size: 0.78rem; border-color: var(--line); }
+  .dsc-points li::before { color: var(--brass); }
+
+  .section-comparison { background: var(--ivory); }
+  .comp-table-container { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); }
+  .comp-table th { background: var(--paper); color: var(--stone-light); font-family: var(--font-heading); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; border-color: var(--line); }
+  .comp-table th.th-prime { background: var(--ink); color: var(--brass-soft); }
+  .comp-table td { border-color: var(--line); color: var(--stone); font-size: 0.8rem; }
+  .comp-table td strong { color: var(--ink); }
+  .comp-table tr:nth-child(even) td { background: rgba(246, 242, 233, 0.5); }
+  .td-prime { background: rgba(180, 134, 76, 0.06) !important; color: var(--ink) !important; }
+  .c-tick { color: var(--teal); }
+  .c-cross { color: #B4553F; }
+
+  .section-pricing { background: var(--paper); }
+  .pkg-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: none; }
+  .pkg-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-md); }
+  .pkg-card.pkg-featured { background: var(--ink); border-color: var(--ink-line); }
+  .pkg-card.pkg-featured h4 { color: var(--white); }
+  .pkg-card.pkg-featured .pkg-desc { color: rgba(255, 255, 255, 0.55); }
+  .pkg-card.pkg-featured .pkg-time { color: rgba(255, 255, 255, 0.45); }
+  .pkg-card.pkg-featured .pkg-list li { color: rgba(255, 255, 255, 0.65); border-color: rgba(255, 255, 255, 0.1); }
+  .pkg-card h4 { font-family: var(--font-heading); font-weight: 600; color: var(--ink); }
+  .pkg-desc { color: var(--stone); }
+  .pkg-price { color: var(--brass-deep) !important; font-family: var(--font-display); }
+  .pkg-price span { color: var(--stone-light) !important; }
+  .pkg-time { color: var(--stone-light); font-family: var(--font-heading); font-size: 0.64rem; }
+  .pkg-list li { color: var(--stone); border-color: var(--line); font-size: 0.8rem; }
+  .pkg-list li::before { color: var(--brass); }
+  .pkg-badge { background: var(--brass); color: var(--ink); font-family: var(--font-heading); border-radius: 6px; }
+  .pkg-card .btn-outline-white { border: 1px solid var(--line-strong); color: var(--ink); }
+  .pkg-card .btn-outline-white:hover { border-color: var(--ink); background: var(--ivory); }
+
+  .workflow-grid { gap: 1rem; }
+  .wf-card { background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: var(--radius-md); padding: 1.4rem; }
+  .wf-step { font-family: var(--font-display); color: var(--brass); font-size: 1.2rem; }
+  .wf-card h4 { font-family: var(--font-heading); color: var(--white); font-weight: 600; }
+  .wf-card p { color: rgba(255, 255, 255, 0.5); }
+
+  .section-gallery { background: var(--paper); }
+  .handover-gallery-grid { gap: 1rem; }
+  .hg-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .hg-img-wrap { background: var(--ink-2); }
+  .hg-badge { background: rgba(8, 18, 23, 0.68); border-color: rgba(255, 255, 255, 0.16); border-radius: 6px; backdrop-filter: blur(6px); }
+  .hg-info { padding: 1.15rem; }
+  .hg-info h4 { font-family: var(--font-heading); color: var(--ink); font-size: 0.92rem; font-weight: 600; }
+  .hg-meta { color: var(--brass-deep); font-size: 0.66rem; font-family: var(--font-heading); letter-spacing: 0.03em; }
+  .hg-info p { color: var(--stone); font-size: 0.8rem; }
+
+  .section-areas { background: var(--ivory); }
+  .areas-grid { gap: 0.9rem; }
+  .area-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .area-card h4 { font-family: var(--font-heading); color: var(--ink); font-size: 0.9rem; font-weight: 600; }
+  .area-card p { color: var(--stone); font-size: 0.8rem; }
+
+  .section-testimonials { background: var(--paper); }
+  .testimonial-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.6rem; }
+  .t-stars { color: var(--brass); letter-spacing: 0.18em; }
+  .t-text { color: var(--stone); font-size: 0.88rem; line-height: 1.7; }
+  .t-avatar { background: var(--brass-wash); color: var(--brass-deep); border: 1px solid rgba(180, 134, 76, 0.24); font-family: var(--font-heading); }
+  .t-author strong { color: var(--ink); }
+  .t-author span { color: var(--stone-light); }
+
+  .dewa-approvals-dubai .cta-inner-card { background: var(--ink-2); border-color: var(--ink-line); }
 </style>

@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import HeroAnimation from '../../components/HeroAnimation.astro';
+import { siteConfig } from '../../config/site';
+
+const pageTitle = "مقاول كهرباء وسباكة وميب في دبي | عبادي تك للحلول الفنية";
+const pageDescription = "مقاول كهروميكانيكي معتمد في دبي منذ 2005. موافقات ديوا، لوحات التوزيع MDB، تمديدات السباكة ومصائد الشحوم. اتصل بنا: 971505546943+";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${siteConfig.primaryDomain}/ar` }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/ar"
+  isArabic={true}
+  canonicalUrl={`${siteConfig.primaryDomain}/ar`}
+  arabicUrl={`${siteConfig.primaryDomain}/ar`}
+  jsonLd={breadcrumbSchema}
+>
+  <section class="sp-hero ar-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">مقاولات كهروميكانيكية معتمدة · دبي منذ 2005</span>
+          <h1 class="hero-title">مقاول كهرباء وسباكة وموافقات ديوا في دبي</h1>
+          
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>خدمات هندسية متكاملة</strong>
+            </div>
+            <p class="answer-text">
+              تقدم شركة عبادي تك للحلول الفنية ش.ذ.م.م خدمات المقاولات الكهروميكانيكية المتكاملة (MEP) في دبي والإمارات. استخراج شهادات عدم الممانعة من ديوا (DEWA NOC)، تصميم المخططات أحادية الخط (SLD)، تجميع لوحات التوزيع الكهربائية، وتمديدات السباكة والصرف الصحي ومصائد الشحوم للمطاعم والمكاتب والمحلات التجارية والفلل السكنية.
+            </p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">سنوات الخبرة</span>
+              <strong class="hm-val">+20 عاماً في الإمارات</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">سرعة الاستجابة</span>
+              <strong class="hm-val">معاينة فورية خلال 24 ساعة</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">كادر العمل</span>
+              <strong class="hm-val">100% مهندسون وفنيون معتمدون</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- RFQ Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>طلب عرض سعر ومعاينة فنية</h3>
+            <p>تواصل مباشرة مع مهندسي التقدير الميدانيين.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <div class="form-group">
+              <label for="premise-ar">رقم المبنى أو موقع المشروع</label>
+              <input type="text" id="premise-ar" name="premise" placeholder="مثال: الخليج التجاري، دبي مول" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone-ar">رقم الهاتف أو الواتساب</label>
+              <input type="tel" id="phone-ar" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              طلب معاينة هندسية مجانية <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>الخط المباشر: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE DIVISIONS ARABIC -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">أقسامنا المتخصصة</span>
+        <h2>الخدمات الهندسية الكهروميكانيكية</h2>
+        <p>تنفيذ متكامل من مرحلة إعداد المخططات والاعتمادات حتى فحص التشغيل النهائي وتسليم العدادات.</p>
+      </div>
+
+      <div class="ar-services-grid">
+        <a href="/ar/dewa-approvals-dubai" class="ar-card">
+          <div class="ar-icon"><Icon name="FileCheck" size={26} color="var(--brass)" /></div>
+          <h3>موافقات هيئة كهرباء ومياه دبي (ديوا)</h3>
+          <p>استخراج شهادات عدم الممانعة للديكور والتجهيزات، ترقية الأحمال الكهربائية، واعتماد المخططات الهندسية أحادية الخط (SLD).</p>
+          <span class="ar-link">تفاصيل موافقات ديوا ←</span>
+        </a>
+
+        <a href="/ar/services/electrical-contractors-dubai" class="ar-card">
+          <div class="ar-icon"><Icon name="Zap" size={26} color="var(--brass)" /></div>
+          <h3>مقاولات الأعمال الكهربائية</h3>
+          <p>تجميع وتوريد لوحات التوزيع الرئيسية MDB والفرعية SMDB، سحب كابلات الطاقة، وأنظمة الإنارة المعمارية وحالات الطوارئ.</p>
+          <span class="ar-link">خدمات مقاولات الكهرباء ←</span>
+        </a>
+
+        <a href="/ar/services/plumbing-contractors-dubai" class="ar-card">
+          <div class="ar-icon"><Icon name="Droplets" size={26} color="var(--brass)" /></div>
+          <h3>مقاولات السباكة والصرف الصحي</h3>
+          <p>تمديد أنابيب المياه الصالحة للشرب PPR، تركيب مصائد الشحوم المعتمدة من بلدية دبي، ومحطات مضخات ضغط المياه المعززة.</p>
+          <span class="ar-link">خدمات مقاولات السباكة ←</span>
+        </a>
+
+        <a href="/ar/services/mep-contractor-dubai" class="ar-card">
+          <div class="ar-icon"><Icon name="Layers" size={26} color="var(--brass)" /></div>
+          <h3>مقاولات كهروميكانيكية متكاملة (MEP)</h3>
+          <p>حلول تسليم مفتاح للمطاعم، المكاتب، العيادات والمستودعات تحت إدارة هندسية موحدة تضمن إنهاء الأعمال دون تعارضات.</p>
+          <span class="ar-link">الأعمال الكهروميكانيكية المتكاملة ←</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <div>
+        <span class="eyebrow">ابدأ مشروعك اليوم</span>
+        <h2>هل لديك مشروع تجهيز أو ترقية أحمال في دبي؟</h2>
+        <p>فريقنا الهندسي المعتمد جاهز لدراسة المخططات وتقديم جدول كميات مفصل خلال 24 ساعة.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary">
+          طلب عرض سعر للمشروع <Icon name="ArrowUpRight" size={16} />
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("مرحباً، أود الاستفسار عن خدمات مقاولات ديوا والأعمال الكهروميكانيكية")}`} target="_blank" rel="noopener" class="btn btn-outline-white">
+          <Icon name="MessageSquare" size={16} /> تواصل عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ar-hero { text-align: right; }
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-right: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.72rem; color: rgba(255, 255, 255, 0.5); }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    text-align: right;
+  }
+  .rfq-header h3 { font-family: var(--font-heading); font-size: 1.25rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .rfq-header p { font-size: 0.82rem; color: var(--stone); margin-bottom: 1.25rem; }
+  .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .form-group input { padding: 0.7rem 0.9rem; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 0.88rem; }
+  .hotline-strip { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.82rem; color: var(--stone); }
+  .hotline-strip a { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+  .ar-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .ar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ar-card:hover { transform: translateY(-3px); border-color: var(--brass); box-shadow: var(--shadow-md); }
+  .ar-icon { width: 48px; height: 48px; border-radius: 8px; background: var(--ivory); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .ar-card h3 { font-family: var(--font-heading); font-size: 1.1rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .ar-card p { font-size: 0.86rem; color: var(--stone); line-height: 1.6; margin: 0 0 1rem; flex: 1; }
+  .ar-link { font-size: 0.82rem; font-weight: 600; color: var(--brass-deep); }
+
+  .cta-banner {
+    background: var(--ink-2);
+    color: var(--white);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: right;
+  }
+  .cta-banner-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .cta-banner h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.2vw, 2.5rem); color: var(--white); margin: 0.5rem 0; }
+  .cta-banner p { color: rgba(255, 255, 255, 0.7); margin: 0; max-width: 580px; line-height: 1.6; }
+  .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; }
+
+  @media (max-width: 1024px) {
+    .hero-split { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-banner-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
