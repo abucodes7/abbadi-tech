@@ -135,7 +135,7 @@ export const tradeServicesList: TradeService[] = [
     slug: 'ev-charger-installation-dubai',
     category: 'electrical',
     title: 'Commercial & Residential EV Charger Installation Dubai',
-    metaTitle: 'EV Charger Installation Dubai | DEWA Approved | Abbadi Tech',
+    metaTitle: 'EV Charger Installation Dubai | DEWA Approval Services | Abbadi Tech',
     metaDescription: 'Certified EV charger installation for commercial properties & villas in Dubai. Type 2 AC & DC fast chargers. Complete DEWA approval: +971 50 554 6943.',
     h1: 'EV Charger Installation & DEWA Approval Services in Dubai',
     badge: 'Green Mobility · DEWA EV Green Charger Standard',
