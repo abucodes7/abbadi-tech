@@ -1,0 +1,450 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import HeroAnimation from '../../../components/HeroAnimation.astro';
+import { siteConfig } from '../../../config/site';
+
+const pageTitle = "مقاول سباكة في دبي | شبكات مياه ومصائد شحوم معتمدة | عبادي تك";
+const pageDescription = "مقاول سباكة وتمديدات صحية معتمد في دبي منذ 2005. تركيب مصائد الشحوم، محطات مضخات التعزيز، اختبار الضغط 10 بار، واعتمادات بلدية دبي وديوا. اتصل: 971505546943+";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${siteConfig.primaryDomain}/ar` },
+    { "@type": "ListItem", "position": 2, "name": "خدمات المقاولات", "item": `${siteConfig.primaryDomain}/ar` },
+    { "@type": "ListItem", "position": 3, "name": "مقاول سباكة دبي", "item": `${siteConfig.primaryDomain}/ar/services/plumbing-contractors-dubai` }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "مقاولات سباكة وصحية في دبي",
+  "serviceType": "Commercial Plumbing, Drainage & Grease Trap Installation",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteConfig.legalName,
+    "telephone": siteConfig.phoneRaw,
+    "email": siteConfig.email,
+    "url": `${siteConfig.primaryDomain}/ar/services/plumbing-contractors-dubai`
+  },
+  "areaServed": "Dubai",
+  "description": "خدمات المقاولات الصحية والسباكة في دبي: تمديدات شبكات المياه الباردة والساخنة، أنابيب الصرف الصحي، تركيب مصائد الشحوم للمطاعم، ومحطات ضخ المياه."
+};
+
+const plumbingCapabilitiesAr = [
+  {
+    title: "تركيب مصائد الشحوم وفصل الزيوت (Grease Traps)",
+    desc: "توريد وتركيب مصائد شحوم مطابقة لاشتراطات بلدية دبي للمطاعم والمقاهي والمطابخ المركزية مع فتحات تهوية وسحب متوافقة.",
+    link: "/services/grease-trap-installation-dubai"
+  },
+  {
+    title: "تمديدات السباكة والصرف التجاري (Commercial Drainage)",
+    desc: "شبكات تصريف مياه الصرف الصحي والأمطار باستخدام أنابيب UPVC و HDPE عالية المقاومة، وتركيب غرف التفتيش ومصائد الروائح.",
+    link: "/services/drainage-works-dubai"
+  },
+  {
+    title: "محطات مضخات رفع وتعزيز ضغط المياه (Booster Pumps)",
+    desc: "تركيب وصيانة مضخات التعزيز المتغيرة السرعة (VFD Booster Pumps) وخزانات الضغط للمباني التجارية والفلل السكنية والمصانع.",
+    link: "/services/water-booster-pump-installation-dubai"
+  },
+  {
+    title: "اختبارات الضغط الهيدروستاتيكي وكشف التسريبات (Pressure Testing)",
+    desc: "فحص ضغط شبكات الأنابيب عند 10 بار لمدة 24 ساعة لضمان خلوها من التسريب قبل أعمال الصب وتركيب الديكور النهائي.",
+    link: "/services/leak-detection-pressure-testing-dubai"
+  },
+  {
+    title: "أعمال السباكة الصحية للفلل الفاخرة (Luxury Villa Plumbing)",
+    desc: "تأسيس وتشطيب دورات المياه، والأنظمة المخفية المعلقة (Geberit)، وسخانات الطاقة الشمسية، وشبكات الري والمسابح.",
+    link: "/services/commercial-plumbing-dubai"
+  },
+  {
+    title: "عقود صيانة السباكة السنوية (Plumbing AMC)",
+    desc: "برامج صيانة وقائية دورية لمضخات المياه، وفلاتر التحلية، وفحص خطوط الصرف لمنع الانسدادات المفاجئة وفيضان المجاري.",
+    link: "/services/plumbing-amc-dubai"
+  }
+];
+
+const faqsAr = [
+  {
+    q: "ما هي اشتراطات بلدية دبي لتركيب مصيدة الشحوم (Grease Trap) في المطاعم؟",
+    a: "تشترط بلدية دبي تركيب مصيدة شحوم بحجم وسعة محسوبة وفق عدد الوجبات وتدفق المياه، مصنوعة من الفولاذ المقاوم للصدأ (SS 304/316) أو البولي إيثيلين، مع تزويدها بفتحات تهوية، والتعاقد مع شركة معتمدة لنزح الشحوم دورياً."
+  },
+  {
+    q: "ما هي المعايير المتبعة لاختبار أنابيب المياه قبل إغلاق الأسقف؟",
+    a: "نطبق اختبار الضغط الهيدروستاتيكي الإلزامي عند ضغط لا يقل عن 10 بار لمدة لا تقل عن 24 ساعة، مع فحص مقياس الضغط ومفاصل اللحام بالأشعة والحرارة للتأكد من عدم وجود أي هبوط في الضغط."
+  },
+  {
+    q: "هل تقومون بتوريد وتركيب أنظمة الأنابيب العازلة والمقاومة للصدأ؟",
+    a: "نعم، نستخدم أنابيب PPR متعددة الطبقات المقاومة للحرارة والضغط لشبكات التغذية الداخلية، وأنابيب PEX للمشاريع الحديثة، مع عزل كامل ضد التكثف وحرارة الطقس في الإمارات."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqsAr.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/ar/services/plumbing-contractors-dubai"
+  englishUrl={`${siteConfig.primaryDomain}/services/plumbing-contractors-dubai`}
+  isArabic={true}
+  canonicalUrl={`${siteConfig.primaryDomain}/ar/services/plumbing-contractors-dubai`}
+  jsonLd={[breadcrumbSchema, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="sp-hero ar-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">مقاولات صحية وهيدروليكية · دبي منذ 2005</span>
+          <h1 class="hero-title">مقاول سباكة معتمد في دبي للمشاريع التجارية والصحية</h1>
+          
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>إجابة مباشرة: حلول السباكة وشبكات المياه المعتمدة في دبي</strong>
+            </div>
+            <p class="answer-text">
+              تتولى شركة عبادي تك للحلول الفنية ش.ذ.م.م تنفيذ شبكات التغذية والصرف الصحي، وتركيب مصائد الشحوم للمطاعم ومحطات مضخات المياه في دبي. نلتزم باشتراطات بلدية دبي ومواصفات ديوا لشبكات المياه، مع تطبيق اختبار هيدروستاتيكي إلزامي عند 10 بار لضمان سلامة التمديدات وخلوها التام من أي تسريب.
+            </p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">معيار الضغط</span>
+              <strong class="hm-val">10 بار اختبار هيدروستاتيكي</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">مطابقة بلدية دبي</span>
+              <strong class="hm-val">100% مصائد شحوم معتمدة</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">سنوات الميدان</span>
+              <strong class="hm-val">+20 عاماً في الإمارات</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- RFQ Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>طلب تسعير ومعاينة سباكة</h3>
+            <p>أرسل متطلبات مشروعك وسيتواصل معك مهندس ميكانيك وصحي متخصص.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <div class="form-group">
+              <label for="scope-plumb-ar">نوع الأعمال الصحية المطلوبة</label>
+              <select id="scope-plumb-ar" name="scope" class="form-select">
+                <option value="grease-trap">تركيب مصيدة شحوم مطاعم (Grease Trap)</option>
+                <option value="commercial-fitout">سباكة وصرف ديكور تجاري / مطعم</option>
+                <option value="booster-pumps">محطة مضخات رفع وتعزيز الضغط</option>
+                <option value="villa-plumbing">تمديدات صحية لفيلا سكنية</option>
+                <option value="leak-testing">اختبار ضغط وكشف تسريبات</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="location-plumb-ar">موقع المشروع في دبي</label>
+              <input type="text" id="location-plumb-ar" name="location" placeholder="مثال: دبي مارينا، نخلة جميرا، البرشاء" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone-plumb-ar">رقم الهاتف أو الواتساب</label>
+              <input type="tel" id="phone-plumb-ar" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              طلب معاينة هندسية <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>للتواصل المباشر: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">خدمات السباكة والصحة التخصصية</span>
+        <h2>شبكات هيدروليكية وصحية متكاملة لمنشآتك</h2>
+        <p class="section-desc">أنابيب ومضخات وتجهيزات عالية الجودة من كبرى المصانع المعتمدة في الدولة.</p>
+      </div>
+
+      <div class="ar-services-grid">
+        {plumbingCapabilitiesAr.map((item) => (
+          <div class="ar-card">
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-desc">{item.desc}</p>
+            <a href={item.link} class="card-link">
+              التفاصيل والمواصفات <Icon name="ArrowUpRight" size={15} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINEERING QUALITY PILLARS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">معايير التركيب الهندسي</span>
+        <h2>لماذا يفضل المطورون والمستثمرون حلول السباكة من عبادي تك؟</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h4>اختبار ضغط معتمد</h4>
+          <p>اختبار كل مقطع شبكة عند ضغط 10 بار وإصدار تقرير فحص هيدروستاتيكي رسمي قبل الإغلاق.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h4>عزل حراري وصوتي</h4>
+          <p>عزل أنابيب المياه الساخنة ومواسير الصرف الصوتي لتقليل الضوضاء ومنع التكثف والرطوبة.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h4>مطابقة بلدية دبي</h4>
+          <p>توريد مصائد شحوم وفواصل رواسب مطابقة للاشتراطات البيئية والصحية لبلدية دبي.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <h4>دعم وصيانة مستمرة</h4>
+          <p>خدمات استجابة سريعة للطوارئ وفرق صيانة مدربة على حل انسدادات الصرف وأعطال المضخات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION ARABIC -->
+  <section class="section section-paper">
+    <div class="container" style="max-width: 860px;">
+      <div class="section-header">
+        <span class="eyebrow">الأسئلة الشائعة</span>
+        <h2>أبرز الاستفسارات حول مقاولات السباكة والصرف في دبي</h2>
+      </div>
+
+      <div class="ar-faq-list">
+        {faqsAr.map((faq) => (
+          <div class="ar-faq-item">
+            <h3 class="ar-faq-q">{faq.q}</h3>
+            <p class="ar-faq-a">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section-cta">
+    <div class="container text-center">
+      <h2>هل تحتاج إلى تنفيذ أعمال سباكة أو تركيب مصيدة شحوم في دبي؟</h2>
+      <p>مهندسو السباكة لدينا مستعدون للمعاينة وتقديم الحلول الهندسية المناسبة لمطعمك أو مبناك.</p>
+      <div class="cta-actions">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary">
+          <Icon name="PhoneCall" size={16} /> اتصل فورياً: {siteConfig.phone}
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappRaw}?text=${encodeURIComponent('مرحباً، أود استفساراً بخصوص مقاولات السباكة ومصائد الشحوم في دبي')}`} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <Icon name="MessageSquare" size={16} /> محادثة عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ar-hero { text-align: right; }
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-right: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.72rem; color: rgba(255, 255, 255, 0.5); }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    text-align: right;
+  }
+  .rfq-header h3 { font-family: var(--font-heading); font-size: 1.25rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .rfq-header p { font-size: 0.82rem; color: var(--stone); margin-bottom: 1.25rem; }
+  .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .form-group input, .form-select {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--ink);
+  }
+  .hotline-strip { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.82rem; color: var(--stone); }
+  .hotline-strip a { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+  .ar-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .ar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .ar-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brass);
+  }
+  .card-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.88rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.25rem; }
+  .card-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+  }
+  .card-link:hover { color: var(--brass); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .step-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brass);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .step-card h4 { font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; margin: 0; }
+
+  .ar-faq-list { display: flex; flex-direction: column; gap: 1rem; text-align: right; }
+  .ar-faq-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .ar-faq-q { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+  .ar-faq-a { font-size: 0.9rem; line-height: 1.7; color: var(--stone); margin: 0; }
+
+  .section-cta {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 5vw, 4.5rem) 0;
+    text-align: center;
+  }
+  .section-cta h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 0.75rem; color: var(--white); }
+  .section-cta p { font-size: 1rem; color: rgba(255, 255, 255, 0.8); max-width: 650px; margin: 0 auto 2rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-split { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-meta-row { flex-wrap: wrap; }
+  }
+</style>

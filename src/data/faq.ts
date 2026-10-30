@@ -39,7 +39,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "What types of properties do you execute electrical and plumbing technical works for?",
-    answer: "We deliver turnkey technical contracting for prestige automotive showrooms (Ferrari), luxury boutiques (Rolex, Rivoli), corporate banking headquarters (HSBC, ADCB), high-traffic international F&B chains (Subway, Bianca, Caribou), 5-star hospitality resorts (Shangri-La, Radisson Blu), private VIP villas (Palm Jumeirah, Emirates Hills), and industrial logistics complexes."
+    answer: "We deliver turnkey technical contracting for automotive showrooms, luxury retail boutiques, corporate banking headquarters, high-traffic commercial F&B chains, hospitality resorts, private villas (Palm Jumeirah, Emirates Hills), and industrial logistics complexes."
   },
   {
     question: "How quickly can your engineering team inspect my project and provide an engineering quote?",
@@ -122,12 +122,12 @@ export const contactFaqs: FAQItem[] = [
 // 4. PROJECTS DIRECTORY FAQS (Mall fit-outs, Authority Handover, Portfolios)
 export const projectsFaqs: FAQItem[] = [
   {
-    question: "How many projects has AbbadiTech delivered across Dubai and the UAE?",
-    answer: "AbbadiTech has successfully completed over 1,000 major electrical and plumbing technical contracting projects across Dubai, Abu Dhabi, and Ajman since 2005, spanning luxury retail, international dining chains, corporate offices, banks, and private villas."
+    question: "How long has Abbadi Tech operated across Dubai and the UAE?",
+    answer: "Abbadi Tech has successfully executed commercial electrical and plumbing technical contracting projects across Dubai, Abu Dhabi, and Ajman continuously since 2005, spanning luxury retail, commercial dining chains, corporate offices, banks, and private villas."
   },
   {
     question: "Have you delivered projects in premier UAE shopping malls and retail centers?",
-    answer: "Yes. Our teams have completed certified technical works in The Dubai Mall (Rolex Boutique, Leto Cafe, Water Lemon), Dubai Marina Mall (Rivoli Boutique, Cafe Blanc), Mirdif City Centre (Pottery Barn Kids), DIFC Gate Precinct (Caribou Cafe), Box Park, and Mall of the Emirates."
+    answer: "Yes. Our teams have completed certified technical works in The Dubai Mall (luxury timepiece boutique & cafes), Dubai Marina Mall (retail & dining fit-outs), Mirdif City Centre (specialty retail), DIFC Gate Precinct (commercial cafe), Box Park, and Mall of the Emirates."
   },
   {
     question: "How do you navigate mall management fit-out guidelines and night-shift approvals?",
@@ -327,7 +327,7 @@ export const areasFaqs: FAQItem[] = [
   },
   {
     question: "Do you execute electrical and plumbing technical works in Abu Dhabi?",
-    answer: "Yes. Abbadi Tech has successfully completed major commercial and showroom installations in Abu Dhabi (including prestige automotive facilities like the Ferrari Showroom). We coordinate with Abu Dhabi Distribution Company (ADDC) and Abu Dhabi Civil Defence for capital projects."
+    answer: "Yes. Abbadi Tech has successfully completed major commercial and showroom installations in Abu Dhabi (including prestige automotive facilities and commercial corporate spaces). We coordinate with Abu Dhabi Distribution Company (ADDC) and Abu Dhabi Civil Defence for capital projects."
   },
   {
     question: "What are the specific MEP regulations for villas on Palm Jumeirah?",
@@ -447,7 +447,7 @@ export const dewaWorksFaqs: FAQItem[] = [
   },
   {
     question: "What are the common reasons DEWA rejects electrical applications, and how do you prevent them?",
-    answer: "The top rejection causes include: 1. Unbalanced 3-phase load schedules exceeding 10% phase deviation; 2. Single Line Diagrams that do not match site cable sizes; 3. Non-compliant breaker trip curves; 4. Incomplete landlord documentation. Abbadi Tech's licensed electrical design office conducts internal engineering QA reviews on every calculation, ensuring a 100% first-pass approval rate."
+    answer: "The top rejection causes include: 1. Unbalanced 3-phase load schedules exceeding 10% phase deviation; 2. Single Line Diagrams that do not match site cable sizes; 3. Non-compliant breaker trip curves; 4. Incomplete landlord documentation. Abbadi Tech's licensed electrical design office conducts internal engineering QA reviews on every calculation to minimize rework and maximize first-submission approval consistency."
   },
   {
     question: "What is RSB approval and why does it matter for Dubai utility projects?",
@@ -455,7 +455,7 @@ export const dewaWorksFaqs: FAQItem[] = [
   },
   {
     question: "What are the legal and financial penalties for operating unauthorized power connections in Dubai?",
-    answer: "Operating unapproved electrical connections or tampering with DEWA meters is a serious violation under UAE Federal and Dubai Municipal law. Penalties include heavy fines (often exceeding AED 50,000 to AED 200,000+), immediate power disconnection, retroactive billing at peak penalty tariffs, and commercial license suspension until full engineering regularization."
+    answer: "Operating unapproved electrical connections or tampering with DEWA meters is a serious violation under UAE and Dubai utility regulations. Consequences include statutory municipal and utility fines, immediate power disconnection, retroactive billing at penalty tariffs, and commercial license holds until full engineering regularization."
   },
   {
     question: "At what power demand does DEWA mandate a dedicated substation transformer room?",

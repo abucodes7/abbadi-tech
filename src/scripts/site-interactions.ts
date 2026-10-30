@@ -2,7 +2,7 @@
 // subtle parallax and back-to-top. Kept dependency-free for performance.
 
 function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 function initScrollReveals() {
@@ -11,6 +11,19 @@ function initScrollReveals() {
   );
 
   if (!revealElements.length) return;
+
+  // Immediate visibility check for elements in/near viewport
+  const revealInView = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh + 120 && rect.bottom > -120) {
+        el.classList.add('is-visible');
+      }
+    });
+  };
+
+  revealInView();
 
   if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
     revealElements.forEach(el => el.classList.add('is-visible'));
@@ -26,10 +39,29 @@ function initScrollReveals() {
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    { threshold: 0.02, rootMargin: '120px 0px 120px 0px' }
   );
 
-  revealElements.forEach(el => observer.observe(el));
+  revealElements.forEach(el => {
+    if (el.classList.contains('is-visible')) {
+      return;
+    }
+    observer.observe(el);
+  });
+
+  // Re-check when jumping to anchors (e.g. #services-pillars)
+  window.addEventListener('hashchange', () => {
+    revealInView();
+    setTimeout(() => {
+      revealElements.forEach(el => el.classList.add('is-visible'));
+    }, 150);
+  });
+
+  // Failsafes: ensure NO content remains invisible under any network or browser conditions
+  setTimeout(revealInView, 300);
+  setTimeout(() => {
+    revealElements.forEach(el => el.classList.add('is-visible'));
+  }, 1200);
 }
 
 function initAnimatedCounters() {
@@ -175,11 +207,23 @@ function initMobileDrawer() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAllInteractions() {
   initScrollReveals();
   initAnimatedCounters();
   initHeaderScroll();
   initBackToTop();
   initParallax();
   initMobileDrawer();
-});
+}
+
+// Execute immediately if DOM already parsed or ready
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllInteractions);
+  } else {
+    initAllInteractions();
+  }
+
+  window.addEventListener('load', initAllInteractions);
+  document.addEventListener('astro:page-load', initAllInteractions);
+}

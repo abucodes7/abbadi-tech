@@ -1,0 +1,440 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import HeroAnimation from '../../../components/HeroAnimation.astro';
+import { siteConfig } from '../../../config/site';
+
+const pageTitle = "مقاول ميب في دبي | خدمات كهروميكانيكية متكاملة MEP | عبادي تك";
+const pageDescription = "مقاول كهروميكانيكي (ميب MEP) معتمد في دبي منذ 2005. تنسيق أعمال الكهرباء والسباكة وأنظمة التكييف والتهوية وتراخيص السلطات. اتصل: 971505546943+";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": `${siteConfig.primaryDomain}/ar` },
+    { "@type": "ListItem", "position": 2, "name": "خدمات المقاولات", "item": `${siteConfig.primaryDomain}/ar` },
+    { "@type": "ListItem", "position": 3, "name": "مقاول ميب دبي", "item": `${siteConfig.primaryDomain}/ar/services/mep-contractor-dubai` }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "مقاولات كهروميكانيكية MEP في دبي",
+  "serviceType": "Turnkey Mechanical, Electrical & Plumbing (MEP) Contracting",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteConfig.legalName,
+    "telephone": siteConfig.phoneRaw,
+    "email": siteConfig.email,
+    "url": `${siteConfig.primaryDomain}/ar/services/mep-contractor-dubai`
+  },
+  "areaServed": "Dubai",
+  "description": "حلول كهروميكانيكية متكاملة (MEP) في إمارة دبي: مقاولات الكهرباء، التمديدات الصحية والسباكة، شبكات التهوية والتكييف، وتنسيق اعتمادات ديوا والدفاع المدني والبلدية."
+};
+
+const mepScopesAr = [
+  {
+    title: "الهندسة الكهربائية وموافقات ديوا",
+    desc: "لوحات MDB/SMDB، وتمديدات القوى والإنارة، وحسابات الهبوط في الجهد، ومخططات SLD المعتمدة من ديوا.",
+    link: "/services/electrical-contractors-dubai"
+  },
+  {
+    title: "السباكة والصرف ومصائد الشحوم",
+    desc: "شبكات التغذية بمياه الشرب، ومضخات التعزيز، وتصريف مياه الصرف ومصائد الشحوم المعتمدة من بلدية دبي.",
+    link: "/services/plumbing-contractors-dubai"
+  },
+  {
+    title: "أنظمة التكييف والتهوية الميكانيكية (HVAC)",
+    desc: "تمديد مجاري الهواء (Ducting)، وتوزيع مخارج الهواء (Diffusers)، ومراوح طرد الهواء للبيئات التجارية والمطاعم.",
+    link: "/contact"
+  },
+  {
+    title: "مخططات التنسيق الهندسي (MEP Coordination)",
+    desc: "مخططات مركبة ثلاثية الأبعاد لمنع تداخل مسارات الكابلات ومواسير المياه والدكتات قبل بدء التنفيذ الميداني.",
+    link: "/contact"
+  }
+];
+
+const faqsAr = [
+  {
+    q: "ما هي مميزات التعاقد مع مقاول MEP واحد بدلاً من مقاولين منفصلين؟",
+    a: "التعاقد مع مقاول كهروميكانيكي متكامل مثل عبادي تك يمنع تعارض مسارات المواسير مع الكابلات ومجاري التكييف، ويوحد المسؤولية الفنية، ويقلل الهدر الزمني والمالي، ويسرّع عملية الحصول على شهادات الإنجاز واعتمادات الدوائر الحكومية."
+  },
+  {
+    q: "ما هي السلطات الحكومية التي تقومون بالتنسيق معها في مشاريع دبي؟",
+    a: "نتولى كافة التنسيقات الهندسية والتقديمات الرسمية مع هيئة كهرباء ومياه دبي (DEWA)، بلدية دبي (Dubai Municipality)، الدفاع المدني (Civil Defence)، وتراخيص (Trakhees) وسلطات المناطق الحرة مثل سلطة دبي للتطوير (DDA) وسلطة مركز دبي للسلع المتعددة (DMCC)."
+  },
+  {
+    q: "هل تنفذون مشاريع تسليم مفتاح (Turnkey MEP)؟",
+    a: "نعم، نقدم حلول تسليم مفتاح تشمل التصميم وإعداد المخططات والموافقات والتوريد والتركيب والفحص والاختبار وصولاً إلى إطلاق التيار وإصدار شهادة الإنجاز."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqsAr.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  currentPath="/ar/services/mep-contractor-dubai"
+  englishUrl={`${siteConfig.primaryDomain}/services/mep-contractor-dubai`}
+  isArabic={true}
+  canonicalUrl={`${siteConfig.primaryDomain}/ar/services/mep-contractor-dubai`}
+  jsonLd={[breadcrumbSchema, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="sp-hero ar-hero">
+    <HeroAnimation />
+    <div class="container hero-inner-container">
+      <div class="hero-split">
+        <div class="hero-content">
+          <span class="badge badge-amber">مقاولات كهروميكانيكية متكاملة · دبي منذ 2005</span>
+          <h1 class="hero-title">مقاول ميب (MEP) معتمد للمشاريع التجارية والصناعية في دبي</h1>
+          
+          <div class="answer-box">
+            <div class="answer-header">
+              <Icon name="CheckCircle" size={18} color="var(--brass)" />
+              <strong>إجابة مباشرة: نطاق الأعمال الكهروميكانيكية المتكاملة (MEP)</strong>
+            </div>
+            <p class="answer-text">
+              تختص شركة عبادي تك للحلول الفنية ش.ذ.م.م بتنفيذ عقود المقاولات الكهروميكانيكية (MEP) في دبي. نوفر حلاً هندسياً شاملاً يدمج الأعمال الكهربائية، والسباكة والصرف، وأنظمة التهوية والتكييف تحت إشراف هندسي موحد، مع تأمين كافة الاعتمادات الحكومية من ديوا، وبلدية دبي، والدفاع المدني، والمناطق الحرة.
+            </p>
+          </div>
+
+          <div class="hero-meta-row">
+            <div class="hm-item">
+              <span class="hm-label">سنوات التواجد الميداني</span>
+              <strong class="hm-val">+20 عاماً في سوق الإمارات</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">التنسيق الهندسي</span>
+              <strong class="hm-val">فريق MEP موحد ومتكامل</strong>
+            </div>
+            <div class="hm-divider"></div>
+            <div class="hm-item">
+              <span class="hm-label">الاعتمادات الرسمية</span>
+              <strong class="hm-val">ديوا · البلدية · المناطق الحرة</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- RFQ Card -->
+        <div class="hero-card">
+          <div class="rfq-header">
+            <h3>طلب دراسة وتسعير مشروع MEP</h3>
+            <p>أرسل جدول الكميات ومخططات المشروع لمعاينة هندسية دقيقة.</p>
+          </div>
+
+          <form class="rfq-form" action="/contact" method="GET">
+            <div class="form-group">
+              <label for="scope-mep-ar">طبيعة المشروع الكهروميكانيكي</label>
+              <select id="scope-mep-ar" name="scope" class="form-select">
+                <option value="commercial-fitout">تشطيب ديكور تجاري / مطعم / معرض</option>
+                <option value="office-mep">مشروع مكاتب وشركات كبرى</option>
+                <option value="industrial-mep">مستودع / منشأة صناعية</option>
+                <option value="villa-mep">فيلا سكنية فاخرة</option>
+                <option value="turnkey-coordination">تنسيق هندسي وموافقات حكومية</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="location-mep-ar">موقع المشروع في دبي</label>
+              <input type="text" id="location-mep-ar" name="location" placeholder="مثال: الخليج التجاري، القوز، دبي ساوث" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone-mep-ar">رقم الهاتف أو الواتساب</label>
+              <input type="tel" id="phone-mep-ar" name="phone" placeholder="+971 50 XXX XXXX" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              طلب دراسة فنية وتسعير <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </form>
+
+          <div class="hotline-strip">
+            <Icon name="PhoneCall" size={16} color="var(--brass)" />
+            <span>للتواصل المباشر: <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section section-paper">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">أقسام المقاولات الكهروميكانيكية</span>
+        <h2>تكامل هندسي شامل لضمان كفاءة المبنى وسلامته</h2>
+        <p class="section-desc">تنفيذ جميع الأنظمة الميكانيكية والكهربائية والصحية وفق أعلى المعايير الهندسية المعمول بها في دبي.</p>
+      </div>
+
+      <div class="ar-services-grid">
+        {mepScopesAr.map((item) => (
+          <div class="ar-card">
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-desc">{item.desc}</p>
+            <a href={item.link} class="card-link">
+              عرض الخدمات ذات الصلة <Icon name="ArrowUpRight" size={15} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINEERING QUALITY PILLARS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">إدارة المشاريع والتنفيذ</span>
+        <h2>منهجية عبادي تك لتنفيذ مشاريع MEP بدون معوقات</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h4>دراسة المخططات ومنع التضارب</h4>
+          <p>مراجعة دقيقة لخرائط الكهرباء والسباكة والتكييف وتفادي التعارضات قبل بدء العمل الفعلي.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h4>تنسيق التراخيص الحكومية</h4>
+          <p>إدارة ملفات ديوا، الدفاع المدني، وبلدية دبي بالتوازي لتقليل المدة الزمنية المستغرقة للتراخيص.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h4>تنفيذ وإشراف ميداني مستمر</h4>
+          <p>مهندسو موقع مقيمون يشرفون على العمالة الدائمة لضمان مطابقة التركيب للمواصفات المعتمدة.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <h4>التشغيل التجريبي والتسليم</h4>
+          <p>إجراء اختبارات التوازن والتشغيل التجريبي الشامل (Testing & Commissioning) وإصدار شهادات الإنجاز.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION ARABIC -->
+  <section class="section section-paper">
+    <div class="container" style="max-width: 860px;">
+      <div class="section-header">
+        <span class="eyebrow">الأسئلة الشائعة</span>
+        <h2>أبرز الأسئلة حول مقاولات الكهروميكانيك (MEP) في دبي</h2>
+      </div>
+
+      <div class="ar-faq-list">
+        {faqsAr.map((faq) => (
+          <div class="ar-faq-item">
+            <h3 class="ar-faq-q">{faq.q}</h3>
+            <p class="ar-faq-a">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section-cta">
+    <div class="container text-center">
+      <h2>هل تخطط لمشروع تجاري أو فيلا وتحتاج إلى مقاول MEP متمرس في دبي؟</h2>
+      <p>تواصل مع فريقنا الهندسي اليوم للحصول على دراسة فنية وعرض سعر تفصيلي لمشروعك.</p>
+      <div class="cta-actions">
+        <a href={`tel:${siteConfig.phoneRaw}`} class="btn btn-primary">
+          <Icon name="PhoneCall" size={16} /> اتصل بمهندس التقدير: {siteConfig.phone}
+        </a>
+        <a href={`https://wa.me/${siteConfig.whatsappRaw}?text=${encodeURIComponent('مرحباً، أود استشارة حول مقاولات كهروميكانيكية MEP في دبي')}`} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <Icon name="MessageSquare" size={16} /> تواصل عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ar-hero { text-align: right; }
+  .sp-hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .badge-amber {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(180, 134, 76, 0.2);
+    border: 1px solid rgba(180, 134, 76, 0.4);
+    color: var(--brass-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .answer-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(180, 134, 76, 0.3);
+    border-right: 4px solid var(--brass);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .answer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brass-soft);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .answer-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hm-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hm-label { font-size: 0.72rem; color: rgba(255, 255, 255, 0.5); }
+  .hm-val { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+  .hm-divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.1); }
+
+  .hero-card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    text-align: right;
+  }
+  .rfq-header h3 { font-family: var(--font-heading); font-size: 1.25rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .rfq-header p { font-size: 0.82rem; color: var(--stone); margin-bottom: 1.25rem; }
+  .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+  .form-group input, .form-select {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: inherit;
+    background: var(--white);
+    color: var(--ink);
+  }
+  .hotline-strip { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.82rem; color: var(--stone); }
+  .hotline-strip a { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+  .ar-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .ar-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .ar-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brass);
+  }
+  .card-title { font-family: var(--font-heading); font-size: 1.15rem; color: var(--ink); margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.88rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.25rem; }
+  .card-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+  }
+  .card-link:hover { color: var(--brass); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    text-align: right;
+  }
+  .step-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brass);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .step-card h4 { font-size: 1rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; margin: 0; }
+
+  .ar-faq-list { display: flex; flex-direction: column; gap: 1rem; text-align: right; }
+  .ar-faq-item {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .ar-faq-q { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+  .ar-faq-a { font-size: 0.9rem; line-height: 1.7; color: var(--stone); margin: 0; }
+
+  .section-cta {
+    background: var(--ink);
+    color: var(--white);
+    padding: clamp(3rem, 5vw, 4.5rem) 0;
+    text-align: center;
+  }
+  .section-cta h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 0.75rem; color: var(--white); }
+  .section-cta p { font-size: 1rem; color: rgba(255, 255, 255, 0.8); max-width: 650px; margin: 0 auto 2rem; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-split { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-meta-row { flex-wrap: wrap; }
+  }
+</style>

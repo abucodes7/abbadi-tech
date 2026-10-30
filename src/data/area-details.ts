@@ -521,7 +521,7 @@ export const areaDetailsList: AreaDetail[] = [
     projectArchetype: {
       title: 'E-Commerce Logistics Hub & Cold Storage',
       scope: '600 kW power load upgrade, 1200A Form 4 MDB switchboard, refrigeration condenser electrical feeds, and industrial fire hydrant piping.',
-      outcome: 'Completed on-time and passed DEWA transformer energization inspection on first pass.'
+      outcome: 'Completed on-time and passed DEWA transformer energization inspection upon initial review without punch-list delays.'
     },
     faqs: [
       {

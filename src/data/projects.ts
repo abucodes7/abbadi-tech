@@ -53,8 +53,8 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 2,
-    name: "Rolex Boutique",
-    clientType: "Luxury Swiss Haute Horlogerie Retailer",
+    name: "Luxury Swiss Timepiece Boutique",
+    clientType: "Luxury Haute Horlogerie Retailer",
     sector: "retail",
     sectorLabel: "Retail & Boutiques",
     area: "Dubai Mall",
@@ -444,7 +444,7 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 34,
-    name: "HSBC Bank Branch",
+    name: "International Commercial Bank Branch",
     clientType: "Multinational Banking Institution",
     sector: "office",
     sectorLabel: "Offices & Banks",
@@ -457,7 +457,7 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 35,
-    name: "ADCB Bank Branch",
+    name: "National Commercial Bank Branch",
     clientType: "National Retail & Commercial Bank",
     sector: "office",
     sectorLabel: "Offices & Banks",
@@ -507,8 +507,8 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 39,
-    name: "Ferrari Showroom",
-    clientType: "Exotic Italian Supercar Dealership",
+    name: "Prestige Automotive Showroom",
+    clientType: "Luxury Supercar Dealership",
     sector: "retail",
     sectorLabel: "Retail & Boutiques",
     area: "Abu Dhabi",
@@ -520,8 +520,8 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 40,
-    name: "Crowne Plaza Hotel",
-    clientType: "5-Star International Hospitality Brand",
+    name: "International Business Hotel",
+    clientType: "5-Star Hospitality Property",
     sector: "hotel",
     sectorLabel: "Hotels & Hospitality",
     area: "Other Dubai",
@@ -545,7 +545,7 @@ export const projectsList: ProjectItem[] = [
   },
   {
     id: 42,
-    name: "Shangri-La Hotel",
+    name: "Five-Star Luxury Hotel",
     clientType: "5-Star Luxury Resort & Hotel",
     sector: "hotel",
     sectorLabel: "Hotels & Hospitality",
