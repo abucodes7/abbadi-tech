@@ -43,7 +43,7 @@ export const homeFaqs: FAQItem[] = [
   },
   {
     question: "How quickly can your engineering team inspect my project and provide an engineering quote?",
-    answer: "You can submit your architectural or MEP drawings via WhatsApp to +971 50 554 6943 or email info@abbaditech.com. Our senior technical estimators can conduct a comprehensive on-site survey anywhere in Dubai within 24 hours and issue a clear, itemized engineering proposal."
+    answer: "You can submit your architectural or MEP drawings via WhatsApp to +971 50 554 6943 or email it.abbaditech@gmail.com. Our senior technical estimators can conduct a comprehensive on-site survey anywhere in Dubai within 24 hours and issue a clear, itemized engineering proposal."
   }
 ];
 
@@ -87,7 +87,7 @@ export const aboutFaqs: FAQItem[] = [
 export const contactFaqs: FAQItem[] = [
   {
     question: "What is the fastest way to request a site survey and engineering estimate?",
-    answer: "The quickest method is contacting our technical dispatch team directly on WhatsApp at +971 50 554 6943 or emailing your project drawings (PDF or CAD DWG) to info@abbaditech.com. An estimation engineer will review your scope and confirm a survey appointment within 2 to 4 business hours."
+    answer: "The quickest method is contacting our technical dispatch team directly on WhatsApp at +971 50 554 6943 or emailing your project drawings (PDF or CAD DWG) to it.abbaditech@gmail.com. An estimation engineer will review your scope and confirm a survey appointment within 2 to 4 business hours."
   },
   {
     question: "Do you charge an inspection fee for initial project site surveys in Dubai?",

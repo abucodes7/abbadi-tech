@@ -26,8 +26,8 @@ export const siteConfig = {
   phoneRaw: '+971505546943',
   whatsappNumber: '971505546943',
   whatsappDefaultMessage: 'Hello Abbadi Tech, I need assistance with a DEWA approval / electrical / plumbing project in Dubai.',
-  email: 'info@abbaditech.com',
-  quotesEmail: 'quotes@abbaditech.com',
+  email: 'it.abbaditech@gmail.com',
+  quotesEmail: 'it.abbaditech@gmail.com',
 
   // Physical Location & Local SEO
   address: {
