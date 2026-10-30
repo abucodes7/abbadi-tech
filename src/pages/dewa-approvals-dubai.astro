@@ -6,8 +6,8 @@ import HeroAnimation from '../components/HeroAnimation.astro';
 import { dewaWorksFaqs } from '../data/faq';
 import { projectsList } from '../data/projects';
 
-const pageTitle = "DEWA Approvals Dubai | Fast-Track Electrical NOCs, SLD & Load Upgrades | Abbadi Tech";
-const pageDescription = "Accredited DEWA electrical contractor in Dubai since 2005. Fast-track fit-out NOCs, stamped Single-Line Diagrams (SLD), power load upgrades & 100% first-pass inspections.";
+const pageTitle = "DEWA Approval Services Dubai | Stamped SLD, NOCs & Meter Energization | Abbadi Tech";
+const pageDescription = "Specialized DEWA electrical contractor services in Dubai since 2005. Fast-track fit-out NOCs, stamped Single-Line Diagrams (SLD), power load upgrades & 100% first-pass inspection target.";
 
 const dewaProjects = projectsList
   .filter(p => p.scope === 'electrical' || p.scope === 'both')
@@ -26,7 +26,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "DEWA Approvals Dubai",
+      "name": "DEWA Approval Services",
       "item": "https://www.abbaditech.com/dewa-approvals-dubai"
     }
   ]
@@ -35,7 +35,7 @@ const breadcrumbSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "DEWA Approvals Dubai",
+  "name": "DEWA Approval Services",
   "serviceType": "DEWA Electrical & Water Approvals, SLD Design & Meter Energization",
   "provider": {
     "@type": "LocalBusiness",
@@ -61,15 +61,15 @@ const serviceSchema = {
     <div class="container dewa-hero-container" style="position: relative; z-index: 2;">
       <div class="dewa-hero-text">
         <div class="crumb">
-          <a href="/">Home</a> <span>/</span> <span>DEWA Approvals Dubai</span>
+          <a href="/">Home</a> <span>/</span> <span>DEWA Approval Services</span>
         </div>
 
         <div class="lead-division-badge">
           <span class="pulse-dot"></span>
-          <span>Official Subordinate Division of Abbadi Tech Technical Solutions LLC</span>
+          <span>Official Technical Division of Abbadi Tech Technical Solutions LLC</span>
         </div>
 
-        <h1>DEWA APPROVALS DUBAI: <span class="text-gradient">FAST-TRACK ELECTRICAL &amp; WATER NOCS</span></h1>
+        <h1>DEWA APPROVAL <span class="text-gradient">SERVICES</span></h1>
         
         <p class="lead-desc">
           Accelerate your commercial fit-out, retail shop, restaurant, or villa with certified DEWA approvals. We engineer stamped Single-Line Diagrams (SLD), calculate connected load schedules, and manage authority submissions directly to live meter energization with a 100% first-pass pass rate.
@@ -79,7 +79,7 @@ const serviceSchema = {
         <div class="dewa-trust-row">
           <div class="dt-item">
             <strong>21+ Years</strong>
-            <span>DEWA Registered</span>
+            <span>UAE Experience</span>
           </div>
           <div class="dt-divider"></div>
           <div class="dt-item">
@@ -89,7 +89,7 @@ const serviceSchema = {
           <div class="dt-divider"></div>
           <div class="dt-item">
             <strong>100%</strong>
-            <span>First-Pass Inspection</span>
+            <span>First-Pass Inspection Target</span>
           </div>
         </div>
 
@@ -175,11 +175,11 @@ const serviceSchema = {
     <div class="container atb-inner">
       <span class="atb-title">Accreditations &amp; Quality Compliance:</span>
       <div class="atb-badges">
-        <span class="atb-item">✓ DEWA Registered Electrical Contractor</span>
-        <span class="atb-item">✓ Dubai Municipality Approved</span>
+        <span class="atb-item">✓ 21+ Years Continuous UAE Operations</span>
+        <span class="atb-item">✓ Dubai Municipality Compliant</span>
         <span class="atb-item">✓ Dubai Civil Defence Compliant</span>
-        <span class="atb-item">✓ ISO 9001:2015 Certified</span>
-        <span class="atb-item highlight">✓ 100% First-Pass Inspection Guarantee</span>
+        <span class="atb-item">✓ ISO 9001:2015 Certified Protocols</span>
+        <span class="atb-item highlight">✓ 100% First-Pass Inspection Target</span>
       </div>
     </div>
   </div>
@@ -188,9 +188,9 @@ const serviceSchema = {
   <section class="section section-estimator" id="estimator-section">
     <div class="container">
       <div class="section-header">
-        <span class="badge badge-gold">Interactive Authority Calculator</span>
-        <h2>Estimate Your DEWA Approval Cost &amp; Timeline</h2>
-        <p class="section-sub">Calculate estimated authority review duration and engineering costs based on your electrical load and property category.</p>
+        <span class="badge badge-gold">Interactive Project Estimator</span>
+        <h2>Estimate Your DEWA Approval Scope &amp; Timeline</h2>
+        <p class="section-sub">Configure your property category and electrical load to view required authority documentation, turnaround timelines, and request a tailored quote.</p>
       </div>
 
       <div class="estimator-box">
@@ -234,18 +234,18 @@ const serviceSchema = {
           </div>
 
           <div class="estimator-result">
-            <span class="er-title">Estimated Engineering Fee</span>
-            <div class="er-price" id="calc-price"><span>AED</span> 3,300</div>
-            <div class="er-days" id="calc-days">Estimated Turnaround: 3 - 5 Days</div>
+            <span class="er-title">Project Engineering Estimate</span>
+            <div class="er-price" id="calc-price" style="font-size: 1.85rem; color: #E8A85C; font-weight: 700;">Custom Quote</div>
+            <div class="er-days" id="calc-days">Flexible Pricing &bull; Turnaround: 3 - 5 Days</div>
 
             <div class="er-details">
-              <div><span>Inspection Guarantee:</span> <strong style="color: #10B981;">100% First-Pass</strong></div>
+              <div><span>Inspection Standard:</span> <strong style="color: #10B981;">100% First-Pass Target</strong></div>
               <div><span>Deliverables:</span> <strong id="calc-docs" style="color: #FFFFFF;">SLD + DEWA NOC</strong></div>
-              <div><span>Authority Portal:</span> <strong style="color: #38BDF8;">DEWA E-Services Direct</strong></div>
+              <div><span>Pricing Policy:</span> <strong style="color: #38BDF8;">Tailored to Scope &amp; Client</strong></div>
             </div>
 
             <button type="button" class="btn btn-primary btn-block" id="calc-whatsapp-btn">
-              <span>Book This Estimate via WhatsApp →</span>
+              <span>Request Tailored Quote via WhatsApp →</span>
             </button>
           </div>
         </div>
@@ -260,7 +260,7 @@ const serviceSchema = {
         <span class="badge badge-gold">Core Capabilities</span>
         <h2>Comprehensive DEWA Approval Services in Dubai</h2>
         <p class="section-sub">
-          As a registered contractor for over 21 years, we manage every phase of authority documentation, technical calculation, and physical site coordination.
+          With over 21 years of specialized Dubai engineering practice, we manage every phase of authority documentation, technical calculation, and physical site coordination.
         </p>
       </div>
 
@@ -302,7 +302,7 @@ const serviceSchema = {
             <span class="dsc-time">24 - 48 Hours</span>
           </div>
           <h3>3. Certified Single-Line Diagrams (SLD)</h3>
-          <p>Under Dubai law, only registered contractors can draft and stamp electrical schematics. We calculate diversified maximum demand and engineer compliant SLDs matching DEWA regulations.</p>
+          <p>Under Dubai law, qualified electrical engineering specialists draft and stamp electrical schematics. We calculate diversified maximum demand and engineer compliant SLDs matching DEWA regulations.</p>
           <ul class="dsc-points">
             <li>Precise cable sizing &amp; voltage drop formulas</li>
             <li>Phase balancing (Red, Yellow, Blue)</li>
@@ -408,9 +408,9 @@ const serviceSchema = {
           </thead>
           <tbody>
             <tr>
-              <td><strong>DEWA Registration Status</strong></td>
-              <td class="td-prime"><span class="c-tick">✓</span> Officially Registered &amp; Certified Since 2005</td>
-              <td><span class="c-cross">✗</span> Unregistered or relies on third-party licenses</td>
+              <td><strong>DEWA Engineering Capability</strong></td>
+              <td class="td-prime"><span class="c-tick">✓</span> Dedicated In-House Specialists Since 2005</td>
+              <td><span class="c-cross">✗</span> Subcontracted or inexperienced personnel</td>
             </tr>
             <tr>
               <td><strong>First-Pass Inspection Pass Rate</strong></td>
@@ -453,21 +453,21 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- TRANSPARENT PRICING PACKAGES -->
+  <!-- TAILORED APPROVAL SERVICE PACKAGES -->
   <section class="section section-pricing">
     <div class="container">
       <div class="section-header">
-        <span class="badge badge-gold">Transparent Rates</span>
-        <h2>Transparent DEWA Approval Packages</h2>
-        <p class="section-sub">Fixed, transparent engineering fees with no hidden costs. All packages include direct DEWA portal liaison and first-pass pass guarantee.</p>
+        <span class="badge badge-gold">Tailored Solutions</span>
+        <h2>Flexible DEWA Approval Service Packages</h2>
+        <p class="section-sub">Flexible engineering solutions tailored specifically to your project requirements, client scope, and connected load. Contact us for a competitive, project-specific quotation.</p>
       </div>
 
       <div class="pricing-cards-grid">
         <div class="pkg-card">
           <h4>Fit-Out NOC Fast-Track</h4>
           <p class="pkg-desc">Ideal for retail shops, cafes, and offices needing quick tenancy approval.</p>
-          <div class="pkg-price">AED 2,800 <span>/ unit</span></div>
-          <span class="pkg-time">Turnaround: 3 - 5 Business Days</span>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Project-Based</span></div>
+          <span class="pkg-time">Flexible Pricing &bull; Turnaround: 3 - 5 Business Days</span>
           <ul class="pkg-list">
             <li>Single-Line Diagram (SLD) Design</li>
             <li>Connected Load Schedule Calculation</li>
@@ -475,15 +475,15 @@ const serviceSchema = {
             <li>Landlord Tenancy NOC Coordination</li>
             <li>Tracking until formal NOC issuance</li>
           </ul>
-          <a href="https://wa.me/971505546943?text=I%20am%20interested%20in%20Fit-Out%20NOC%20Fast-Track%20Package" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Select Package →</a>
+          <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20would%20like%20a%20custom%20quote%20for%20the%20Fit-Out%20NOC%20Fast-Track%20Package" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Get Custom Quote →</a>
         </div>
 
         <div class="pkg-card pkg-featured">
-          <span class="pkg-badge">Best Value</span>
+          <span class="pkg-badge">Comprehensive</span>
           <h4>Turnkey Meter Energization</h4>
           <p class="pkg-desc">Full end-to-end service from drawing approval to live meter power turn-on.</p>
-          <div class="pkg-price">AED 5,500 <span>/ unit</span></div>
-          <span class="pkg-time">Turnaround: 5 - 10 Business Days</span>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Turnkey Scope</span></div>
+          <span class="pkg-time">Flexible Pricing &bull; Turnaround: 5 - 10 Business Days</span>
           <ul class="pkg-list">
             <li>All items in Fit-Out NOC Package</li>
             <li>Pre-Inspection Site Megger &amp; Earth Test</li>
@@ -492,14 +492,14 @@ const serviceSchema = {
             <li>Smart Meter Release &amp; Energization</li>
             <li>100% First-Pass Pass Guarantee</li>
           </ul>
-          <a href="https://wa.me/971505546943?text=I%20am%20interested%20in%20Turnkey%20Meter%20Energization%20Package" target="_blank" rel="noopener" class="btn btn-primary btn-block">Select Package →</a>
+          <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20would%20like%20a%20custom%20quote%20for%20the%20Turnkey%20Meter%20Energization%20Package" target="_blank" rel="noopener" class="btn btn-primary btn-block">Get Custom Quote →</a>
         </div>
 
         <div class="pkg-card">
           <h4>Power Load Upgrade</h4>
           <p class="pkg-desc">For commercial kitchens, restaurants, bakeries, or EV charging stations.</p>
-          <div class="pkg-price">AED 4,500 <span>+ kW fee</span></div>
-          <span class="pkg-time">Turnaround: 7 - 14 Business Days</span>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Based on Additional Load</span></div>
+          <span class="pkg-time">Flexible Pricing &bull; Turnaround: 7 - 14 Business Days</span>
           <ul class="pkg-list">
             <li>Transformer &amp; Substation Capacity Audit</li>
             <li>Upgraded SLD &amp; Cable Sizing Calculation</li>
@@ -507,14 +507,14 @@ const serviceSchema = {
             <li>Main Breaker &amp; Busbar Enhancement</li>
             <li>Coordination with DEWA distribution division</li>
           </ul>
-          <a href="https://wa.me/971505546943?text=I%20am%20interested%20in%20Power%20Load%20Upgrade%20Package" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Select Package →</a>
+          <a href="https://wa.me/971505546943?text=Hello%20Abbadi%20Tech,%20I%20would%20like%20a%20custom%20quote%20for%20the%20Power%20Load%20Upgrade%20Package" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Get Custom Quote →</a>
         </div>
 
         <div class="pkg-card">
           <h4>Emergency Rectification</h4>
           <p class="pkg-desc">Did another contractor fail your DEWA site inspection? We fix it rapidly.</p>
-          <div class="pkg-price">AED 3,200 <span>/ fix</span></div>
-          <span class="pkg-time">Turnaround: 24 - 48 Hours</span>
+          <div class="pkg-price" style="font-size: 1.75rem; color: #E8A85C;">Custom Quote <span style="font-size: 0.85rem; color: #94A3B8;">/ Rapid Diagnostic</span></div>
+          <span class="pkg-time">Flexible Pricing &bull; Turnaround: 24 - 48 Hours</span>
           <ul class="pkg-list">
             <li>Immediate Diagnostic Site Audit</li>
             <li>Correction of Earthing Resistance (&lt;1.0Ω)</li>
@@ -522,7 +522,7 @@ const serviceSchema = {
             <li>New Test Certification Stamping</li>
             <li>Urgent Re-Inspection Booking with DEWA</li>
           </ul>
-          <a href="https://wa.me/971505546943?text=URGENT%20Failed%20DEWA%20Inspection%20Rectification" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Urgent Rectification →</a>
+          <a href="https://wa.me/971505546943?text=URGENT%20Failed%20DEWA%20Inspection%20Rectification%20Quote" target="_blank" rel="noopener" class="btn btn-outline-white btn-block">Request Urgent Assessment →</a>
         </div>
       </div>
     </div>
@@ -547,7 +547,7 @@ const serviceSchema = {
         <div class="wf-card">
           <span class="wf-step">02</span>
           <h4>SLD Design &amp; Calculation</h4>
-          <p>Our registered electrical engineers prepare compliant single-line diagrams, load schedules, and cable containment plans.</p>
+          <p>Our certified electrical engineers prepare compliant single-line diagrams, load schedules, and cable containment plans.</p>
         </div>
 
         <div class="wf-card">
@@ -798,7 +798,7 @@ const serviceSchema = {
         <button class="wa-popup-close" id="wa-popup-close">&times;</button>
       </div>
       <div class="wa-popup-body">
-        <p>Hello! How can our registered DEWA engineers help you today? Choose a quick option:</p>
+        <p>Hello! How can our DEWA approval engineers help you today? Choose a quick option:</p>
         <button class="wa-quick-btn" data-text="Hello DEWA Approvals Dubai, I need urgent Fit-Out NOC assistance.">
           ⚡ 1. Request Fast-Track Fit-Out NOC
         </button>
@@ -884,9 +884,8 @@ const serviceSchema = {
     if (prop === 'warehouse') basePrice *= 1.35;
     if (prop === 'villa') basePrice *= 1.15;
 
-    const rounded = Math.round(basePrice / 100) * 100;
-    calcPrice.innerHTML = `<span>AED</span> ${rounded.toLocaleString()}`;
-    if (calcDays) calcDays.textContent = `Estimated Turnaround: ${days}`;
+    calcPrice.innerHTML = `<span style="font-size: 1.6rem; color: #E8A85C; font-weight: 700;">Custom Quote</span>`;
+    if (calcDays) calcDays.textContent = `Flexible Pricing • Turnaround: ${days}`;
     if (calcDocs) calcDocs.textContent = docs;
   }
 
@@ -900,9 +899,8 @@ const serviceSchema = {
       const loadKW = loadSlider ? loadSlider.value : '35';
       const propText = calcProp ? calcProp.options[calcProp.selectedIndex].text : 'Retail';
       const scopeText = calcScope ? calcScope.options[calcScope.selectedIndex].text : 'DEWA Fit-Out NOC';
-      const priceText = calcPrice ? calcPrice.innerText : '';
 
-      const waMsg = `Hello Abbadi Tech DEWA Desk, I used the online approval calculator:%0A%0A*Scope:* ${encodeURIComponent(scopeText)}%0A*Property:* ${encodeURIComponent(propText)}%0A*Load:* ${loadKW} kW%0A*Estimated Fee:* ${encodeURIComponent(priceText)}%0A%0APlease confirm requirements and process my inquiry.`;
+      const waMsg = `Hello Abbadi Tech DEWA Desk, I am requesting a project-specific quote:%0A%0A*Scope:* ${encodeURIComponent(scopeText)}%0A*Property:* ${encodeURIComponent(propText)}%0A*Load:* ${loadKW} kW%0A*Pricing:* Tailored to project requirements%0A%0APlease provide your competitive quotation.`;
 
       window.open(`https://wa.me/971505546943?text=${waMsg}`, '_blank');
     });

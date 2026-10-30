@@ -28,7 +28,7 @@ export const galleryItems: GalleryItem[] = [
     categoryLabel: 'Electrical Technical Work',
     trade: 'Electrical Technical Work',
     location: 'Mixed-Use Commercial Complex, Bur Dubai',
-    description: 'DEWA-approved commercial multi-meter cabinet with digital kWh meters, heavy-duty galvanized cable trunking, and independent circuit disconnect switchgear for retail units.',
+    description: 'Commercial multi-meter cabinet with digital kWh meters, heavy-duty galvanized cable trunking, and independent circuit disconnect switchgear for retail units.',
     image: '/images/gallery/dewa-multi-tenant-kwh-meter-cabinet.jpg',
     tags: ['DEWA Multi-Meter', 'Digital kWh', 'Galvanized Trunking', 'Tenant Metering'],
     featured: true
@@ -40,7 +40,7 @@ export const galleryItems: GalleryItem[] = [
     categoryLabel: 'Electrical Technical Work',
     trade: 'Electrical Technical Work',
     location: 'Corporate Commercial Facility, Al Quoz, Dubai',
-    description: 'Turnkey electric vehicle charging infrastructure featuring twin ABB commercial chargers, underground armored feeder cabling, and dedicated DEWA-approved sub-distribution.',
+    description: 'Turnkey electric vehicle charging infrastructure featuring twin ABB commercial chargers, underground armored feeder cabling, and dedicated power sub-distribution.',
     image: '/images/gallery/commercial-ev-charging-station-abb.jpg',
     tags: ['EV Charging', 'ABB Fast Charger', 'Armored Cabling', 'Green Mobility'],
     featured: true
@@ -178,14 +178,14 @@ export const galleryItems: GalleryItem[] = [
     categoryLabel: 'Plumbing Technical Work',
     trade: 'Plumbing Technical Work',
     location: 'Retail Mall Complex, Deira, Dubai',
-    description: 'DEWA-approved tenant sub-metering manifold in commercial retail mall, featuring ultrasonic Hydrus smart flow meters, test points, and lockable bronze gate valves.',
+    description: 'Commercial tenant sub-metering manifold in commercial retail mall, featuring ultrasonic Hydrus smart flow meters, test points, and lockable bronze gate valves.',
     image: '/images/gallery/commercial-multi-tenant-water-meters.jpg',
     tags: ['Tenant Sub-Metering', 'Hydrus Smart Meters', 'Mall Retail', 'Water Manifold'],
     featured: true
   },
   {
     id: 'dewa-smart-water-meter-cabinet',
-    title: 'DEWA Approved Outdoor Smart Water Meter Cabinet',
+    title: 'Outdoor Smart Water Meter Cabinet Installation',
     category: 'villas',
     categoryLabel: 'Plumbing Technical Work',
     trade: 'Plumbing Technical Work',

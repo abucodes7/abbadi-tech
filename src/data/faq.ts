@@ -6,8 +6,8 @@ export interface FAQItem {
 // 1. HOMEPAGE FAQS (High-intent overview: DEWA, Dubai Municipality, Pricing, Contracting)
 export const homeFaqs: FAQItem[] = [
   {
-    question: "What is the difference between a registered DEWA contractor and an unlicensed MEP sub-contractor?",
-    answer: "A registered DEWA contractor (such as Abbadi Tech LLC, operating in Dubai since 2005) holds valid commercial trade licensing with Dubai Economy & Tourism (DET) and direct accredited portal credentials with the Dubai Electricity and Water Authority (DEWA). Only registered contractors can legally submit single-line diagrams (SLD), calculate certified electrical load schedules, apply for building NOCs, book official DEWA inspections, and execute final smart meter energization. Unlicensed contractors cannot pull permits, leading to site shutdown, heavy municipal fines, and connection refusal."
+    question: "What is the importance of hiring an experienced DEWA approvals specialist for MEP projects?",
+    answer: "Professional DEWA approval specialists (such as Abbadi Tech LLC, operating in Dubai since 2005) prepare compliant single-line diagrams (SLD), calculate certified electrical load schedules, apply for building NOCs, book official DEWA inspections, and coordinate final smart meter energization. Unlicensed contractors cannot legally pull permits, leading to site shutdown, heavy municipal fines, and connection refusal."
   },
   {
     question: "Do interior fit-outs in Dubai require Dubai Municipality (DM) and DEWA approvals?",
@@ -50,8 +50,8 @@ export const homeFaqs: FAQItem[] = [
 // 2. ABOUT US PAGE FAQS (Credibility, Licensing, Founder, Standards, E-E-A-T)
 export const aboutFaqs: FAQItem[] = [
   {
-    question: "What commercial licenses and accreditations does Abbadi Tech LLC hold in Dubai?",
-    answer: "Abbadi Tech Technical Solutions LLC is registered with the Dubai Department of Economy and Tourism (DET / DED) under Trade Licence No. 571822, classified as a Technical Solutions & Contracting company. We hold direct registration and contractor portal credentials with the Dubai Electricity and Water Authority (DEWA Reg. DEWA-M-4892), Dubai Municipality (DM), and the Dubai Chamber of Commerce."
+    question: "What commercial qualifications and capabilities does Abbadi Tech LLC hold in Dubai?",
+    answer: "Abbadi Tech Technical Solutions LLC operates in Dubai classified as a Technical Solutions & Contracting company, with over 21 years of proven engineering delivery across Dubai Municipality (DM) and Dubai Electricity and Water Authority (DEWA) compliant projects, as well as Dubai Chamber of Commerce membership."
   },
   {
     question: "Does Abbadi Tech use sub-contracted third-party labor or in-house engineers?",
@@ -95,7 +95,7 @@ export const contactFaqs: FAQItem[] = [
   },
   {
     question: "What documents should I provide to get an accurate MEP contracting quotation?",
-    answer: "To generate a precise, fixed-price quote, provide: 1. Architectural floor plan (CAD or PDF), 2. Reflected ceiling plan (RCP), 3. Equipment schedule (power loads for kitchen, machinery, or AC units), 4. Tenancy Fit-out Guide from the landlord or developer, and 5. Location details with unit number."
+    answer: "To generate a precise, tailored engineering quote, provide: 1. Architectural floor plan (CAD or PDF), 2. Reflected ceiling plan (RCP), 3. Equipment schedule (power loads for kitchen, machinery, or AC units), 4. Tenancy Fit-out Guide from the landlord or developer, and 5. Location details with unit number."
   },
   {
     question: "Where is Abbadi Tech's engineering office located in Dubai?",
@@ -231,7 +231,7 @@ export const servicesIndexFaqs: FAQItem[] = [
 export const electricalFaqs: FAQItem[] = [
   {
     question: "What is the complete process for obtaining DEWA electrical approval for a fit-out in Dubai?",
-    answer: "The process involves 5 key stages: 1. Design & Load Calculation: Our registered engineer prepares single-line diagrams (SLD) and load schedules matching DEWA regulations. 2. Online Submission: We submit drawings via the DEWA E-Services portal with the tenancy contract and premise ID. 3. DEWA NOC Approval: DEWA reviews the design and issues the initial electrical sanction. 4. Execution & Testing: We assemble panels, pull cables, and conduct Megger testing. 5. Final Inspection & Meter Release: DEWA inspectors verify the installation on site and release the smart kilowatt-hour meter for energization."
+    answer: "The process involves 5 key stages: 1. Design & Load Calculation: Our certified engineering team prepares single-line diagrams (SLD) and load schedules matching DEWA regulations. 2. Online Submission: We submit drawings via the DEWA E-Services portal with the tenancy contract and premise ID. 3. DEWA NOC Approval: DEWA reviews the design and issues the initial electrical sanction. 4. Execution & Testing: We assemble panels, pull cables, and conduct Megger testing. 5. Final Inspection & Meter Release: DEWA inspectors verify the installation on site and release the smart kilowatt-hour meter for energization."
   },
   {
     question: "What is the difference between an MDB, SMDB, and DB panel in UAE commercial installations?",
@@ -355,11 +355,11 @@ export const areasFaqs: FAQItem[] = [
 export const resourcesFaqs: FAQItem[] = [
   {
     question: "What is the average cost of MEP contracting per square foot for commercial fit-outs in Dubai?",
-    answer: "In Dubai, MEP contracting costs generally range from AED 45 to AED 85 per sq. ft for standard commercial offices, AED 90 to AED 160 per sq. ft for retail showrooms and clinics, and AED 140 to AED 250+ per sq. ft for high-load commercial restaurants and central kitchens due to specialized gas interlocks, heavy MDB panels, and grease interceptors."
+    answer: "MEP contracting costs in Dubai vary based on project specifications, layout complexity, and power demands. While general industry averages range from AED 45 to AED 85 per sq. ft for standard commercial offices, Abbadi Tech provides flexible, custom-scoped proposals tailored strictly to each client's architectural scope, equipment schedule, and technical requirements without rigid fixed packages."
   },
   {
     question: "What documents are required to initiate an interior fit-out MEP approval in Dubai?",
-    answer: "The essential document checklist includes: 1. Valid Ejari / Tenancy Contract, 2. Title Deed or Affection Plan, 3. Trade License of the tenant, 4. Landlord Fit-Out NOC, 5. Architectural layout and Reflected Ceiling Plan (RCP), 6. Single-Line Diagram (SLD) and Connected Load Schedule prepared by a registered contractor, and 7. Contractor's trade license and DEWA registration certificate."
+    answer: "The essential document checklist includes: 1. Valid Ejari / Tenancy Contract, 2. Title Deed or Affection Plan, 3. Trade License of the tenant, 4. Landlord Fit-Out NOC, 5. Architectural layout and Reflected Ceiling Plan (RCP), 6. Single-Line Diagram (SLD) and Connected Load Schedule prepared by a qualified contractor, and 7. Contractor's technical submission portfolio and engineering credentials."
   },
   {
     question: "How does DEWA calculate the electrical connection security deposit for commercial units?",
@@ -383,7 +383,7 @@ export const resourcesFaqs: FAQItem[] = [
   },
   {
     question: "What are the common hidden costs in Dubai MEP contracting and how does Abbadi Tech avoid them?",
-    answer: "Hidden costs often arise from uncalculated authority fee revisions, surprise DEWA load upgrade penalties, unapproved grease trap sizing, and re-inspection fees from failed audits. Abbadi Tech provides fixed-price BOQs with transparent authority fee expectations to eliminate budget overruns."
+    answer: "Hidden costs often arise from uncalculated authority fee revisions, surprise DEWA load upgrade penalties, unapproved grease trap sizing, and re-inspection fees from failed audits. Abbadi Tech provides transparent, itemized BOQs tailored specifically to project scope and client requirements to eliminate budget overruns."
   }
 ];
 
@@ -399,7 +399,7 @@ export const dewaWorksFaqs: FAQItem[] = [
   },
   {
     question: "What is a Single-Line Diagram (SLD) and who is authorized to draft it?",
-    answer: "An SLD is an engineered schematic showing the flow of electrical power from the incoming DEWA supply through busbars, isolators, circuit breakers, protective RCDs, cable cross-sections, and end-user branch circuits. Under Dubai law, only DEWA-registered electrical engineering contractors are authorized to draft, stamp, and submit SLDs for approval."
+    answer: "An SLD is an engineered schematic showing the flow of electrical power from the incoming DEWA supply through busbars, isolators, circuit breakers, protective RCDs, cable cross-sections, and end-user branch circuits. Under Dubai law, only authorized electrical engineering specialists are qualified to draft, stamp, and submit SLDs for approval."
   },
   {
     question: "What is the procedure for installing a DEWA smart kilowatt-hour electricity meter?",
@@ -435,7 +435,7 @@ export const dewaWorksFaqs: FAQItem[] = [
   },
   {
     question: "What is the difference between a DEWA NOC and a Trakhees NOC in Dubai?",
-    answer: "Mainland Dubai properties fall directly under Dubai Municipality and DEWA jurisdiction. Developments located in Free Zones like Jebel Ali Free Zone (JAFZA), Dubai Investments Park (DIP), and Dubai Maritime City fall under Trakhees CED (Civil Engineering Department). Trakhees issues its own building permits and utility NOCs, which then interface with DEWA for final power energization. Abbadi Tech is fully registered and licensed to handle both authorities."
+    answer: "Mainland Dubai properties fall directly under Dubai Municipality and DEWA jurisdiction. Developments located in Free Zones like Jebel Ali Free Zone (JAFZA), Dubai Investments Park (DIP), and Dubai Maritime City fall under Trakhees CED (Civil Engineering Department). Trakhees issues its own building permits and utility NOCs, which then interface with DEWA for final power energization. Abbadi Tech is fully qualified and experienced to handle both authorities."
   },
   {
     question: "Can commercial tenants apply for DEWA approvals directly, or is owner consent required?",
@@ -467,7 +467,7 @@ export const dewaWorksFaqs: FAQItem[] = [
 export const electricalContractorFaqs: FAQItem[] = [
   {
     question: "What legal qualifications define an official Electrical Contractor in Dubai?",
-    answer: "In the Emirate of Dubai, an official electrical contractor must hold a valid commercial license from the Department of Economy and Tourism (DET), have registered electrical engineers accredited by the Society of Engineers UAE, and possess active contractor portal credentials with DEWA."
+    answer: "In the Emirate of Dubai, an official electrical contractor must maintain certified electrical engineers accredited by the Society of Engineers UAE, and possess active contractor portal access with DEWA."
   },
   {
     question: "What safety ratings and fire-resistance certifications do you enforce for electrical cabling?",
@@ -539,7 +539,7 @@ export const electricalTechnicalWorkFaqs: FAQItem[] = [
 export const plumbingContractorFaqs: FAQItem[] = [
   {
     question: "What qualifications should I verify before hiring a plumbing contractor in Dubai?",
-    answer: "Ensure the contractor is commercially registered with Dubai Economy and Tourism for plumbing and sanitary installations, employs certified master plumbers familiar with Dubai Municipality Plumbing Regulations, and provides evidence of pressure-testing certifications and as-built documentation."
+    answer: "Ensure the contractor employs certified master plumbers familiar with Dubai Municipality Plumbing Regulations, and provides evidence of pressure-testing certifications and as-built documentation."
   },
   {
     question: "Why is backflow prevention mandatory for commercial water supplies in Dubai?",

@@ -27,7 +27,7 @@ export const resourcesData: ResourceItem[] = [
       <p>Whether fitting out a fashion boutique in The Dubai Mall or expanding power capacity for a commercial restaurant in Downtown, no electrical work can be legally energized in Dubai without formal approval from the Dubai Electricity and Water Authority (DEWA). Delays in DEWA NOCs or failed site inspections can push handover dates back by weeks, triggering severe mall rent penalties.</p>
 
       <h3>Step 1: Initial Engineering Drawings & Load Schedule Preparation</h3>
-      <p>Before any site work begins, a registered DEWA electrical contractor must prepare:</p>
+      <p>Before any site work begins, qualified electrical engineering specialists prepare:</p>
       <ul>
         <li><strong>Single-Line Diagrams (SLD):</strong> Showing the path of electrical power from the DEWA incoming service pillar to the MDB, SMDBs, and final DB circuits.</li>
         <li><strong>Connected & Demand Load Schedules:</strong> Documenting the exact kilovolt-ampere (kVA) or kilowatt (kW) ratings of every planned light, socket, AC unit, and kitchen equipment.</li>
@@ -35,7 +35,7 @@ export const resourcesData: ResourceItem[] = [
       </ul>
 
       <h3>Step 2: Submitting the Application via the DEWA Portal</h3>
-      <p>Your approved contractor submits the package through the official DEWA e-Services portal. DEWA engineers review the submission against the latest DEWA Regulations for Electrical Installations. For simple fit-outs with existing capacity, approval is typically granted within 3 to 7 working days.</p>
+      <p>Your engineering contractor submits the package through the official DEWA e-Services portal. DEWA engineers review the submission against the latest DEWA Regulations for Electrical Installations. For simple fit-outs with existing capacity, approval is typically granted within 3 to 7 working days.</p>
 
       <h3>Step 3: Site Execution & First-Fix Inspection</h3>
       <p>During physical execution, electrical cabling, cable trays, and conduit containment must strictly match the approved drawings. Crucial compliance checks include:</p>

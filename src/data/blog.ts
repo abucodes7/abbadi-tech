@@ -34,9 +34,9 @@ export const blogPosts: BlogPost[] = [
     readTime: '9 min read',
     featured: true,
     image: '/images/gallery/electrical-panel-assembly.jpg',
-    summary: 'Navigating the Dubai Electricity and Water Authority (DEWA) approval process is the single most critical factor in meeting your commercial opening date. Learn the exact 5-step roadmap, required documentation, and how registered contractors eliminate application rejections.',
+    summary: 'Navigating the Dubai Electricity and Water Authority (DEWA) approval process is the single most critical factor in meeting your commercial opening date. Learn the exact 5-step roadmap, required documentation, and how specialized engineering teams eliminate application rejections.',
     keyTakeaways: [
-      'Only registered DEWA electrical contractors can legally submit Single Line Diagrams (SLDs) and apply for NOCs.',
+      'Qualified electrical engineering specialists prepare and submit compliant Single Line Diagrams (SLDs) to secure NOCs.',
       'Initial drawing approvals take 3 to 7 working days once complete load schedules are submitted.',
       'Megger insulation resistance testing (<1 Megaohm threshold) must be documented prior to scheduling an inspection.',
       'Tenants require landlord consent and a valid DET Trade License to secure a fit-out NOC.'
@@ -63,14 +63,14 @@ export const blogPosts: BlogPost[] = [
       </ul>
 
       <h2>Step 2: Single Line Diagram (SLD) & Load Schedule Engineering</h2>
-      <p>The technical core of any DEWA submission is the electrical design package. A registered contractor drafts:</p>
+      <p>The technical core of any DEWA submission is the electrical design package. A qualified contractor drafts:</p>
       <ul>
         <li><strong>Single Line Diagram (SLD):</strong> An engineering schematic charting the electrical supply from the intake pillar through busbars, MDBs, SMDBs, circuit breakers, and final DBs.</li>
         <li><strong>Load Schedule:</strong> Calculation of Connected Load (kW), Diversity Factor, and Maximum Demand (kVA). This confirms whether existing building breakers can support the new load or if an upstream power upgrade is required.</li>
       </ul>
 
       <h2>Step 3: Online Submission via the DEWA Portal</h2>
-      <p>Your approved contractor submits drawings through the official DEWA e-Services portal. DEWA review teams audit the calculations against the latest DEWA Regulations for Electrical Installations. Typical processing timelines:</p>
+      <p>Your engineering contractor submits drawings through the official DEWA e-Services portal. DEWA review teams audit the calculations against the latest DEWA Regulations for Electrical Installations. Typical processing timelines:</p>
       <table class="data-table">
         <thead>
           <tr>
@@ -157,7 +157,7 @@ export const blogPosts: BlogPost[] = [
 
       <h2>The 4-Step Rectification Workflow</h2>
       <ol>
-        <li><strong>Emergency On-Site Technical Audit:</strong> Our registered electrical engineer visits the premises within 24 hours to audit every cited infraction on the inspection notice.</li>
+        <li><strong>Emergency On-Site Technical Audit:</strong> Our senior electrical engineer visits the premises within 24 hours to audit every cited infraction on the inspection notice.</li>
         <li><strong>Engineering Correction & Panel Dressing:</strong> Our in-house wiremen re-terminate conductors, replace non-compliant breakers with approved brands (ABB, Schneider, Hager), balance phases, and install proper heat-shrink ferruling.</li>
         <li><strong>Certified Test Reporting:</strong> We perform comprehensive insulation resistance (Megger), earth fault loop impedance, and RCD trip timing tests, producing a stamped technical report.</li>
         <li><strong>Submission & Inspector Clearance:</strong> We submit the rectification pack through the DEWA contractor portal and attend the site re-inspection to secure the formal Green Clearance Certificate.</li>
@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'The Shams Dubai initiative allows villa owners and commercial property operators to connect rooftop solar photovoltaic systems directly to DEWA\'s grid, offsetting consumption through net metering. Learn the technical approval sequence.',
     keyTakeaways: [
       'Net metering allows solar electricity generated on-site to offset your monthly DEWA electricity bill.',
-      'All inverters and solar PV modules must appear on the official DEWA approved equipment list.',
+      'All inverters and solar PV modules must appear on the official DEWA-certified equipment list.',
       'AC-side switchgear, isolators, and bi-directional meters must be installed by accredited contractors.',
       'Commercial roofs with high daytime consumption (warehouses, factories) achieve the fastest return on investment.'
     ],
@@ -381,7 +381,7 @@ export const blogPosts: BlogPost[] = [
         </li>
       </ul>
 
-      <p>Submitting an unbalanced or over-estimated load schedule results in immediate rejection by DEWA, while under-estimating causes frequent nuisance tripping and dangerous cable overheating. Abbadi Tech guarantees balanced, mathematically proven calculations stamped by registered UAE electrical engineers.</p>
+      <p>Submitting an unbalanced or over-estimated load schedule results in immediate rejection by DEWA, while under-estimating causes frequent nuisance tripping and dangerous cable overheating. Abbadi Tech guarantees balanced, mathematically proven calculations stamped by certified UAE electrical engineers.</p>
     `
   }
 ];

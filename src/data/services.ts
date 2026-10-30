@@ -23,8 +23,8 @@ export const servicesData: ServiceItem[] = [
     title: "Electrical Contractors Dubai",
     shortTitle: "Electrical Works",
     navLabel: "Electrical Contractors",
-    metaTitle: "Electrical Contractors Dubai | DEWA Approved Works | Abbadi Tech",
-    metaDescription: "Registered DEWA electrical contractors in Dubai since 2005. Turnkey power, MDB panels, load schedule calculations & fit-out NOCs. Free survey: +971 50 554 6943.",
+    metaTitle: "Electrical Contractors Dubai | DEWA Approval Services | Abbadi Tech",
+    metaDescription: "Experienced electrical contractors in Dubai since 2005. Turnkey power, MDB panels, load schedule calculations & fit-out NOCs. Free survey: +971 50 554 6943.",
     icon: "Zap",
     tagline: "DEWA-Certified Electrical Contracting Since 2005",
     heroH1: "Licensed Electrical Contractors in Dubai & DEWA Approval Works",
@@ -76,8 +76,8 @@ export const servicesData: ServiceItem[] = [
     ],
     faqs: [
       {
-        question: "Are you an approved electrical contractor registered with DEWA?",
-        answer: "Yes, Abbadi Tech LLC has been a registered and certified electrical contractor with the Dubai Electricity and Water Authority (DEWA) since 2005. We handle all DEWA approvals, drawing submissions, inspections, and meter connections directly."
+        question: "Do you handle complete DEWA approvals and submissions?",
+        answer: "Yes, Abbadi Tech LLC specializes in complete DEWA approvals, single-line diagram (SLD) submissions, inspections, and smart meter connections directly with full compliance across Dubai."
       },
       {
         question: "How long does a DEWA electrical load upgrade take?",
